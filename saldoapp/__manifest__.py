@@ -2,13 +2,13 @@
 {
     'name': "saldoapp",
 
-    'summary': "Controla tus egresos e ingresos con SaldoApp",
+    'summary': "Controla tus egresos e ingresos con SaldoAppPPPP",
 
     'description': """
 Long description of module's purpose
     """,
 
-    'author': "Gustavo G.",
+    'author': "Gustavo G.AAA",
     'website': "https://www.goansystem.com",
 
     # Categories can be used to filter modules in modules listing
