@@ -1,0 +1,35 @@
+.o_list_view table {
+    table-layout: fixed;
+    width: 100%; /* Asegura que la tabla ocupe todo el ancho */
+}
+
+.o_list_view th,
+.o_list_view td {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.o_list_view th[data-name="name"],
+.o_list_view td[data-name="name"] {
+    width: 20%; /* Ajusta la columna "Descripción" */
+}
+
+.o_list_view th[data-name="comprobante"],
+.o_list_view td[data-name="comprobante"] {
+    width: 10%; /* Ajusta la columna "Comprobante" */
+}
+
+.o_list_view th[data-name="monto"],
+.o_list_view td[data-name="monto"] {
+    width: 15%; /* Ajusta la columna "Monto" */
+}
+
+.o_list_view th[data-name="tipo"],
+.o_list_view td[data-name="tipo"] {
+    width: 15%; /* Ajusta la columna "Tipo" */
+}
+
+.o_list_view th[data-name="fecha"],
+.o_list_view td[data-name="fecha"] {
+    width: 10%; /* Ajusta la columna "Fecha" */
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="movimiento_1" model="sa.movimiento">
+            <field name="name">Salida de Amigos</field>
+            <field name="tipo">G</field>
+            <field name="monto">105</field>
+        </record>
+
+        <record id="movimiento_2" model="sa.movimiento">
+            <field name="name">Ingreso por Trabajo</field>
+            <field name="tipo">I</field>
+            <field name="monto">500</field>
+        </record>
+
+        <record id="movimiento_3" model="sa.movimiento">
+            <field name="name">Ingreso por Trabajo</field>
+            <field name="tipo">I</field>
+            <field name="monto">600</field>
+        </record>
+    </data>
+</odoo>

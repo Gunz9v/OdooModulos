@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- Vista tipo lista
+        >>Se visualiza al ingresar al apartado de movimientos<<
+     -->
+    <record id="saldoapp.view_list_movimiento" model="ir.ui.view">
+        <field name="name">Movimiento List View</field>
+        <field name="model">sa.movimiento</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="Movimientos" decoration-info="tipo == 'I'" decoration-danger="tipo == 'G'" editable="top">
+                <field name="name"/>
+                <field name="monto"/>
+                <field name="tipo"/>
+                <field name="fecha"/>
+                <field name="create_uid"/>
+                <field name="comprobante" widget="binary"/>              
+            </list>
+        </field>
+    </record>
+
+
+    <!-- Vista tipo formulario 
+         >>Se visualiza al seleccionar un registro<<   
+    -->
+    <record id="saldoapp.view_form_movimiento" model="ir.ui.view">
+        <field name="name">Movimiento Form View</field>
+        <field name="model">sa.movimiento</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Movimiento">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="monto"/>
+                        <field name="tipo"/>
+                        <field name="fecha"/>
+                        <field name="create_uid"/>
+                        <field name="comprobante" widget="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="saldoapp.view_search_movimiento" model="ir.ui.view">
+        <field name="name">Movimiento Search View</field>
+        <field name="model">sa.movimiento</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Campo de búsqueda genérica -->
+                <field name="name" string="Descripción"/>
+                
+                <!-- Filtros predefinidos -->
+                <filter name="filter_ingresos" string="Ingresos" domain="[('tipo', '=', 'I')]"/>
+                <filter name="filter_gastos" string="Gastos" domain="[('tipo', '=', 'G')]"/>
+                
+              
+            </search>
+        </field>
+    </record>
+
+    <!-- Acción de ventana -->
+    <record id="saldoapp.action_movimiento" model="ir.actions.act_window">
+        <field name="name">Movimientos</field>
+        <field name="res_model">sa.movimiento</field>
+        <field name="view_mode">list,form</field>
+        <field name="views">[[ref('saldoapp.view_list_movimiento'), 'list'], [ref('saldoapp.view_form_movimiento'), 'form']]</field>
+        <field name="search_view_id" ref="saldoapp.view_search_movimiento"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Menú principal 
+        Se visualiza el boton "SaldoApp" en las aplicaciones principales
+     -->
+    <menuitem id="saldoapp.menu_saldoapp" name="SaldoApp" parent=""/>
+
+    <!-- Submenú Movimiento 
+        Se visualiza el boton "Movimientos" en la barra superior al ingresar a la aplicación SaldoApp
+    -->
+    <menuitem id="saldoapp.menu_movimiento" name="Movimientos" parent="saldoapp.menu_saldoapp" action="saldoapp.action_movimiento"/>
+  </data>
+</odoo>
