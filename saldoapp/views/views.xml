@@ -9,7 +9,7 @@
         <field name="model">sa.movimiento</field>
         <field name="type">list</field>
         <field name="arch" type="xml">
-            <list string="Movimientos" decoration-info="tipo == 'I'" decoration-danger="tipo == 'G'" editable="top">
+            <list string="Movimientos" decoration-info="tipo == 'I'" decoration-danger="tipo == 'G'">
                 <field name="name"/>
                 <field name="monto"/>
                 <field name="tipo"/>
