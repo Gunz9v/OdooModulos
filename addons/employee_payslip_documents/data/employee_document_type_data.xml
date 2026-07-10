@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="document_type_cv" model="employee.document.type">
+        <field name="name">CV</field>
+        <field name="sequence">10</field>
+        <field name="category">basic</field>
+        <field name="required">1</field>
+        <field name="allow_history">1</field>
+    </record>
+
+    <record id="document_type_contract" model="employee.document.type">
+        <field name="name">Contrato</field>
+        <field name="sequence">20</field>
+        <field name="category">agreement</field>
+        <field name="required">1</field>
+        <field name="allow_history">1</field>
+    </record>
+
+    <record id="document_type_payslip" model="employee.document.type">
+        <field name="name">Boleta de Pago</field>
+        <field name="sequence">30</field>
+        <field name="category">sunat</field>
+        <field name="required">1</field>
+        <field name="allow_history">1</field>
+    </record>
+
+    <record id="document_type_tr5_high" model="employee.document.type">
+        <field name="name">Alta TR5</field>
+        <field name="sequence">40</field>
+        <field name="category">sunat</field>
+        <field name="required">1</field>
+        <field name="allow_history">1</field>
+    </record>
+
+    <record id="document_type_tr5_low" model="employee.document.type">
+        <field name="name">Baja TR5</field>
+        <field name="sequence">50</field>
+        <field name="category">sunat</field>
+    </record>
+
+    <record id="document_type_fourth_fifth_suspension" model="employee.document.type">
+        <field name="name">Suspension de 4ta y 5ta Categoria</field>
+        <field name="sequence">60</field>
+        <field name="category">sunat</field>
+    </record>
+
+    <record id="document_type_agreement" model="employee.document.type">
+        <field name="name">Acuerdo</field>
+        <field name="sequence">70</field>
+        <field name="category">agreement</field>
+    </record>
+
+    <record id="document_type_sanction" model="employee.document.type">
+        <field name="name">Sancion</field>
+        <field name="sequence">80</field>
+        <field name="category">sanction</field>
+    </record>
+
+    <record id="document_type_termination" model="employee.document.type">
+        <field name="name">Cese</field>
+        <field name="sequence">90</field>
+        <field name="category">termination</field>
+    </record>
+</odoo>

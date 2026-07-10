@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sire_sales_reconciliation_line_tree" model="ir.ui.view">
+        <field name="name">sire.sales.reconciliation.line.list</field>
+        <field name="model">sire.sales.reconciliation.line</field>
+        <field name="arch" type="xml">
+            <list decoration-success="status == 'matched'" decoration-warning="status == 'difference'" decoration-danger="status in ('system_only', 'sunat_only')">
+                <field name="period_id"/>
+                <field name="status"/>
+                <field name="normalized_key"/>
+                <field name="accounting_car_sunat" optional="hide"/>
+                <field name="sunat_car_sunat"/>
+                <field name="accounting_record_state"/>
+                <field name="sunat_record_state"/>
+                <field name="issue_date_diff" column_invisible="1"/>
+                <field name="currency_diff" column_invisible="1"/>
+                <field name="export_has_diff" column_invisible="1"/>
+                <field name="taxable_base_has_diff" column_invisible="1"/>
+                <field name="exempt_has_diff" column_invisible="1"/>
+                <field name="unaffected_has_diff" column_invisible="1"/>
+                <field name="igv_has_diff" column_invisible="1"/>
+                <field name="total_has_diff" column_invisible="1"/>
+                <field name="accounting_issue_date"/>
+                <field name="sunat_issue_date" decoration-danger="issue_date_diff"/>
+                <field name="accounting_document_type"/>
+                <field name="accounting_series"/>
+                <field name="accounting_number"/>
+                <field name="sunat_document_type"/>
+                <field name="sunat_series"/>
+                <field name="sunat_number"/>
+                <field name="accounting_customer_document_number"/>
+                <field name="sunat_customer_document_number"/>
+                <field name="accounting_currency_code"/>
+                <field name="sunat_currency_code" decoration-danger="currency_diff"/>
+                <field name="accounting_exchange_rate"/>
+                <field name="sunat_exchange_rate"/>
+                <field name="accounting_export_amount"/>
+                <field name="sunat_export_amount" decoration-danger="export_has_diff"/>
+                <field name="accounting_taxable_base"/>
+                <field name="sunat_taxable_base" decoration-danger="taxable_base_has_diff"/>
+                <field name="accounting_exempt_amount"/>
+                <field name="sunat_exempt_amount" decoration-danger="exempt_has_diff"/>
+                <field name="accounting_unaffected_amount"/>
+                <field name="sunat_unaffected_amount" decoration-danger="unaffected_has_diff"/>
+                <field name="accounting_igv_amount"/>
+                <field name="sunat_igv_amount" decoration-danger="igv_has_diff"/>
+                <field name="accounting_total_amount"/>
+                <field name="sunat_total_amount" decoration-danger="total_has_diff"/>
+                <field name="export_diff" decoration-danger="export_has_diff"/>
+                <field name="taxable_base_diff" decoration-danger="taxable_base_has_diff"/>
+                <field name="exempt_diff" decoration-danger="exempt_has_diff"/>
+                <field name="unaffected_diff" decoration-danger="unaffected_has_diff"/>
+                <field name="igv_diff" decoration-danger="igv_has_diff"/>
+                <field name="total_diff" decoration-danger="total_has_diff"/>
+                <field name="difference_summary" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sire_sales_reconciliation_line_form" model="ir.ui.view">
+        <field name="name">sire.sales.reconciliation.line.form</field>
+        <field name="model">sire.sales.reconciliation.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="period_id"/>
+                            <field name="status"/>
+                            <field name="normalized_key"/>
+                        </group>
+                        <group>
+                            <field name="issue_date_diff"/>
+                            <field name="currency_diff"/>
+                            <field name="export_has_diff"/>
+                            <field name="taxable_base_has_diff"/>
+                            <field name="exempt_has_diff"/>
+                            <field name="unaffected_has_diff"/>
+                            <field name="igv_has_diff"/>
+                            <field name="total_has_diff"/>
+                        </group>
+                    </group>
+                    <group string="Lineas">
+                        <field name="accounting_line_id"/>
+                        <field name="sunat_line_id"/>
+                    </group>
+                    <group string="Comprobante">
+                        <group string="Contable">
+                            <field name="accounting_issue_date"/>
+                            <field name="accounting_car_sunat"/>
+                            <field name="accounting_record_state"/>
+                            <field name="accounting_document_type"/>
+                            <field name="accounting_series"/>
+                            <field name="accounting_number"/>
+                            <field name="accounting_customer_document_number"/>
+                            <field name="accounting_customer_name"/>
+                            <field name="accounting_currency_code"/>
+                            <field name="accounting_exchange_rate"/>
+                            <field name="accounting_export_amount"/>
+                            <field name="accounting_taxable_base"/>
+                            <field name="accounting_exempt_amount"/>
+                            <field name="accounting_unaffected_amount"/>
+                            <field name="accounting_igv_amount"/>
+                            <field name="accounting_total_amount"/>
+                        </group>
+                        <group string="SUNAT">
+                            <field name="sunat_issue_date"/>
+                            <field name="sunat_car_sunat"/>
+                            <field name="sunat_record_state"/>
+                            <field name="sunat_document_type"/>
+                            <field name="sunat_series"/>
+                            <field name="sunat_number"/>
+                            <field name="sunat_customer_document_number"/>
+                            <field name="sunat_customer_name"/>
+                            <field name="sunat_currency_code"/>
+                            <field name="sunat_exchange_rate"/>
+                            <field name="sunat_export_amount"/>
+                            <field name="sunat_taxable_base"/>
+                            <field name="sunat_exempt_amount"/>
+                            <field name="sunat_unaffected_amount"/>
+                            <field name="sunat_igv_amount"/>
+                            <field name="sunat_total_amount"/>
+                        </group>
+                    </group>
+                    <group string="Diferencias">
+                        <field name="export_diff"/>
+                        <field name="taxable_base_diff"/>
+                        <field name="exempt_diff"/>
+                        <field name="unaffected_diff"/>
+                        <field name="igv_diff"/>
+                        <field name="total_diff"/>
+                    </group>
+                    <notebook>
+                        <page string="Resumen">
+                            <field name="difference_summary" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sire_sales_reconciliation_line_search" model="ir.ui.view">
+        <field name="name">sire.sales.reconciliation.line.search</field>
+        <field name="model">sire.sales.reconciliation.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="period_id"/>
+                <field name="normalized_key"/>
+                <field name="accounting_car_sunat"/>
+                <field name="sunat_car_sunat"/>
+                <field name="accounting_record_state"/>
+                <field name="sunat_record_state"/>
+                <field name="accounting_customer_document_number"/>
+                <field name="sunat_customer_document_number"/>
+                <field name="accounting_series"/>
+                <field name="sunat_series"/>
+                <field name="accounting_number"/>
+                <field name="sunat_number"/>
+                <filter string="Con diferencias" name="difference" domain="[('status', '=', 'difference')]"/>
+                <filter string="Solo SUNAT" name="sunat_only" domain="[('status', '=', 'sunat_only')]"/>
+                <filter string="Solo sistema" name="system_only" domain="[('status', '=', 'system_only')]"/>
+                <filter string="Coincidentes" name="matched" domain="[('status', '=', 'matched')]"/>
+                <separator/>
+                <filter string="Pendientes de revisar" name="review_pending" domain="[('status', 'in', ('difference', 'sunat_only', 'system_only'))]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="Estado" name="group_status" context="{'group_by': 'status'}"/>
+                    <filter string="Estado contable" name="group_accounting_record_state" context="{'group_by': 'accounting_record_state'}"/>
+                    <filter string="Estado SUNAT" name="group_sunat_record_state" context="{'group_by': 'sunat_record_state'}"/>
+                    <filter string="Periodo" name="group_period" context="{'group_by': 'period_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_sire_sales_reconciliation_line" model="ir.actions.act_window">
+        <field name="name">Conciliacion RVIE</field>
+        <field name="res_model">sire.sales.reconciliation.line</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_sire_sales_reconciliation_line_search"/>
+    </record>
+
+    <menuitem id="menu_sire_sales_reconciliation_lines" name="Conciliacion" parent="l10n_pe_sire_core.menu_sire_sales" action="action_sire_sales_reconciliation_line" sequence="40"/>
+</odoo>

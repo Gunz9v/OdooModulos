@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_payslip_document_employee_own" model="ir.rule">
+        <field name="name">Empleados pueden leer sus propias boletas publicadas</field>
+        <field name="model_id" ref="model_employee_payslip_document"/>
+        <field name="domain_force">
+            ['&amp;', ('state', '=', 'published'), '|', ('employee_user_id', '=', user.id), ('employee_partner_id', '=', user.partner_id.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('base.group_user')), (4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_payslip_document_hr_all" model="ir.rule">
+        <field name="name">RRHH puede gestionar todas las boletas</field>
+        <field name="model_id" ref="model_employee_payslip_document"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+    </record>
+
+    <record id="rule_employee_document_file_employee_own" model="ir.rule">
+        <field name="name">Empleados pueden leer sus propios legajos validados</field>
+        <field name="model_id" ref="model_employee_document_file"/>
+        <field name="domain_force">
+            ['&amp;', ('state', 'in', ['uploaded', 'validated']), '|', ('employee_user_id', '=', user.id), ('employee_partner_id', '=', user.partner_id.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('base.group_user')), (4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_employee_document_file_hr_all" model="ir.rule">
+        <field name="name">RRHH puede gestionar todos los legajos</field>
+        <field name="model_id" ref="model_employee_document_file"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+    </record>
+
+    <record id="rule_employee_document_history_employee_own" model="ir.rule">
+        <field name="name">Empleados pueden leer su propio historico de legajos</field>
+        <field name="model_id" ref="model_employee_document_history"/>
+        <field name="domain_force">
+            ['&amp;', ('state', 'in', ['uploaded', 'validated']), '|', ('employee_user_id', '=', user.id), ('employee_partner_id', '=', user.partner_id.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('base.group_user')), (4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_employee_document_history_hr_all" model="ir.rule">
+        <field name="name">RRHH puede gestionar todo el historico de legajos</field>
+        <field name="model_id" ref="model_employee_document_history"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+    </record>
+
+    <record id="rule_employee_announcement_employee_own" model="ir.rule">
+        <field name="name">Empleados pueden leer sus propios comunicados publicados</field>
+        <field name="model_id" ref="model_employee_announcement"/>
+        <field name="domain_force">
+            ['&amp;', ('state', '=', 'published'), '|', ('recipient_ids.employee_user_id', '=', user.id), ('recipient_ids.employee_partner_id', '=', user.partner_id.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('base.group_user')), (4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_employee_announcement_hr_all" model="ir.rule">
+        <field name="name">RRHH puede gestionar todos los comunicados</field>
+        <field name="model_id" ref="model_employee_announcement"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+    </record>
+
+    <record id="rule_employee_announcement_recipient_employee_own" model="ir.rule">
+        <field name="name">Empleados pueden leer sus propios destinatarios de comunicados</field>
+        <field name="model_id" ref="model_employee_announcement_recipient"/>
+        <field name="domain_force">
+            ['|', ('employee_user_id', '=', user.id), ('employee_partner_id', '=', user.partner_id.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('base.group_user')), (4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_employee_announcement_recipient_hr_all" model="ir.rule">
+        <field name="name">RRHH puede gestionar todos los destinatarios de comunicados</field>
+        <field name="model_id" ref="model_employee_announcement_recipient"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+    </record>
+</odoo>

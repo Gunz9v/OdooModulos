@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sire_period_form_sire_api" model="ir.ui.view">
+        <field name="name">sire.period.form.sire.api</field>
+        <field name="model">sire.period</field>
+        <field name="inherit_id" ref="l10n_pe_sire_core.view_sire_period_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_open_import_wizard']" position="after">
+                <button name="action_sync_sunat_proposal" type="object" string="Sincronizar propuesta SUNAT" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Tickets SUNAT">
+                    <field name="api_ticket_ids" readonly="1">
+                        <list>
+                            <field name="requested_at"/>
+                            <field name="process_type"/>
+                            <field name="ticket_number"/>
+                            <field name="status_code"/>
+                            <field name="status_description"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_document_type_hr,employee.document.type.hr,model_employee_document_type,hr.group_hr_user,1,1,1,1
+access_employee_document_file_hr,employee.document.file.hr,model_employee_document_file,hr.group_hr_user,1,1,1,1
+access_employee_document_file_user,employee.document.file.user,model_employee_document_file,base.group_user,1,0,0,0
+access_employee_document_file_portal,employee.document.file.portal,model_employee_document_file,base.group_portal,1,0,0,0
+access_employee_document_history_hr,employee.document.history.hr,model_employee_document_history,hr.group_hr_user,1,1,1,1
+access_employee_document_history_user,employee.document.history.user,model_employee_document_history,base.group_user,1,0,0,0
+access_employee_document_history_portal,employee.document.history.portal,model_employee_document_history,base.group_portal,1,0,0,0
+access_employee_document_digital_signature_wizard_hr,employee.document.digital.signature.wizard.hr,model_employee_document_digital_signature_wizard,hr.group_hr_user,1,1,1,1

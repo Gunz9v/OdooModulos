@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_payslip_document_template_list" model="ir.ui.view">
+        <field name="name">employee.payslip.document.template.list</field>
+        <field name="model">employee.payslip.document.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="employee_lookup_field"/>
+                <field name="employee_lookup_column"/>
+                <field name="digital_signer_user_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_payslip_document_template_form" model="ir.ui.view">
+        <field name="name">employee.payslip.document.template.form</field>
+        <field name="model">employee.payslip.document.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Nombre de plantilla"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_lookup_field"/>
+                            <field name="employee_lookup_column"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                            <field name="digital_signer_user_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Plantilla">
+                            <field name="body_html" widget="html"/>
+                        </page>
+                        <page string="Marcadores">
+                            <field name="placeholder_preview" readonly="1" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_payslip_document_templates" model="ir.actions.act_window">
+        <field name="name">Plantillas de Boletas</field>
+        <field name="res_model">employee.payslip.document.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

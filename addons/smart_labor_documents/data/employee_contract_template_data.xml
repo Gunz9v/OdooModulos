@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="contract_template_payroll" model="employee.contract.template">
+        <field name="name">Contrato de Planilla</field>
+        <field name="contract_kind">payroll</field>
+        <field name="body_html"><![CDATA[
+<div style="padding: 28px; border: 1px solid #111; background: #fff; min-height: 760px; font-family: Arial, sans-serif; color: #111;">
+    <h2 style="text-align: center; margin-bottom: 28px;">CONTRATO DE TRABAJO EN PLANILLA</h2>
+    <p><strong>Empresa:</strong> {{company_name}}</p>
+    <p><strong>Empleado:</strong> {{employee_name}}</p>
+    <p><strong>Documento:</strong> {{employee_identification}}</p>
+    <p><strong>Cargo:</strong> {{job_name}}</p>
+    <p><strong>Departamento:</strong> {{department_name}}</p>
+    <p><strong>Fecha de inicio:</strong> {{date_start}}</p>
+    <p><strong>Fecha de fin:</strong> {{date_end}}</p>
+    <p><strong>Remuneracion mensual:</strong> {{wage}}</p>
+    <p style="margin-top: 24px;">
+        El trabajador prestara servicios bajo relacion de dependencia, sujeto a las politicas internas,
+        jornada de trabajo y obligaciones laborales aplicables.
+    </p>
+    <div style="height: 220px;"></div>
+    <p style="border-top: 1px solid #111; width: 260px; text-align: center; padding-top: 8px;">
+        Firma del trabajador
+    </p>
+</div>
+]]></field>
+    </record>
+
+    <record id="contract_template_service" model="employee.contract.template">
+        <field name="name">Contrato de Locacion de Servicios</field>
+        <field name="contract_kind">service</field>
+        <field name="body_html"><![CDATA[
+<div style="padding: 28px; border: 1px solid #111; background: #fff; min-height: 760px; font-family: Arial, sans-serif; color: #111;">
+    <h2 style="text-align: center; margin-bottom: 28px;">CONTRATO DE LOCACION DE SERVICIOS</h2>
+    <p><strong>Contratante:</strong> {{company_name}}</p>
+    <p><strong>Locador:</strong> {{employee_name}}</p>
+    <p><strong>Documento:</strong> {{employee_identification}}</p>
+    <p><strong>Servicio/Cargo:</strong> {{job_name}}</p>
+    <p><strong>Inicio del servicio:</strong> {{date_start}}</p>
+    <p><strong>Termino del servicio:</strong> {{date_end}}</p>
+    <p><strong>Honorario pactado:</strong> {{wage}}</p>
+    <p style="margin-top: 24px;">
+        El locador prestara servicios de manera independiente, sin vinculo laboral de subordinacion,
+        de acuerdo con las condiciones pactadas por las partes.
+    </p>
+    <div style="height: 220px;"></div>
+    <p style="border-top: 1px solid #111; width: 260px; text-align: center; padding-top: 8px;">
+        Firma del locador
+    </p>
+</div>
+]]></field>
+    </record>
+</odoo>

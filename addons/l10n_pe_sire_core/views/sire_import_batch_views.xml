@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sire_import_batch_tree" model="ir.ui.view">
+        <field name="name">sire.import.batch.list</field>
+        <field name="model">sire.import.batch</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="filename"/>
+                <field name="period_id"/>
+                <field name="company_id"/>
+                <field name="book_code"/>
+                <field name="file_encoding"/>
+                <field name="state"/>
+                <field name="total_rows"/>
+                <field name="valid_rows"/>
+                <field name="warning_rows"/>
+                <field name="invalid_rows"/>
+                <field name="imported_at"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sire_import_batch_form" model="ir.ui.view">
+        <field name="name">sire.import.batch.form</field>
+        <field name="model">sire.import.batch</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="period_id"/>
+                            <field name="company_id"/>
+                            <field name="filename"/>
+                            <field name="file_data" filename="filename"/>
+                        </group>
+                        <group>
+                            <field name="state"/>
+                            <field name="book_code"/>
+                            <field name="format_version"/>
+                            <field name="file_encoding"/>
+                            <field name="file_hash"/>
+                        </group>
+                    </group>
+                    <group string="Resultado">
+                        <field name="total_rows"/>
+                        <field name="valid_rows"/>
+                        <field name="warning_rows"/>
+                        <field name="invalid_rows"/>
+                        <field name="duplicate_rows"/>
+                    </group>
+                    <notebook>
+                        <page string="Errores">
+                            <field name="error_ids">
+                                <list>
+                                    <field name="line_number"/>
+                                    <field name="level"/>
+                                    <field name="code"/>
+                                    <field name="message"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Resumen">
+                            <field name="error_summary" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sire_import_batch" model="ir.actions.act_window">
+        <field name="name">Importaciones SIRE</field>
+        <field name="res_model">sire.import.batch</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_sire_purchase_import_batch" model="ir.actions.act_window">
+        <field name="name">Importaciones RCE</field>
+        <field name="res_model">sire.import.batch</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('period_id.registry_type', '=', 'rce')]</field>
+    </record>
+
+    <record id="action_sire_sales_import_batch" model="ir.actions.act_window">
+        <field name="name">Importaciones RVIE</field>
+        <field name="res_model">sire.import.batch</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('period_id.registry_type', '=', 'rvie')]</field>
+    </record>
+
+    <menuitem id="menu_sire_purchase_import_batches" name="Importaciones" parent="menu_sire_purchases" action="action_sire_purchase_import_batch" sequence="20"/>
+    <menuitem id="menu_sire_sales_import_batches" name="Importaciones" parent="menu_sire_sales" action="action_sire_sales_import_batch" sequence="20"/>
+</odoo>

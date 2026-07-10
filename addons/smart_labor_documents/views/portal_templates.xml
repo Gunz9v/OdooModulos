@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_payslip_documents" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[contains(@class, 'o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Inicio del Trabajador</t>
+                <t t-set="url" t-value="'/my/inicio'"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Boletas de Pago</t>
+                <t t-set="url" t-value="'/my/payslip-documents'"/>
+                <t t-set="placeholder_count" t-value="'payslip_document_count'"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Comunicados Internos</t>
+                <t t-set="url" t-value="'/my/announcements'"/>
+                <t t-set="placeholder_count" t-value="'announcement_count'"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Contratos</t>
+                <t t-set="url" t-value="'/my/employee-contracts'"/>
+                <t t-set="placeholder_count" t-value="'employee_contract_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_employee_dashboard" name="Inicio del Trabajador">
+        <t t-call="portal.portal_layout">
+            <style>
+                .o_employee_portal_dashboard {
+                    color: #1f2937;
+                }
+                .o_employee_portal_hero {
+                    border-radius: 8px;
+                    padding: 24px;
+                    background: #f7fafc;
+                    border: 1px solid #e5e7eb;
+                }
+                .o_employee_portal_hero h2 {
+                    font-size: 28px;
+                    line-height: 1.2;
+                    margin: 0;
+                    letter-spacing: 0;
+                }
+                .o_employee_portal_hero p {
+                    margin: 8px 0 0;
+                    color: #64748b;
+                }
+                .o_employee_metric {
+                    min-height: 96px;
+                    border: 1px solid #e5e7eb;
+                    border-radius: 8px;
+                    padding: 16px;
+                    background: #ffffff;
+                }
+                .o_employee_metric_value {
+                    display: block;
+                    font-size: 30px;
+                    line-height: 1;
+                    font-weight: 700;
+                    color: #0f766e;
+                }
+                .o_employee_metric_label {
+                    display: block;
+                    margin-top: 8px;
+                    color: #64748b;
+                    font-size: 14px;
+                }
+                .o_employee_panel {
+                    border: 1px solid #e5e7eb;
+                    border-radius: 8px;
+                    background: #ffffff;
+                    overflow: hidden;
+                    height: 100%;
+                }
+                .o_employee_panel_header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 12px;
+                    padding: 16px 18px;
+                    border-bottom: 1px solid #e5e7eb;
+                    background: #ffffff;
+                }
+                .o_employee_panel_header h3 {
+                    margin: 0;
+                    font-size: 18px;
+                    line-height: 1.2;
+                    letter-spacing: 0;
+                }
+                .o_employee_list {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                .o_employee_list_item {
+                    padding: 14px 18px;
+                    border-bottom: 1px solid #eef2f7;
+                }
+                .o_employee_list_item:last-child {
+                    border-bottom: 0;
+                }
+                .o_employee_item_title {
+                    display: block;
+                    font-weight: 600;
+                    color: #111827;
+                    text-decoration: none;
+                    overflow-wrap: anywhere;
+                }
+                .o_employee_item_meta {
+                    display: block;
+                    margin-top: 4px;
+                    color: #64748b;
+                    font-size: 13px;
+                }
+                .o_employee_badge {
+                    display: inline-flex;
+                    align-items: center;
+                    border-radius: 999px;
+                    padding: 4px 9px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    background: #e0f2fe;
+                    color: #075985;
+                    white-space: nowrap;
+                }
+                .o_employee_badge_warning {
+                    background: #fef3c7;
+                    color: #92400e;
+                }
+                .o_employee_badge_success {
+                    background: #dcfce7;
+                    color: #166534;
+                }
+                .o_employee_empty {
+                    padding: 18px;
+                    color: #64748b;
+                    margin: 0;
+                }
+                .o_employee_quick_link {
+                    color: #0f766e;
+                    font-weight: 600;
+                    text-decoration: none;
+                    white-space: nowrap;
+                }
+                @media (max-width: 767.98px) {
+                    .o_employee_portal_hero {
+                        padding: 18px;
+                    }
+                    .o_employee_portal_hero h2 {
+                        font-size: 24px;
+                    }
+                    .o_employee_panel_header {
+                        align-items: flex-start;
+                        flex-direction: column;
+                    }
+                }
+            </style>
+            <div class="o_employee_portal_dashboard">
+                <section class="o_employee_portal_hero mb-4">
+                    <h2>
+                        Hola,
+                        <t t-if="employee"><t t-out="employee.name"/></t>
+                        <t t-else=""><t t-out="request.env.user.name"/></t>
+                    </h2>
+                    <p>Tu espacio de comunicados, documentos y fechas importantes.</p>
+                </section>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-12 col-md-4">
+                        <a href="/my/announcements" class="text-decoration-none">
+                            <div class="o_employee_metric">
+                                <span class="o_employee_metric_value"><t t-out="unread_count"/></span>
+                                <span class="o_employee_metric_label">Comunicados sin leer</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="/my/payslip-documents" class="text-decoration-none">
+                            <div class="o_employee_metric">
+                                <span class="o_employee_metric_value"><t t-out="pending_document_count"/></span>
+                                <span class="o_employee_metric_label">Boletas pendientes de recepcion</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="/my/employee-contracts" class="text-decoration-none">
+                            <div class="o_employee_metric">
+                                <span class="o_employee_metric_value"><t t-out="pending_contract_count"/></span>
+                                <span class="o_employee_metric_label">Contratos pendientes</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-lg-7">
+                        <section class="o_employee_panel">
+                            <div class="o_employee_panel_header">
+                                <h3>Comunicados recientes</h3>
+                                <a class="o_employee_quick_link" href="/my/announcements">Ver todos</a>
+                            </div>
+                            <t t-if="recipients">
+                                <ul class="o_employee_list">
+                                    <li class="o_employee_list_item" t-foreach="recipients" t-as="recipient">
+                                        <div class="d-flex justify-content-between gap-3">
+                                            <div>
+                                                <a class="o_employee_item_title" t-att-href="'/my/announcements/%s' % recipient.announcement_id.id">
+                                                    <span t-field="recipient.announcement_id.name"/>
+                                                </a>
+                                                <span class="o_employee_item_meta">
+                                                    <span t-field="recipient.announcement_id.publish_date"/>
+                                                </span>
+                                            </div>
+                                            <span t-if="not recipient.is_read" class="o_employee_badge o_employee_badge_warning">Nuevo</span>
+                                            <span t-else="" class="o_employee_badge o_employee_badge_success">Leido</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </t>
+                            <p t-else="" class="o_employee_empty">No hay comunicados publicados.</p>
+                        </section>
+                    </div>
+
+                    <div class="col-12 col-lg-5">
+                        <section class="o_employee_panel">
+                            <div class="o_employee_panel_header">
+                                <h3>Proximos cumpleanos</h3>
+                            </div>
+                            <t t-if="birthdays">
+                                <ul class="o_employee_list">
+                                    <li class="o_employee_list_item" t-foreach="birthdays" t-as="birthday">
+                                        <div class="d-flex justify-content-between gap-3">
+                                            <div>
+                                                <span class="o_employee_item_title"><t t-out="birthday['employee'].name"/></span>
+                                                <span class="o_employee_item_meta"><t t-out="birthday['date']"/></span>
+                                            </div>
+                                            <span t-if="birthday['days_until'] == 0" class="o_employee_badge o_employee_badge_success">Hoy</span>
+                                            <span t-else="" class="o_employee_badge">En <t t-out="birthday['days_until']"/> dias</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </t>
+                            <p t-else="" class="o_employee_empty">No hay cumpleanos proximos.</p>
+                        </section>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <section class="o_employee_panel">
+                            <div class="o_employee_panel_header">
+                                <h3>Fechas especiales</h3>
+                            </div>
+                            <t t-if="events">
+                                <ul class="o_employee_list">
+                                    <li class="o_employee_list_item" t-foreach="events" t-as="event">
+                                        <div class="d-flex justify-content-between gap-3">
+                                            <div>
+                                                <span class="o_employee_item_title"><span t-field="event.name"/></span>
+                                                <span class="o_employee_item_meta">
+                                                    <span t-field="event.event_date"/>
+                                                    <t t-if="event.description"> - <span t-field="event.description"/></t>
+                                                </span>
+                                            </div>
+                                            <span class="o_employee_badge"><span t-field="event.event_type"/></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </t>
+                            <p t-else="" class="o_employee_empty">No hay fechas especiales publicadas.</p>
+                        </section>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <section class="o_employee_panel">
+                            <div class="o_employee_panel_header">
+                                <h3>Documentos recientes</h3>
+                                <a class="o_employee_quick_link" href="/my/payslip-documents">Ver boletas</a>
+                            </div>
+                            <t t-if="documents">
+                                <ul class="o_employee_list">
+                                    <li class="o_employee_list_item" t-foreach="documents" t-as="document">
+                                        <div class="d-flex justify-content-between gap-3">
+                                            <div>
+                                                <a class="o_employee_item_title" t-att-href="'/my/payslip-documents/%s' % document.id">
+                                                    <span t-field="document.name"/>
+                                                </a>
+                                                <span class="o_employee_item_meta"><span t-field="document.period"/></span>
+                                            </div>
+                                            <span t-if="document.signature_required and document.signature_state != 'signed'" class="o_employee_badge o_employee_badge_warning">Recepcion</span>
+                                            <span t-elif="document.signature_state == 'signed'" class="o_employee_badge o_employee_badge_success">Confirmado</span>
+                                            <span t-else="" class="o_employee_badge">PDF</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </t>
+                            <p t-else="" class="o_employee_empty">No hay documentos recientes.</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_payslip_documents" name="Mis Boletas de Pago">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Boletas de Pago</t>
+            </t>
+            <t t-if="documents">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Documento</th>
+                                <th>Empleado</th>
+                                <th>Periodo</th>
+                                <th>Recepcion</th>
+                                <th/>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="documents" t-as="document">
+                                <td>
+                                    <a t-att-href="'/my/payslip-documents/%s' % document.id">
+                                        <span t-field="document.name"/>
+                                    </a>
+                                </td>
+                                <td><span t-field="document.employee_id"/></td>
+                                <td><span t-field="document.period"/></td>
+                                <td>
+                                    <span t-if="document.signature_state == 'signed'" class="badge text-bg-success">Confirmada</span>
+                                    <span t-elif="document.signature_required" class="badge text-bg-warning">Pendiente recepcion</span>
+                                    <span t-else="" class="badge text-bg-secondary">No requerido</span>
+                                </td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-primary" t-att-href="'/my/payslip-documents/%s/pdf' % document.id">PDF</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+            <t t-else="">
+                <p>No hay boletas disponibles.</p>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_my_payslip_document_detail" name="Detalle de Boleta">
+        <t t-call="portal.portal_layout">
+            <style>
+                .o_payslip_signature_surface {
+                    position: relative;
+                }
+                .o_payslip_signature_frame {
+                    position: absolute;
+                    width: 220px;
+                    min-height: 78px;
+                    padding: 8px 10px;
+                    border: 2px solid #198754;
+                    border-radius: 6px;
+                    background: rgba(255, 255, 255, 0.92);
+                    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+                    cursor: grab;
+                    touch-action: none;
+                    z-index: 5;
+                }
+                .o_payslip_signature_frame:active {
+                    cursor: grabbing;
+                }
+                .o_payslip_signature_frame.o_signed {
+                    cursor: default;
+                    border-color: #146c43;
+                }
+                .o_payslip_signature_name {
+                    display: block;
+                    font-family: "Brush Script MT", "Segoe Script", cursive;
+                    font-size: 24px;
+                    line-height: 1.1;
+                    color: #111827;
+                }
+                .o_payslip_signature_meta {
+                    display: block;
+                    margin-top: 4px;
+                    font-size: 11px;
+                    color: #495057;
+                }
+                .o_payslip_signature_hint {
+                    display: block;
+                    margin-top: 4px;
+                    font-size: 11px;
+                    color: #198754;
+                }
+                .o_payslip_signature_canvas {
+                    width: 100%;
+                    max-width: 420px;
+                    height: 140px;
+                    display: block;
+                    border: 1px solid #ced4da;
+                    border-radius: 6px;
+                    background: #fff;
+                    touch-action: none;
+                }
+                .o_payslip_signature_image {
+                    display: block;
+                    max-width: 190px;
+                    max-height: 42px;
+                    object-fit: contain;
+                }
+            </style>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">
+                    <span t-field="document.name"/>
+                </h3>
+                <a class="btn btn-primary" t-att-href="'/my/payslip-documents/%s/pdf' % document.id">Descargar PDF</a>
+            </div>
+            <div class="mb-3 text-muted">
+                <span t-field="document.period"/>
+            </div>
+            <div t-if="signature_success" class="alert alert-success" role="alert">
+                <t t-out="signature_success"/>
+            </div>
+            <div t-if="signature_error" class="alert alert-danger" role="alert">
+                <t t-out="signature_error"/>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+                        <div>
+                            <h5 class="card-title mb-1">Acuse de recepcion</h5>
+                            <p t-if="document.signature_state == 'signed'" class="mb-0 text-muted">
+                                Confirmado por <strong><span t-field="document.signature_name"/></strong>
+                                el <span t-field="document.signed_date"/>.
+                            </p>
+                            <p t-elif="document.signature_required" class="mb-0 text-muted">
+                                Revise la boleta certificada y confirme su recepcion/conformidad.
+                            </p>
+                            <p t-else="" class="mb-0 text-muted">
+                                Este documento no requiere acuse de recepcion.
+                            </p>
+                        </div>
+                        <span t-if="document.signature_state == 'signed'" class="badge text-bg-success">Confirmada</span>
+                        <span t-elif="document.signature_required" class="badge text-bg-warning">Pendiente recepcion</span>
+                        <span t-else="" class="badge text-bg-secondary">No requerido</span>
+                    </div>
+                    <form
+                        t-if="document.signature_required and document.signature_state != 'signed'"
+                        class="mt-3"
+                        method="post"
+                        t-att-action="'/my/payslip-documents/%s/sign' % document.id">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="mb-3">
+                            <label for="signer_name" class="form-label">Nombre completo</label>
+                            <input
+                                id="signer_name"
+                                name="signer_name"
+                                type="text"
+                                class="form-control"
+                                required="required"
+                                t-att-value="request.env.user.name"/>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input id="signature_acceptance" class="form-check-input" type="checkbox" required="required"/>
+                            <label class="form-check-label" for="signature_acceptance">
+                                Declaro haber revisado la boleta certificada y registro mi recepcion/conformidad.
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Confirmar recepcion</button>
+                    </form>
+                    <div t-if="document.signature_state == 'signed'" class="mt-3 small text-muted">
+                        Hash de evidencia: <code><span t-field="document.signature_hash"/></code>
+                    </div>
+                </div>
+            </div>
+            <div class="o_payslip_document_preview o_payslip_signature_surface">
+                <div t-field="document.rendered_html"/>
+            </div>
+            <script>
+                <![CDATA[
+                (function () {
+                    const frame = document.getElementById("o_payslip_signature_frame");
+                    const inputX = document.getElementById("signature_position_x");
+                    const inputY = document.getElementById("signature_position_y");
+                    const inputImage = document.getElementById("signature_image");
+                    const canvas = document.getElementById("signature_canvas");
+                    const clearButton = document.getElementById("signature_clear");
+                    if (!frame || !inputX || !inputY || frame.dataset.signed === "1") {
+                        return;
+                    }
+                    const surface = frame.closest(".o_payslip_signature_surface");
+                    let dragging = false;
+                    let offsetX = 0;
+                    let offsetY = 0;
+
+                    function setPosition(clientX, clientY) {
+                        const bounds = surface.getBoundingClientRect();
+                        const maxX = Math.max(bounds.width - frame.offsetWidth, 0);
+                        const maxY = Math.max(bounds.height - frame.offsetHeight, 0);
+                        const x = Math.min(Math.max(clientX - bounds.left - offsetX, 0), maxX);
+                        const y = Math.min(Math.max(clientY - bounds.top - offsetY, 0), maxY);
+                        const percentX = bounds.width ? (x / bounds.width) * 100 : 0;
+                        const percentY = bounds.height ? (y / bounds.height) * 100 : 0;
+                        frame.style.left = percentX.toFixed(4) + "%";
+                        frame.style.top = percentY.toFixed(4) + "%";
+                        inputX.value = percentX.toFixed(4);
+                        inputY.value = percentY.toFixed(4);
+                    }
+
+                    frame.addEventListener("pointerdown", function (event) {
+                        dragging = true;
+                        const bounds = frame.getBoundingClientRect();
+                        offsetX = event.clientX - bounds.left;
+                        offsetY = event.clientY - bounds.top;
+                        frame.setPointerCapture(event.pointerId);
+                    });
+                    frame.addEventListener("pointermove", function (event) {
+                        if (dragging) {
+                            setPosition(event.clientX, event.clientY);
+                        }
+                    });
+                    frame.addEventListener("pointerup", function (event) {
+                        dragging = false;
+                        frame.releasePointerCapture(event.pointerId);
+                    });
+                    frame.addEventListener("pointercancel", function () {
+                        dragging = false;
+                    });
+
+                    if (!canvas || !inputImage) {
+                        return;
+                    }
+                    const context = canvas.getContext("2d");
+                    let drawing = false;
+                    let hasStroke = false;
+                    context.lineWidth = 4;
+                    context.lineCap = "round";
+                    context.lineJoin = "round";
+                    context.strokeStyle = "#111827";
+
+                    function canvasPoint(event) {
+                        const bounds = canvas.getBoundingClientRect();
+                        return {
+                            x: ((event.clientX - bounds.left) / bounds.width) * canvas.width,
+                            y: ((event.clientY - bounds.top) / bounds.height) * canvas.height,
+                        };
+                    }
+
+                    function updateSignatureImage() {
+                        inputImage.value = hasStroke ? canvas.toDataURL("image/png") : "";
+                    }
+
+                    canvas.addEventListener("pointerdown", function (event) {
+                        drawing = true;
+                        hasStroke = true;
+                        canvas.setPointerCapture(event.pointerId);
+                        const point = canvasPoint(event);
+                        context.beginPath();
+                        context.moveTo(point.x, point.y);
+                        event.preventDefault();
+                    });
+                    canvas.addEventListener("pointermove", function (event) {
+                        if (!drawing) {
+                            return;
+                        }
+                        const point = canvasPoint(event);
+                        context.lineTo(point.x, point.y);
+                        context.stroke();
+                        updateSignatureImage();
+                        event.preventDefault();
+                    });
+                    canvas.addEventListener("pointerup", function (event) {
+                        drawing = false;
+                        updateSignatureImage();
+                        canvas.releasePointerCapture(event.pointerId);
+                    });
+                    canvas.addEventListener("pointercancel", function () {
+                        drawing = false;
+                        updateSignatureImage();
+                    });
+                    if (clearButton) {
+                        clearButton.addEventListener("click", function () {
+                            context.clearRect(0, 0, canvas.width, canvas.height);
+                            hasStroke = false;
+                            updateSignatureImage();
+                        });
+                    }
+                })();
+                ]]>
+            </script>
+        </t>
+    </template>
+
+    <template id="portal_my_employee_contracts" name="Mis Contratos">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Contratos</t>
+            </t>
+            <t t-if="contracts">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Contrato</th>
+                                <th>Inicio</th>
+                                <th>Fin</th>
+                                <th>Firma</th>
+                                <th/>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="contracts" t-as="contract">
+                                <td>
+                                    <a t-att-href="'/my/employee-contracts/%s' % contract.id">
+                                        <span t-field="contract.name"/>
+                                    </a>
+                                </td>
+                                <td><span t-field="contract.date_start"/></td>
+                                <td><span t-field="contract.date_end"/></td>
+                                <td>
+                                    <span t-if="contract.contract_signature_state == 'signed'" class="badge text-bg-success">Firmado</span>
+                                    <span t-elif="contract.contract_signature_required" class="badge text-bg-warning">Pendiente firma</span>
+                                    <span t-else="" class="badge text-bg-secondary">No requerido</span>
+                                </td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-primary" t-att-href="'/my/employee-contracts/%s/pdf' % contract.id">PDF</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+            <t t-else="">
+                <p>No hay contratos disponibles.</p>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_my_employee_contract_detail" name="Detalle de Contrato">
+        <t t-call="portal.portal_layout">
+            <style>
+                .o_contract_signature_surface { position: relative; }
+                .o_contract_signature_frame {
+                    position: absolute;
+                    width: 220px;
+                    min-height: 78px;
+                    padding: 8px 10px;
+                    border: 2px solid #198754;
+                    border-radius: 6px;
+                    background: rgba(255, 255, 255, 0.92);
+                    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+                    cursor: grab;
+                    touch-action: none;
+                    z-index: 5;
+                }
+                .o_contract_signature_frame.o_signed { cursor: default; border-color: #146c43; }
+                .o_contract_signature_name {
+                    display: block;
+                    font-family: "Brush Script MT", "Segoe Script", cursive;
+                    font-size: 24px;
+                    line-height: 1.1;
+                    color: #111827;
+                }
+                .o_contract_signature_meta {
+                    display: block;
+                    margin-top: 4px;
+                    font-size: 11px;
+                    color: #495057;
+                }
+                .o_contract_signature_hint {
+                    display: block;
+                    margin-top: 4px;
+                    font-size: 11px;
+                    color: #198754;
+                }
+                .o_contract_signature_canvas {
+                    width: 100%;
+                    max-width: 420px;
+                    height: 140px;
+                    display: block;
+                    border: 1px solid #ced4da;
+                    border-radius: 6px;
+                    background: #fff;
+                    touch-action: none;
+                }
+                .o_contract_signature_image {
+                    display: block;
+                    max-width: 190px;
+                    max-height: 42px;
+                    object-fit: contain;
+                }
+            </style>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0"><span t-field="contract.name"/></h3>
+                <a class="btn btn-primary" t-att-href="'/my/employee-contracts/%s/pdf' % contract.id">Descargar PDF</a>
+            </div>
+            <div class="mb-3 text-muted">
+                <span t-field="contract.date_start"/>
+                <t t-if="contract.date_end"> - <span t-field="contract.date_end"/></t>
+            </div>
+            <div t-if="contract_signature_success" class="alert alert-success" role="alert">
+                <t t-out="contract_signature_success"/>
+            </div>
+            <div t-if="contract_signature_error" class="alert alert-danger" role="alert">
+                <t t-out="contract_signature_error"/>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+                        <div>
+                            <h5 class="card-title mb-1">Firma electronica</h5>
+                            <p t-if="contract.contract_signature_state == 'signed'" class="mb-0 text-muted">
+                                Firmado por <strong><span t-field="contract.contract_signature_name"/></strong>
+                                el <span t-field="contract.contract_signed_date"/>.
+                            </p>
+                            <p t-elif="contract.contract_signature_required" class="mb-0 text-muted">
+                                Revise el contrato y confirme su conformidad para registrar la firma.
+                            </p>
+                            <p t-else="" class="mb-0 text-muted">
+                                Este contrato no requiere firma.
+                            </p>
+                        </div>
+                        <span t-if="contract.contract_signature_state == 'signed'" class="badge text-bg-success">Firmado</span>
+                        <span t-elif="contract.contract_signature_required" class="badge text-bg-warning">Pendiente firma</span>
+                        <span t-else="" class="badge text-bg-secondary">No requerido</span>
+                    </div>
+                    <form
+                        t-if="contract.contract_signature_required and contract.contract_signature_state != 'signed'"
+                        class="mt-3"
+                        method="post"
+                        t-att-action="'/my/employee-contracts/%s/sign' % contract.id">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <input id="contract_signature_position_x" type="hidden" name="signature_position_x" t-att-value="contract.contract_signature_position_x"/>
+                        <input id="contract_signature_position_y" type="hidden" name="signature_position_y" t-att-value="contract.contract_signature_position_y"/>
+                        <input id="contract_signature_image" type="hidden" name="signature_image"/>
+                        <div class="mb-3">
+                            <label for="contract_signer_name" class="form-label">Nombre completo</label>
+                            <input
+                                id="contract_signer_name"
+                                name="signer_name"
+                                type="text"
+                                class="form-control"
+                                required="required"
+                                t-att-value="request.env.user.name"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="contract_signature_canvas">Trazo de firma</label>
+                            <canvas id="contract_signature_canvas" class="o_contract_signature_canvas" width="840" height="280"/>
+                            <button id="contract_signature_clear" type="button" class="btn btn-sm btn-outline-secondary mt-2">Limpiar trazo</button>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input id="contract_signature_acceptance" class="form-check-input" type="checkbox" required="required"/>
+                            <label class="form-check-label" for="contract_signature_acceptance">
+                                Declaro haber revisado este contrato y registro mi conformidad mediante firma electronica.
+                            </label>
+                        </div>
+                        <p class="small text-muted">
+                            Puede arrastrar el marco verde sobre la vista previa para ubicar la firma antes de confirmar.
+                        </p>
+                        <button type="submit" class="btn btn-primary">Firmar contrato</button>
+                    </form>
+                    <div t-if="contract.contract_signature_state == 'signed'" class="mt-3 small text-muted">
+                        Hash de evidencia: <code><span t-field="contract.contract_signature_hash"/></code>
+                    </div>
+                </div>
+            </div>
+            <div class="o_contract_signature_surface">
+                <div
+                    t-if="contract.contract_signature_required"
+                    id="o_contract_signature_frame"
+                    t-attf-class="o_contract_signature_frame #{'o_signed' if contract.contract_signature_state == 'signed' else ''}"
+                    t-att-data-signed="1 if contract.contract_signature_state == 'signed' else 0"
+                    t-att-style="'left: ' + str(contract.contract_signature_position_x or 0.0) + '%; top: ' + str(contract.contract_signature_position_y or 0.0) + '%;'">
+                    <img
+                        t-if="contract.contract_signature_state == 'signed' and contract.contract_signature_image"
+                        class="o_contract_signature_image"
+                        t-att-src="contract.contract_signature_image"/>
+                    <span t-if="contract.contract_signature_state != 'signed' or not contract.contract_signature_image" class="o_contract_signature_name">
+                        <t t-if="contract.contract_signature_state == 'signed'" t-out="contract.contract_signature_name"/>
+                        <t t-else="" t-out="request.env.user.name"/>
+                    </span>
+                    <span class="o_contract_signature_meta">
+                        Firma electronica
+                        <t t-if="contract.contract_signature_state == 'signed'">
+                            - <span t-field="contract.contract_signed_date"/>
+                        </t>
+                    </span>
+                    <span t-if="contract.contract_signature_state != 'signed'" class="o_contract_signature_hint">
+                        Arrastre para ubicar
+                    </span>
+                </div>
+                <div t-field="contract.contract_document_html"/>
+            </div>
+            <script>
+                <![CDATA[
+                (function () {
+                    const frame = document.getElementById("o_contract_signature_frame");
+                    const inputX = document.getElementById("contract_signature_position_x");
+                    const inputY = document.getElementById("contract_signature_position_y");
+                    const inputImage = document.getElementById("contract_signature_image");
+                    const canvas = document.getElementById("contract_signature_canvas");
+                    const clearButton = document.getElementById("contract_signature_clear");
+                    if (!frame || !inputX || !inputY || frame.dataset.signed === "1") { return; }
+                    const surface = frame.closest(".o_contract_signature_surface");
+                    let dragging = false;
+                    let offsetX = 0;
+                    let offsetY = 0;
+                    function setPosition(clientX, clientY) {
+                        const bounds = surface.getBoundingClientRect();
+                        const maxX = Math.max(bounds.width - frame.offsetWidth, 0);
+                        const maxY = Math.max(bounds.height - frame.offsetHeight, 0);
+                        const x = Math.min(Math.max(clientX - bounds.left - offsetX, 0), maxX);
+                        const y = Math.min(Math.max(clientY - bounds.top - offsetY, 0), maxY);
+                        const percentX = bounds.width ? (x / bounds.width) * 100 : 0;
+                        const percentY = bounds.height ? (y / bounds.height) * 100 : 0;
+                        frame.style.left = percentX.toFixed(4) + "%";
+                        frame.style.top = percentY.toFixed(4) + "%";
+                        inputX.value = percentX.toFixed(4);
+                        inputY.value = percentY.toFixed(4);
+                    }
+                    frame.addEventListener("pointerdown", function (event) {
+                        dragging = true;
+                        const bounds = frame.getBoundingClientRect();
+                        offsetX = event.clientX - bounds.left;
+                        offsetY = event.clientY - bounds.top;
+                        frame.setPointerCapture(event.pointerId);
+                    });
+                    frame.addEventListener("pointermove", function (event) {
+                        if (dragging) { setPosition(event.clientX, event.clientY); }
+                    });
+                    frame.addEventListener("pointerup", function (event) {
+                        dragging = false;
+                        frame.releasePointerCapture(event.pointerId);
+                    });
+                    frame.addEventListener("pointercancel", function () { dragging = false; });
+                    if (!canvas || !inputImage) { return; }
+                    const context = canvas.getContext("2d");
+                    let drawing = false;
+                    let hasStroke = false;
+                    context.lineWidth = 4;
+                    context.lineCap = "round";
+                    context.lineJoin = "round";
+                    context.strokeStyle = "#111827";
+                    function canvasPoint(event) {
+                        const bounds = canvas.getBoundingClientRect();
+                        return {
+                            x: ((event.clientX - bounds.left) / bounds.width) * canvas.width,
+                            y: ((event.clientY - bounds.top) / bounds.height) * canvas.height,
+                        };
+                    }
+                    function updateSignatureImage() {
+                        inputImage.value = hasStroke ? canvas.toDataURL("image/png") : "";
+                    }
+                    canvas.addEventListener("pointerdown", function (event) {
+                        drawing = true;
+                        hasStroke = true;
+                        canvas.setPointerCapture(event.pointerId);
+                        const point = canvasPoint(event);
+                        context.beginPath();
+                        context.moveTo(point.x, point.y);
+                        event.preventDefault();
+                    });
+                    canvas.addEventListener("pointermove", function (event) {
+                        if (!drawing) { return; }
+                        const point = canvasPoint(event);
+                        context.lineTo(point.x, point.y);
+                        context.stroke();
+                        updateSignatureImage();
+                        event.preventDefault();
+                    });
+                    canvas.addEventListener("pointerup", function (event) {
+                        drawing = false;
+                        updateSignatureImage();
+                        canvas.releasePointerCapture(event.pointerId);
+                    });
+                    canvas.addEventListener("pointercancel", function () {
+                        drawing = false;
+                        updateSignatureImage();
+                    });
+                    if (clearButton) {
+                        clearButton.addEventListener("click", function () {
+                            context.clearRect(0, 0, canvas.width, canvas.height);
+                            hasStroke = false;
+                            updateSignatureImage();
+                        });
+                    }
+                })();
+                ]]>
+            </script>
+        </t>
+    </template>
+
+    <template id="portal_my_announcements" name="Mis Comunicados">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Comunicados Internos</t>
+            </t>
+            <t t-if="recipients">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Comunicado</th>
+                                <th>Fecha</th>
+                                <th>Leido</th>
+                                <th/>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="recipients" t-as="recipient">
+                                <td>
+                                    <a t-att-href="'/my/announcements/%s' % recipient.announcement_id.id">
+                                        <span t-field="recipient.announcement_id.name"/>
+                                    </a>
+                                </td>
+                                <td><span t-field="recipient.announcement_id.publish_date"/></td>
+                                <td>
+                                    <span t-if="recipient.is_read">Si</span>
+                                    <span t-else="">No</span>
+                                </td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-primary" t-att-href="'/my/announcements/%s/pdf' % recipient.announcement_id.id">PDF</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+            <t t-else="">
+                <p>No hay comunicados disponibles.</p>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_my_announcement_detail" name="Detalle Comunicado">
+        <t t-call="portal.portal_layout">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">
+                    <span t-field="announcement.name"/>
+                </h3>
+                <a class="btn btn-primary" t-att-href="'/my/announcements/%s/pdf' % announcement.id">Ver PDF</a>
+            </div>
+            <div class="mb-3 text-muted">
+                <span t-field="announcement.publish_date"/>
+            </div>
+            <p t-if="announcement.description">
+                <span t-field="announcement.description"/>
+            </p>
+            <iframe
+                t-att-src="'/my/announcements/%s/pdf' % announcement.id"
+                style="width: 100%; min-height: 760px; border: 1px solid #ddd;"
+            />
+        </t>
+    </template>
+</odoo>

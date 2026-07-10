@@ -1,0 +1,43 @@
+services:
+  postgres18:
+    image: postgres:16
+    container_name: postgres18
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres18-data:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  odoo18:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gustavo-odoo18:18.0
+    container_name: odoo18
+    depends_on:
+      postgres18:
+        condition: service_healthy
+    ports:
+      - "${ODOO_PORT}:8069"
+    environment:
+      HOST: postgres18
+      USER: ${POSTGRES_USER}
+      PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - odoo18-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+      - ./logs:/var/log/odoo
+    restart: unless-stopped
+
+volumes:
+  postgres18-data:
+  odoo18-data:

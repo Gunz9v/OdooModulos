@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sire_sales_sunat_line_tree" model="ir.ui.view">
+        <field name="name">sire.sales.sunat.line.list</field>
+        <field name="model">sire.sales.sunat.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="period_id"/>
+                <field name="proposal_id"/>
+                <field name="source_line_number"/>
+                <field name="issue_date"/>
+                <field name="document_type"/>
+                <field name="series"/>
+                <field name="number"/>
+                <field name="car_sunat"/>
+                <field name="record_state"/>
+                <field name="customer_document_number"/>
+                <field name="customer_name"/>
+                <field name="currency_code"/>
+                <field name="export_amount"/>
+                <field name="taxable_base"/>
+                <field name="exempt_amount"/>
+                <field name="unaffected_amount"/>
+                <field name="igv_amount"/>
+                <field name="total_amount"/>
+                <field name="validation_state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sire_sales_sunat_line_form" model="ir.ui.view">
+        <field name="name">sire.sales.sunat.line.form</field>
+        <field name="model">sire.sales.sunat.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="period_id"/>
+                            <field name="proposal_id"/>
+                            <field name="batch_id"/>
+                            <field name="source_line_number"/>
+                            <field name="validation_state"/>
+                        </group>
+                        <group>
+                            <field name="normalized_key"/>
+                            <field name="record_state"/>
+                            <field name="source_hash"/>
+                        </group>
+                    </group>
+                    <group string="Comprobante">
+                        <field name="issue_date"/>
+                        <field name="due_date"/>
+                        <field name="document_type"/>
+                        <field name="series"/>
+                        <field name="number"/>
+                    </group>
+                    <group string="Cliente">
+                        <field name="customer_document_type"/>
+                        <field name="customer_document_number"/>
+                        <field name="customer_name"/>
+                    </group>
+                    <group string="Importes">
+                        <field name="currency_code"/>
+                        <field name="exchange_rate"/>
+                        <field name="export_amount"/>
+                        <field name="taxable_base"/>
+                        <field name="exempt_amount"/>
+                        <field name="unaffected_amount"/>
+                        <field name="igv_amount"/>
+                        <field name="non_taxable_amount"/>
+                        <field name="isc_amount"/>
+                        <field name="other_tax_amount"/>
+                        <field name="total_amount"/>
+                    </group>
+                    <notebook>
+                        <page string="Original">
+                            <field name="source_raw_text" nolabel="1"/>
+                        </page>
+                        <page string="Validacion">
+                            <field name="validation_messages" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sire_sales_sunat_line" model="ir.actions.act_window">
+        <field name="name">Lineas SUNAT RVIE</field>
+        <field name="res_model">sire.sales.sunat.line</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_sire_sales_sunat_lines" name="Lineas SUNAT" parent="l10n_pe_sire_core.menu_sire_sales" action="action_sire_sales_sunat_line" sequence="35"/>
+</odoo>

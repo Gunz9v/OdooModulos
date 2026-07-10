@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sire_period_tree" model="ir.ui.view">
+        <field name="name">sire.period.list</field>
+        <field name="model">sire.period</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="period_code"/>
+                <field name="registry_type"/>
+                <field name="company_id"/>
+                <field name="state"/>
+                <field name="total_accounting_records"/>
+                <field name="matched_count"/>
+                <field name="difference_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sire_period_form" model="ir.ui.view">
+        <field name="name">sire.period.form</field>
+        <field name="model">sire.period</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_open_import_wizard" type="object" string="Importar archivo contable" class="btn-primary" groups="l10n_pe_sire_core.group_sire_analyst"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,file_imported,proposal_downloaded,reconciled,closed,error"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="company_id"/>
+                            <field name="registry_type"/>
+                            <field name="year"/>
+                            <field name="month"/>
+                            <field name="period_code" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="decision_type"/>
+                            <field name="accounting_batch_id" readonly="1"/>
+                            <field name="sunat_proposal_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Totales">
+                        <field name="total_accounting_records"/>
+                        <field name="total_sunat_records"/>
+                        <field name="matched_count"/>
+                        <field name="difference_count"/>
+                        <field name="sunat_only_count"/>
+                        <field name="system_only_count"/>
+                    </group>
+                    <notebook>
+                        <page string="Importaciones">
+                            <field name="import_batch_ids" readonly="1">
+                                <list>
+                                    <field name="filename"/>
+                                    <field name="book_code"/>
+                                    <field name="state"/>
+                                    <field name="total_rows"/>
+                                    <field name="valid_rows"/>
+                                    <field name="warning_rows"/>
+                                    <field name="invalid_rows"/>
+                                    <field name="imported_at"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sire_period" model="ir.actions.act_window">
+        <field name="name">Periodos SIRE</field>
+        <field name="res_model">sire.period</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_sire_purchase_period" model="ir.actions.act_window">
+        <field name="name">Periodos RCE</field>
+        <field name="res_model">sire.period</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('registry_type', '=', 'rce')]</field>
+        <field name="context">{'default_registry_type': 'rce'}</field>
+    </record>
+
+    <record id="action_sire_sales_period" model="ir.actions.act_window">
+        <field name="name">Periodos RVIE</field>
+        <field name="res_model">sire.period</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('registry_type', '=', 'rvie')]</field>
+        <field name="context">{'default_registry_type': 'rvie'}</field>
+    </record>
+
+    <menuitem id="menu_sire_purchase_periods" name="Periodos" parent="menu_sire_purchases" action="action_sire_purchase_period" sequence="10"/>
+    <menuitem id="menu_sire_sales_periods" name="Periodos" parent="menu_sire_sales" action="action_sire_sales_period" sequence="10"/>
+</odoo>

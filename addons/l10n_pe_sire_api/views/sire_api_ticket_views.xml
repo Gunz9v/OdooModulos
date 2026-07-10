@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sire_api_ticket_tree" model="ir.ui.view">
+        <field name="name">sire.api.ticket.list</field>
+        <field name="model">sire.api.ticket</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="requested_at"/>
+                <field name="company_id"/>
+                <field name="period_id"/>
+                <field name="process_type"/>
+                <field name="ticket_number"/>
+                <field name="status_code"/>
+                <field name="status_description"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sire_api_ticket_form" model="ir.ui.view">
+        <field name="name">sire.api.ticket.form</field>
+        <field name="model">sire.api.ticket</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_check_ticket_status" type="object" string="Consultar estado" class="btn-primary" invisible="not ticket_number"/>
+                    <button name="action_download_ticket_file" type="object" string="Descargar archivo" class="btn-secondary" invisible="not result_filename"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="company_id"/>
+                            <field name="period_id"/>
+                            <field name="proposal_id"/>
+                            <field name="process_type"/>
+                            <field name="ticket_number"/>
+                        </group>
+                        <group>
+                            <field name="requested_at"/>
+                            <field name="last_check_at"/>
+                            <field name="next_check_at"/>
+                            <field name="attempt_count"/>
+                        </group>
+                    </group>
+                    <group string="Estado">
+                        <field name="status_code"/>
+                        <field name="status_description"/>
+                        <field name="validated_row_count"/>
+                        <field name="error_document_count"/>
+                        <field name="informed_document_count"/>
+                        <field name="error_code"/>
+                        <field name="error_message"/>
+                    </group>
+                    <notebook>
+                        <page string="Request">
+                            <field name="request_method"/>
+                            <field name="request_url"/>
+                            <field name="request_payload" nolabel="1"/>
+                        </page>
+                        <page string="Response">
+                            <field name="response_payload" nolabel="1"/>
+                        </page>
+                        <page string="Resultado">
+                            <group>
+                                <field name="result_filename"/>
+                                <field name="result_content_filename"/>
+                                <field name="result_file_type"/>
+                                <field name="result_file" filename="result_filename"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sire_api_ticket" model="ir.actions.act_window">
+        <field name="name">Tickets SUNAT</field>
+        <field name="res_model">sire.api.ticket</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

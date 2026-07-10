@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="template_yohersa_payslip" model="employee.payslip.document.template">
+        <field name="name">Boleta YOHERSA</field>
+        <field name="employee_lookup_field">identification_id</field>
+        <field name="employee_lookup_column">employee_identification</field>
+        <field name="body_html"><![CDATA[
+<style>
+    .payslip-page {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: #000;
+        width: 100%;
+    }
+    .payslip-logo {
+        width: 175px;
+        height: 42px;
+        border-top: 5px solid #d8322a;
+        border-bottom: 5px solid #d8322a;
+        color: #d8322a;
+        font-size: 22px;
+        font-style: italic;
+        font-weight: 700;
+        line-height: 30px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .payslip-logo small {
+        display: block;
+        color: #333;
+        font-size: 7px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 8px;
+        margin-top: -4px;
+    }
+    .box {
+        border: 1px solid #000;
+        padding: 7px;
+        margin-bottom: 9px;
+    }
+    .title-box {
+        text-align: center;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .subtitle {
+        font-size: 13px;
+    }
+    .row-table,
+    .detail-table,
+    .totals-table,
+    .signature-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .row-table td {
+        vertical-align: top;
+    }
+    .label {
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    .employee-box {
+        border: 1px solid #000;
+        padding: 7px;
+        min-height: 170px;
+    }
+    .workdays-box {
+        border: 1px solid #000;
+        padding: 35px 7px 7px;
+        min-height: 142px;
+        text-align: right;
+        line-height: 23px;
+    }
+    .section-title {
+        border: 1px solid #000;
+        font-weight: 700;
+        text-align: center;
+        padding: 4px;
+        font-size: 13px;
+    }
+    .detail-table td {
+        padding: 2px 5px;
+        vertical-align: top;
+    }
+    .amount {
+        text-align: right;
+        white-space: nowrap;
+    }
+    .totals-table {
+        border: 1px solid #000;
+        margin-top: 34px;
+    }
+    .totals-table td {
+        padding: 5px;
+        font-size: 11px;
+    }
+    .signature-area {
+        border-left: 1px solid #000;
+        border-right: 1px solid #000;
+        border-bottom: 1px solid #000;
+        min-height: 175px;
+        padding: 12px;
+    }
+    .signature-image {
+        display: block;
+        width: 260px;
+        max-height: 86px;
+        object-fit: contain;
+        margin: 12px auto 8px;
+    }
+    .signature-name {
+        text-align: center;
+        font-weight: 700;
+        line-height: 22px;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    .qr-image {
+        width: 115px;
+        height: 115px;
+        margin: 18px auto 0;
+    }
+    .digital-signature-footer {
+        margin-top: 54px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+</style>
+
+<div class="payslip-page">
+    <div class="payslip-logo">YOHERSA<small>FIERROS Y ACEROS</small></div>
+
+    <div class="box title-box">
+        BOLETA DE PAGO DE REMUNERACIONES ELECTRONICA<br/>
+        <span class="subtitle">Decreto Legislativo N° 1310</span>
+    </div>
+
+    <div class="box">
+        <table class="row-table">
+            <tr>
+                <td class="label" style="width: 145px;">Razon Social:</td>
+                <td><strong>{{company_name}}</strong></td>
+            </tr>
+            <tr>
+                <td class="label">RUC:</td>
+                <td><strong>{{company_vat}}</strong></td>
+            </tr>
+            <tr>
+                <td class="label">Domicilio:</td>
+                <td>{{company_address}}</td>
+            </tr>
+            <tr>
+                <td class="label">Registro patronal:</td>
+                <td>{{employer_registry}}</td>
+            </tr>
+            <tr>
+                <td class="label">Periodo:</td>
+                <td>{{period}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <table class="row-table" style="margin-bottom: 9px;">
+        <tr>
+            <td style="width: 72%; padding-right: 5px;">
+                <div class="employee-box">
+                    <table class="row-table">
+                        <tr><td class="label" style="width: 165px;">Apellidos y Nombres:</td><td>{{employee_name}}</td></tr>
+                        <tr><td class="label">Fecha Ingreso:</td><td>{{hire_date}}</td></tr>
+                        <tr><td class="label">Documento:</td><td>{{employee_identification}}</td></tr>
+                        <tr><td class="label">Regimen pensionario:</td><td>{{pension_regime}}</td></tr>
+                        <tr><td class="label">C.U.S.P.P:</td><td>{{cuspp}}</td></tr>
+                        <tr><td class="label">Cargo:</td><td>{{job_title}}</td></tr>
+                        <tr><td class="label">Es personal de confianza:</td><td>{{trusted_employee}}</td></tr>
+                        <tr><td class="label">Es personal de Direccion:</td><td>{{management_employee}}</td></tr>
+                        <tr><td class="label">Entidad bancaria:</td><td>{{bank_name}}</td></tr>
+                        <tr><td class="label">Numero de cuenta:</td><td>{{bank_account}}</td></tr>
+                    </table>
+                </div>
+            </td>
+            <td style="width: 28%; padding-left: 0;">
+                <div class="workdays-box">
+                    Inicio Vacaciones: {{vacation_start}}<br/>
+                    Fin Vacaciones: {{vacation_end}}<br/>
+                    Dias Trabajados: {{worked_days}}<br/>
+                    Hora Efectivas de Trab: {{worked_hours}}<br/>
+                    Dias Subsidiados: {{subsidized_days}}<br/>
+                    Dias Descontados: {{discounted_days}}
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <table class="row-table">
+        <tr>
+            <td style="width: 31%;"><div class="section-title">INGRESOS</div></td>
+            <td style="width: 38%;"><div class="section-title">DESCUENTOS</div></td>
+            <td style="width: 31%;"><div class="section-title">APORTES DEL EMPLEADOR</div></td>
+        </tr>
+        <tr>
+            <td>
+                <table class="detail-table">
+                    {{income_lines_html}}
+                </table>
+            </td>
+            <td>
+                <table class="detail-table">
+                    {{discount_lines_html}}
+                </table>
+            </td>
+            <td>
+                <table class="detail-table">
+                    {{employer_contribution_lines_html}}
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table class="totals-table">
+        <tr>
+            <td><strong>Total Ingresos:</strong></td>
+            <td class="amount">{{total_income}}</td>
+            <td><strong>Total Descuentos:</strong></td>
+            <td class="amount">{{total_discounts}}</td>
+            <td><strong>Total a Pagar:</strong></td>
+            <td class="amount">S/. {{net_amount}}</td>
+        </tr>
+    </table>
+
+    <div class="signature-area">
+        <table class="signature-table">
+            <tr>
+                <td style="width: 65%; text-align: center;">
+                    <img class="signature-image" src="{{digital_signer_signature_image}}" alt="Firma"/>
+                    <div class="signature-name">
+                        {{manager_name}}<br/>
+                        {{manager_position}}
+                    </div>
+                </td>
+                <td style="width: 35%; text-align: center;">
+                    <em style="font-size: 10px;">Verificar validez del documento</em>
+                    <img class="qr-image" src="{{qr_image_url}}" alt="QR"/>
+                    <div style="font-size: 8px; word-break: break-all; margin-top: 4px;">{{public_pdf_url}}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="digital-signature-footer">
+        Firmado digitalmente por: {{digital_signature_signed_by}}<br/>
+        Fecha: {{digital_signature_date}}<br/>
+        Motivo: {{digital_signature_reason}}
+    </div>
+</div>
+        ]]></field>
+    </record>
+</odoo>

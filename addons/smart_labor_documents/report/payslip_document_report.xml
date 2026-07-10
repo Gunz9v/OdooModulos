@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_payslip_document" model="report.paperformat">
+        <field name="name">Boleta de Pago A4</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <record id="action_report_payslip_document" model="ir.actions.report">
+        <field name="name">Boleta de Pago</field>
+        <field name="model">employee.payslip.document</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">smart_labor_documents.report_payslip_document</field>
+        <field name="report_file">smart_labor_documents.report_payslip_document</field>
+        <field name="print_report_name">'Boleta - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_employee_payslip_document"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="smart_labor_documents.paperformat_payslip_document"/>
+    </record>
+
+    <template id="report_payslip_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page" style="position: relative; margin: 0; padding: 0;">
+                    <div t-field="doc.rendered_html"/>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

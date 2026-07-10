@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_sire_api_tickets" name="Tickets SUNAT" parent="l10n_pe_sire_core.menu_sire_root" action="action_sire_api_ticket" sequence="70"/>
+</odoo>

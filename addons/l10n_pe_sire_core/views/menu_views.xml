@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_sire_root" name="SIRE" sequence="45" groups="l10n_pe_sire_core.group_sire_user"/>
+    <menuitem id="menu_sire_purchases" name="Compras" parent="menu_sire_root" sequence="20"/>
+    <menuitem id="menu_sire_sales" name="Ventas" parent="menu_sire_root" sequence="30"/>
+    <menuitem id="menu_sire_configuration" name="Configuracion" parent="menu_sire_root" sequence="90" groups="l10n_pe_sire_core.group_sire_manager"/>
+</odoo>

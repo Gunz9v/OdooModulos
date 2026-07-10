@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_portal_event_list" model="ir.ui.view">
+        <field name="name">employee.portal.event.list</field>
+        <field name="model">employee.portal.event</field>
+        <field name="arch" type="xml">
+            <list decoration-success="state == 'published'" decoration-muted="state == 'archived'">
+                <field name="name"/>
+                <field name="event_date"/>
+                <field name="event_type"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_employee_portal_event_form" model="ir.ui.view">
+        <field name="name">employee.portal.event.form</field>
+        <field name="model">employee.portal.event</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_publish" type="object" string="Publicar" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_archive" type="object" string="Archivar" invisible="state == 'archived'"/>
+                    <button name="action_set_draft" type="object" string="Pasar a Borrador" invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,published,archived"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Titulo de la fecha especial"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="event_date"/>
+                            <field name="event_type"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" nolabel="1" placeholder="Detalle visible en el portal"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_portal_event_search" model="ir.ui.view">
+        <field name="name">employee.portal.event.search</field>
+        <field name="model">employee.portal.event</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="published" string="Publicados" domain="[('state', '=', 'published')]"/>
+                <filter name="upcoming" string="Proximos" domain="[('event_date', '&gt;=', context_today())]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_type" string="Tipo" context="{'group_by': 'event_type'}"/>
+                    <filter name="group_state" string="Estado" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_employee_portal_events" model="ir.actions.act_window">
+        <field name="name">Fechas Especiales</field>
+        <field name="res_model">employee.portal.event</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_employee_portal_event_search"/>
+    </record>
+</odoo>

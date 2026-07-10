@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_payslip_documents_root"
+        name="Boletas de Pago"
+        parent="hr.menu_hr_root"
+        sequence="80"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_communications_root"
+        name="Comunicaciones"
+        parent="hr.menu_hr_root"
+        sequence="75"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_announcements"
+        name="Comunicados Internos"
+        parent="menu_employee_communications_root"
+        action="action_employee_announcements"
+        sequence="10"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_documents_general_root"
+        name="General"
+        parent="hr.menu_hr_root"
+        sequence="70"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_legajos"
+        name="Legajos General"
+        parent="menu_employee_documents_general_root"
+        action="action_employee_document_files"
+        sequence="10"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_legajo_history"
+        name="Historico General de Legajos"
+        parent="menu_employee_documents_general_root"
+        action="action_employee_document_history"
+        sequence="20"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_prepare_all_employee_legajos"
+        name="Preparar Legajos General"
+        parent="menu_employee_documents_general_root"
+        action="action_prepare_all_employee_legajos"
+        sequence="30"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_payslip_document_templates"
+        name="Plantillas"
+        parent="menu_payslip_documents_root"
+        action="action_payslip_document_templates"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_payslip_document_batches"
+        name="Envios Masivos"
+        parent="menu_payslip_documents_root"
+        action="action_payslip_document_batches"
+        sequence="20"/>
+
+    <menuitem
+        id="menu_payslip_documents"
+        name="Boletas Generadas"
+        parent="menu_payslip_documents_root"
+        action="action_payslip_documents"
+        sequence="30"/>
+
+    <menuitem
+        id="menu_employee_document_configuration"
+        name="Configuracion"
+        parent="menu_employee_documents_general_root"
+        sequence="100"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_document_types"
+        name="Tipos de Documento de Legajo"
+        parent="menu_employee_document_configuration"
+        action="action_employee_document_types"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_employee_contract_templates"
+        name="Plantillas de Contratos"
+        parent="menu_employee_document_configuration"
+        action="action_employee_contract_templates"
+        sequence="20"/>
+</odoo>

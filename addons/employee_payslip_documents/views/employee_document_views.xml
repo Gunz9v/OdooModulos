@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_document_type_list" model="ir.ui.view">
+        <field name="name">employee.document.type.list</field>
+        <field name="model">employee.document.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="required"/>
+                <field name="allow_history"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_employee_document_type_form" model="ir.ui.view">
+        <field name="name">employee.document.type.form</field>
+        <field name="model">employee.document.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <field name="category"/>
+                        <field name="required"/>
+                        <field name="allow_history"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_document_file_list" model="ir.ui.view">
+        <field name="name">employee.document.file.list</field>
+        <field name="model">employee.document.file</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="state in ['pending', 'expired', 'rejected']" decoration-success="state == 'validated'">
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="document_type_id"/>
+                <field name="category"/>
+                <field name="document_date"/>
+                <field name="expiration_date"/>
+                <field name="file_name"/>
+                <field name="history_count"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_employee_document_file_form" model="ir.ui.view">
+        <field name="name">employee.document.file.form</field>
+        <field name="model">employee.document.file</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_validate" type="object" string="Validar" class="btn-primary" invisible="state == 'validated'"/>
+                    <button name="action_reject" type="object" string="Rechazar" invisible="state == 'rejected'"/>
+                    <button name="action_set_pending" type="object" string="Marcar Pendiente" invisible="state == 'pending'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pending,uploaded,validated,rejected,expired"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="department_id"/>
+                            <field name="document_type_id"/>
+                            <field name="category"/>
+                        </group>
+                        <group>
+                            <field name="document_date"/>
+                            <field name="expiration_date"/>
+                            <field name="uploaded_by_id"/>
+                            <field name="upload_date"/>
+                            <field name="latest_upload_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="file_data" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Notas">
+                            <field name="notes" nolabel="1"/>
+                        </page>
+                        <page string="Historico">
+                            <field name="history_ids" context="{'default_legajo_id': id}">
+                                <list editable="bottom" decoration-success="state == 'validated'" decoration-danger="state == 'rejected'">
+                                    <field name="name"/>
+                                    <field name="period"/>
+                                    <field name="document_date"/>
+                                    <field name="file_data" filename="file_name"/>
+                                    <field name="file_name" invisible="1"/>
+                                    <field name="upload_date" readonly="1"/>
+                                    <field name="uploaded_by_id" readonly="1"/>
+                                    <field name="state"/>
+                                    <field name="notes"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Origen">
+                            <group>
+                                <field name="source_model" readonly="1"/>
+                                <field name="source_res_id" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_document_history_list" model="ir.ui.view">
+        <field name="name">employee.document.history.list</field>
+        <field name="model">employee.document.history</field>
+        <field name="arch" type="xml">
+            <list decoration-success="state == 'validated'" decoration-danger="state == 'rejected'">
+                <field name="employee_id"/>
+                <field name="document_type_id"/>
+                <field name="period"/>
+                <field name="document_date"/>
+                <field name="file_name"/>
+                <field name="upload_date"/>
+                <field name="uploaded_by_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_employee_document_history_form" model="ir.ui.view">
+        <field name="name">employee.document.history.form</field>
+        <field name="model">employee.document.history</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_validate" type="object" string="Validar" class="btn-primary" invisible="state == 'validated'"/>
+                    <button name="action_reject" type="object" string="Rechazar" invisible="state == 'rejected'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="uploaded,validated,rejected"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="legajo_id"/>
+                            <field name="employee_id"/>
+                            <field name="document_type_id"/>
+                            <field name="period"/>
+                        </group>
+                        <group>
+                            <field name="document_date"/>
+                            <field name="expiration_date"/>
+                            <field name="upload_date"/>
+                            <field name="uploaded_by_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="file_data" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Notas">
+                            <field name="notes" nolabel="1"/>
+                        </page>
+                        <page string="Origen">
+                            <group>
+                                <field name="source_model" readonly="1"/>
+                                <field name="source_res_id" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_document_history_search" model="ir.ui.view">
+        <field name="name">employee.document.history.search</field>
+        <field name="model">employee.document.history</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="document_type_id"/>
+                <field name="period"/>
+                <filter name="validated" string="Validados" domain="[('state', '=', 'validated')]"/>
+                <filter name="uploaded" string="Cargados" domain="[('state', '=', 'uploaded')]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_employee" string="Empleado" context="{'group_by': 'employee_id'}"/>
+                    <filter name="group_type" string="Tipo" context="{'group_by': 'document_type_id'}"/>
+                    <filter name="group_period" string="Periodo" context="{'group_by': 'period'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_employee_document_file_search" model="ir.ui.view">
+        <field name="name">employee.document.file.search</field>
+        <field name="model">employee.document.file</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="document_type_id"/>
+                <filter name="pending" string="Pendientes" domain="[('state', '=', 'pending')]"/>
+                <filter name="validated" string="Validados" domain="[('state', '=', 'validated')]"/>
+                <filter name="uploaded" string="Cargados" domain="[('state', 'in', ['uploaded', 'validated'])]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_employee" string="Empleado" context="{'group_by': 'employee_id'}"/>
+                    <filter name="group_category" string="Categoria" context="{'group_by': 'category'}"/>
+                    <filter name="group_type" string="Tipo" context="{'group_by': 'document_type_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_employee_form_legajo" model="ir.ui.view">
+        <field name="name">hr.employee.form.legajo</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_view_legajo_documents"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-folder-open">
+                    <field name="legajo_document_count" widget="statinfo" string="Legajos"/>
+                </button>
+                <button
+                    name="action_prepare_legajo_documents"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-check-square-o"
+                    string="Preparar Legajos"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_employee_document_files" model="ir.actions.act_window">
+        <field name="name">Legajos General</field>
+        <field name="res_model">employee.document.file</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_employee_document_file_search"/>
+        <field name="context">{'search_default_group_category': 1}</field>
+    </record>
+
+    <record id="action_employee_document_types" model="ir.actions.act_window">
+        <field name="name">Tipos de Documento de Legajo</field>
+        <field name="res_model">employee.document.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_employee_document_history" model="ir.actions.act_window">
+        <field name="name">Historico General de Legajos</field>
+        <field name="res_model">employee.document.history</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_employee_document_history_search"/>
+        <field name="context">{'search_default_group_employee': 1}</field>
+    </record>
+
+    <record id="action_prepare_all_employee_legajos" model="ir.actions.server">
+        <field name="name">Preparar Legajos General</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="state">code</field>
+        <field name="code">
+employees = env['hr.employee'].search([('active', '=', True)])
+employees.action_prepare_legajo_documents()
+action = env.ref('employee_payslip_documents.action_employee_document_files').read()[0]
+        </field>
+    </record>
+</odoo>

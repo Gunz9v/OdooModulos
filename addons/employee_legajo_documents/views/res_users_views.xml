@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form_digital_signature" model="ir.ui.view">
+        <field name="name">res.users.form.digital.signature</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Firma digital" groups="base.group_system">
+                    <group>
+                        <group>
+                            <field name="digital_signature_name"/>
+                            <field name="digital_signature_job_id"/>
+                            <field name="digital_signature_position"/>
+                            <field name="digital_signature_reason"/>
+                            <field name="digital_signature_image" widget="image"/>
+                            <field name="digital_signature_certificate" filename="digital_signature_certificate_filename"/>
+                            <field name="digital_signature_certificate_filename" invisible="1"/>
+                            <field name="digital_signature_password" password="True"/>
+                            <button name="action_use_employee_job_for_digital_signature" type="object" string="Usar cargo del empleado"/>
+                            <button name="action_validate_digital_signature_certificate" type="object" string="Validar certificado" class="btn-primary"/>
+                        </group>
+                        <group>
+                            <field name="digital_signature_certificate_subject" readonly="1"/>
+                            <field name="digital_signature_certificate_issuer" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

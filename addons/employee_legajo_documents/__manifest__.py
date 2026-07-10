@@ -1,0 +1,25 @@
+{
+    "name": "Legajos de Empleados",
+    "summary": "Gestiona legajos, tipos documentales e historico documental de empleados.",
+    "version": "18.0.1.0.0",
+    "category": "Human Resources",
+    "author": "Gustavo",
+    "license": "LGPL-3",
+    "depends": [
+        "base",
+        "mail",
+        "hr",
+        "portal",
+    ],
+    "data": [
+        "security/ir.model.access.csv",
+        "security/security.xml",
+        "data/employee_document_type_data.xml",
+        "views/employee_document_signature_wizard_views.xml",
+        "views/res_users_views.xml",
+        "views/employee_document_views.xml",
+        "views/menu_views.xml",
+    ],
+    "application": False,
+    "installable": True,
+}

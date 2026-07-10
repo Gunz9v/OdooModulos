@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_payslip_document" model="ir.actions.report">
+        <field name="name">Boleta de Pago</field>
+        <field name="model">employee.payslip.document</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">employee_payslip_documents.report_payslip_document</field>
+        <field name="report_file">employee_payslip_documents.report_payslip_document</field>
+        <field name="print_report_name">'Boleta - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_employee_payslip_document"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_payslip_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="position: relative;">
+                        <div t-field="doc.rendered_html"/>
+                        <div
+                            t-if="doc.signature_state == 'signed'"
+                            t-att-style="'position: absolute; left: ' + str(doc.signature_position_x or 0.0) + '%; top: ' + str(doc.signature_position_y or 0.0) + '%; width: 220px; min-height: 72px; padding: 8px 10px; border: 2px solid #198754; border-radius: 6px; background: rgba(255, 255, 255, 0.94); font-size: 11px;'">
+                            <img
+                                t-if="doc.signature_image"
+                                t-att-src="doc.signature_image"
+                                style="display: block; max-width: 190px; max-height: 42px; object-fit: contain;"/>
+                            <span t-if="not doc.signature_image" style="display: block; font-family: 'Brush Script MT', 'Segoe Script', cursive; font-size: 24px; line-height: 1.1; color: #111827;">
+                                <t t-out="doc.signature_name"/>
+                            </span>
+                            <span style="display: block; margin-top: 4px; color: #495057;">
+                                Firma electronica - <span t-field="doc.signed_date"/>
+                            </span>
+                        </div>
+                        <div t-if="doc.signature_state == 'signed'" style="margin-top: 32px; padding-top: 12px; border-top: 1px solid #999; font-size: 12px;">
+                            <strong>Constancia de firma electronica</strong>
+                            <table style="width: 100%; margin-top: 8px;">
+                                <tr>
+                                    <td style="width: 25%;"><strong>Firmante</strong></td>
+                                    <td><span t-field="doc.signature_name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fecha de firma</strong></td>
+                                    <td><span t-field="doc.signed_date"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Usuario</strong></td>
+                                    <td><span t-field="doc.signed_by_id"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>IP</strong></td>
+                                    <td><span t-field="doc.signature_ip"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hash de evidencia</strong></td>
+                                    <td style="word-break: break-all;"><span t-field="doc.signature_hash"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

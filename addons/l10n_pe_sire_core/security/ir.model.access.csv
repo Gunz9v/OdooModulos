@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sire_period_user,sire.period.user,model_sire_period,l10n_pe_sire_core.group_sire_user,1,0,0,0
+access_sire_period_analyst,sire.period.analyst,model_sire_period,l10n_pe_sire_core.group_sire_analyst,1,1,1,0
+access_sire_period_manager,sire.period.manager,model_sire_period,l10n_pe_sire_core.group_sire_manager,1,1,1,1
+access_sire_import_batch_user,sire.import.batch.user,model_sire_import_batch,l10n_pe_sire_core.group_sire_user,1,0,0,0
+access_sire_import_batch_analyst,sire.import.batch.analyst,model_sire_import_batch,l10n_pe_sire_core.group_sire_analyst,1,1,1,0
+access_sire_import_batch_manager,sire.import.batch.manager,model_sire_import_batch,l10n_pe_sire_core.group_sire_manager,1,1,1,1
+access_sire_import_error_user,sire.import.error.user,model_sire_import_error,l10n_pe_sire_core.group_sire_user,1,0,0,0
+access_sire_import_error_analyst,sire.import.error.analyst,model_sire_import_error,l10n_pe_sire_core.group_sire_analyst,1,1,1,0
+access_sire_import_error_manager,sire.import.error.manager,model_sire_import_error,l10n_pe_sire_core.group_sire_manager,1,1,1,1
+access_sire_sunat_proposal_user,sire.sunat.proposal.user,model_sire_sunat_proposal,l10n_pe_sire_core.group_sire_user,1,0,0,0
+access_sire_sunat_proposal_analyst,sire.sunat.proposal.analyst,model_sire_sunat_proposal,l10n_pe_sire_core.group_sire_analyst,1,1,1,0
+access_sire_sunat_proposal_manager,sire.sunat.proposal.manager,model_sire_sunat_proposal,l10n_pe_sire_core.group_sire_manager,1,1,1,1

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_employee_documents_general_root"
+        name="General"
+        parent="hr.menu_hr_root"
+        sequence="70"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_legajos"
+        name="Legajos General"
+        parent="menu_employee_documents_general_root"
+        action="action_employee_document_files"
+        sequence="10"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_legajo_history"
+        name="Historico General de Legajos"
+        parent="menu_employee_documents_general_root"
+        action="action_employee_document_history"
+        sequence="20"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_document_configuration"
+        name="Configuracion"
+        parent="menu_employee_documents_general_root"
+        sequence="100"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_document_types"
+        name="Tipos de Documento de Legajo"
+        parent="menu_employee_document_configuration"
+        action="action_employee_document_types"
+        sequence="10"/>
+</odoo>

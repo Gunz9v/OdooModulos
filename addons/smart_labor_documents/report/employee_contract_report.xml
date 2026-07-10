@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_employee_contract" model="ir.actions.report">
+        <field name="name">Contrato Firmado</field>
+        <field name="model">hr.contract</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">smart_labor_documents.report_employee_contract</field>
+        <field name="report_file">smart_labor_documents.report_employee_contract</field>
+        <field name="print_report_name">'Contrato - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="hr_contract.model_hr_contract"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_employee_contract">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div t-field="doc.signed_contract_preview_html"/>
+                        <div t-if="doc.contract_signature_state == 'signed'" style="margin-top: 32px; padding-top: 12px; border-top: 1px solid #999; font-size: 12px;">
+                            <strong>Constancia de firma electronica</strong>
+                            <table style="width: 100%; margin-top: 8px;">
+                                <tr>
+                                    <td style="width: 25%;"><strong>Firmante</strong></td>
+                                    <td><span t-field="doc.contract_signature_name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fecha de firma</strong></td>
+                                    <td><span t-field="doc.contract_signed_date"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Usuario</strong></td>
+                                    <td><span t-field="doc.contract_signed_by_id"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>IP</strong></td>
+                                    <td><span t-field="doc.contract_signature_ip"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hash de evidencia</strong></td>
+                                    <td style="word-break: break-all;"><span t-field="doc.contract_signature_hash"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

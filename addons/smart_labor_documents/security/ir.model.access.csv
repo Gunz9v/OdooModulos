@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payslip_template_hr,employee.payslip.document.template.hr,model_employee_payslip_document_template,hr.group_hr_user,1,1,1,1
+access_employee_contract_template_hr,employee.contract.template.hr,model_employee_contract_template,hr.group_hr_user,1,1,1,1
+access_payslip_batch_hr,employee.payslip.document.batch.hr,model_employee_payslip_document_batch,hr.group_hr_user,1,1,1,1
+access_payslip_document_hr,employee.payslip.document.hr,model_employee_payslip_document,hr.group_hr_user,1,1,1,1
+access_payslip_document_user,employee.payslip.document.user,model_employee_payslip_document,base.group_user,1,0,0,0
+access_payslip_document_portal,employee.payslip.document.portal,model_employee_payslip_document,base.group_portal,1,0,0,0
+access_employee_announcement_hr,employee.announcement.hr,model_employee_announcement,hr.group_hr_user,1,1,1,1
+access_employee_announcement_user,employee.announcement.user,model_employee_announcement,base.group_user,1,0,0,0
+access_employee_announcement_portal,employee.announcement.portal,model_employee_announcement,base.group_portal,1,0,0,0
+access_employee_announcement_recipient_hr,employee.announcement.recipient.hr,model_employee_announcement_recipient,hr.group_hr_user,1,1,1,1
+access_employee_announcement_recipient_user,employee.announcement.recipient.user,model_employee_announcement_recipient,base.group_user,1,0,0,0
+access_employee_announcement_recipient_portal,employee.announcement.recipient.portal,model_employee_announcement_recipient,base.group_portal,1,0,0,0
+access_employee_portal_event_hr,employee.portal.event.hr,model_employee_portal_event,hr.group_hr_user,1,1,1,1
+access_employee_portal_event_user,employee.portal.event.user,model_employee_portal_event,base.group_user,1,0,0,0
+access_employee_portal_event_portal,employee.portal.event.portal,model_employee_portal_event,base.group_portal,1,0,0,0

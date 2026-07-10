@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_contract_template_list" model="ir.ui.view">
+        <field name="name">employee.contract.template.list</field>
+        <field name="model">employee.contract.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="contract_kind"/>
+                <field name="source_file_name"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_employee_contract_template_form" model="ir.ui.view">
+        <field name="name">employee.contract.template.form</field>
+        <field name="model">employee.contract.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Nombre de plantilla"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="contract_kind"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="source_file_data" filename="source_file_name"/>
+                            <field name="source_file_name" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Documento Firmable">
+                            <field name="body_html" widget="html"/>
+                        </page>
+                        <page string="Marcadores">
+                            <p class="text-muted">
+                                Use marcadores como {{employee_name}}, {{employee_identification}}, {{job_name}}, {{date_start}}, {{date_end}}, {{wage}}.
+                            </p>
+                            <field name="placeholder_preview" readonly="1" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_employee_contract_templates" model="ir.actions.act_window">
+        <field name="name">Plantillas de Contratos</field>
+        <field name="res_model">employee.contract.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

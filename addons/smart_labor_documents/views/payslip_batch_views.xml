@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_payslip_document_batch_list" model="ir.ui.view">
+        <field name="name">employee.payslip.document.batch.list</field>
+        <field name="model">employee.payslip.document.batch</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="state in ['error', 'rejected']" decoration-success="state in ['validated', 'active', 'done']" decoration-info="state in ['processing', 'processed']">
+                <field name="period"/>
+                <field name="document_type_id"/>
+                <field name="sent_date"/>
+                <field name="document_count" sum="Total generados"/>
+                <field name="error_count" sum="Total errores"/>
+                <field name="sent_count" sum="Total enviados"/>
+                <field name="read_count" sum="Total leidos"/>
+                <field name="unread_count" sum="Total no leidos"/>
+                <field name="signed_count" sum="Total recepciones confirmadas"/>
+                <field name="unsigned_count" sum="Total pendientes de recepcion"/>
+                <field name="responsible_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_payslip_document_batch_search" model="ir.ui.view">
+        <field name="name">employee.payslip.document.batch.search</field>
+        <field name="model">employee.payslip.document.batch</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="period"/>
+                <field name="document_type_id"/>
+                <field name="responsible_id"/>
+                <filter name="active" string="Validados" domain="[('state', 'in', ['validated', 'active'])]"/>
+                <filter name="processed" string="Procesados" domain="[('state', '=', 'processed')]"/>
+                <filter name="processing" string="En Proceso" domain="[('state', '=', 'processing')]"/>
+                <filter name="rejected" string="Rechazados" domain="[('state', '=', 'rejected')]"/>
+                <filter name="error" string="Errores" domain="[('state', '=', 'error')]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_period" string="Periodo" context="{'group_by': 'period'}"/>
+                    <filter name="group_document" string="Documento" context="{'group_by': 'document_type_id'}"/>
+                    <filter name="group_responsible" string="Responsable" context="{'group_by': 'responsible_id'}"/>
+                    <filter name="group_state" string="Estado" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_payslip_document_batch_form" model="ir.ui.view">
+        <field name="name">employee.payslip.document.batch.form</field>
+        <field name="model">employee.payslip.document.batch</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_process" type="object" string="Procesar Excel" class="btn-primary" invisible="state not in ['draft', 'error', 'rejected']"/>
+                    <button name="action_validate_send" type="object" string="Validar y Enviar" class="btn-primary" invisible="state != 'processed'"/>
+                    <button name="action_reject" type="object" string="Rechazar" invisible="state != 'processed'"/>
+                    <button name="action_set_done" type="object" string="Finalizar" invisible="state not in ['validated', 'active']"/>
+                    <button name="action_set_active" type="object" string="Reabrir" invisible="state != 'done'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,processing,processed,validated,rejected,error"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_documents" type="object" class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="document_count" widget="statinfo" string="Generados"/>
+                        </button>
+                        <button name="action_view_documents" type="object" class="oe_stat_button" icon="fa-exclamation-triangle">
+                            <field name="error_count" widget="statinfo" string="Errores"/>
+                        </button>
+                        <button name="action_view_read_documents" type="object" class="oe_stat_button" icon="fa-check">
+                            <field name="read_count" widget="statinfo" string="Leidos"/>
+                        </button>
+                        <button name="action_view_unread_documents" type="object" class="oe_stat_button" icon="fa-clock-o">
+                            <field name="unread_count" widget="statinfo" string="No Leidos"/>
+                        </button>
+                        <button name="action_view_signed_documents" type="object" class="oe_stat_button" icon="fa-pencil-square-o">
+                            <field name="signed_count" widget="statinfo" string="Confirmadas"/>
+                        </button>
+                        <button name="action_view_unsigned_documents" type="object" class="oe_stat_button" icon="fa-hourglass-half">
+                            <field name="unsigned_count" widget="statinfo" string="Pend. Recep."/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="document_type_id"/>
+                            <field name="template_id"/>
+                            <field name="period" placeholder="2026-06"/>
+                            <field name="responsible_id" readonly="1"/>
+                            <field name="sent_date"/>
+                        </group>
+                        <group>
+                            <field name="excel_layout" readonly="state not in ['draft', 'error', 'rejected']"/>
+                            <field name="classification_header_row" invisible="excel_layout != 'classified_headers'" readonly="state not in ['draft', 'error', 'rejected']"/>
+                            <field name="concept_header_row" invisible="excel_layout != 'classified_headers'" readonly="state not in ['draft', 'error', 'rejected']"/>
+                            <field name="data_start_row" invisible="excel_layout != 'classified_headers'" readonly="state not in ['draft', 'error', 'rejected']"/>
+                            <field name="excel_file" filename="excel_filename"/>
+                            <field name="excel_filename" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Boletas de sueldos del mes de mayo del 2026"/>
+                    </group>
+                    <notebook>
+                        <page string="Documentos Generados">
+                            <field name="document_ids" readonly="1">
+                                <list>
+                                    <field name="employee_id"/>
+                                    <field name="period"/>
+                                    <field name="is_read"/>
+                                    <field name="read_date"/>
+                                    <field name="signature_required"/>
+                                    <field name="signature_state"/>
+                                    <field name="signed_date"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Errores">
+                            <field name="error_log" readonly="1" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_payslip_document_batches" model="ir.actions.act_window">
+        <field name="name">Envios Masivos</field>
+        <field name="res_model">employee.payslip.document.batch</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_payslip_document_batch_search"/>
+    </record>
+</odoo>

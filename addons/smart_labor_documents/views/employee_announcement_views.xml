@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_announcement_list" model="ir.ui.view">
+        <field name="name">employee.announcement.list</field>
+        <field name="model">employee.announcement</field>
+        <field name="arch" type="xml">
+            <list decoration-success="state == 'published'" decoration-muted="state == 'archived'">
+                <field name="name"/>
+                <field name="target_type"/>
+                <field name="publish_date"/>
+                <field name="published_by_id"/>
+                <field name="recipient_count"/>
+                <field name="read_count"/>
+                <field name="unread_count"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_employee_announcement_form" model="ir.ui.view">
+        <field name="name">employee.announcement.form</field>
+        <field name="model">employee.announcement</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_publish" type="object" string="Publicar y Notificar" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_archive" type="object" string="Archivar" invisible="state == 'archived'"/>
+                    <button name="action_set_draft" type="object" string="Pasar a Borrador" invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,published,archived"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_recipients" type="object" class="oe_stat_button" icon="fa-users">
+                            <field name="recipient_count" widget="statinfo" string="Destinatarios"/>
+                        </button>
+                        <button name="action_view_recipients" type="object" class="oe_stat_button" icon="fa-check">
+                            <field name="read_count" widget="statinfo" string="Leidos"/>
+                        </button>
+                        <button name="action_view_recipients" type="object" class="oe_stat_button" icon="fa-clock-o">
+                            <field name="unread_count" widget="statinfo" string="No Leidos"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Titulo del comunicado"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="target_type"/>
+                            <field name="department_ids" widget="many2many_tags" invisible="target_type != 'department'"/>
+                            <field name="employee_ids" widget="many2many_tags" invisible="target_type != 'employee'"/>
+                        </group>
+                        <group>
+                            <field name="publish_date"/>
+                            <field name="published_by_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="file_data" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Descripcion">
+                            <field name="description" nolabel="1"/>
+                        </page>
+                        <page string="Destinatarios">
+                            <field name="recipient_ids" readonly="1">
+                                <list>
+                                    <field name="employee_id"/>
+                                    <field name="email"/>
+                                    <field name="sent_date"/>
+                                    <field name="is_read"/>
+                                    <field name="read_date"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_announcement_search" model="ir.ui.view">
+        <field name="name">employee.announcement.search</field>
+        <field name="model">employee.announcement</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="published_by_id"/>
+                <filter name="published" string="Publicados" domain="[('state', '=', 'published')]"/>
+                <filter name="draft" string="Borradores" domain="[('state', '=', 'draft')]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_state" string="Estado" context="{'group_by': 'state'}"/>
+                    <filter name="group_publisher" string="Publicado por" context="{'group_by': 'published_by_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_employee_announcement_recipient_list" model="ir.ui.view">
+        <field name="name">employee.announcement.recipient.list</field>
+        <field name="model">employee.announcement.recipient</field>
+        <field name="arch" type="xml">
+            <list decoration-success="is_read" decoration-muted="not is_read">
+                <field name="announcement_id"/>
+                <field name="employee_id"/>
+                <field name="email"/>
+                <field name="sent_date"/>
+                <field name="is_read"/>
+                <field name="read_date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_employee_announcement_recipient_form" model="ir.ui.view">
+        <field name="name">employee.announcement.recipient.form</field>
+        <field name="model">employee.announcement.recipient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="announcement_id"/>
+                        <field name="employee_id"/>
+                        <field name="email"/>
+                        <field name="sent_date"/>
+                        <field name="is_read"/>
+                        <field name="read_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_employee_announcements" model="ir.actions.act_window">
+        <field name="name">Comunicados Internos</field>
+        <field name="res_model">employee.announcement</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_employee_announcement_search"/>
+    </record>
+</odoo>

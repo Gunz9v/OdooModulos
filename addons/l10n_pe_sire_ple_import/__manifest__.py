@@ -1,0 +1,24 @@
+{
+    "name": "Peru SIRE PLE Import",
+    "summary": "Importacion y normalizacion de archivos PLE para SIRE.",
+    "version": "18.0.1.0.0",
+    "category": "Accounting/Localizations",
+    "author": "Gustavo",
+    "license": "LGPL-3",
+    "depends": [
+        "l10n_pe_sire_core",
+    ],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/sire_period_views.xml",
+        "views/sire_purchase_accounting_line_views.xml",
+        "views/sire_purchase_sunat_line_views.xml",
+        "views/sire_purchase_reconciliation_line_views.xml",
+        "views/sire_sales_accounting_line_views.xml",
+        "views/sire_sales_reconciliation_line_views.xml",
+        "views/sire_sales_sunat_line_views.xml",
+        "wizards/sire_ple_import_wizard_views.xml",
+        "wizards/sire_sunat_proposal_import_wizard_views.xml",
+    ],
+    "installable": True,
+}

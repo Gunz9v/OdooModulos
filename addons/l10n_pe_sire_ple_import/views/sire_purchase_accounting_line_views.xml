@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sire_purchase_accounting_line_tree" model="ir.ui.view">
+        <field name="name">sire.purchase.accounting.line.list</field>
+        <field name="model">sire.purchase.accounting.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="period_id"/>
+                <field name="source_line_number"/>
+                <field name="issue_date"/>
+                <field name="document_type"/>
+                <field name="series"/>
+                <field name="purchase_year"/>
+                <field name="number"/>
+                <field name="record_state"/>
+                <field name="supplier_document_number"/>
+                <field name="supplier_name"/>
+                <field name="currency_code"/>
+                <field name="taxable_base_dg"/>
+                <field name="igv_dg"/>
+                <field name="non_taxed_amount"/>
+                <field name="total_amount"/>
+                <field name="validation_state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sire_purchase_accounting_line_form" model="ir.ui.view">
+        <field name="name">sire.purchase.accounting.line.form</field>
+        <field name="model">sire.purchase.accounting.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="period_id"/>
+                            <field name="batch_id"/>
+                            <field name="source_line_number"/>
+                            <field name="validation_state"/>
+                        </group>
+                        <group>
+                            <field name="normalized_key"/>
+                            <field name="record_state"/>
+                            <field name="source_hash"/>
+                        </group>
+                    </group>
+                    <group string="Comprobante">
+                        <field name="issue_date"/>
+                        <field name="due_date"/>
+                        <field name="document_type"/>
+                        <field name="series"/>
+                        <field name="purchase_year"/>
+                        <field name="number"/>
+                        <field name="final_number"/>
+                    </group>
+                    <group string="Proveedor">
+                        <field name="supplier_document_type"/>
+                        <field name="supplier_document_number"/>
+                        <field name="supplier_name"/>
+                    </group>
+                    <group string="Importes">
+                        <field name="currency_code"/>
+                        <field name="exchange_rate"/>
+                        <field name="taxable_base_dg"/>
+                        <field name="igv_dg"/>
+                        <field name="taxable_base_dgng"/>
+                        <field name="igv_dgng"/>
+                        <field name="taxable_base_dng"/>
+                        <field name="igv_dng"/>
+                        <field name="non_taxed_amount"/>
+                        <field name="isc_amount"/>
+                        <field name="icbper_amount"/>
+                        <field name="other_tax_amount"/>
+                        <field name="total_amount"/>
+                    </group>
+                    <notebook>
+                        <page string="Original">
+                            <field name="source_raw_text" nolabel="1"/>
+                        </page>
+                        <page string="Validacion">
+                            <field name="validation_messages" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sire_purchase_accounting_line" model="ir.actions.act_window">
+        <field name="name">Lineas RCE importadas</field>
+        <field name="res_model">sire.purchase.accounting.line</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_sire_purchase_lines" name="Lineas Sistema Contable" parent="l10n_pe_sire_core.menu_sire_purchases" action="action_sire_purchase_accounting_line" sequence="30"/>
+</odoo>

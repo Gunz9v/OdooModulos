@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_smart_labor_documents_root"
+        name="SmartDoc Laboral"
+        parent="hr.menu_hr_root"
+        sequence="75"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_payslip_documents_root"
+        name="Boletas de Pago"
+        parent="menu_smart_labor_documents_root"
+        sequence="10"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_payslip_document_templates"
+        name="Plantillas"
+        parent="menu_payslip_documents_root"
+        action="action_payslip_document_templates"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_payslip_document_batches"
+        name="Envios Masivos"
+        parent="menu_payslip_documents_root"
+        action="action_payslip_document_batches"
+        sequence="20"/>
+
+    <menuitem
+        id="menu_payslip_documents"
+        name="Boletas Generadas"
+        parent="menu_payslip_documents_root"
+        action="action_payslip_documents"
+        sequence="30"/>
+
+    <menuitem
+        id="menu_employee_communications_root"
+        name="Comunicaciones"
+        parent="menu_smart_labor_documents_root"
+        sequence="20"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_announcements"
+        name="Comunicados Internos"
+        parent="menu_employee_communications_root"
+        action="action_employee_announcements"
+        sequence="10"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_portal_events"
+        name="Fechas Especiales"
+        parent="menu_employee_communications_root"
+        action="action_employee_portal_events"
+        sequence="20"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_smart_labor_documents_configuration"
+        name="Configuracion"
+        parent="menu_smart_labor_documents_root"
+        sequence="100"
+        groups="hr.group_hr_user"/>
+
+    <menuitem
+        id="menu_employee_contract_templates"
+        name="Plantillas de Contratos"
+        parent="menu_smart_labor_documents_configuration"
+        action="action_employee_contract_templates"
+        sequence="10"/>
+</odoo>
