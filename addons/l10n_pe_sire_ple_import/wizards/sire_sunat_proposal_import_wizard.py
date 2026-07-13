@@ -49,6 +49,7 @@ class SireSunatProposalImportWizard(models.TransientModel):
                 raise UserError(str(retry_error)) from retry_error
 
         self._validate_file_context(parsed_file)
+        self._validate_no_active_sunat_import(existing_proposal)
         zip_hash = hashlib.sha256(raw_content).hexdigest()
         existing = self.env["sire.sunat.proposal"].search(
             [
@@ -103,6 +104,31 @@ class SireSunatProposalImportWizard(models.TransientModel):
             raise ValidationError(_("La propuesta importada debe corresponder a RVIE."))
         if parsed_file.filename_info.registry_kind == "purchase" and self.period_id.registry_type != "rce":
             raise ValidationError(_("La propuesta importada debe corresponder a RCE."))
+
+    def _validate_no_active_sunat_import(self, existing_proposal=False):
+        existing_batch = self.env["sire.import.batch"].search(
+            [
+                ("period_id", "=", self.period_id.id),
+                ("line_model", "in", ("sire.sales.sunat.line", "sire.purchase.sunat.line")),
+            ],
+            limit=1,
+        )
+        if existing_batch:
+            raise UserError(
+                _(
+                    "Ya existe una propuesta SUNAT importada para este periodo: %s. "
+                    "Eliminala desde la pestana Importaciones antes de adjuntar una nueva."
+                )
+                % existing_batch.filename
+            )
+        active_proposal = self.period_id.sunat_proposal_id
+        if active_proposal and active_proposal != existing_proposal and active_proposal.state in ("downloaded", "parsed", "empty"):
+            raise UserError(
+                _(
+                    "Ya existe una propuesta SUNAT activa para este periodo. "
+                    "Eliminala desde la pestana Importaciones antes de adjuntar una nueva."
+                )
+            )
 
     def _create_proposal(self, parsed_file, raw_content, txt_content, txt_filename, zip_hash, existing_proposal=False):
         values = {

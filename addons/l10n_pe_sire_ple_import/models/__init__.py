@@ -1,5 +1,6 @@
 from . import ple_parser
 from . import rce_complement
+from . import sire_import_batch
 from . import sire_period
 from . import sire_purchase_line
 from . import sire_purchase_reconciliation_line

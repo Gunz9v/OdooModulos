@@ -3,6 +3,7 @@ import calendar
 import hashlib
 import json
 import re
+import time
 from datetime import timedelta
 from urllib.parse import urlencode
 
@@ -111,11 +112,53 @@ class SireApiClient(models.AbstractModel):
                 "status_code": "01",
                 "status_description": "Propuesta solicitada",
                 "state": "sent",
+                "sunat_process_code": "10",
+                "sunat_book_code": "080000" if period.registry_type == "rce" else "140000",
             }
         )
         proposal.write({"ticket_number": num_ticket, "state": "requested"})
         period.write({"state": "proposal_requested", "sunat_proposal_id": proposal.id})
         period.message_post(body=_("Solicitud de propuesta SUNAT enviada. Ticket: %s") % num_ticket)
+        return ticket
+
+    def accept_proposal(self, period):
+        period.ensure_one()
+        if period.registry_type not in ("rvie", "rce"):
+            raise UserError(_("La aceptacion de propuesta SUNAT corresponde a RVIE o RCE."))
+        company = period.company_id
+        self._ensure_token(company)
+        per_tributario = self._format_period(period)
+        path = self._accept_proposal_endpoint(period, per_tributario)
+        url = self._build_url(company, path)
+        ticket = self._create_ticket(
+            company,
+            "submit_acceptance",
+            "POST",
+            url,
+            {
+                "period": per_tributario,
+                "registry_type": period.registry_type,
+            },
+            period=period,
+            proposal=period.sunat_proposal_id,
+        )
+        data = self._request_json(ticket, "POST", url, company)
+        num_ticket = data.get("numTicket")
+        if not num_ticket:
+            self._mark_error(ticket, company, "missing_ticket", json.dumps(data, ensure_ascii=True))
+            raise UserError(_("SUNAT no devolvio numTicket para la aceptacion de propuesta."))
+        ticket.write(
+            {
+                "ticket_number": num_ticket,
+                "status_code": "01",
+                "status_description": "Aceptacion de propuesta enviada",
+                "state": "sent",
+                "sunat_process_code": "2",
+                "sunat_book_code": "080000" if period.registry_type == "rce" else "140000",
+            }
+        )
+        period.write({"state": "pending_sunat_confirmation"})
+        period.message_post(body=_("Aceptacion de propuesta SUNAT enviada. Ticket: %s") % num_ticket)
         return ticket
 
     def get_rvie_periods(self, company):
@@ -231,6 +274,110 @@ class SireApiClient(models.AbstractModel):
             ticket.period_id.write({"state": "proposal_downloaded"})
         return response
 
+    def submit_generated_file(self, period, submission_type, file_data, filename):
+        period.ensure_one()
+        company = period.company_id
+        self._ensure_token(company)
+        raw_file = base64.b64decode(file_data or b"")
+        if not raw_file:
+            raise UserError(_("El archivo a enviar esta vacio."))
+        upload_filename = self._normalize_upload_filename(filename)
+        submission = self._submission_metadata(period, submission_type, upload_filename)
+        url = self._build_url(company, submission["path"])
+        ticket = self._create_ticket(
+            company,
+            submission["process_type"],
+            "TUS",
+            url,
+            {
+                "filename": upload_filename,
+                "period": self._format_period(period),
+                "submission_type": submission_type,
+                "metadata": submission["metadata"],
+            },
+            period=period,
+        )
+        ticket.write(
+            {
+                "submitted_filename": upload_filename,
+                "submitted_file": base64.b64encode(raw_file),
+                "submitted_file_hash": hashlib.sha256(raw_file).hexdigest(),
+                "sunat_process_code": submission["metadata"]["codProceso"],
+                "sunat_book_code": submission["metadata"]["codLibro"],
+            }
+        )
+        num_ticket = self._tus_upload(ticket, company, url, raw_file, upload_filename, submission["metadata"])
+        ticket.write(
+            {
+                "ticket_number": num_ticket,
+                "status_code": "01",
+                "status_description": "Archivo enviado a SUNAT",
+                "state": "sent",
+            }
+        )
+        period.message_post(
+            body=_("Archivo SIRE enviado a SUNAT: %(file)s. Ticket: %(ticket)s")
+            % {"file": upload_filename, "ticket": num_ticket}
+        )
+        return ticket
+
+    def submit_generated_file_and_download_result(self, period, submission_type, file_data, filename):
+        ticket = self.submit_generated_file(period, submission_type, file_data, filename)
+        max_checks = int(self.env.context.get("sire_submit_max_checks", 8))
+        sleep_seconds = int(self.env.context.get("sire_submit_sleep_seconds", 2))
+        for attempt in range(max(max_checks, 1)):
+            self.check_ticket_status(ticket)
+            if ticket.state == "done" and ticket.status_code == "06":
+                break
+            if attempt < max_checks - 1 and sleep_seconds:
+                time.sleep(sleep_seconds)
+        if ticket.state == "done" and ticket.status_code == "06":
+            if ticket.result_filename:
+                self.download_ticket_file(ticket)
+            self.download_receipt_file(ticket, raise_if_missing=False)
+        return ticket
+
+    def download_receipt_file(self, ticket, raise_if_missing=True):
+        ticket.ensure_one()
+        company = ticket.company_id
+        self._ensure_token(company)
+        last_error = False
+        for filename in self._receipt_filename_candidates(ticket):
+            params = {"nomArchivo": filename}
+            url = self._build_url(
+                company,
+                "/v1/contribuyente/migeigv/libros/rvierce/gestionlibro/web/registroslibros/constancia/archivo",
+                params,
+            )
+            ticket.write(
+                {
+                    "request_method": "GET",
+                    "request_url": url,
+                    "request_payload": json.dumps(params, ensure_ascii=True, indent=2),
+                }
+            )
+            try:
+                response = self._request_json(ticket, "GET", url, company)
+            except UserError as error:
+                last_error = error
+                continue
+            encoded_pdf = response.get("archivoPdf") if isinstance(response, dict) else False
+            if not encoded_pdf:
+                last_error = UserError(_("SUNAT no devolvio archivoPdf para la constancia."))
+                continue
+            ticket.write(
+                {
+                    "receipt_filename": filename,
+                    "receipt_file": encoded_pdf,
+                    "state": "done",
+                    "status_description": "Constancia descargada",
+                }
+            )
+            return True
+        if raise_if_missing and last_error:
+            raise last_error
+        return False
+
     def _download_ticket_file_response(self, ticket, company):
         last_error = False
         for filename in self._filename_candidates(ticket):
@@ -241,9 +388,9 @@ class SireApiClient(models.AbstractModel):
                             "nomArchivoReporte": filename,
                             type_param: file_type,
                             "perTributario": self._format_period(ticket.period_id),
-                            "codProceso": "10",
+                            "codProceso": ticket.sunat_process_code or "10",
                             "numTicket": ticket.ticket_number or "",
-                            "codLibro": cod_libro,
+                            "codLibro": ticket.sunat_book_code or cod_libro,
                         }
                         url = self._build_url(
                             company,
@@ -320,14 +467,170 @@ class SireApiClient(models.AbstractModel):
 
     def _cod_libro_candidates(self, ticket, filename):
         candidates = []
+        if ticket.sunat_book_code:
+            candidates.append(ticket.sunat_book_code)
         if ticket.period_id.registry_type == "rce":
-            candidates.append("080000")
+            if "080000" not in candidates:
+                candidates.append("080000")
         else:
             match = re.search(r"14\d{4}", filename or "")
             if match:
                 candidates.append(match.group(0))
             if "140000" not in candidates:
                 candidates.append("140000")
+        return candidates
+
+    def _submission_metadata(self, period, submission_type, filename):
+        per_tributario = self._format_period(period)
+        book_code = "080000" if period.registry_type == "rce" else "140000"
+        metadata = {
+            "filename": filename,
+            "filetype": "application/zip",
+            "numRuc": (period.company_id.sire_ruc or period.company_id.vat or "").strip(),
+            "perTributario": per_tributario,
+            "codOrigenEnvio": "2",
+            "codProceso": self._submission_process_code(period, submission_type),
+            "codTipoCorrelativo": "01",
+            "nomArchivoImportacion": filename,
+            "codLibro": book_code,
+        }
+        return {
+            "path": self._submission_upload_path(period, submission_type),
+            "metadata": metadata,
+            "process_type": self._submission_process_type(submission_type),
+        }
+
+    def _submission_process_code(self, period, submission_type):
+        if submission_type == "replacement":
+            return "3"
+        if submission_type in ("complement", "rce_cp"):
+            return "1"
+        if submission_type in ("rcecom", "rcetca"):
+            return "1"
+        if submission_type == "rceinex":
+            return "1"
+        raise UserError(_("Tipo de envio SIRE no soportado: %s") % submission_type)
+
+    def _submission_process_type(self, submission_type):
+        if submission_type == "replacement":
+            return "submit_replacement"
+        if submission_type in ("complement", "rce_cp", "rcecom", "rceinex", "rcetca"):
+            return "submit_complement"
+        return "submit_replacement"
+
+    def _submission_upload_path(self, period, submission_type):
+        return "/v1/contribuyente/migeigv/libros/rvierce/receptorpropuesta/web/propuesta/upload"
+
+    def _normalize_upload_filename(self, filename):
+        filename = (filename or "").strip()
+        if not filename:
+            raise UserError(_("El archivo a enviar no tiene nombre."))
+        if not filename.lower().endswith(".zip"):
+            filename = "%s.zip" % filename
+        return filename
+
+    def _tus_upload(self, ticket, company, url, file_content, filename, metadata):
+        headers = {
+            "Authorization": "Bearer %s" % company.sire_access_token,
+            "Tus-Resumable": "1.0.0",
+            "Upload-Length": str(len(file_content)),
+            "Upload-Metadata": self._tus_metadata_header(metadata),
+        }
+        try:
+            create_response = requests.post(url, headers=headers, timeout=60)
+        except requests.RequestException as error:
+            self._mark_error(ticket, company, "request_error", str(error))
+            raise UserError(_("No se pudo crear la carga TUS en SUNAT: %s") % error) from error
+        ticket.write(
+            {
+                "status_code": str(create_response.status_code),
+                "response_payload": self._response_payload(create_response),
+                "attempt_count": ticket.attempt_count + 1,
+            }
+        )
+        if create_response.status_code == 401:
+            company.write({"sire_access_token": False, "sire_token_expiration": False})
+            self.get_token(company)
+            return self._tus_upload(ticket, company, url, file_content, filename, metadata)
+        if create_response.status_code >= 400:
+            self._mark_error(ticket, company, str(create_response.status_code), self._response_payload(create_response))
+            raise UserError(_("SUNAT rechazo la creacion de carga TUS: %s") % self._response_payload(create_response)[:500])
+        upload_url = create_response.headers.get("Location")
+        if not upload_url:
+            self._mark_error(ticket, company, "missing_location", self._response_payload(create_response))
+            raise UserError(_("SUNAT no devolvio la URL Location para la carga TUS."))
+        if upload_url.startswith("/"):
+            upload_url = "%s%s" % ((company.sire_api_base_url or "https://api-sire.sunat.gob.pe").rstrip("/"), upload_url)
+
+        patch_headers = {
+            "Authorization": "Bearer %s" % company.sire_access_token,
+            "Tus-Resumable": "1.0.0",
+            "Upload-Offset": "0",
+            "Content-Type": "application/offset+octet-stream",
+            "Accept": "application/json",
+        }
+        ticket.write(
+            {
+                "request_method": "PATCH",
+                "request_url": upload_url,
+                "request_payload": json.dumps(
+                    {"filename": filename, "bytes": len(file_content), "metadata": metadata},
+                    ensure_ascii=True,
+                    indent=2,
+                ),
+            }
+        )
+        try:
+            upload_response = requests.patch(upload_url, headers=patch_headers, data=file_content, timeout=300)
+        except requests.RequestException as error:
+            self._mark_error(ticket, company, "request_error", str(error))
+            raise UserError(_("No se pudo subir el archivo a SUNAT: %s") % error) from error
+        ticket.write(
+            {
+                "status_code": str(upload_response.status_code),
+                "response_payload": self._response_payload(upload_response),
+                "attempt_count": ticket.attempt_count + 1,
+            }
+        )
+        if upload_response.status_code >= 400:
+            self._mark_error(ticket, company, str(upload_response.status_code), self._response_payload(upload_response))
+            raise UserError(_("SUNAT rechazo la carga del archivo: %s") % self._response_payload(upload_response)[:500])
+        num_ticket = self._extract_ticket_number_from_response(upload_response)
+        if not num_ticket:
+            self._mark_error(ticket, company, "missing_ticket", self._response_payload(upload_response))
+            raise UserError(_("SUNAT recibio el archivo, pero no devolvio numTicket."))
+        return num_ticket
+
+    def _tus_metadata_header(self, metadata):
+        parts = []
+        for key, value in metadata.items():
+            raw_value = str(value or "").encode("utf-8")
+            parts.append("%s %s" % (key, base64.b64encode(raw_value).decode("ascii")))
+        return ",".join(parts)
+
+    def _extract_ticket_number_from_response(self, response):
+        payload = response.text or ""
+        try:
+            data = response.json()
+        except ValueError:
+            data = {}
+        if isinstance(data, dict):
+            for key in ("numTicket", "ticket", "numeroTicket"):
+                if data.get(key):
+                    return data[key]
+        match = re.search(r"\b\d{12,14}\b", payload)
+        return match.group(0) if match else False
+
+    def _receipt_filename_candidates(self, ticket):
+        candidates = []
+        for filename in (ticket.receipt_filename, ticket.result_filename, ticket.result_content_filename):
+            if filename and filename.lower().endswith(".pdf") and filename not in candidates:
+                candidates.append(filename)
+        base = ticket.submitted_filename or ""
+        if base:
+            pdf_name = re.sub(r"\.zip$", ".pdf", base, flags=re.IGNORECASE)
+            if pdf_name not in candidates:
+                candidates.append(pdf_name)
         return candidates
 
     def _proposal_request_endpoint(self, period, per_tributario):
@@ -349,6 +652,11 @@ class SireApiClient(models.AbstractModel):
                 "codTipoArchivo": "0",
             },
         )
+
+    def _accept_proposal_endpoint(self, period, per_tributario):
+        if period.registry_type == "rce":
+            return "/v1/contribuyente/migeigv/libros/rce/propuesta/web/registroslibros/%s/aceptarpropuesta" % per_tributario
+        return "/v1/contribuyente/migeigv/libros/rvie/propuesta/web/propuesta/%s/aceptapropuesta" % per_tributario
 
     def _validate_token_config(self, company):
         missing = []

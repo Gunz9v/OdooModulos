@@ -53,6 +53,8 @@ class SirePeriod(models.Model):
     rce_cp_txt_filename = fields.Char(string="TXT CP", copy=False)
     rce_cp_txt = fields.Binary(string="Nuevos comprobantes CP", attachment=True, copy=False)
     rce_cp_count = fields.Integer(string="Registros CP", copy=False)
+    rce_cp_duplicate_count = fields.Integer(string="Duplicados CP omitidos", copy=False)
+    rce_cp_duplicate_summary = fields.Text(string="Detalle duplicados CP", copy=False)
     rcecom_txt_filename = fields.Char(string="TXT RCECOM", copy=False)
     rcecom_txt = fields.Binary(string="Complemento RCECOM", attachment=True, copy=False)
     rcecom_count = fields.Integer(string="Registros RCECOM", copy=False)
@@ -74,6 +76,90 @@ class SirePeriod(models.Model):
             "context": {"default_period_id": self.id},
         }
 
+    def _reset_after_import_batch_delete(self, import_kind):
+        for period in self:
+            period._clear_reconciliation_and_generated_files()
+            values = {
+                "matched_count": 0,
+                "difference_count": 0,
+                "sunat_only_count": 0,
+                "system_only_count": 0,
+                "preliminary_generated": False,
+                "final_generation_date": False,
+            }
+            if import_kind == "accounting":
+                values.update(
+                    {
+                        "accounting_batch_id": False,
+                        "total_accounting_records": 0,
+                    }
+                )
+            elif import_kind == "sunat":
+                values.update(
+                    {
+                        "sunat_proposal_id": False,
+                        "total_sunat_records": 0,
+                    }
+                )
+            values["state"] = period._state_after_import_delete(values)
+            period.write(values)
+            period.message_post(body=_("Importacion eliminada. Se limpiaron conciliacion y estructuras generadas."))
+
+    def _clear_reconciliation_and_generated_files(self):
+        self.ensure_one()
+        self.sales_reconciliation_line_ids.unlink()
+        self.purchase_reconciliation_line_ids.unlink()
+        self.write(
+            {
+                "sire_generated_txt_filename": False,
+                "sire_generated_zip_filename": False,
+                "sire_generated_zip": False,
+                "sire_generated_at": False,
+                "sire_replace_txt_filename": False,
+                "sire_replace_txt": False,
+                "sire_replace_zip_filename": False,
+                "sire_replace_zip": False,
+                "sire_replace_count": 0,
+                "sire_complement_txt_filename": False,
+                "sire_complement_txt": False,
+                "sire_complement_zip_filename": False,
+                "sire_complement_zip": False,
+                "sire_complement_count": 0,
+                "sire_non_domiciled_zip_filename": False,
+                "sire_non_domiciled_zip": False,
+                "sire_non_domiciled_count": 0,
+                "sire_adjustment_zip_filename": False,
+                "sire_adjustment_zip": False,
+                "sire_adjustment_count": 0,
+                "rce_cp_txt_filename": False,
+                "rce_cp_txt": False,
+                "rce_cp_count": 0,
+                "rce_cp_duplicate_count": 0,
+                "rce_cp_duplicate_summary": False,
+                "rcecom_txt_filename": False,
+                "rcecom_txt": False,
+                "rcecom_count": 0,
+                "rceinex_txt_filename": False,
+                "rceinex_txt": False,
+                "rceinex_count": 0,
+                "rcetca_txt_filename": False,
+                "rcetca_txt": False,
+                "rcetca_count": 0,
+            }
+        )
+
+    def _state_after_import_delete(self, pending_values):
+        self.ensure_one()
+        accounting_batch = pending_values.get("accounting_batch_id", self.accounting_batch_id)
+        sunat_proposal = pending_values.get("sunat_proposal_id", self.sunat_proposal_id)
+        if accounting_batch and sunat_proposal:
+            return "proposal_downloaded"
+        if accounting_batch:
+            return "file_imported"
+        if sunat_proposal:
+            return "proposal_downloaded"
+        return "draft"
+
     def action_generate_sire_files(self):
         return self.action_generate_structures()
 
@@ -88,7 +174,7 @@ class SirePeriod(models.Model):
         self.message_post(
             body=_(
                 "Estructuras SIRE generadas: reemplazo %(replace)s, complemento %(complement)s, "
-                "CP %(cp)s, RCECOM %(rcecom)s, RCEINEX %(rceinex)s."
+                "CP %(cp)s, RCECOM %(rcecom)s, RCEINEX %(rceinex)s, duplicados CP omitidos %(duplicates)s."
             )
             % {
                 "replace": counts.get("replace", 0),
@@ -96,8 +182,13 @@ class SirePeriod(models.Model):
                 "cp": counts.get("cp", 0),
                 "rcecom": counts.get("rcecom", 0),
                 "rceinex": counts.get("rceinex", 0),
+                "duplicates": counts.get("cp_duplicates", 0),
             }
         )
+        if updates.get("rce_cp_duplicate_summary"):
+            self.message_post(
+                body=_("Comprobantes duplicados omitidos del CP:\n%s") % updates["rce_cp_duplicate_summary"]
+            )
         return {
             "type": "ir.actions.client",
             "tag": "display_notification",
@@ -167,13 +258,21 @@ class SirePeriod(models.Model):
         updates, counts = self._prepare_rce_complement_txt_updates(raise_if_empty=True)
         self.write(updates)
         self.message_post(
-            body=_("TXT complemento RCE generados: CP %(cp)s, RCECOM %(rcecom)s, RCEINEX %(rceinex)s.")
+            body=_(
+                "TXT complemento RCE generados: CP %(cp)s, RCECOM %(rcecom)s, RCEINEX %(rceinex)s, "
+                "duplicados CP omitidos %(duplicates)s."
+            )
             % {
                 "cp": counts["cp"],
                 "rcecom": counts["rcecom"],
                 "rceinex": counts["rceinex"],
+                "duplicates": counts.get("cp_duplicates", 0),
             }
         )
+        if updates.get("rce_cp_duplicate_summary"):
+            self.message_post(
+                body=_("Comprobantes duplicados omitidos del CP:\n%s") % updates["rce_cp_duplicate_summary"]
+            )
         if self.rce_cp_txt:
             return self.action_download_rce_cp_txt()
         if self.rcecom_txt:
@@ -182,13 +281,15 @@ class SirePeriod(models.Model):
 
     def _prepare_rce_complement_txt_updates(self, raise_if_empty=True):
         service = self._get_rce_complement_service()
-        cp_rows = self._get_rce_cp_rows()
+        cp_rows, cp_duplicates = self._get_rce_cp_rows_and_duplicates()
         rcecom_rows = self._get_rcecom_rows()
         rceinex_rows, rceinex_document_types = self._get_rceinex_rows()
         updates = {
             "rce_cp_txt_filename": False,
             "rce_cp_txt": False,
             "rce_cp_count": 0,
+            "rce_cp_duplicate_count": len(cp_duplicates),
+            "rce_cp_duplicate_summary": self._build_rce_cp_duplicate_summary(cp_duplicates),
             "rcecom_txt_filename": False,
             "rcecom_txt": False,
             "rcecom_count": 0,
@@ -230,7 +331,12 @@ class SirePeriod(models.Model):
         if not cp_rows and not rcecom_rows and not rceinex_rows:
             if raise_if_empty:
                 raise UserError(_("No hay registros de conciliacion RCE para generar CP, RCECOM o RCEINEX."))
-        return updates, {"cp": len(cp_rows), "rcecom": len(rcecom_rows), "rceinex": len(rceinex_rows)}
+        return updates, {
+            "cp": len(cp_rows),
+            "cp_duplicates": len(cp_duplicates),
+            "rcecom": len(rcecom_rows),
+            "rceinex": len(rceinex_rows),
+        }
 
     def _build_sire_zip_payload(self, lines, decision_key):
         txt_filename = self._build_sire_replacement_filename("TXT", decision_key=decision_key)
@@ -532,6 +638,73 @@ class SirePeriod(models.Model):
             raise UserError(_("Aun no hay archivo RCETCA generado para este periodo."))
         return self._download_generated_zip("rcetca_txt", self.rcetca_txt_filename)
 
+    def action_submit_sire_replace(self):
+        self.ensure_one()
+        if not self.sire_replace_zip:
+            raise UserError(_("Primero genera el archivo de reemplazo."))
+        return self._submit_generated_sire_file("replacement", self.sire_replace_zip, self.sire_replace_zip_filename)
+
+    def action_submit_sire_complement(self):
+        self.ensure_one()
+        if not self.sire_complement_zip:
+            raise UserError(_("No hay archivo de complemento generado para enviar."))
+        return self._submit_generated_sire_file("complement", self.sire_complement_zip, self.sire_complement_zip_filename)
+
+    def action_submit_rce_cp(self):
+        self.ensure_one()
+        if not self.rce_cp_txt:
+            raise UserError(_("No hay TXT 8.1 generado para enviar."))
+        file_data, filename = self._zip_generated_text_file(self.rce_cp_txt, self.rce_cp_txt_filename)
+        return self._submit_generated_sire_file("rce_cp", file_data, filename)
+
+    def action_submit_rcecom(self):
+        self.ensure_one()
+        if not self.rcecom_txt:
+            raise UserError(_("No hay TXT 8.2 generado para enviar."))
+        file_data, filename = self._zip_generated_text_file(self.rcecom_txt, self.rcecom_txt_filename)
+        return self._submit_generated_sire_file("rcecom", file_data, filename)
+
+    def action_submit_rceinex(self):
+        self.ensure_one()
+        if not self.rceinex_txt:
+            raise UserError(_("No hay TXT 8.3 generado para enviar."))
+        file_data, filename = self._zip_generated_text_file(self.rceinex_txt, self.rceinex_txt_filename)
+        return self._submit_generated_sire_file("rceinex", file_data, filename)
+
+    def action_submit_rcetca(self):
+        self.ensure_one()
+        if not self.rcetca_txt:
+            raise UserError(_("No hay TXT tipo de cambio generado para enviar."))
+        file_data, filename = self._zip_generated_text_file(self.rcetca_txt, self.rcetca_txt_filename)
+        return self._submit_generated_sire_file("rcetca", file_data, filename)
+
+    def _submit_generated_sire_file(self, submission_type, file_data, filename):
+        ticket = self.env["sire.api.client"].submit_generated_file_and_download_result(
+            self,
+            submission_type,
+            file_data,
+            filename,
+        )
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Ticket SUNAT"),
+            "res_model": "sire.api.ticket",
+            "view_mode": "form",
+            "res_id": ticket.id,
+            "target": "current",
+        }
+
+    def _zip_generated_text_file(self, file_data, filename):
+        raw = base64.b64decode(file_data or b"")
+        if raw.startswith(b"PK"):
+            return file_data, filename
+        txt_filename = (filename or "sire.txt").strip()
+        zip_filename = txt_filename.rsplit(".", 1)[0] + ".zip"
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+            archive.writestr(txt_filename, raw)
+        return base64.b64encode(zip_buffer.getvalue()), zip_filename
+
     def _download_generated_zip(self, field_name, filename):
         return {
             "type": "ir.actions.act_url",
@@ -548,13 +721,59 @@ class SirePeriod(models.Model):
         )
 
     def _get_rce_cp_rows(self):
+        rows, _duplicates = self._get_rce_cp_rows_and_duplicates()
+        return rows
+
+    def _get_rce_cp_rows_and_duplicates(self):
         reconciliation_lines = self.purchase_reconciliation_line_ids.filtered(
             lambda line: line.status == "system_only" and line.accounting_line_id
         )
         rows = []
+        seen = {}
+        duplicates = []
         for line in reconciliation_lines.sorted(key=lambda item: (item.accounting_line_id.source_line_number, item.id)):
-            rows.append(self._build_rce_cp_row(line.accounting_line_id))
-        return rows
+            row = self._build_rce_cp_row(line.accounting_line_id)
+            duplicate_key = (row[12], row[6], row[7], row[9])
+            if duplicate_key in seen:
+                duplicates.append(
+                    {
+                        "duplicate_line": line.accounting_line_id,
+                        "original_line": seen[duplicate_key],
+                        "supplier_document_number": row[12],
+                        "document_type": row[6],
+                        "series": row[7],
+                        "number": row[9],
+                    }
+                )
+                continue
+            seen[duplicate_key] = line.accounting_line_id
+            rows.append(row)
+        return rows, duplicates
+
+    def _build_rce_cp_duplicate_summary(self, duplicates):
+        if not duplicates:
+            return False
+        lines = []
+        for duplicate in duplicates[:100]:
+            original = duplicate["original_line"]
+            repeated = duplicate["duplicate_line"]
+            lines.append(
+                _(
+                    "Linea %(repeated)s duplicada de linea %(original)s: proveedor %(supplier)s, "
+                    "tipo %(type)s, serie %(series)s, numero %(number)s"
+                )
+                % {
+                    "repeated": repeated.source_line_number,
+                    "original": original.source_line_number,
+                    "supplier": duplicate["supplier_document_number"] or "-",
+                    "type": duplicate["document_type"] or "-",
+                    "series": duplicate["series"] or "-",
+                    "number": duplicate["number"] or "-",
+                }
+            )
+        if len(duplicates) > len(lines):
+            lines.append(_("... %s duplicados adicionales omitidos del resumen.") % (len(duplicates) - len(lines)))
+        return "\n".join(lines)
 
     def _get_rcecom_rows(self):
         reconciliation_lines = self.purchase_reconciliation_line_ids.filtered(

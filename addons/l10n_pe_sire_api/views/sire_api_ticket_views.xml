@@ -25,6 +25,7 @@
                 <header>
                     <button name="action_check_ticket_status" type="object" string="Consultar estado" class="btn-primary" invisible="not ticket_number"/>
                     <button name="action_download_ticket_file" type="object" string="Descargar archivo" class="btn-secondary" invisible="not result_filename"/>
+                    <button name="action_download_receipt_file" type="object" string="Descargar constancia" class="btn-secondary" invisible="not submitted_filename"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -35,6 +36,8 @@
                             <field name="proposal_id"/>
                             <field name="process_type"/>
                             <field name="ticket_number"/>
+                            <field name="sunat_process_code"/>
+                            <field name="sunat_book_code"/>
                         </group>
                         <group>
                             <field name="requested_at"/>
@@ -67,6 +70,19 @@
                                 <field name="result_content_filename"/>
                                 <field name="result_file_type"/>
                                 <field name="result_file" filename="result_filename"/>
+                            </group>
+                        </page>
+                        <page string="Envio">
+                            <group>
+                                <field name="submitted_filename"/>
+                                <field name="submitted_file_hash"/>
+                                <field name="submitted_file" filename="submitted_filename"/>
+                            </group>
+                        </page>
+                        <page string="Constancia">
+                            <group>
+                                <field name="receipt_filename"/>
+                                <field name="receipt_file" filename="receipt_filename"/>
                             </group>
                         </page>
                     </notebook>

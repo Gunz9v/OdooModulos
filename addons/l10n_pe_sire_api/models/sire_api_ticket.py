@@ -53,6 +53,13 @@ class SireApiTicket(models.Model):
     result_content_filename = fields.Char(string="Archivo contenido")
     result_file_type = fields.Char(string="Tipo archivo resultado")
     result_file = fields.Binary(string="Resultado", attachment=True)
+    submitted_filename = fields.Char(string="Archivo enviado")
+    submitted_file = fields.Binary(string="Archivo enviado", attachment=True)
+    submitted_file_hash = fields.Char(string="SHA-256 enviado")
+    sunat_process_code = fields.Char(string="Codigo proceso SUNAT")
+    sunat_book_code = fields.Char(string="Codigo libro SUNAT")
+    receipt_filename = fields.Char(string="Constancia")
+    receipt_file = fields.Binary(string="Constancia", attachment=True)
     validated_row_count = fields.Integer(string="Filas validadas")
     error_document_count = fields.Integer(string="CP con error")
     informed_document_count = fields.Integer(string="CP informados")
@@ -79,4 +86,9 @@ class SireApiTicket(models.Model):
     def action_download_ticket_file(self):
         self.ensure_one()
         self.env["sire.api.client"].download_ticket_file(self)
+        return True
+
+    def action_download_receipt_file(self):
+        self.ensure_one()
+        self.env["sire.api.client"].download_receipt_file(self)
         return True

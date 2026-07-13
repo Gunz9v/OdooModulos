@@ -7,9 +7,11 @@
     "license": "LGPL-3",
     "depends": [
         "l10n_pe_sire_core",
+        "l10n_pe_sire_api",
     ],
     "data": [
         "security/ir.model.access.csv",
+        "views/sire_import_batch_views.xml",
         "views/sire_period_views.xml",
         "views/sire_purchase_accounting_line_views.xml",
         "views/sire_purchase_sunat_line_views.xml",

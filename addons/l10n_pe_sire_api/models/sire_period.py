@@ -50,6 +50,37 @@ class SirePeriod(models.Model):
             "res_id": ticket.id,
         }
 
+    def action_accept_sunat_proposal(self):
+        self.ensure_one()
+        if self.registry_type not in ("rvie", "rce"):
+            raise UserError(_("La aceptacion automatica de propuesta esta disponible para RVIE o RCE."))
+        if self.decision_type != "accept":
+            raise UserError(_("Selecciona la decision tributaria 'Aceptar propuesta' antes de enviar la aceptacion."))
+        client = self.env["sire.api.client"]
+        ticket = client.accept_proposal(self)
+        max_checks = int(self.env.context.get("sire_accept_max_checks", 8))
+        sleep_seconds = int(self.env.context.get("sire_accept_sleep_seconds", 2))
+        for attempt in range(max(max_checks, 1)):
+            client.check_ticket_status(ticket)
+            if ticket.state == "done" and ticket.status_code == "06":
+                break
+            if attempt < max_checks - 1 and sleep_seconds:
+                time.sleep(sleep_seconds)
+
+        if ticket.state == "done" and ticket.status_code == "06":
+            if ticket.result_filename:
+                client.download_ticket_file(ticket)
+            client.download_receipt_file(ticket, raise_if_missing=False)
+            self.write({"state": "closed"})
+
+        return {
+            "type": "ir.actions.act_window",
+            "name": "Ticket SUNAT",
+            "res_model": "sire.api.ticket",
+            "view_mode": "form",
+            "res_id": ticket.id,
+        }
+
     def _import_downloaded_sunat_proposal(self, ticket):
         if "sire.sunat.proposal.import.wizard" not in self.env.registry:
             raise UserError(_("El modulo de importacion PLE SIRE no esta instalado."))

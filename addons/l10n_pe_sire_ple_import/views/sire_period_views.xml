@@ -3,12 +3,12 @@
     <record id="view_sire_period_form_sire_ple_import" model="ir.ui.view">
         <field name="name">sire.period.form.sire.ple.import</field>
         <field name="model">sire.period</field>
-        <field name="inherit_id" ref="l10n_pe_sire_core.view_sire_period_form"/>
+        <field name="inherit_id" ref="l10n_pe_sire_api.view_sire_period_form_sire_api"/>
         <field name="arch" type="xml">
-            <xpath expr="//header/button[@name='action_open_import_wizard']" position="after">
-                <button name="action_open_sunat_proposal_import_wizard" type="object" string="Importar propuesta SUNAT" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rvie'"/>
+            <xpath expr="//header/button[@name='action_accept_sunat_proposal']" position="after">
+                <button name="action_open_sunat_proposal_import_wizard" type="object" string="Importar propuesta SUNAT" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="1"/>
                 <button name="action_run_sales_reconciliation" type="object" string="Conciliar RVIE" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rvie'"/>
-                <button name="action_open_sunat_proposal_import_wizard" type="object" string="Importar propuesta SUNAT RCE" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rce'"/>
+                <button name="action_open_sunat_proposal_import_wizard" type="object" string="Importar propuesta SUNAT RCE" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="1"/>
                 <button name="action_run_purchase_reconciliation" type="object" string="Conciliar RCE" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rce'"/>
                 <button name="action_generate_structures" type="object" string="Generar Estructuras" class="btn-primary" groups="l10n_pe_sire_core.group_sire_analyst"/>
             </xpath>
@@ -25,17 +25,43 @@
                     <field name="sire_complement_zip_filename" invisible="1"/>
                     <field name="sire_non_domiciled_zip_filename" invisible="1"/>
                     <field name="sire_adjustment_zip_filename" invisible="1"/>
-                    <field name="rce_cp_txt" string="TXT 8.1" filename="rce_cp_txt_filename" readonly="1" invisible="not rce_cp_txt"/>
-                    <field name="rcecom_txt" string="TXT 8.2" filename="rcecom_txt_filename" readonly="1" invisible="not rcecom_txt"/>
-                    <field name="rceinex_txt" string="TXT 8.3" filename="rceinex_txt_filename" readonly="1" invisible="not rceinex_txt"/>
+                    <field name="rce_cp_duplicate_count" readonly="1" invisible="not rce_cp_duplicate_count"/>
+                    <field name="rce_cp_duplicate_summary" readonly="1" invisible="not rce_cp_duplicate_summary"/>
+                    <field name="rce_cp_txt" string="TXT 8.1 - Comprobantes nuevos (solo sistema)" filename="rce_cp_txt_filename" readonly="1" invisible="not rce_cp_txt"/>
+                    <button name="action_submit_rce_cp" type="object" string="Enviar 8.1" class="btn-secondary" invisible="not rce_cp_txt" groups="l10n_pe_sire_core.group_sire_analyst"/>
+                    <field name="rcecom_txt" string="TXT 8.2 - Complemento de diferencias" filename="rcecom_txt_filename" readonly="1" invisible="not rcecom_txt"/>
+                    <button name="action_submit_rcecom" type="object" string="Enviar 8.2" class="btn-secondary" invisible="not rcecom_txt" groups="l10n_pe_sire_core.group_sire_analyst"/>
+                    <field name="rceinex_txt" string="TXT 8.3 - Inclusion/exclusion (solo SUNAT)" filename="rceinex_txt_filename" readonly="1" invisible="not rceinex_txt"/>
+                    <button name="action_submit_rceinex" type="object" string="Enviar 8.3" class="btn-secondary" invisible="not rceinex_txt" groups="l10n_pe_sire_core.group_sire_analyst"/>
                     <field name="rcetca_txt" string="TXT Tipo de cambio" filename="rcetca_txt_filename" readonly="1" invisible="not rcetca_txt"/>
+                    <button name="action_submit_rcetca" type="object" string="Enviar tipo de cambio" class="btn-secondary" invisible="not rcetca_txt" groups="l10n_pe_sire_core.group_sire_analyst"/>
                     <field name="sire_complement_txt" string="TXT Reporte Sire" filename="sire_complement_txt_filename" readonly="1" invisible="not sire_complement_txt"/>
                     <field name="sire_complement_zip" string="Zip Reporte Sire" filename="sire_complement_zip_filename" readonly="1" invisible="not sire_complement_zip"/>
+                    <button name="action_submit_sire_complement" type="object" string="Enviar complemento" class="btn-secondary" invisible="not sire_complement_zip" groups="l10n_pe_sire_core.group_sire_analyst"/>
                     <field name="sire_replace_txt" string="TXT Reporte Sire Reemplazo" filename="sire_replace_txt_filename" readonly="1" invisible="not sire_replace_txt"/>
                     <field name="sire_replace_zip" string="Zip Reporte Sire Reemplazo" filename="sire_replace_zip_filename" readonly="1" invisible="not sire_replace_zip"/>
+                    <button name="action_submit_sire_replace" type="object" string="Enviar reemplazo" class="btn-secondary" invisible="not sire_replace_zip" groups="l10n_pe_sire_core.group_sire_analyst"/>
                     <field name="sire_non_domiciled_zip" string="Zip No domiciliados" filename="sire_non_domiciled_zip_filename" readonly="1" invisible="not sire_non_domiciled_zip"/>
                     <field name="sire_adjustment_zip" string="Zip Ajuste posterior" filename="sire_adjustment_zip_filename" readonly="1" invisible="not sire_adjustment_zip"/>
                 </group>
+            </xpath>
+            <xpath expr="//field[@name='import_batch_ids']/list/field[@name='valid_rows']" position="after">
+                <field name="total_taxable_base_dg" optional="hide"/>
+                <field name="total_igv_dg" optional="hide"/>
+                <field name="total_taxable_base_dgng" optional="hide"/>
+                <field name="total_igv_dgng" optional="hide"/>
+                <field name="total_taxable_base_dng" optional="hide"/>
+                <field name="total_igv_dng" optional="hide"/>
+                <field name="total_non_taxed_amount" optional="hide"/>
+                <field name="total_isc_amount" optional="hide"/>
+                <field name="total_icbper_amount" optional="hide"/>
+                <field name="total_other_tax_amount" optional="hide"/>
+                <field name="total_document_amount" optional="show"/>
+                <field name="total_export_amount" optional="hide"/>
+                <field name="total_taxable_base" optional="hide"/>
+                <field name="total_exempt_amount" optional="hide"/>
+                <field name="total_unaffected_amount" optional="hide"/>
+                <field name="total_igv_amount" optional="hide"/>
             </xpath>
             <xpath expr="//notebook" position="inside">
                 <page string="Conciliacion RCE" invisible="registry_type != 'rce'">

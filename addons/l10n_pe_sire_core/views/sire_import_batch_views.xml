@@ -16,6 +16,7 @@
                 <field name="warning_rows"/>
                 <field name="invalid_rows"/>
                 <field name="imported_at"/>
+                <button name="action_delete_import_batch" type="object" string="Eliminar" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" confirm="Al eliminar esta importacion se borraran sus lineas y se limpiara la conciliacion del periodo. Deseas continuar?"/>
             </list>
         </field>
     </record>
@@ -25,6 +26,9 @@
         <field name="model">sire.import.batch</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_delete_import_batch" type="object" string="Eliminar importacion" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" confirm="Al eliminar esta importacion se borraran sus lineas y se limpiara la conciliacion del periodo. Deseas continuar?"/>
+                </header>
                 <sheet>
                     <group>
                         <group>

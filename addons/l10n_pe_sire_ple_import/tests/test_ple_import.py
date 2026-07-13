@@ -396,6 +396,52 @@ class TestPleImport(TransactionCase):
         self.assertEqual(line.series, "F001")
         self.assertEqual(line.total_amount, 118.00)
 
+    def test_import_requires_deleting_existing_accounting_batch_before_reimport(self):
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2098,
+                "month": "11",
+            }
+        )
+        first_wizard = self.env["sire.ple.import.wizard"].create(
+            {
+                "period_id": period.id,
+                "filename": self.filename,
+                "file_data": base64.b64encode(self.content),
+            }
+        )
+        first_action = first_wizard.action_import_file()
+
+        second_wizard = self.env["sire.ple.import.wizard"].create(
+            {
+                "period_id": period.id,
+                "filename": self.filename,
+                "file_data": base64.b64encode(self.content),
+            }
+        )
+        with self.assertRaises(UserError):
+            second_wizard.action_import_file()
+
+        batch = self.env["sire.import.batch"].browse(first_action["res_id"])
+        batch.action_delete_import_batch()
+
+        self.assertFalse(period.accounting_batch_id)
+        self.assertEqual(period.total_accounting_records, 0)
+        self.assertEqual(period.state, "draft")
+        self.assertFalse(self.env["sire.sales.accounting.line"].search([("period_id", "=", period.id)]))
+
+        third_wizard = self.env["sire.ple.import.wizard"].create(
+            {
+                "period_id": period.id,
+                "filename": self.filename,
+                "file_data": base64.b64encode(self.content),
+            }
+        )
+        third_action = third_wizard.action_import_file()
+        self.assertTrue(third_action["res_id"])
+
     def test_wizard_does_not_require_company_ruc_match(self):
         period = self.env["sire.period"].create(
             {
@@ -450,6 +496,65 @@ class TestPleImport(TransactionCase):
         self.assertEqual(line.car_sunat, "2010008093201F2500000005699")
         self.assertEqual(line.series, "F250")
         self.assertEqual(line.total_amount, 2202.32)
+
+    def test_delete_sunat_import_clears_proposal_lines_and_reconciliation(self):
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2098,
+                "month": "12",
+            }
+        )
+        txt_name = "LE2010008093220260500140400001EXP2.txt"
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+            archive.writestr(txt_name, self.sunat_content)
+        zip_content = zip_buffer.getvalue()
+        wizard = self.env["sire.sunat.proposal.import.wizard"].create(
+            {
+                "period_id": period.id,
+                "filename": "LE2010008093220260500140400001EXP2.zip",
+                "file_data": base64.b64encode(zip_content),
+            }
+        )
+        wizard.action_import_file()
+        batch = self.env["sire.import.batch"].search(
+            [("period_id", "=", period.id), ("line_model", "=", "sire.sales.sunat.line")],
+            limit=1,
+        )
+        self.env["sire.sales.reconciliation.line"].create(
+            {
+                "period_id": period.id,
+                "status": "sunat_only",
+                "normalized_key": "sunat-only",
+            }
+        )
+        period.write(
+            {
+                "matched_count": 1,
+                "sire_replace_zip_filename": "dummy.zip",
+                "sire_replace_zip": base64.b64encode(b"dummy"),
+            }
+        )
+
+        with self.assertRaises(UserError):
+            self.env["sire.sunat.proposal.import.wizard"].create(
+                {
+                    "period_id": period.id,
+                    "filename": "LE2010008093220260500140400001EXP2-v2.zip",
+                    "file_data": base64.b64encode(zip_content),
+                }
+            ).action_import_file()
+
+        batch.action_delete_import_batch()
+
+        self.assertFalse(period.sunat_proposal_id)
+        self.assertEqual(period.total_sunat_records, 0)
+        self.assertEqual(period.matched_count, 0)
+        self.assertFalse(period.sire_replace_zip)
+        self.assertFalse(self.env["sire.sales.sunat.line"].search([("period_id", "=", period.id)]))
+        self.assertFalse(self.env["sire.sales.reconciliation.line"].search([("period_id", "=", period.id)]))
 
     def test_invalid_column_count_records_line_error(self):
         parsed = PleFileParser().parse(self.filename, b"20260500|CUO001|M0001|\n")
@@ -1105,6 +1210,43 @@ class TestPleImport(TransactionCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0][3], "B12345678901234567890123456")
         self.assertEqual(document_types, {"B12345678901234567890123456": "01"})
+
+    def test_period_cp_generation_skips_duplicate_system_only_documents(self):
+        period = self._create_rce_generation_period()
+        first_line = self._create_rce_generation_line(period)
+        second_line = self.env["sire.purchase.accounting.line"].create(
+            {
+                "period_id": period.id,
+                "batch_id": first_line.batch_id.id,
+                "source_line_number": first_line.source_line_number + 1,
+                "source_raw_text": first_line.source_raw_text,
+            }
+        )
+        self.env["sire.purchase.reconciliation.line"].create(
+            {
+                "period_id": period.id,
+                "accounting_line_id": first_line.id,
+                "status": "system_only",
+                "normalized_key": "duplicate-1",
+            }
+        )
+        self.env["sire.purchase.reconciliation.line"].create(
+            {
+                "period_id": period.id,
+                "accounting_line_id": second_line.id,
+                "status": "system_only",
+                "normalized_key": "duplicate-2",
+            }
+        )
+
+        rows, duplicates = period._get_rce_cp_rows_and_duplicates()
+        summary = period._build_rce_cp_duplicate_summary(duplicates)
+
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(len(duplicates), 1)
+        self.assertEqual((rows[0][12], rows[0][6], rows[0][7], rows[0][9]), ("20100152356", "14", "S107", "6572147"))
+        self.assertIn("Linea 2 duplicada de linea 1", summary)
+        self.assertIn("proveedor 20100152356", summary)
 
     def test_rcetca_for_soles_keeps_five_fields_with_empty_field_5(self):
         service = RceComplementService("20100080932", "202605", 1)

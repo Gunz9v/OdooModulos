@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import _, fields, models
 
 
 class SireImportBatch(models.Model):
@@ -70,3 +70,28 @@ class SireImportBatch(models.Model):
             "Este archivo ya fue importado para la empresa.",
         )
     ]
+
+    def action_delete_import_batch(self):
+        self.ensure_one()
+        period = self.period_id
+        filename = self.filename
+        self.unlink()
+        if period.exists():
+            return {
+                "type": "ir.actions.act_window",
+                "name": _("Periodo SIRE"),
+                "res_model": "sire.period",
+                "view_mode": "form",
+                "res_id": period.id,
+                "target": "current",
+            }
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Importacion eliminada"),
+                "message": _("Se elimino la importacion %s.") % filename,
+                "type": "success",
+                "sticky": False,
+            },
+        }

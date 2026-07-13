@@ -25,6 +25,7 @@ class SirePleImportWizard(models.TransientModel):
             raise UserError(str(error)) from error
 
         self._validate_file_context(parsed_file)
+        self._validate_no_active_accounting_import()
         existing = self.env["sire.import.batch"].search(
             [
                 ("company_id", "=", self.period_id.company_id.id),
@@ -55,6 +56,25 @@ class SirePleImportWizard(models.TransientModel):
             raise ValidationError(_("El archivo 14.1 corresponde a RVIE, no a RCE."))
         if parsed_file.filename_info.registry_kind == "purchase" and self.period_id.registry_type != "rce":
             raise ValidationError(_("El archivo 8.1 corresponde a RCE, no a RVIE."))
+
+    def _validate_no_active_accounting_import(self):
+        existing = self.period_id.accounting_batch_id
+        if not existing:
+            existing = self.env["sire.import.batch"].search(
+                [
+                    ("period_id", "=", self.period_id.id),
+                    ("line_model", "in", ("sire.sales.accounting.line", "sire.purchase.accounting.line")),
+                ],
+                limit=1,
+            )
+        if existing:
+            raise UserError(
+                _(
+                    "Ya existe un archivo contable importado para este periodo: %s. "
+                    "Eliminalo desde la pestana Importaciones antes de adjuntar uno nuevo."
+                )
+                % existing.filename
+            )
 
     def _create_batch(self, parsed_file):
         invalid_rows = len([line for line in parsed_file.lines if line.has_errors])

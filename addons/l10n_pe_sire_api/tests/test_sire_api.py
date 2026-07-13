@@ -113,6 +113,79 @@ class TestSireApi(TransactionCase):
         self.assertIn("codOrigenEnvio=2", request.call_args[0][1])
         self.assertNotIn("fecDocumentoDesde", request.call_args[0][1])
 
+    def test_accept_rvie_proposal_creates_ticket(self):
+        self.company.write(
+            {
+                "sire_access_token": "abc",
+                "sire_token_expiration": False,
+            }
+        )
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2097,
+                "month": "05",
+                "decision_type": "accept",
+            }
+        )
+        response = Mock()
+        response.status_code = 200
+        response.text = '{"numTicket":"20260300004500"}'
+        response.content = response.text.encode()
+        response.headers = {"Content-Type": "application/json"}
+        response.json.return_value = {"numTicket": "20260300004500"}
+
+        with patch(
+            "odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.request",
+            return_value=response,
+        ) as request:
+            ticket = self.env["sire.api.client"].accept_proposal(period)
+
+        self.assertEqual(ticket.process_type, "submit_acceptance")
+        self.assertEqual(ticket.ticket_number, "20260300004500")
+        self.assertEqual(ticket.sunat_process_code, "2")
+        self.assertEqual(ticket.sunat_book_code, "140000")
+        self.assertEqual(period.state, "pending_sunat_confirmation")
+        self.assertEqual(request.call_args[0][0], "POST")
+        self.assertIn("/v1/contribuyente/migeigv/libros/rvie/propuesta/web/propuesta/209705/aceptapropuesta", request.call_args[0][1])
+
+    def test_accept_rce_proposal_creates_ticket(self):
+        self.company.write(
+            {
+                "sire_access_token": "abc",
+                "sire_token_expiration": False,
+            }
+        )
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rce",
+                "year": 2097,
+                "month": "05",
+                "decision_type": "accept",
+            }
+        )
+        response = Mock()
+        response.status_code = 200
+        response.text = '{"numTicket":"20260300004501"}'
+        response.content = response.text.encode()
+        response.headers = {"Content-Type": "application/json"}
+        response.json.return_value = {"numTicket": "20260300004501"}
+
+        with patch(
+            "odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.request",
+            return_value=response,
+        ) as request:
+            ticket = self.env["sire.api.client"].accept_proposal(period)
+
+        self.assertEqual(ticket.process_type, "submit_acceptance")
+        self.assertEqual(ticket.ticket_number, "20260300004501")
+        self.assertEqual(ticket.sunat_process_code, "2")
+        self.assertEqual(ticket.sunat_book_code, "080000")
+        self.assertEqual(request.call_args[0][0], "POST")
+        self.assertIn("/v1/contribuyente/migeigv/libros/rce/propuesta/web/registroslibros/209705/aceptarpropuesta", request.call_args[0][1])
+
     def test_sync_sunat_proposal_downloads_and_imports_when_ticket_finishes(self):
         period = self.env["sire.period"].create(
             {
@@ -551,3 +624,169 @@ class TestSireApi(TransactionCase):
         self.assertIn("numTicket=20260300004317", url)
         self.assertIn("codLibro=080000", url)
         self.assertEqual(proposal.state, "downloaded")
+
+    def test_submit_generated_file_uploads_with_tus_metadata(self):
+        self.company.write(
+            {
+                "sire_access_token": "abc",
+                "sire_token_expiration": False,
+            }
+        )
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2097,
+                "month": "05",
+            }
+        )
+        create_response = Mock()
+        create_response.status_code = 201
+        create_response.text = ""
+        create_response.content = b""
+        create_response.headers = {"Location": "/upload/123"}
+        upload_response = Mock()
+        upload_response.status_code = 204
+        upload_response.text = '{"numTicket":"20260300004444"}'
+        upload_response.content = upload_response.text.encode()
+        upload_response.headers = {"Content-Type": "application/json"}
+        upload_response.json.return_value = {"numTicket": "20260300004444"}
+
+        with patch("odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.post", return_value=create_response) as post:
+            with patch("odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.patch", return_value=upload_response) as patch_request:
+                ticket = self.env["sire.api.client"].submit_generated_file(
+                    period,
+                    "replacement",
+                    base64.b64encode(b"zip-bytes"),
+                    "LE2010008093220970500140400021112",
+                )
+
+        self.assertEqual(ticket.ticket_number, "20260300004444")
+        self.assertEqual(ticket.process_type, "submit_replacement")
+        self.assertEqual(ticket.sunat_process_code, "3")
+        self.assertEqual(ticket.sunat_book_code, "140000")
+        self.assertEqual(ticket.submitted_filename, "LE2010008093220970500140400021112.zip")
+        headers = post.call_args[1]["headers"]
+        self.assertEqual(headers["Tus-Resumable"], "1.0.0")
+        self.assertIn("codProceso Mw==", headers["Upload-Metadata"])
+        self.assertIn("codLibro MTQwMDAw", headers["Upload-Metadata"])
+        self.assertEqual(patch_request.call_args[1]["data"], b"zip-bytes")
+
+    def test_submit_rce_generated_file_uses_purchase_book_code(self):
+        self.company.write(
+            {
+                "sire_access_token": "abc",
+                "sire_token_expiration": False,
+            }
+        )
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rce",
+                "year": 2097,
+                "month": "05",
+            }
+        )
+        create_response = Mock()
+        create_response.status_code = 201
+        create_response.text = ""
+        create_response.content = b""
+        create_response.headers = {"Location": "https://api-sire.sunat.gob.pe/upload/456"}
+        upload_response = Mock()
+        upload_response.status_code = 200
+        upload_response.text = '{"numTicket":"20260300004445"}'
+        upload_response.content = upload_response.text.encode()
+        upload_response.headers = {"Content-Type": "application/json"}
+        upload_response.json.return_value = {"numTicket": "20260300004445"}
+
+        with patch("odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.post", return_value=create_response) as post:
+            with patch("odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.patch", return_value=upload_response):
+                ticket = self.env["sire.api.client"].submit_generated_file(
+                    period,
+                    "rce_cp",
+                    base64.b64encode(b"zip-bytes"),
+                    "LE2010008093220970500080400021112.zip",
+                )
+
+        self.assertEqual(ticket.process_type, "submit_complement")
+        self.assertEqual(ticket.sunat_process_code, "1")
+        self.assertEqual(ticket.sunat_book_code, "080000")
+        self.assertIn("codLibro MDgwMDAw", post.call_args[1]["headers"]["Upload-Metadata"])
+
+    def test_download_submitted_result_uses_ticket_process_code(self):
+        self.company.write(
+            {
+                "sire_access_token": "abc",
+                "sire_token_expiration": False,
+            }
+        )
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2097,
+                "month": "05",
+            }
+        )
+        ticket = self.env["sire.api.ticket"].create(
+            {
+                "company_id": self.company.id,
+                "period_id": period.id,
+                "process_type": "submit_replacement",
+                "ticket_number": "20260300004444",
+                "result_filename": "RESULT.zip",
+                "result_file_type": "00",
+                "sunat_process_code": "3",
+                "sunat_book_code": "140000",
+            }
+        )
+        ok = Mock()
+        ok.status_code = 200
+        ok.content = b"zip-bytes"
+        ok.text = ""
+        ok.headers = {"Content-Type": "application/zip"}
+
+        with patch("odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.request", return_value=ok) as request:
+            self.env["sire.api.client"].download_ticket_file(ticket)
+
+        url = request.call_args[0][1]
+        self.assertIn("codProceso=3", url)
+        self.assertIn("codLibro=140000", url)
+
+    def test_download_receipt_file_stores_pdf(self):
+        self.company.write(
+            {
+                "sire_access_token": "abc",
+                "sire_token_expiration": False,
+            }
+        )
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2097,
+                "month": "05",
+            }
+        )
+        ticket = self.env["sire.api.ticket"].create(
+            {
+                "company_id": self.company.id,
+                "period_id": period.id,
+                "process_type": "submit_replacement",
+                "ticket_number": "20260300004444",
+                "submitted_filename": "LE2010008093220970500140400021112.zip",
+            }
+        )
+        response = Mock()
+        response.status_code = 200
+        response.text = '{"archivoPdf":"cGRmLWJ5dGVz"}'
+        response.content = response.text.encode()
+        response.headers = {"Content-Type": "application/json"}
+        response.json.return_value = {"archivoPdf": "cGRmLWJ5dGVz"}
+
+        with patch("odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.request", return_value=response) as request:
+            self.env["sire.api.client"].download_receipt_file(ticket)
+
+        self.assertEqual(ticket.receipt_filename, "LE2010008093220970500140400021112.pdf")
+        self.assertEqual(ticket.receipt_file, b"cGRmLWJ5dGVz")
+        self.assertIn("constancia/archivo", request.call_args[0][1])

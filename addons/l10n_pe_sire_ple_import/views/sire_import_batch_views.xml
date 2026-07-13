@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sire_import_batch_tree_sire_ple_import" model="ir.ui.view">
+        <field name="name">sire.import.batch.list.sire.ple.import</field>
+        <field name="model">sire.import.batch</field>
+        <field name="inherit_id" ref="l10n_pe_sire_core.view_sire_import_batch_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='valid_rows']" position="after">
+                <field name="total_taxable_base_dg" optional="hide"/>
+                <field name="total_igv_dg" optional="hide"/>
+                <field name="total_taxable_base_dgng" optional="hide"/>
+                <field name="total_igv_dgng" optional="hide"/>
+                <field name="total_taxable_base_dng" optional="hide"/>
+                <field name="total_igv_dng" optional="hide"/>
+                <field name="total_non_taxed_amount" optional="hide"/>
+                <field name="total_isc_amount" optional="hide"/>
+                <field name="total_icbper_amount" optional="hide"/>
+                <field name="total_other_tax_amount" optional="hide"/>
+                <field name="total_document_amount" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_sire_import_batch_form_sire_ple_import" model="ir.ui.view">
+        <field name="name">sire.import.batch.form.sire.ple.import</field>
+        <field name="model">sire.import.batch</field>
+        <field name="inherit_id" ref="l10n_pe_sire_core.view_sire_import_batch_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='duplicate_rows']/../.." position="after">
+                <group string="Totales RCE">
+                    <field name="total_taxable_base_dg"/>
+                    <field name="total_igv_dg"/>
+                    <field name="total_taxable_base_dgng"/>
+                    <field name="total_igv_dgng"/>
+                    <field name="total_taxable_base_dng"/>
+                    <field name="total_igv_dng"/>
+                    <field name="total_non_taxed_amount"/>
+                    <field name="total_isc_amount"/>
+                    <field name="total_icbper_amount"/>
+                    <field name="total_other_tax_amount"/>
+                    <field name="total_document_amount"/>
+                </group>
+                <group string="Totales RVIE">
+                    <field name="total_export_amount"/>
+                    <field name="total_taxable_base"/>
+                    <field name="total_exempt_amount"/>
+                    <field name="total_unaffected_amount"/>
+                    <field name="total_igv_amount"/>
+                    <field name="total_document_amount"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
