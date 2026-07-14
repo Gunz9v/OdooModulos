@@ -101,7 +101,31 @@ class SireApiClient(models.AbstractModel):
             period=period,
             proposal=proposal,
         )
-        data = self._request_json(ticket, "GET", url, company)
+        try:
+            data = self._request_json(ticket, "GET", url, company)
+        except UserError as error:
+            existing_ticket_number = self._existing_process_ticket_number(ticket.response_payload)
+            if not existing_ticket_number:
+                raise
+            ticket.write(
+                {
+                    "ticket_number": existing_ticket_number,
+                    "status_code": "01",
+                    "status_description": "Propuesta solicitada en otro ambiente",
+                    "state": "sent",
+                    "sunat_process_code": "10",
+                    "sunat_book_code": "080000" if period.registry_type == "rce" else "140000",
+                    "error_code": False,
+                    "error_message": False,
+                }
+            )
+            proposal.write({"ticket_number": existing_ticket_number, "state": "requested"})
+            period.write({"state": "proposal_requested", "sunat_proposal_id": proposal.id})
+            period.message_post(
+                body=_("SUNAT ya tenia una solicitud de propuesta en curso. Se registro el ticket existente: %s")
+                % existing_ticket_number
+            )
+            return ticket
         num_ticket = data.get("numTicket")
         if not num_ticket:
             self._mark_error(ticket, company, "missing_ticket", json.dumps(data, ensure_ascii=True))
@@ -647,8 +671,6 @@ class SireApiClient(models.AbstractModel):
             "/v1/contribuyente/migeigv/libros/rvie/propuesta/web/propuesta/%s/exportapropuesta"
             % per_tributario,
             {
-                "fecDocumentoDesde": self._period_start_date(period),
-                "fecDocumentoHasta": self._period_end_date(period),
                 "codTipoArchivo": "0",
             },
         )
@@ -824,6 +846,16 @@ class SireApiClient(models.AbstractModel):
     def _is_missing_file_error(self, payload):
         payload = payload or ""
         return '"cod":2244' in payload or "El archivo solicitado no existe" in payload
+
+    def _existing_process_ticket_number(self, payload):
+        payload = payload or ""
+        if '"cod":42209' not in payload and "aun tiene un proceso" not in payload:
+            return False
+        match = re.search(r"Ticket:\s*(?P<ticket>\d{12,14})", payload)
+        if match:
+            return match.group("ticket")
+        match = re.search(r"\b(?P<ticket>\d{12,14})\b", payload)
+        return match.group("ticket") if match else False
 
     def _mark_error(self, ticket, company, code, message):
         ticket.write(

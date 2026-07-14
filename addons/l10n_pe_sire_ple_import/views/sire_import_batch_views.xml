@@ -6,6 +6,7 @@
         <field name="inherit_id" ref="l10n_pe_sire_core.view_sire_import_batch_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='valid_rows']" position="after">
+                <field name="registry_type" optional="hide"/>
                 <field name="total_taxable_base_dg" optional="hide"/>
                 <field name="total_igv_dg" optional="hide"/>
                 <field name="total_taxable_base_dgng" optional="hide"/>
@@ -17,6 +18,11 @@
                 <field name="total_icbper_amount" optional="hide"/>
                 <field name="total_other_tax_amount" optional="hide"/>
                 <field name="total_document_amount" optional="show"/>
+                <field name="total_export_amount" optional="hide"/>
+                <field name="total_taxable_base" string="Total BI RVIE" optional="hide"/>
+                <field name="total_exempt_amount" optional="hide"/>
+                <field name="total_unaffected_amount" optional="hide"/>
+                <field name="total_igv_amount" string="Total IGV RVIE" optional="hide"/>
             </xpath>
         </field>
     </record>
@@ -27,7 +33,7 @@
         <field name="inherit_id" ref="l10n_pe_sire_core.view_sire_import_batch_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='duplicate_rows']/../.." position="after">
-                <group string="Totales RCE">
+                <group string="Totales RCE" invisible="registry_type != 'rce'">
                     <field name="total_taxable_base_dg"/>
                     <field name="total_igv_dg"/>
                     <field name="total_taxable_base_dgng"/>
@@ -40,12 +46,12 @@
                     <field name="total_other_tax_amount"/>
                     <field name="total_document_amount"/>
                 </group>
-                <group string="Totales RVIE">
+                <group string="Totales RVIE" invisible="registry_type != 'rvie'">
                     <field name="total_export_amount"/>
-                    <field name="total_taxable_base"/>
+                    <field name="total_taxable_base" string="Total BI RVIE"/>
                     <field name="total_exempt_amount"/>
                     <field name="total_unaffected_amount"/>
-                    <field name="total_igv_amount"/>
+                    <field name="total_igv_amount" string="Total IGV RVIE"/>
                     <field name="total_document_amount"/>
                 </group>
             </xpath>

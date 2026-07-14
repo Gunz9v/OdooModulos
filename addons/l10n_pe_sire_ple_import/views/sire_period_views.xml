@@ -5,11 +5,13 @@
         <field name="model">sire.period</field>
         <field name="inherit_id" ref="l10n_pe_sire_api.view_sire_period_form_sire_api"/>
         <field name="arch" type="xml">
-            <xpath expr="//header/button[@name='action_accept_sunat_proposal']" position="after">
+            <xpath expr="//header/button[@name='action_sync_sunat_proposal']" position="after">
                 <button name="action_open_sunat_proposal_import_wizard" type="object" string="Importar propuesta SUNAT" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="1"/>
-                <button name="action_run_sales_reconciliation" type="object" string="Conciliar RVIE" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rvie'"/>
+                <button name="action_run_sales_reconciliation" type="object" string="Generar Conciliacion" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rvie'"/>
+                <button name="action_open_sales_reconciliation" type="object" string="Visualizar Conciliacion" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rvie'"/>
                 <button name="action_open_sunat_proposal_import_wizard" type="object" string="Importar propuesta SUNAT RCE" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="1"/>
-                <button name="action_run_purchase_reconciliation" type="object" string="Conciliar RCE" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rce'"/>
+                <button name="action_run_purchase_reconciliation" type="object" string="Generar Conciliacion" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rce'"/>
+                <button name="action_open_purchase_reconciliation" type="object" string="Visualizar Conciliacion" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="registry_type != 'rce'"/>
                 <button name="action_generate_structures" type="object" string="Generar Estructuras" class="btn-primary" groups="l10n_pe_sire_core.group_sire_analyst"/>
             </xpath>
             <xpath expr="//field[@name='system_only_count']/.." position="after">
@@ -46,77 +48,23 @@
                 </group>
             </xpath>
             <xpath expr="//field[@name='import_batch_ids']/list/field[@name='valid_rows']" position="after">
-                <field name="total_taxable_base_dg" optional="hide"/>
-                <field name="total_igv_dg" optional="hide"/>
-                <field name="total_taxable_base_dgng" optional="hide"/>
-                <field name="total_igv_dgng" optional="hide"/>
-                <field name="total_taxable_base_dng" optional="hide"/>
-                <field name="total_igv_dng" optional="hide"/>
-                <field name="total_non_taxed_amount" optional="hide"/>
-                <field name="total_isc_amount" optional="hide"/>
-                <field name="total_icbper_amount" optional="hide"/>
-                <field name="total_other_tax_amount" optional="hide"/>
+                <field name="registry_type" column_invisible="1"/>
+                <field name="total_taxable_base_dg" optional="show" column_invisible="parent.registry_type != 'rce'"/>
+                <field name="total_igv_dg" optional="show" column_invisible="parent.registry_type != 'rce'"/>
+                <field name="total_taxable_base_dgng" optional="hide" column_invisible="parent.registry_type != 'rce'"/>
+                <field name="total_igv_dgng" optional="hide" column_invisible="parent.registry_type != 'rce'"/>
+                <field name="total_taxable_base_dng" optional="hide" column_invisible="parent.registry_type != 'rce'"/>
+                <field name="total_igv_dng" optional="hide" column_invisible="parent.registry_type != 'rce'"/>
+                <field name="total_non_taxed_amount" optional="hide" column_invisible="parent.registry_type != 'rce'"/>
+                <field name="total_isc_amount" optional="hide" column_invisible="parent.registry_type != 'rce'"/>
+                <field name="total_icbper_amount" optional="hide" column_invisible="parent.registry_type != 'rce'"/>
+                <field name="total_other_tax_amount" optional="hide" column_invisible="parent.registry_type != 'rce'"/>
                 <field name="total_document_amount" optional="show"/>
-                <field name="total_export_amount" optional="hide"/>
-                <field name="total_taxable_base" optional="hide"/>
-                <field name="total_exempt_amount" optional="hide"/>
-                <field name="total_unaffected_amount" optional="hide"/>
-                <field name="total_igv_amount" optional="hide"/>
-            </xpath>
-            <xpath expr="//notebook" position="inside">
-                <page string="Conciliacion RCE" invisible="registry_type != 'rce'">
-                    <field name="purchase_reconciliation_line_ids" readonly="1">
-                        <list decoration-success="status == 'matched'" decoration-warning="status == 'difference'" decoration-danger="status in ('system_only', 'sunat_only')">
-                            <field name="status"/>
-                            <field name="normalized_key"/>
-                            <field name="taxable_base_dg_has_diff" column_invisible="1"/>
-                            <field name="igv_dg_has_diff" column_invisible="1"/>
-                            <field name="total_has_diff" column_invisible="1"/>
-                            <field name="accounting_series"/>
-                            <field name="accounting_number"/>
-                            <field name="sunat_series"/>
-                            <field name="sunat_number"/>
-                            <field name="sunat_car_sunat"/>
-                            <field name="accounting_supplier_document_number"/>
-                            <field name="sunat_supplier_document_number"/>
-                            <field name="accounting_taxable_base_dg"/>
-                            <field name="sunat_taxable_base_dg" decoration-danger="taxable_base_dg_has_diff"/>
-                            <field name="accounting_igv_dg"/>
-                            <field name="sunat_igv_dg" decoration-danger="igv_dg_has_diff"/>
-                            <field name="accounting_total_amount"/>
-                            <field name="sunat_total_amount" decoration-danger="total_has_diff"/>
-                            <field name="total_diff" decoration-danger="total_has_diff"/>
-                            <field name="difference_summary" optional="hide"/>
-                        </list>
-                    </field>
-                </page>
-                <page string="Conciliacion" invisible="registry_type != 'rvie'">
-                    <field name="sales_reconciliation_line_ids" readonly="1">
-                        <list decoration-success="status == 'matched'" decoration-warning="status == 'difference'" decoration-danger="status in ('system_only', 'sunat_only')">
-                            <field name="status"/>
-                            <field name="normalized_key"/>
-                            <field name="taxable_base_has_diff" column_invisible="1"/>
-                            <field name="igv_has_diff" column_invisible="1"/>
-                            <field name="total_has_diff" column_invisible="1"/>
-                            <field name="accounting_series"/>
-                            <field name="accounting_number"/>
-                            <field name="sunat_series"/>
-                            <field name="sunat_number"/>
-                            <field name="accounting_customer_document_number"/>
-                            <field name="sunat_customer_document_number"/>
-                            <field name="accounting_exchange_rate"/>
-                            <field name="sunat_exchange_rate"/>
-                            <field name="accounting_taxable_base"/>
-                            <field name="sunat_taxable_base" decoration-danger="taxable_base_has_diff"/>
-                            <field name="accounting_igv_amount"/>
-                            <field name="sunat_igv_amount" decoration-danger="igv_has_diff"/>
-                            <field name="accounting_total_amount"/>
-                            <field name="sunat_total_amount" decoration-danger="total_has_diff"/>
-                            <field name="total_diff" decoration-danger="total_has_diff"/>
-                            <field name="difference_summary" optional="hide"/>
-                        </list>
-                    </field>
-                </page>
+                <field name="total_export_amount" optional="hide" column_invisible="parent.registry_type != 'rvie'"/>
+                <field name="total_taxable_base" optional="show" column_invisible="parent.registry_type != 'rvie'"/>
+                <field name="total_exempt_amount" optional="hide" column_invisible="parent.registry_type != 'rvie'"/>
+                <field name="total_unaffected_amount" optional="hide" column_invisible="parent.registry_type != 'rvie'"/>
+                <field name="total_igv_amount" optional="show" column_invisible="parent.registry_type != 'rvie'"/>
             </xpath>
         </field>
     </record>

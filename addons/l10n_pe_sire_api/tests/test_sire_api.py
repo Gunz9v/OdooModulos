@@ -77,8 +77,48 @@ class TestSireApi(TransactionCase):
         self.assertEqual(ticket.process_type, "request_proposal")
         self.assertEqual(ticket.ticket_number, "20230300000001")
         self.assertEqual(period.state, "proposal_requested")
-        self.assertIn("fecDocumentoDesde=01%2F05%2F2097", request.call_args[0][1])
-        self.assertIn("fecDocumentoHasta=31%2F05%2F2097", request.call_args[0][1])
+        self.assertIn("/v1/contribuyente/migeigv/libros/rvie/propuesta/web/propuesta/209705/exportapropuesta", request.call_args[0][1])
+        self.assertIn("codTipoArchivo=0", request.call_args[0][1])
+        self.assertNotIn("fecDocumentoDesde", request.call_args[0][1])
+        self.assertNotIn("fecDocumentoHasta", request.call_args[0][1])
+
+    def test_request_rvie_proposal_adopts_existing_ticket_from_sunat_42209(self):
+        self.company.write(
+            {
+                "sire_access_token": "abc",
+                "sire_token_expiration": False,
+            }
+        )
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2097,
+                "month": "06",
+            }
+        )
+        response = Mock()
+        response.status_code = 422
+        response.text = (
+            '{"cod":422,"msg":"Unprocessable Entity","errors":[{"cod":42209,'
+            '"msg":"Estimado contribuyente aun tiene un proceso de \\"Generar archivo exportar propuesta\\" '
+            'en curso con Ticket: 20260300004478 y Fecha Envio: 14/07/2026 11:27:36"}]}'
+        )
+        response.content = response.text.encode()
+        response.headers = {"Content-Type": "application/json"}
+
+        with patch(
+            "odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.request",
+            return_value=response,
+        ):
+            ticket = self.env["sire.api.client"].request_proposal(period)
+
+        self.assertEqual(ticket.ticket_number, "20260300004478")
+        self.assertEqual(ticket.process_type, "request_proposal")
+        self.assertEqual(ticket.sunat_process_code, "10")
+        self.assertEqual(ticket.sunat_book_code, "140000")
+        self.assertEqual(ticket.state, "sent")
+        self.assertEqual(period.sunat_proposal_id.ticket_number, "20260300004478")
 
     def test_request_rce_proposal_uses_purchase_endpoint(self):
         self.company.write(

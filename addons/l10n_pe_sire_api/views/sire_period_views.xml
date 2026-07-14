@@ -7,6 +7,8 @@
         <field name="arch" type="xml">
             <xpath expr="//header/button[@name='action_open_import_wizard']" position="after">
                 <button name="action_sync_sunat_proposal" type="object" string="Sincronizar propuesta SUNAT" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst"/>
+            </xpath>
+            <xpath expr="//header/field[@name='state']" position="after">
                 <button name="action_accept_sunat_proposal" type="object" string="Aceptar propuesta" class="btn-primary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="decision_type != 'accept'"/>
             </xpath>
             <xpath expr="//notebook" position="inside">

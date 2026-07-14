@@ -14,6 +14,7 @@
         "security/ir.model.access.csv",
         "views/menu_views.xml",
         "views/sire_period_views.xml",
+        "views/sire_period_server_actions.xml",
         "views/sire_import_batch_views.xml",
     ],
     "application": True,

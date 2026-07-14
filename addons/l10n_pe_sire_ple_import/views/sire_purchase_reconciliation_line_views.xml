@@ -8,6 +8,7 @@
                 <field name="period_id" optional="hide"/>
                 <field name="status"/>
                 <field name="normalized_key" optional="hide"/>
+                <field name="accounting_cuo" optional="hide"/>
                 <field name="issue_date_diff" column_invisible="1"/>
                 <field name="currency_diff" column_invisible="1"/>
                 <field name="taxable_base_dg_has_diff" column_invisible="1"/>
@@ -71,6 +72,7 @@
                     <group string="Comprobante">
                         <group string="Contable">
                             <field name="accounting_issue_date"/>
+                            <field name="accounting_cuo"/>
                             <field name="accounting_document_type"/>
                             <field name="accounting_series"/>
                             <field name="accounting_purchase_year"/>
@@ -145,6 +147,7 @@
             <search>
                 <field name="period_id"/>
                 <field name="normalized_key"/>
+                <field name="accounting_cuo"/>
                 <field name="sunat_car_sunat"/>
                 <field name="accounting_supplier_document_number"/>
                 <field name="sunat_supplier_document_number"/>
@@ -173,5 +176,7 @@
         <field name="search_view_id" ref="view_sire_purchase_reconciliation_line_search"/>
     </record>
 
-    <menuitem id="menu_sire_purchase_reconciliation_lines" name="Conciliacion" parent="l10n_pe_sire_core.menu_sire_purchases" action="action_sire_purchase_reconciliation_line" sequence="40"/>
+    <record id="menu_sire_purchase_reconciliation_lines" model="ir.ui.menu">
+        <field name="active">False</field>
+    </record>
 </odoo>

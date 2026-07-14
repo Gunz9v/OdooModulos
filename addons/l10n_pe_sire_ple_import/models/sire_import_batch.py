@@ -9,6 +9,11 @@ class SireImportBatch(models.Model):
         string="Moneda de compania",
         readonly=True,
     )
+    registry_type = fields.Selection(
+        related="period_id.registry_type",
+        string="Tipo de registro",
+        readonly=True,
+    )
     total_export_amount = fields.Monetary(
         string="Total exportacion",
         currency_field="company_currency_id",

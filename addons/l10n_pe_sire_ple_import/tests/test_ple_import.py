@@ -482,8 +482,8 @@ class TestPleImport(TransactionCase):
             {
                 "company_id": self.company.id,
                 "registry_type": "rvie",
-                "year": 2026,
-                "month": "06",
+                "year": 2098,
+                "month": "04",
             }
         )
         wizard = self.env["sire.ple.import.wizard"].create(
@@ -536,7 +536,7 @@ class TestPleImport(TransactionCase):
             {
                 "company_id": self.company.id,
                 "registry_type": "rvie",
-                "year": 2026,
+                "year": 2098,
                 "month": "06",
             }
         )

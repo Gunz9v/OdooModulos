@@ -1,11 +1,27 @@
-from odoo import api, fields, models
-from odoo.exceptions import ValidationError
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
+
+
+SIRE_PERIOD_STATES = [
+    ("draft", "Borrador"),
+    ("file_imported", "Archivo importado"),
+    ("proposal_requested", "Propuesta solicitada"),
+    ("proposal_downloaded", "Propuesta descargada"),
+    ("reconciled", "Conciliado"),
+    ("under_review", "En revision"),
+    ("ready_to_submit", "Listo para enviar"),
+    ("preliminary_generated", "Preliminar generado"),
+    ("pending_sunat_confirmation", "Pendiente SUNAT"),
+    ("closed", "Cerrado"),
+    ("error", "Error"),
+]
 
 
 class SirePeriod(models.Model):
     _name = "sire.period"
     _description = "Periodo SIRE"
     _inherit = ["mail.thread", "mail.activity.mixin"]
+    _rec_name = "period_code"
     _order = "period_code desc, registry_type, company_id"
 
     company_id = fields.Many2one(
@@ -40,23 +56,16 @@ class SirePeriod(models.Model):
         tracking=True,
     )
     state = fields.Selection(
-        [
-            ("draft", "Borrador"),
-            ("file_imported", "Archivo importado"),
-            ("proposal_requested", "Propuesta solicitada"),
-            ("proposal_downloaded", "Propuesta descargada"),
-            ("reconciled", "Conciliado"),
-            ("under_review", "En revision"),
-            ("ready_to_submit", "Listo para enviar"),
-            ("preliminary_generated", "Preliminar generado"),
-            ("pending_sunat_confirmation", "Pendiente SUNAT"),
-            ("closed", "Cerrado"),
-            ("error", "Error"),
-        ],
+        SIRE_PERIOD_STATES,
         string="Estado",
         default="draft",
         required=True,
         tracking=True,
+    )
+    state_before_validation = fields.Selection(
+        SIRE_PERIOD_STATES,
+        string="Estado anterior de validacion",
+        copy=False,
     )
     decision_type = fields.Selection(
         [
@@ -113,6 +122,65 @@ class SirePeriod(models.Model):
         for period in self:
             if period.year and (period.year < 2000 or period.year > 2100):
                 raise ValidationError("El anio del periodo SIRE no es valido.")
+
+    def unlink(self):
+        locked_periods = self.filtered(lambda period: period.state in ("closed", "error"))
+        if locked_periods:
+            names = ", ".join(locked_periods.mapped("period_code"))
+            raise UserError(
+                _("No se puede eliminar un periodo SIRE en estado Cerrado o Error: %s.") % names
+            )
+        return super().unlink()
+
+    def action_server_set_closed_or_error(self):
+        for period in self:
+            next_state = "error" if period.state == "closed" else "closed"
+            values = {"state": next_state}
+            if period.state not in ("closed", "error"):
+                values["state_before_validation"] = period.state
+            if next_state == "closed":
+                values.update(
+                    {
+                        "closed_by": self.env.user.id,
+                        "closed_at": fields.Datetime.now(),
+                    }
+                )
+            period.write(values)
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Validacion aplicada"),
+                "message": _("Los periodos seleccionados fueron enviados a Cerrado/Error."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
+
+    def action_server_restore_previous_state(self):
+        missing_previous = self.filtered(lambda period: not period.state_before_validation)
+        if missing_previous:
+            names = ", ".join(missing_previous.mapped("period_code"))
+            raise UserError(_("No hay estado anterior guardado para: %s.") % names)
+        for period in self:
+            period.write(
+                {
+                    "state": period.state_before_validation,
+                    "state_before_validation": False,
+                    "closed_by": False,
+                    "closed_at": False,
+                }
+            )
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Estado restaurado"),
+                "message": _("Los periodos seleccionados volvieron a su estado anterior."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
 
     def action_open_import_wizard(self):
         self.ensure_one()

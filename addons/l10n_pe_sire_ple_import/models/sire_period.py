@@ -1017,6 +1017,29 @@ class SirePeriod(models.Model):
             )
         )
         return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Conciliacion RCE generada"),
+                "message": _(
+                    "%s coincidentes, %s con diferencias, %s solo sistema, %s solo SUNAT."
+                )
+                % (
+                    self.matched_count,
+                    self.difference_count,
+                    self.system_only_count,
+                    self.sunat_only_count,
+                ),
+                "type": "success",
+                "sticky": False,
+            },
+        }
+
+    def action_open_purchase_reconciliation(self):
+        self.ensure_one()
+        if self.registry_type != "rce":
+            raise UserError(_("La conciliacion de compras corresponde a RCE."))
+        return {
             "type": "ir.actions.act_window",
             "name": "Conciliacion RCE",
             "res_model": "sire.purchase.reconciliation.line",
@@ -1109,6 +1132,29 @@ class SirePeriod(models.Model):
                 self.sunat_only_count,
             )
         )
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Conciliacion RVIE generada"),
+                "message": _(
+                    "%s coincidentes, %s con diferencias, %s solo sistema, %s solo SUNAT."
+                )
+                % (
+                    self.matched_count,
+                    self.difference_count,
+                    self.system_only_count,
+                    self.sunat_only_count,
+                ),
+                "type": "success",
+                "sticky": False,
+            },
+        }
+
+    def action_open_sales_reconciliation(self):
+        self.ensure_one()
+        if self.registry_type != "rvie":
+            raise UserError(_("La conciliacion implementada corresponde a RVIE."))
         return {
             "type": "ir.actions.act_window",
             "name": "Conciliacion RVIE",

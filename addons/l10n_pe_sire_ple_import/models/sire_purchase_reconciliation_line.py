@@ -34,6 +34,7 @@ class SirePurchaseReconciliationLine(models.Model):
     )
 
     accounting_car_sunat = fields.Char(related="accounting_line_id.car_sunat", string="CAR contable")
+    accounting_cuo = fields.Char(related="accounting_line_id.cuo", string="CUO contable")
     sunat_car_sunat = fields.Char(related="sunat_line_id.car_sunat", string="CAR SUNAT")
     accounting_record_state = fields.Char(related="accounting_line_id.record_state", string="Estado contable")
     sunat_record_state = fields.Char(related="sunat_line_id.record_state", string="Estado SUNAT")

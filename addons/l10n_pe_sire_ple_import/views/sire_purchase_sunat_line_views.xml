@@ -6,22 +6,45 @@
         <field name="arch" type="xml">
             <list>
                 <field name="period_id"/>
-                <field name="proposal_id"/>
+                <field name="proposal_id" column_invisible="1"/>
                 <field name="source_line_number"/>
                 <field name="issue_date"/>
+                <field name="due_date" optional="hide"/>
                 <field name="document_type"/>
                 <field name="series"/>
-                <field name="purchase_year"/>
+                <field name="purchase_year" string="Año DUA" optional="hide"/>
                 <field name="number"/>
+                <field name="final_number" optional="hide"/>
                 <field name="car_sunat"/>
-                <field name="record_state"/>
+                <field name="record_state" string="Estado comprobante" optional="hide"/>
+                <field name="supplier_document_type" optional="hide"/>
                 <field name="supplier_document_number"/>
                 <field name="supplier_name"/>
                 <field name="currency_code"/>
+                <field name="exchange_rate" optional="hide"/>
                 <field name="taxable_base_dg"/>
                 <field name="igv_dg"/>
+                <field name="taxable_base_dgng" optional="hide"/>
+                <field name="igv_dgng" optional="hide"/>
+                <field name="taxable_base_dng" optional="hide"/>
+                <field name="igv_dng" optional="hide"/>
                 <field name="non_taxed_amount"/>
+                <field name="isc_amount" optional="hide"/>
+                <field name="icbper_amount" optional="hide"/>
+                <field name="other_tax_amount" optional="hide"/>
+                <field name="deduction_amount" optional="hide"/>
                 <field name="total_amount"/>
+                <field name="original_document_date" optional="hide"/>
+                <field name="original_document_type" optional="hide"/>
+                <field name="original_document_series" optional="hide"/>
+                <field name="original_document_number" optional="hide"/>
+                <field name="classification" optional="hide"/>
+                <field name="car_original_indicator" optional="hide"/>
+                <field name="deduction_indicator" optional="hide"/>
+                <field name="note_type" optional="hide"/>
+                <field name="inconsistency" optional="hide"/>
+                <field name="normalized_key" optional="hide"/>
+                <field name="source_hash" optional="hide"/>
                 <field name="validation_state"/>
             </list>
         </field>
@@ -36,7 +59,7 @@
                     <group>
                         <group>
                             <field name="period_id"/>
-                            <field name="proposal_id"/>
+                            <field name="proposal_id" invisible="1"/>
                             <field name="batch_id"/>
                             <field name="source_line_number"/>
                             <field name="validation_state"/>
@@ -44,7 +67,7 @@
                         <group>
                             <field name="normalized_key"/>
                             <field name="car_sunat"/>
-                            <field name="record_state"/>
+                            <field name="record_state" string="Estado comprobante" invisible="1"/>
                             <field name="source_hash"/>
                         </group>
                     </group>

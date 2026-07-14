@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_server_sire_period_set_closed_or_error" model="ir.actions.server">
+        <field name="name">Validar bloqueo: pasar a Cerrado/Error</field>
+        <field name="model_id" ref="model_sire_period"/>
+        <field name="binding_model_id" ref="model_sire_period"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_server_set_closed_or_error()</field>
+    </record>
+
+    <record id="action_server_sire_period_restore_previous_state" model="ir.actions.server">
+        <field name="name">Validar bloqueo: restaurar estado anterior</field>
+        <field name="model_id" ref="model_sire_period"/>
+        <field name="binding_model_id" ref="model_sire_period"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_server_restore_previous_state()</field>
+    </record>
+</odoo>

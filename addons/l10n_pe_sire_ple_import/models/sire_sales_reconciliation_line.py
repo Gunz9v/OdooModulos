@@ -36,6 +36,10 @@ class SireSalesReconciliationLine(models.Model):
         related="accounting_line_id.car_sunat",
         string="CAR contable",
     )
+    accounting_cuo = fields.Char(
+        related="accounting_line_id.cuo",
+        string="CUO contable",
+    )
     sunat_car_sunat = fields.Char(
         related="sunat_line_id.car_sunat",
         string="CAR SUNAT",
