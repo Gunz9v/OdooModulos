@@ -43,8 +43,8 @@ class SirePurchaseReconciliationLine(models.Model):
     sunat_document_type = fields.Char(related="sunat_line_id.document_type", string="Tipo CP SUNAT")
     accounting_series = fields.Char(related="accounting_line_id.series", string="Serie contable")
     sunat_series = fields.Char(related="sunat_line_id.series", string="Serie SUNAT")
-    accounting_purchase_year = fields.Char(related="accounting_line_id.purchase_year", string="Anio contable")
-    sunat_purchase_year = fields.Char(related="sunat_line_id.purchase_year", string="Anio SUNAT")
+    accounting_purchase_year = fields.Char(related="accounting_line_id.purchase_year", string="Año DUA contable")
+    sunat_purchase_year = fields.Char(related="sunat_line_id.purchase_year", string="Año DUA")
     accounting_number = fields.Char(related="accounting_line_id.number", string="Numero contable")
     sunat_number = fields.Char(related="sunat_line_id.number", string="Numero SUNAT")
     accounting_supplier_document_number = fields.Char(

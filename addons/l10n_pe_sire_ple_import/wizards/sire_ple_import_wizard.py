@@ -56,6 +56,28 @@ class SirePleImportWizard(models.TransientModel):
             raise ValidationError(_("El archivo 14.1 corresponde a RVIE, no a RCE."))
         if parsed_file.filename_info.registry_kind == "purchase" and self.period_id.registry_type != "rce":
             raise ValidationError(_("El archivo 8.1 corresponde a RCE, no a RVIE."))
+        self._validate_file_period(parsed_file)
+
+    def _validate_file_period(self, parsed_file):
+        expected_period = self.period_id.period_code
+        found_periods = {parsed_file.filename_info.period_code}
+        found_periods.update(
+            line.normalized.get("period_code")
+            for line in parsed_file.valid_lines
+            if line.normalized.get("period_code")
+        )
+        found_periods.discard("")
+        if found_periods and found_periods != {expected_period}:
+            raise ValidationError(
+                _(
+                    "El archivo corresponde al periodo %(file_period)s, pero el periodo seleccionado es %(period)s. "
+                    "Adjunta el archivo del mismo anio y mes."
+                )
+                % {
+                    "file_period": ", ".join(sorted(found_periods)),
+                    "period": expected_period,
+                }
+            )
 
     def _validate_no_active_accounting_import(self):
         existing = self.period_id.accounting_batch_id

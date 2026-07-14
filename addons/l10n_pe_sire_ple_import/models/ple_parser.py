@@ -91,6 +91,14 @@ def parse_filename(filename):
     )
 
 
+def normalize_period_code(value):
+    value = normalize_empty(value)
+    match = re.match(r"^(?P<year>\d{4})(?P<month>\d{2})", value)
+    if not match:
+        return ""
+    return "%s-%s" % (match.group("year"), match.group("month"))
+
+
 def detect_encoding(content):
     for encoding in ("utf-8-sig", "utf-8", "latin-1"):
         try:
@@ -277,6 +285,7 @@ class Format141Parser:
 
         normalized.update(
             {
+                "period_code": normalize_period_code(values[0]),
                 "cuo": normalize_empty(values[1]),
                 "entry_sequence": normalize_empty(values[2]),
                 "document_type": normalize_empty(values[5]),
@@ -367,6 +376,7 @@ class Format81Parser:
 
         normalized.update(
             {
+                "period_code": normalize_period_code(values[0]),
                 "cuo": normalize_empty(values[1]),
                 "entry_sequence": normalize_empty(values[2]),
                 "document_type": normalize_empty(values[5]),
@@ -457,6 +467,7 @@ class SunatProposalPurchaseParser:
         supplier_document_number = normalize_empty(values[12])
         normalized.update(
             {
+                "period_code": normalize_period_code(values[2]),
                 "cuo": normalize_empty(values[3]),
                 "entry_sequence": normalize_empty(values[3]),
                 "car_sunat": normalize_empty(values[3]),
@@ -578,6 +589,7 @@ class SunatProposalSalesParser:
 
         normalized.update(
             {
+                "period_code": normalize_period_code(values[2]),
                 "cuo": normalize_empty(values[3]),
                 "entry_sequence": normalize_empty(values[3]),
                 "car_sunat": normalize_empty(values[3]),

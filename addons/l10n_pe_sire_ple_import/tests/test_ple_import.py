@@ -45,6 +45,18 @@ class TestPleImport(TransactionCase):
         )
         cls.sunat_content = ("%s\n%s\n" % (cls.sunat_header, cls.sunat_line)).encode("latin-1")
 
+    def _ple_filename(self, year, month, ruc="20123456789"):
+        return "LE%s%s%s00140100001111.txt" % (ruc, year, month)
+
+    def _ple_content(self, year, month):
+        return self.content.replace(b"20260500", ("%s%s00" % (year, month)).encode("ascii"))
+
+    def _sunat_filename(self, year, month):
+        return "LE20100080932%s%s00140400001EXP2.txt" % (year, month)
+
+    def _sunat_content(self, year, month):
+        return self.sunat_content.replace(b"|202605|", ("|%s%s|" % (year, month)).encode("ascii"))
+
     def test_parser_detects_name_encoding_and_normalizes_141(self):
         parsed = PleFileParser().parse(self.filename, self.content)
 
@@ -366,6 +378,7 @@ class TestPleImport(TransactionCase):
         self.assertEqual(sunat.valid_lines[0].normalized["total_amount"], ple.valid_lines[0].normalized["total_amount"])
 
     def test_wizard_imports_141_and_preserves_traceability(self):
+        content = self._ple_content("2098", "01")
         period = self.env["sire.period"].create(
             {
                 "company_id": self.company.id,
@@ -377,8 +390,8 @@ class TestPleImport(TransactionCase):
         wizard = self.env["sire.ple.import.wizard"].create(
             {
                 "period_id": period.id,
-                "filename": self.filename,
-                "file_data": base64.b64encode(self.content),
+                "filename": self._ple_filename("2098", "01"),
+                "file_data": base64.b64encode(content),
             }
         )
 
@@ -389,14 +402,15 @@ class TestPleImport(TransactionCase):
         self.assertEqual(batch.total_rows, 1)
         self.assertEqual(batch.valid_rows, 1)
         self.assertEqual(batch.book_code, "140100")
-        self.assertEqual(batch.file_data, base64.b64encode(self.content))
+        self.assertEqual(batch.file_data, base64.b64encode(content))
         self.assertEqual(period.state, "file_imported")
         self.assertEqual(period.total_accounting_records, 1)
-        self.assertEqual(line.source_raw_text, self.line)
+        self.assertTrue(line.source_raw_text.startswith("20980100|"))
         self.assertEqual(line.series, "F001")
         self.assertEqual(line.total_amount, 118.00)
 
     def test_import_requires_deleting_existing_accounting_batch_before_reimport(self):
+        content = self._ple_content("2098", "11")
         period = self.env["sire.period"].create(
             {
                 "company_id": self.company.id,
@@ -408,8 +422,8 @@ class TestPleImport(TransactionCase):
         first_wizard = self.env["sire.ple.import.wizard"].create(
             {
                 "period_id": period.id,
-                "filename": self.filename,
-                "file_data": base64.b64encode(self.content),
+                "filename": self._ple_filename("2098", "11"),
+                "file_data": base64.b64encode(content),
             }
         )
         first_action = first_wizard.action_import_file()
@@ -417,8 +431,8 @@ class TestPleImport(TransactionCase):
         second_wizard = self.env["sire.ple.import.wizard"].create(
             {
                 "period_id": period.id,
-                "filename": self.filename,
-                "file_data": base64.b64encode(self.content),
+                "filename": self._ple_filename("2098", "11"),
+                "file_data": base64.b64encode(content),
             }
         )
         with self.assertRaises(UserError):
@@ -435,8 +449,8 @@ class TestPleImport(TransactionCase):
         third_wizard = self.env["sire.ple.import.wizard"].create(
             {
                 "period_id": period.id,
-                "filename": self.filename,
-                "file_data": base64.b64encode(self.content),
+                "filename": self._ple_filename("2098", "11"),
+                "file_data": base64.b64encode(content),
             }
         )
         third_action = third_wizard.action_import_file()
@@ -454,14 +468,34 @@ class TestPleImport(TransactionCase):
         wizard = self.env["sire.ple.import.wizard"].create(
             {
                 "period_id": period.id,
-                "filename": "LE2010008093220260500140100001111",
-                "file_data": base64.b64encode(self.content),
+                "filename": self._ple_filename("2098", "02", ruc="20100080932"),
+                "file_data": base64.b64encode(self._ple_content("2098", "02")),
             }
         )
 
         action = wizard.action_import_file()
 
         self.assertTrue(action["res_id"])
+
+    def test_accounting_import_rejects_file_from_other_period(self):
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2026,
+                "month": "06",
+            }
+        )
+        wizard = self.env["sire.ple.import.wizard"].create(
+            {
+                "period_id": period.id,
+                "filename": self.filename,
+                "file_data": base64.b64encode(self.content),
+            }
+        )
+
+        with self.assertRaises(UserError):
+            wizard.action_import_file()
 
     def test_sunat_proposal_wizard_imports_zip(self):
         period = self.env["sire.period"].create(
@@ -472,15 +506,15 @@ class TestPleImport(TransactionCase):
                 "month": "03",
             }
         )
-        txt_name = "LE2010008093220260500140400001EXP2.txt"
+        txt_name = self._sunat_filename("2098", "03")
         zip_buffer = io.BytesIO()
         with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as archive:
-            archive.writestr(txt_name, self.sunat_content)
+            archive.writestr(txt_name, self._sunat_content("2098", "03"))
         zip_content = zip_buffer.getvalue()
         wizard = self.env["sire.sunat.proposal.import.wizard"].create(
             {
                 "period_id": period.id,
-                "filename": "LE2010008093220260500140400001EXP2.zip",
+                "filename": "LE2010008093220980300140400001EXP2.zip",
                 "file_data": base64.b64encode(zip_content),
             }
         )
@@ -497,6 +531,30 @@ class TestPleImport(TransactionCase):
         self.assertEqual(line.series, "F250")
         self.assertEqual(line.total_amount, 2202.32)
 
+    def test_sunat_proposal_import_rejects_content_from_other_period_even_with_generated_zip_name(self):
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2026,
+                "month": "06",
+            }
+        )
+        txt_name = self._sunat_filename("2098", "12")
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+            archive.writestr(txt_name, self._sunat_content("2098", "12"))
+        wizard = self.env["sire.sunat.proposal.import.wizard"].create(
+            {
+                "period_id": period.id,
+                "filename": "20100080932-20260710-111148-propuesta.zip",
+                "file_data": base64.b64encode(zip_buffer.getvalue()),
+            }
+        )
+
+        with self.assertRaises(UserError):
+            wizard.action_import_file()
+
     def test_delete_sunat_import_clears_proposal_lines_and_reconciliation(self):
         period = self.env["sire.period"].create(
             {
@@ -506,15 +564,15 @@ class TestPleImport(TransactionCase):
                 "month": "12",
             }
         )
-        txt_name = "LE2010008093220260500140400001EXP2.txt"
+        txt_name = self._sunat_filename("2098", "12")
         zip_buffer = io.BytesIO()
         with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as archive:
-            archive.writestr(txt_name, self.sunat_content)
+            archive.writestr(txt_name, self._sunat_content("2098", "12"))
         zip_content = zip_buffer.getvalue()
         wizard = self.env["sire.sunat.proposal.import.wizard"].create(
             {
                 "period_id": period.id,
-                "filename": "LE2010008093220260500140400001EXP2.zip",
+                "filename": "LE2010008093220981200140400001EXP2.zip",
                 "file_data": base64.b64encode(zip_content),
             }
         )
@@ -542,7 +600,7 @@ class TestPleImport(TransactionCase):
             self.env["sire.sunat.proposal.import.wizard"].create(
                 {
                     "period_id": period.id,
-                    "filename": "LE2010008093220260500140400001EXP2-v2.zip",
+                    "filename": "LE2010008093220981200140400001EXP2-v2.zip",
                     "file_data": base64.b64encode(zip_content),
                 }
             ).action_import_file()

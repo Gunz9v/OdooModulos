@@ -104,6 +104,28 @@ class SireSunatProposalImportWizard(models.TransientModel):
             raise ValidationError(_("La propuesta importada debe corresponder a RVIE."))
         if parsed_file.filename_info.registry_kind == "purchase" and self.period_id.registry_type != "rce":
             raise ValidationError(_("La propuesta importada debe corresponder a RCE."))
+        self._validate_file_period(parsed_file)
+
+    def _validate_file_period(self, parsed_file):
+        expected_period = self.period_id.period_code
+        found_periods = {parsed_file.filename_info.period_code}
+        found_periods.update(
+            line.normalized.get("period_code")
+            for line in parsed_file.valid_lines
+            if line.normalized.get("period_code")
+        )
+        found_periods.discard("")
+        if found_periods and found_periods != {expected_period}:
+            raise ValidationError(
+                _(
+                    "La propuesta SUNAT corresponde al periodo %(file_period)s, pero el periodo seleccionado es %(period)s. "
+                    "Adjunta o sincroniza la propuesta del mismo anio y mes."
+                )
+                % {
+                    "file_period": ", ".join(sorted(found_periods)),
+                    "period": expected_period,
+                }
+            )
 
     def _validate_no_active_sunat_import(self, existing_proposal=False):
         existing_batch = self.env["sire.import.batch"].search(

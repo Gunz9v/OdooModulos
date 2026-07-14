@@ -7,6 +7,7 @@
             <list>
                 <field name="period_id"/>
                 <field name="source_line_number"/>
+                <field name="cuo"/>
                 <field name="issue_date"/>
                 <field name="document_type"/>
                 <field name="series"/>
@@ -36,6 +37,8 @@
                             <field name="period_id"/>
                             <field name="batch_id"/>
                             <field name="source_line_number"/>
+                            <field name="cuo"/>
+                            <field name="entry_sequence"/>
                             <field name="validation_state"/>
                         </group>
                         <group>
