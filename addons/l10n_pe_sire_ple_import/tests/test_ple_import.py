@@ -555,6 +555,33 @@ class TestPleImport(TransactionCase):
         with self.assertRaises(UserError):
             wizard.action_import_file()
 
+    def test_sunat_proposal_import_uses_content_period_over_generated_filename(self):
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2098,
+                "month": "06",
+            }
+        )
+        txt_name = self._sunat_filename("2098", "07")
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+            archive.writestr(txt_name, self._sunat_content("2098", "06"))
+        wizard = self.env["sire.sunat.proposal.import.wizard"].create(
+            {
+                "period_id": period.id,
+                "filename": "20100080932-20980710-111148-propuesta.zip",
+                "file_data": base64.b64encode(zip_buffer.getvalue()),
+            }
+        )
+
+        action = wizard.action_import_file()
+
+        proposal = self.env["sire.sunat.proposal"].browse(action["res_id"])
+        self.assertEqual(proposal.period_id, period)
+        self.assertEqual(period.total_sunat_records, 1)
+
     def test_delete_sunat_import_clears_proposal_lines_and_reconciliation(self):
         period = self.env["sire.period"].create(
             {

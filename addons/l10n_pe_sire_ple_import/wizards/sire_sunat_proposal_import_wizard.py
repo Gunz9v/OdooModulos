@@ -108,12 +108,12 @@ class SireSunatProposalImportWizard(models.TransientModel):
 
     def _validate_file_period(self, parsed_file):
         expected_period = self.period_id.period_code
-        found_periods = {parsed_file.filename_info.period_code}
-        found_periods.update(
+        content_periods = {
             line.normalized.get("period_code")
             for line in parsed_file.valid_lines
             if line.normalized.get("period_code")
-        )
+        }
+        found_periods = content_periods or {parsed_file.filename_info.period_code}
         found_periods.discard("")
         if found_periods and found_periods != {expected_period}:
             raise ValidationError(

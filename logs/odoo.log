@@ -40187,3 +40187,946 @@ DETAIL:  Key (company_id, period_code, registry_type)=(1, 2026-06, rvie) already
 2026-07-14 18:31:27,130 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:31:27] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.003
 2026-07-14 18:31:27,132 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:31:27] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 3 0.002 0.004
 2026-07-14 18:31:28,701 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:31:28] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.003
+2026-07-14 18:40:52,075 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-07-14 18:40:52,080 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.003s 
+2026-07-14 18:40:52,084 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-07-14 18:40:52,087 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-07-14 18:40:52,097 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-07-14 18:40:52,104 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-07-14 18:40:52,108 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-07-14 18:40:52,112 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-07-14 18:40:52,121 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-07-14 18:40:52,125 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-07-14 18:40:52,129 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-07-14 18:40:52,132 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-07-14 18:40:52,142 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-07-14 18:40:52,147 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.004s 
+2026-07-14 18:40:52,152 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-07-14 18:40:52,157 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-07-14 18:40:52,166 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-07-14 18:40:52,169 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-07-14 18:40:52,174 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-07-14 18:40:52,177 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-07-14 18:48:19,555 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:19] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 23 0.013 0.029
+2026-07-14 18:48:19,658 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:19] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.008 0.011
+2026-07-14 18:48:19,726 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:19] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.007 0.048
+2026-07-14 18:48:23,972 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:23] "POST /web/dataset/call_button/sire.period/action_open_purchase_reconciliation HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-14 18:48:24,016 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:24] "POST /web/dataset/call_kw/sire.purchase.reconciliation.line/get_views HTTP/1.1" 200 - 20 0.008 0.018
+2026-07-14 18:48:24,028 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:24] "POST /web/dataset/call_kw/sire.period/read HTTP/1.1" 200 - 2 0.001 0.002
+2026-07-14 18:48:24,071 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:24] "POST /web/dataset/call_kw/sire.purchase.reconciliation.line/web_search_read HTTP/1.1" 200 - 10 0.006 0.030
+2026-07-14 18:48:26,332 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:26] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 23 0.014 0.030
+2026-07-14 18:48:26,395 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:26] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.006 0.011
+2026-07-14 18:48:26,404 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:26] "POST /mail/thread/messages HTTP/1.1" 200 - 3 0.002 0.004
+2026-07-14 18:48:28,481 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:28] "POST /web/dataset/call_button/sire.period/action_generate_structures HTTP/1.1" 200 - 49 0.029 0.110
+2026-07-14 18:48:28,539 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:28] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 30 0.014 0.030
+2026-07-14 18:48:28,610 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:28] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.008 0.011
+2026-07-14 18:48:28,628 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:28] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.007 0.014
+2026-07-14 18:48:53,617 1 WARNING odoo18 odoo.http: <function odoo.addons.web.controllers.binary.content_common> called ignoring args {'token', 'data'} 
+2026-07-14 18:48:53,620 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:48:53] "POST /web/content HTTP/1.1" 200 - 4 0.001 0.005
+2026-07-14 18:49:12,149 1 WARNING odoo18 odoo.http: <function odoo.addons.web.controllers.binary.content_common> called ignoring args {'token', 'data'} 
+2026-07-14 18:49:12,152 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:49:12] "POST /web/content HTTP/1.1" 200 - 4 0.001 0.005
+2026-07-14 18:50:07,487 1 WARNING odoo18 odoo.http: <function odoo.addons.web.controllers.binary.content_common> called ignoring args {'token', 'data'} 
+2026-07-14 18:50:07,491 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:50:07] "POST /web/content HTTP/1.1" 200 - 4 0.001 0.005
+2026-07-14 18:50:08,049 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:50:08] "GET /web/bundle/web.assets_emoji?lang=es_419&debug=1 HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-14 18:50:08,060 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:50:08] "GET /web/assets/1bcd000/web.assets_emoji.min.js HTTP/1.1" 200 - 3 0.001 0.004
+2026-07-14 18:51:19,467 1 WARNING odoo18 odoo.http: <function odoo.addons.web.controllers.binary.content_common> called ignoring args {'token', 'data'} 
+2026-07-14 18:51:19,470 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 18:51:19] "POST /web/content HTTP/1.1" 200 - 4 0.001 0.005
+2026-07-14 19:26:54,554 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) starting 
+2026-07-14 19:26:54,568 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) done in 0.012s 
+2026-07-14 19:26:54,572 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) processed 0 records, 0 records remaining 
+2026-07-14 19:26:54,575 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) completed 
+2026-07-14 19:40:19,799 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-07-14 19:40:19,803 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-07-14 19:40:19,808 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-07-14 19:40:19,811 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-07-14 19:40:19,820 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-07-14 19:40:19,824 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.004s 
+2026-07-14 19:40:19,828 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-07-14 19:40:19,831 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-07-14 19:40:55,398 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-07-14 19:40:55,404 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-07-14 19:40:55,408 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-07-14 19:40:55,412 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-07-14 19:40:55,421 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-07-14 19:40:55,425 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-07-14 19:40:55,429 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-07-14 19:40:55,433 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-07-14 19:40:55,442 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-07-14 19:40:55,445 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-07-14 19:40:55,449 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-07-14 19:40:55,452 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-07-14 20:40:22,563 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-07-14 20:40:22,568 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-07-14 20:40:22,572 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-07-14 20:40:22,576 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-07-14 20:40:22,585 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-07-14 20:40:22,589 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-07-14 20:40:22,592 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-07-14 20:40:22,596 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-07-14 20:40:22,604 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-07-14 20:40:22,607 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-07-14 20:40:22,611 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-07-14 20:40:22,614 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-07-14 20:40:58,779 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-07-14 20:40:58,786 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-07-14 20:40:58,790 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-07-14 20:40:58,794 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-07-14 20:40:58,802 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-07-14 20:40:58,806 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-07-14 20:40:58,810 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-07-14 20:40:58,814 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-07-14 21:39:01,712 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-07-14 21:39:01,788 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 7 checked, 0 removed 
+2026-07-14 21:39:01,795 1 INFO odoo18 odoo.models.unlink: User #1 deleted ir.cron.progress records with IDs: [524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540] 
+2026-07-14 21:39:01,872 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-07-14 21:39:01,879 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-07-14 21:39:01,884 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 1 entries 
+2026-07-14 21:39:01,889 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-14 21:39:01,900 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-07-14 21:39:01,962 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-07-14 21:39:01,986 1 INFO odoo18 odoo.models.unlink: User #1 deleted ir.attachment records with IDs: [1673] 
+2026-07-14 21:39:01,987 1 INFO odoo18 odoo.models.unlink: User #1 deleted sire.sunat.proposal.import.wizard records with IDs: [85] 
+2026-07-14 21:39:02,008 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.295s 
+2026-07-14 21:39:02,013 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-07-14 21:39:02,016 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2026-07-14 21:39:02,024 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) starting 
+2026-07-14 21:39:02,029 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) done in 0.003s 
+2026-07-14 21:39:02,032 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) processed 0 records, 0 records remaining 
+2026-07-14 21:39:02,035 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) completed 
+2026-07-14 21:40:25,640 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) starting 
+2026-07-14 21:40:25,659 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) done in 0.015s 
+2026-07-14 21:40:25,670 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,680 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) completed 
+2026-07-14 21:40:25,696 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) starting 
+2026-07-14 21:40:25,700 1 INFO odoo18 odoo.addons.mail.models.mail_scheduled_message: Posting 0 scheduled messages 
+2026-07-14 21:40:25,702 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) done in 0.004s 
+2026-07-14 21:40:25,706 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,709 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) completed 
+2026-07-14 21:40:25,719 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-07-14 21:40:25,722 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.002s 
+2026-07-14 21:40:25,727 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,730 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-07-14 21:40:25,740 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) starting 
+2026-07-14 21:40:25,744 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) done in 0.003s 
+2026-07-14 21:40:25,748 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,751 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) completed 
+2026-07-14 21:40:25,760 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) starting 
+2026-07-14 21:40:25,763 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) done in 0.002s 
+2026-07-14 21:40:25,767 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,770 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) completed 
+2026-07-14 21:40:25,778 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) starting 
+2026-07-14 21:40:25,781 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) done in 0.002s 
+2026-07-14 21:40:25,785 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,788 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) completed 
+2026-07-14 21:40:25,797 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-07-14 21:40:25,803 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.005s 
+2026-07-14 21:40:25,807 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,809 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-07-14 21:40:25,818 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-07-14 21:40:25,821 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.002s 
+2026-07-14 21:40:25,825 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,828 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-07-14 21:40:25,836 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-07-14 21:40:25,840 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-07-14 21:40:25,844 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,847 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-07-14 21:40:25,855 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) starting 
+2026-07-14 21:40:25,862 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) done in 0.006s 
+2026-07-14 21:40:25,866 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,869 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) completed 
+2026-07-14 21:40:25,877 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-07-14 21:40:25,880 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-07-14 21:40:25,883 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-07-14 21:40:25,886 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-07-14 21:41:02,183 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) starting 
+2026-07-14 21:41:02,198 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) done in 0.012s 
+2026-07-14 21:41:02,206 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) processed 0 records, 0 records remaining 
+2026-07-14 21:41:02,212 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) completed 
+2026-07-14 22:25:10,271 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (cvPiOXwmQITgtHYoYfYmNGCaClECd-xvY12GLux86G) 
+2026-07-14 22:25:10,296 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:10] "GET /odoo/action-210?debug=1 HTTP/1.1" 200 - 23 0.008 0.020
+2026-07-14 22:25:11,024 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 7 0.004 0.006
+2026-07-14 22:25:11,030 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 3 0.002 0.005
+2026-07-14 22:25:11,162 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "POST /web/action/load HTTP/1.1" 200 - 10 0.015 0.055
+2026-07-14 22:25:11,166 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.015 0.062
+2026-07-14 22:25:11,168 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 5 0.011 0.068
+2026-07-14 22:25:11,177 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.001 0.009
+2026-07-14 22:25:11,181 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "POST /mail/data HTTP/1.1" 200 - 17 0.022 0.032
+2026-07-14 22:25:11,249 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "POST /web/dataset/call_kw/employee.document.file/get_views HTTP/1.1" 200 - 43 0.026 0.044
+2026-07-14 22:25:11,272 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.002 0.004
+2026-07-14 22:25:11,283 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:11] "POST /web/dataset/call_kw/employee.document.file/web_read_group HTTP/1.1" 200 - 8 0.007 0.011
+2026-07-14 22:25:12,010 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 22:25:12] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.003
+2026-07-14 22:40:28,735 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-07-14 22:40:28,740 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-07-14 22:40:28,745 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-07-14 22:40:28,748 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-07-14 22:40:28,756 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-07-14 22:40:28,764 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.007s 
+2026-07-14 22:40:28,769 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-07-14 22:40:28,772 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-07-14 22:40:28,781 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-07-14 22:40:28,784 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.002s 
+2026-07-14 22:40:28,788 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-07-14 22:40:28,791 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-07-14 22:40:28,800 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-07-14 22:40:28,804 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-07-14 22:40:28,808 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-07-14 22:40:28,811 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-07-14 22:40:28,820 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-07-14 22:40:28,823 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-07-14 22:40:28,828 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-07-14 22:40:28,831 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-07-14 23:21:00,795 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:00] "POST /web/action/load HTTP/1.1" 200 - 11 0.004 0.006
+2026-07-14 23:21:00,930 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:00] "POST /web/dataset/call_kw/hr.employee/get_views HTTP/1.1" 200 - 76 0.027 0.095
+2026-07-14 23:21:00,958 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:00] "POST /web/dataset/call_kw/hr.employee/search_panel_select_range HTTP/1.1" 200 - 13 0.010 0.010
+2026-07-14 23:21:00,991 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:00] "POST /web/dataset/call_kw/hr.employee/web_search_read HTTP/1.1" 200 - 30 0.022 0.028
+2026-07-14 23:21:01,083 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:01] "GET /web/image/res.users/6/avatar_128 HTTP/1.1" 200 - 9 0.009 0.019
+2026-07-14 23:21:01,083 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:01] "GET /web/image/res.users/2/avatar_128 HTTP/1.1" 200 - 9 0.012 0.018
+2026-07-14 23:21:01,117 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:01] "GET /web/image/hr.employee/2/image_128?unique=1782488390000 HTTP/1.1" 200 - 12 0.025 0.017
+2026-07-14 23:21:01,118 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:01] "GET /web/image/hr.employee/3/image_128?unique=1782329181000 HTTP/1.1" 200 - 12 0.027 0.032
+2026-07-14 23:21:01,119 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:01] "GET /web/image/hr.employee/1/image_128?unique=1782936678000 HTTP/1.1" 200 - 11 0.029 0.025
+2026-07-14 23:21:02,568 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:02] "POST /web/action/load HTTP/1.1" 200 - 9 0.002 0.005
+2026-07-14 23:21:02,597 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:02] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 2 0.001 0.009
+2026-07-14 23:21:02,608 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:02] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 3 0.001 0.003
+2026-07-14 23:21:03,920 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:03] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 3 0.001 0.004
+2026-07-14 23:21:04,606 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:04] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 30 0.014 0.030
+2026-07-14 23:21:04,706 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:04] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.006 0.012
+2026-07-14 23:21:04,777 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:21:04] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.008 0.045
+2026-07-14 23:25:07,079 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-07-14 23:25:07,080 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-07-14 23:25:07,616 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 6 connections  
+2026-07-14 23:25:09,023 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-07-14 23:25:09,024 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-07-14 23:25:09,025 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/extra-addons'] 
+2026-07-14 23:25:09,026 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-07-14 23:25:09,181 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-07-14 23:25:09,188 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-07-14 23:25:09,327 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0d267431375d:8069 
+2026-07-14 23:25:11,716 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-07-14 23:25:11,723 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-07-14 23:25:11,831 1 INFO ? odoo.modules.loading: loading 48 modules... 
+2026-07-14 23:25:12,653 1 INFO ? odoo.modules.loading: 48 modules loaded in 0.82s, 0 queries (+0 extra) 
+2026-07-14 23:25:12,715 1 WARNING ? odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-14 23:25:12,727 1 WARNING ? odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-14 23:25:12,787 1 INFO ? odoo.modules.loading: Modules loaded. 
+2026-07-14 23:25:12,791 1 INFO ? odoo.modules.registry: Registry loaded in 1.090s 
+2026-07-14 23:25:12,794 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-14 23:25:12,809 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (cvPiOXwmQITgtHYoYfYmNGCaClECd-xvY12GLux86G) 
+2026-07-14 23:25:12,820 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:25:12] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 21 0.012 1.107
+2026-07-14 23:25:12,840 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:25:12] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-14 23:25:13,153 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-07-14 23:25:23,144 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:25:23] "GET /web HTTP/1.1" 303 - 5 0.003 0.012
+2026-07-14 23:25:23,893 1 INFO odoo18 werkzeug: 172.19.0.1 - - [14/Jul/2026 23:25:23] "GET /web/login?redirect=/web? HTTP/1.1" 200 - 60 0.020 0.723
+2026-07-14 23:26:09,424 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-07-14 23:26:09,444 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-14 23:26:09,451 1 INFO odoo18 odoo.models.unlink: User #1 deleted ir.cron.progress records with IDs: [541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562] 
+2026-07-14 23:26:09,523 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-07-14 23:26:09,530 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-07-14 23:26:09,535 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 2 entries 
+2026-07-14 23:26:09,539 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-14 23:26:09,551 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-07-14 23:26:09,610 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-07-14 23:26:09,646 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.221s 
+2026-07-14 23:26:09,650 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-07-14 23:26:09,653 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2026-07-14 23:40:25,306 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-07-14 23:40:25,310 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-07-14 23:40:25,315 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-07-14 23:40:25,318 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-07-14 23:40:25,326 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-07-14 23:40:25,333 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-07-14 23:40:25,337 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-07-14 23:40:25,339 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-07-14 23:40:25,348 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-07-14 23:40:25,352 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-07-14 23:40:25,356 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-07-14 23:40:25,359 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-07-14 23:40:25,368 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) starting 
+2026-07-14 23:40:25,371 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) done in 0.002s 
+2026-07-14 23:40:25,375 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) processed 0 records, 0 records remaining 
+2026-07-14 23:40:25,379 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) completed 
+2026-07-14 23:40:25,388 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-07-14 23:40:25,392 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-07-14 23:40:25,396 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-07-14 23:40:25,399 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-07-14 23:40:25,407 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-07-14 23:40:25,410 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-07-14 23:40:25,414 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-07-14 23:40:25,417 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-07-15 13:36:01,233 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-07-15 13:36:01,235 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-07-15 13:36:01,235 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/extra-addons'] 
+2026-07-15 13:36:01,236 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-07-15 13:36:01,724 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-07-15 13:36:01,964 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-07-15 13:36:02,804 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0d267431375d:8069 
+2026-07-15 13:41:53,221 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-07-15 13:41:53,229 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-07-15 13:41:53,566 1 INFO ? odoo.modules.loading: loading 48 modules... 
+2026-07-15 13:41:55,409 1 INFO ? odoo.modules.loading: 48 modules loaded in 1.84s, 0 queries (+0 extra) 
+2026-07-15 13:41:55,504 1 WARNING ? odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:41:55,516 1 WARNING ? odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:41:55,569 1 INFO ? odoo.modules.loading: Modules loaded. 
+2026-07-15 13:41:55,578 1 INFO ? odoo.modules.registry: Registry loaded in 2.462s 
+2026-07-15 13:41:55,580 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-15 13:41:55,607 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (cvPiOXwmQITgtHYoYfYmNGCaClECd-xvY12GLux86G) 
+2026-07-15 13:41:58,113 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "GET /odoo/action-210?debug=1 HTTP/1.1" 200 - 128 0.275 4.722
+2026-07-15 13:41:58,304 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.005 0.004
+2026-07-15 13:41:58,311 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 4 0.003 0.004
+2026-07-15 13:41:58,389 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 11 0.004 0.017
+2026-07-15 13:41:58,414 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 16 0.015 0.030
+2026-07-15 13:41:58,452 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.007 0.030
+2026-07-15 13:41:58,544 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "POST /web/action/load HTTP/1.1" 200 - 11 0.021 0.151
+2026-07-15 13:41:58,552 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "POST /mail/data HTTP/1.1" 200 - 27 0.139 0.013
+2026-07-15 13:41:58,611 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "POST /web/dataset/call_kw/employee.document.file/get_views HTTP/1.1" 200 - 50 0.029 0.032
+2026-07-15 13:41:58,626 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.001 0.003
+2026-07-15 13:41:58,639 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:41:58] "POST /web/dataset/call_kw/employee.document.file/web_read_group HTTP/1.1" 200 - 8 0.009 0.008
+2026-07-15 13:41:58,773 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-07-15 13:42:00,257 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:00] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.015
+2026-07-15 13:42:01,131 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:01] "POST /web/action/load HTTP/1.1" 200 - 9 0.004 0.005
+2026-07-15 13:42:01,205 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:01] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 54 0.024 0.030
+2026-07-15 13:42:01,218 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:01] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 4 0.003 0.003
+2026-07-15 13:42:03,098 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-07-15 13:42:03,102 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.003s 
+2026-07-15 13:42:03,107 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-07-15 13:42:03,109 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-07-15 13:42:03,118 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-07-15 13:42:03,130 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.011s 
+2026-07-15 13:42:03,134 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-07-15 13:42:03,136 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-07-15 13:42:03,144 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-07-15 13:42:03,149 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.004s 
+2026-07-15 13:42:03,153 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-07-15 13:42:03,156 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-07-15 13:42:03,164 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-07-15 13:42:03,171 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.006s 
+2026-07-15 13:42:03,174 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-07-15 13:42:03,177 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-07-15 13:42:03,184 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-07-15 13:42:03,187 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-07-15 13:42:03,190 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-07-15 13:42:03,192 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-07-15 13:42:03,674 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:03] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.004
+2026-07-15 13:42:03,698 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:03] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 2 0.001 0.009
+2026-07-15 13:42:03,708 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:03] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 3 0.001 0.003
+2026-07-15 13:42:14,746 1 INFO odoo18 odoo.models.unlink: User #2 deleted mail.message records with IDs: [3311, 3310, 3309, 3088] 
+2026-07-15 13:42:14,797 1 INFO odoo18 odoo.models.unlink: User #2 deleted sire.period records with IDs: [1009] 
+2026-07-15 13:42:15,312 1 INFO odoo18 odoo.models.unlink: User #2 deleted mail.followers records with IDs: [189] 
+2026-07-15 13:42:15,317 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:15] "POST /web/dataset/call_kw/sire.period/unlink HTTP/1.1" 200 - 33 0.081 0.517
+2026-07-15 13:42:15,327 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:15] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 3 0.001 0.003
+2026-07-15 13:42:19,583 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:19] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 3 0.002 0.004
+2026-07-15 13:42:20,032 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:20] "POST /web/dataset/call_kw/sire.period/onchange HTTP/1.1" 200 - 3 0.002 0.007
+2026-07-15 13:42:23,576 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:23] "POST /web/dataset/call_kw/sire.period/onchange HTTP/1.1" 200 - 1 0.000 0.003
+2026-07-15 13:42:24,880 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:24] "POST /web/dataset/call_kw/sire.period/onchange HTTP/1.1" 200 - 1 0.000 0.003
+2026-07-15 13:42:26,464 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:26] "POST /web/dataset/call_kw/sire.period/web_save HTTP/1.1" 200 - 35 0.016 0.079
+2026-07-15 13:42:26,496 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:26] "POST /mail/thread/data HTTP/1.1" 200 - 24 0.012 0.011
+2026-07-15 13:42:26,510 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:26] "POST /mail/thread/messages HTTP/1.1" 200 - 18 0.010 0.011
+2026-07-15 13:42:40,145 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:40] "POST /web/dataset/call_button/sire.period/action_sync_sunat_proposal HTTP/1.1" 200 - 147 0.584 5.301
+2026-07-15 13:42:40,170 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:40] "POST /web/dataset/call_kw/sire.sunat.proposal/get_views HTTP/1.1" 200 - 13 0.005 0.009
+2026-07-15 13:42:40,184 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:40] "POST /web/dataset/call_kw/sire.sunat.proposal/web_read HTTP/1.1" 200 - 8 0.002 0.004
+2026-07-15 13:42:43,373 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:43] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 27 0.047 0.063
+2026-07-15 13:42:43,424 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:43] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.007 0.016
+2026-07-15 13:42:43,453 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:43] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.008 0.014
+2026-07-15 13:42:46,497 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:46] "POST /web/dataset/call_button/sire.period/action_open_import_wizard HTTP/1.1" 200 - 1 0.000 0.002
+2026-07-15 13:42:46,524 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:46] "POST /web/dataset/call_kw/sire.ple.import.wizard/get_views HTTP/1.1" 200 - 9 0.004 0.006
+2026-07-15 13:42:46,535 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:42:46] "POST /web/dataset/call_kw/sire.ple.import.wizard/onchange HTTP/1.1" 200 - 2 0.001 0.002
+2026-07-15 13:43:21,323 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:21] "POST /web/dataset/call_kw/sire.ple.import.wizard/web_save HTTP/1.1" 200 - 7 0.023 0.018
+2026-07-15 13:43:22,983 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:22] "POST /web/dataset/call_button/sire.ple.import.wizard/action_import_file HTTP/1.1" 200 - 105 0.627 1.026
+2026-07-15 13:43:23,027 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:23] "POST /web/dataset/call_kw/sire.import.batch/get_views HTTP/1.1" 200 - 22 0.013 0.018
+2026-07-15 13:43:23,128 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:23] "POST /web/dataset/call_kw/sire.import.batch/web_read HTTP/1.1" 200 - 17 0.041 0.051
+2026-07-15 13:43:23,192 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:23] "POST /mail/thread/data HTTP/1.1" 200 - 20 0.015 0.012
+2026-07-15 13:43:23,212 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:23] "POST /mail/thread/messages HTTP/1.1" 200 - 16 0.006 0.011
+2026-07-15 13:43:27,236 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:27] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.068 0.104
+2026-07-15 13:43:27,286 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:27] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.007 0.010
+2026-07-15 13:43:27,317 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:27] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.011 0.014
+2026-07-15 13:43:33,742 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:33] "POST /web/dataset/call_kw/sire.import.batch/get_views HTTP/1.1" 200 - 1 0.000 0.004
+2026-07-15 13:43:33,837 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:33] "POST /web/dataset/call_kw/sire.import.batch/web_read HTTP/1.1" 200 - 15 0.036 0.052
+2026-07-15 13:43:52,528 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:43:52] "POST /web/dataset/call_kw/sire.import.batch/web_read HTTP/1.1" 200 - 14 0.032 0.057
+2026-07-15 13:46:49,211 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-07-15 13:46:49,212 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-07-15 13:46:49,749 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 5 connections  
+2026-07-15 13:46:50,944 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-07-15 13:46:50,946 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-07-15 13:46:50,947 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/extra-addons'] 
+2026-07-15 13:46:50,947 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-07-15 13:46:51,096 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-07-15 13:46:51,101 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-07-15 13:46:51,219 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0d267431375d:8069 
+2026-07-15 13:46:51,983 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-07-15 13:46:51,989 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-07-15 13:46:52,084 1 INFO ? odoo.modules.loading: loading 48 modules... 
+2026-07-15 13:46:52,833 1 INFO ? odoo.modules.loading: 48 modules loaded in 0.75s, 0 queries (+0 extra) 
+2026-07-15 13:46:52,889 1 WARNING ? odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:46:52,901 1 WARNING ? odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:46:52,950 1 INFO ? odoo.modules.loading: Modules loaded. 
+2026-07-15 13:46:52,954 1 INFO ? odoo.modules.registry: Registry loaded in 0.985s 
+2026-07-15 13:46:52,956 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-15 13:46:52,975 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:46:52] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 20 0.011 0.997
+2026-07-15 13:46:52,991 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:46:52] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 13:46:53,298 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-07-15 13:47:03,293 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:03] "GET /web HTTP/1.1" 303 - 5 0.009 0.013
+2026-07-15 13:47:04,024 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:04] "GET /web/login?redirect=/web? HTTP/1.1" 200 - 60 0.019 0.701
+2026-07-15 13:47:31,653 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:31] "GET /odoo/action-234/1131?debug=1 HTTP/1.1" 200 - 93 0.029 1.617
+2026-07-15 13:47:31,742 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:31] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.005 0.006
+2026-07-15 13:47:31,802 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:31] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 4 0.001 0.004
+2026-07-15 13:47:31,885 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:31] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.006 0.027
+2026-07-15 13:47:31,911 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:31] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 10 0.014 0.042
+2026-07-15 13:47:31,921 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:31] "GET /web/image/res.company/1/favicon HTTP/1.1" 304 - 10 0.014 0.035
+2026-07-15 13:47:31,921 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:31] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.001 0.025
+2026-07-15 13:47:32,055 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:32] "POST /mail/data HTTP/1.1" 200 - 27 0.156 0.034
+2026-07-15 13:47:32,083 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:32] "POST /web/action/load HTTP/1.1" 200 - 9 0.017 0.208
+2026-07-15 13:47:32,142 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:32] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 60 0.021 0.031
+2026-07-15 13:47:32,327 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:32] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 35 0.066 0.106
+2026-07-15 13:47:32,436 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:32] "POST /mail/thread/data HTTP/1.1" 200 - 24 0.012 0.012
+2026-07-15 13:47:32,461 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:32] "POST /mail/thread/messages HTTP/1.1" 200 - 21 0.009 0.018
+2026-07-15 13:47:33,206 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:33] "POST /web/dataset/call_kw/sire.import.batch/get_views HTTP/1.1" 200 - 12 0.004 0.008
+2026-07-15 13:47:33,293 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:33] "POST /web/dataset/call_kw/sire.import.batch/web_read HTTP/1.1" 200 - 16 0.030 0.050
+2026-07-15 13:47:33,689 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:47:33] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.017
+2026-07-15 13:47:51,302 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-07-15 13:47:51,386 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 0 removed 
+2026-07-15 13:47:51,501 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-07-15 13:47:51,512 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-07-15 13:47:51,517 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 1 entries 
+2026-07-15 13:47:51,521 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-15 13:47:51,537 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-07-15 13:47:51,609 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-07-15 13:47:51,659 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.353s 
+2026-07-15 13:47:51,664 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-07-15 13:47:51,668 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2026-07-15 13:48:01,583 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:01] "POST /web/dataset/call_button/sire.period/action_run_sales_reconciliation HTTP/1.1" 200 - 111 0.487 0.851
+2026-07-15 13:48:01,607 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:01] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 2 0.001 0.011
+2026-07-15 13:48:01,790 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:01] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.064 0.112
+2026-07-15 13:48:01,842 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:01] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.007 0.012
+2026-07-15 13:48:01,863 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:01] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.009 0.014
+2026-07-15 13:48:04,762 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:04] "POST /web/dataset/call_button/sire.period/action_open_sales_reconciliation HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 13:48:04,800 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:04] "POST /web/dataset/call_kw/sire.sales.reconciliation.line/get_views HTTP/1.1" 200 - 20 0.007 0.016
+2026-07-15 13:48:04,811 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:04] "POST /web/dataset/call_kw/sire.period/read HTTP/1.1" 200 - 2 0.001 0.002
+2026-07-15 13:48:04,826 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:04] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.003
+2026-07-15 13:48:04,842 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:04] "POST /web/dataset/call_kw/sire.sales.reconciliation.line/web_search_read HTTP/1.1" 200 - 8 0.005 0.016
+2026-07-15 13:48:22,789 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:22] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 2 0.001 0.010
+2026-07-15 13:48:22,964 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:22] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.061 0.105
+2026-07-15 13:48:23,021 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:23] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.006 0.010
+2026-07-15 13:48:23,031 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:23] "POST /mail/thread/messages HTTP/1.1" 200 - 3 0.001 0.004
+2026-07-15 13:48:33,065 1 INFO odoo18 odoo.models.unlink: User #2 deleted mail.message records with IDs: [3422] 
+2026-07-15 13:48:33,597 1 INFO odoo18 odoo.models.unlink: User #2 deleted ir.attachment records with IDs: [1737] 
+2026-07-15 13:48:33,598 1 INFO odoo18 odoo.models.unlink: User #2 deleted sire.import.batch records with IDs: [1002] 
+2026-07-15 13:48:33,603 1 INFO odoo18 odoo.models.unlink: User #2 deleted mail.followers records with IDs: [193] 
+2026-07-15 13:48:33,607 1 INFO odoo18 odoo.models.unlink: User #2 deleted sire.sales.reconciliation.line records with IDs: [66188] 
+2026-07-15 13:48:33,638 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:33] "POST /web/dataset/call_button/sire.import.batch/action_delete_import_batch HTTP/1.1" 200 - 67 0.056 0.528
+2026-07-15 13:48:33,751 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:33] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 24 0.034 0.059
+2026-07-15 13:48:33,799 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:33] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.008 0.011
+2026-07-15 13:48:33,820 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:33] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.008 0.015
+2026-07-15 13:48:35,858 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:35] "POST /web/dataset/call_button/sire.period/action_open_import_wizard HTTP/1.1" 200 - 1 0.001 0.002
+2026-07-15 13:48:35,886 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:35] "POST /web/dataset/call_kw/sire.ple.import.wizard/get_views HTTP/1.1" 200 - 9 0.003 0.006
+2026-07-15 13:48:35,897 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:35] "POST /web/dataset/call_kw/sire.ple.import.wizard/onchange HTTP/1.1" 200 - 2 0.001 0.002
+2026-07-15 13:48:40,022 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:40] "POST /web/dataset/call_kw/sire.ple.import.wizard/web_save HTTP/1.1" 200 - 9 0.025 0.025
+2026-07-15 13:48:41,556 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:41] "POST /web/dataset/call_button/sire.ple.import.wizard/action_import_file HTTP/1.1" 200 - 113 0.476 1.049
+2026-07-15 13:48:41,585 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:41] "POST /web/dataset/call_kw/sire.import.batch/get_views HTTP/1.1" 200 - 10 0.005 0.011
+2026-07-15 13:48:41,601 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:41] "POST /web/dataset/call_kw/sire.import.batch/web_read HTTP/1.1" 200 - 8 0.002 0.005
+2026-07-15 13:48:41,654 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:41] "POST /mail/thread/data HTTP/1.1" 200 - 20 0.012 0.015
+2026-07-15 13:48:41,670 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:41] "POST /mail/thread/messages HTTP/1.1" 200 - 16 0.010 0.014
+2026-07-15 13:48:43,863 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:43] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.066 0.100
+2026-07-15 13:48:43,912 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:43] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.006 0.010
+2026-07-15 13:48:43,942 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:43] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.006 0.015
+2026-07-15 13:48:45,627 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:45] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.065 0.099
+2026-07-15 13:48:45,677 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:45] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.008 0.010
+2026-07-15 13:48:45,682 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:48:45] "POST /mail/thread/messages HTTP/1.1" 200 - 3 0.002 0.005
+2026-07-15 13:49:03,358 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:03] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.059 0.102
+2026-07-15 13:49:03,405 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:03] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.007 0.010
+2026-07-15 13:49:03,412 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:03] "POST /mail/thread/messages HTTP/1.1" 200 - 3 0.002 0.004
+2026-07-15 13:49:10,431 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:10] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.059 0.099
+2026-07-15 13:49:10,481 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:10] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.007 0.011
+2026-07-15 13:49:10,489 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:10] "POST /mail/thread/messages HTTP/1.1" 200 - 3 0.002 0.004
+2026-07-15 13:49:18,980 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:18] "POST /web/dataset/call_button/sire.period/action_run_sales_reconciliation HTTP/1.1" 200 - 98 0.394 0.836
+2026-07-15 13:49:19,168 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:19] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.063 0.111
+2026-07-15 13:49:19,218 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:19] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.006 0.011
+2026-07-15 13:49:19,236 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:19] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.006 0.012
+2026-07-15 13:49:23,902 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:23] "POST /web/dataset/call_button/sire.period/action_open_sales_reconciliation HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 13:49:23,922 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:23] "POST /web/dataset/call_kw/sire.period/read HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 13:49:23,949 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:49:23] "POST /web/dataset/call_kw/sire.sales.reconciliation.line/web_search_read HTTP/1.1" 200 - 8 0.004 0.015
+2026-07-15 13:50:12,235 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:12] "POST /web/dataset/call_kw/sire.sales.reconciliation.line/web_search_read HTTP/1.1" 200 - 8 0.004 0.015
+2026-07-15 13:50:24,155 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:24] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-07-15 13:50:24,191 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:24] "POST /web/dataset/call_kw/sire.sales.accounting.line/get_views HTTP/1.1" 200 - 18 0.007 0.012
+2026-07-15 13:50:24,213 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:24] "POST /web/dataset/call_kw/sire.sales.accounting.line/web_search_read HTTP/1.1" 200 - 4 0.009 0.005
+2026-07-15 13:50:27,201 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:27] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-07-15 13:50:27,234 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:27] "POST /web/dataset/call_kw/sire.api.ticket/get_views HTTP/1.1" 200 - 10 0.004 0.009
+2026-07-15 13:50:27,249 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:27] "POST /web/dataset/call_kw/sire.api.ticket/web_search_read HTTP/1.1" 200 - 4 0.003 0.004
+2026-07-15 13:50:28,579 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:28] "POST /web/dataset/call_kw/sire.sales.accounting.line/web_search_read HTTP/1.1" 200 - 4 0.009 0.006
+2026-07-15 13:50:30,782 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:30] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.004
+2026-07-15 13:50:30,820 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:30] "POST /web/dataset/call_kw/sire.sales.sunat.line/get_views HTTP/1.1" 200 - 18 0.006 0.011
+2026-07-15 13:50:30,845 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:30] "POST /web/dataset/call_kw/sire.sales.sunat.line/web_search_read HTTP/1.1" 200 - 4 0.012 0.006
+2026-07-15 13:50:39,675 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:39] "POST /web/dataset/call_kw/sire.api.ticket/web_search_read HTTP/1.1" 200 - 4 0.002 0.005
+2026-07-15 13:50:40,664 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:40] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 3 0.002 0.004
+2026-07-15 13:50:41,819 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:41] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.061 0.107
+2026-07-15 13:50:41,872 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:41] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.009 0.012
+2026-07-15 13:50:41,877 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:41] "POST /mail/thread/messages HTTP/1.1" 200 - 3 0.003 0.005
+2026-07-15 13:50:43,005 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:43] "POST /web/dataset/call_button/sire.period/action_open_sales_reconciliation HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 13:50:43,026 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:43] "POST /web/dataset/call_kw/sire.period/read HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 13:50:43,051 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:50:43] "POST /web/dataset/call_kw/sire.sales.reconciliation.line/web_search_read HTTP/1.1" 200 - 8 0.003 0.016
+2026-07-15 13:53:14,317 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-07-15 13:53:14,318 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-07-15 13:53:14,820 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 7 connections  
+2026-07-15 13:53:15,902 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-07-15 13:53:15,904 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-07-15 13:53:15,905 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/extra-addons'] 
+2026-07-15 13:53:15,906 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-07-15 13:53:16,053 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-07-15 13:53:16,058 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-07-15 13:53:16,177 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0d267431375d:8069 
+2026-07-15 13:53:16,720 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-07-15 13:53:16,731 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-07-15 13:53:16,839 1 INFO ? odoo.modules.loading: loading 48 modules... 
+2026-07-15 13:53:17,593 1 INFO ? odoo.modules.loading: 48 modules loaded in 0.75s, 0 queries (+0 extra) 
+2026-07-15 13:53:17,649 1 WARNING ? odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:53:17,661 1 WARNING ? odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:53:17,714 1 INFO ? odoo.modules.loading: Modules loaded. 
+2026-07-15 13:53:17,718 1 INFO ? odoo.modules.registry: Registry loaded in 1.032s 
+2026-07-15 13:53:17,720 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-15 13:53:17,738 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:53:17] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 20 0.014 1.041
+2026-07-15 13:53:17,750 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:53:17] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.002
+2026-07-15 13:53:18,075 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-07-15 13:53:34,950 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:53:34] "GET /web HTTP/1.1" 303 - 5 0.003 0.012
+2026-07-15 13:53:35,531 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:53:35] "GET /web/login?redirect=/web? HTTP/1.1" 200 - 60 0.019 0.558
+2026-07-15 13:54:15,984 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:15] "GET /odoo/action-234/1131/sire.sales.reconciliation.line?debug=1 HTTP/1.1" 200 - 93 0.028 1.463
+2026-07-15 13:54:16,107 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.004 0.005
+2026-07-15 13:54:16,153 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 4 0.002 0.004
+2026-07-15 13:54:16,273 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 10 0.005 0.063
+2026-07-15 13:54:16,311 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.008 0.085
+2026-07-15 13:54:16,444 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.121 0.120
+2026-07-15 13:54:16,445 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "POST /web/action/load_breadcrumbs HTTP/1.1" 200 - 11 0.010 0.234
+2026-07-15 13:54:16,449 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-07-15 13:54:16,454 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "POST /mail/data HTTP/1.1" 200 - 27 0.171 0.072
+2026-07-15 13:54:16,481 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "GET /web/image/res.company/1/favicon HTTP/1.1" 304 - 5 0.003 0.015
+2026-07-15 13:54:16,488 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 0 removed 
+2026-07-15 13:54:16,536 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-07-15 13:54:16,537 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "POST /web/dataset/call_kw/sire.sales.reconciliation.line/get_views HTTP/1.1" 200 - 26 0.050 0.025
+2026-07-15 13:54:16,545 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-07-15 13:54:16,552 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-15 13:54:16,554 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "POST /web/dataset/call_kw/sire.period/read HTTP/1.1" 200 - 3 0.002 0.005
+2026-07-15 13:54:16,555 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-15 13:54:16,570 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-07-15 13:54:16,571 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.001 0.005
+2026-07-15 13:54:16,601 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:16] "POST /web/dataset/call_kw/sire.sales.reconciliation.line/web_search_read HTTP/1.1" 200 - 9 0.014 0.023
+2026-07-15 13:54:16,651 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-07-15 13:54:16,697 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.246s 
+2026-07-15 13:54:16,704 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-07-15 13:54:16,708 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2026-07-15 13:54:18,331 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:54:18] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.004
+2026-07-15 13:56:39,366 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-07-15 13:56:39,367 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-07-15 13:56:39,600 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 7 connections  
+2026-07-15 13:56:40,627 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-07-15 13:56:40,629 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-07-15 13:56:40,630 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/extra-addons'] 
+2026-07-15 13:56:40,631 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-07-15 13:56:40,773 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-07-15 13:56:40,778 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-07-15 13:56:40,890 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0d267431375d:8069 
+2026-07-15 13:56:41,600 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-07-15 13:56:41,607 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-07-15 13:56:41,707 1 INFO ? odoo.modules.loading: loading 48 modules... 
+2026-07-15 13:56:42,471 1 INFO ? odoo.modules.loading: 48 modules loaded in 0.76s, 0 queries (+0 extra) 
+2026-07-15 13:56:42,530 1 WARNING ? odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:56:42,542 1 WARNING ? odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:56:42,597 1 INFO ? odoo.modules.loading: Modules loaded. 
+2026-07-15 13:56:42,600 1 INFO ? odoo.modules.registry: Registry loaded in 1.045s 
+2026-07-15 13:56:42,602 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-15 13:56:42,625 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:56:42] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 20 0.020 1.050
+2026-07-15 13:56:42,639 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:56:42] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 13:56:42,948 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-07-15 13:57:24,141 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:24] "POST /web/action/load HTTP/1.1" 200 - 11 0.005 0.005
+2026-07-15 13:57:24,204 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:24] "POST /web/dataset/call_kw/ir.module.module/get_views HTTP/1.1" 200 - 58 0.021 0.027
+2026-07-15 13:57:24,232 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:24] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 1 0.001 0.019
+2026-07-15 13:57:24,269 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:24] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 58 0.026 0.029
+2026-07-15 13:57:24,306 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:24] "POST /web/dataset/call_kw/ir.module.module/web_search_read HTTP/1.1" 200 - 4 0.005 0.086
+2026-07-15 13:57:26,243 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /pos_restaurant/static/description/icon.png HTTP/1.1" 200 - 0 0.000 1.815
+2026-07-15 13:57:26,244 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /sale_management/static/description/icon.png HTTP/1.1" 200 - 0 0.000 1.822
+2026-07-15 13:57:26,244 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /crm/static/description/icon.png HTTP/1.1" 200 - 0 0.000 1.814
+2026-07-15 13:57:26,244 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /website/static/description/icon.png HTTP/1.1" 200 - 0 0.000 1.811
+2026-07-15 13:57:26,246 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /account/static/description/icon.png HTTP/1.1" 200 - 0 0.000 1.817
+2026-07-15 13:57:26,246 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/mrp_workorder.png HTTP/1.1" 200 - 0 0.000 1.814
+2026-07-15 13:57:26,251 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /mrp/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.003
+2026-07-15 13:57:26,255 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /hr_recruitment/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.004
+2026-07-15 13:57:26,256 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /website_event/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.004
+2026-07-15 13:57:26,258 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.003
+2026-07-15 13:57:26,267 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/sign.png HTTP/1.1" 200 - 0 0.000 0.004
+2026-07-15 13:57:26,268 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /hr/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.006
+2026-07-15 13:57:26,268 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /data_recycle/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,269 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /website_slides/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.007
+2026-07-15 13:57:26,271 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /mass_mailing/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.006
+2026-07-15 13:57:26,273 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/industry_fsm.png HTTP/1.1" 200 - 0 0.000 0.007
+2026-07-15 13:57:26,277 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/web_studio.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,278 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/helpdesk.png HTTP/1.1" 200 - 0 0.000 0.003
+2026-07-15 13:57:26,281 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/timesheet_grid.png HTTP/1.1" 200 - 0 0.000 0.007
+2026-07-15 13:57:26,284 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /marketing_card/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.004
+2026-07-15 13:57:26,285 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /project/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.006
+2026-07-15 13:57:26,294 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /website_sale/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.007
+2026-07-15 13:57:26,294 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /point_of_sale/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.010
+2026-07-15 13:57:26,294 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /maintenance/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.006
+2026-07-15 13:57:26,296 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/knowledge.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,296 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /mail/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.003
+2026-07-15 13:57:26,297 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /stock/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.007
+2026-07-15 13:57:26,301 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/planning.png HTTP/1.1" 200 - 0 0.000 0.002
+2026-07-15 13:57:26,306 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /contacts/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.004
+2026-07-15 13:57:26,309 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /purchase/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,314 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /hr_expense/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.009
+2026-07-15 13:57:26,316 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/sale_subscription.png HTTP/1.1" 200 - 0 0.000 0.009
+2026-07-15 13:57:26,317 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/quality_control.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,319 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /hr_holidays/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.009
+2026-07-15 13:57:26,319 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/account_accountant.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,321 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/mrp_plm.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,326 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /calendar/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,331 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/social.png HTTP/1.1" 200 - 0 0.000 0.008
+2026-07-15 13:57:26,332 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/hr_appraisal.png HTTP/1.1" 200 - 0 0.000 0.008
+2026-07-15 13:57:26,333 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /fleet/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.006
+2026-07-15 13:57:26,334 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /im_livechat/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.003
+2026-07-15 13:57:26,335 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/marketing_automation.png HTTP/1.1" 200 - 0 0.000 0.007
+2026-07-15 13:57:26,339 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/appointment.png HTTP/1.1" 200 - 0 0.000 0.003
+2026-07-15 13:57:26,343 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /survey/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.006
+2026-07-15 13:57:26,347 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/web_mobile.png HTTP/1.1" 200 - 0 0.000 0.008
+2026-07-15 13:57:26,348 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /repair/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.007
+2026-07-15 13:57:26,353 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /mass_mailing_sms/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.006
+2026-07-15 13:57:26,354 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/stock_barcode.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,355 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /hr_attendance/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.010
+2026-07-15 13:57:26,359 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /project_todo/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.008
+2026-07-15 13:57:26,359 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /hr_skills/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.006
+2026-07-15 13:57:26,360 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/voip.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,364 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /lunch/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.005
+2026-07-15 13:57:26,368 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /base/static/img/icons/sale_amazon.png HTTP/1.1" 200 - 0 0.000 0.003
+2026-07-15 13:57:26,368 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /website_hr_recruitment/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.006
+2026-07-15 13:57:26,369 1 INFO ? werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:26] "GET /hr_contract/static/description/icon.png HTTP/1.1" 200 - 0 0.000 0.003
+2026-07-15 13:57:35,365 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:35] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-07-15 13:57:35,388 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:35] "POST /web/dataset/call_kw/base.module.update/get_views HTTP/1.1" 200 - 12 0.004 0.007
+2026-07-15 13:57:35,401 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:35] "POST /web/dataset/call_kw/base.module.update/onchange HTTP/1.1" 200 - 2 0.001 0.002
+2026-07-15 13:57:36,358 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:36] "POST /web/dataset/call_kw/base.module.update/web_save HTTP/1.1" 200 - 5 0.003 0.004
+2026-07-15 13:57:36,369 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 13:57:37,030 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:37] "POST /web/dataset/call_button/base.module.update/update_module HTTP/1.1" 200 - 1769 0.386 0.279
+2026-07-15 13:57:40,243 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:40] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 56 0.021 0.012
+2026-07-15 13:57:40,250 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:40] "POST /web/dataset/call_kw/ir.module.module/web_search_read HTTP/1.1" 200 - 4 0.005 0.029
+2026-07-15 13:57:41,417 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:41] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 56 0.019 0.013
+2026-07-15 13:57:41,429 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:41] "POST /web/dataset/call_kw/ir.module.module/web_search_read HTTP/1.1" 200 - 3 0.003 0.003
+2026-07-15 13:57:44,118 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_immediate_upgrade on ['Peru SIRE PLE Import'] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 13:57:44,119 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Peru SIRE PLE Import'] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 13:57:44,120 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Peru SIRE PLE Import'] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 13:57:44,808 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 13:57:45,346 1 INFO odoo18 odoo.modules.loading: loading 1 modules... 
+2026-07-15 13:57:45,352 1 INFO odoo18 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-07-15 13:57:45,374 1 INFO odoo18 odoo.modules.loading: updating modules list 
+2026-07-15 13:57:45,376 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via 172.19.0.1 
+2026-07-15 13:57:45,995 1 INFO odoo18 odoo.modules.loading: loading 48 modules... 
+2026-07-15 13:57:46,015 1 INFO odoo18 odoo.modules.loading: Loading module l10n_pe_sire_ple_import (40/48) 
+2026-07-15 13:57:46,107 1 INFO odoo18 odoo.modules.registry: module l10n_pe_sire_ple_import: creating or updating database tables 
+2026-07-15 13:57:46,135 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_replace_txt, sire_replace_txt_filename) of sire.period() have the same label: TXT reemplazo. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 13:57:46,136 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_complement_txt, sire_complement_txt_filename) of sire.period() have the same label: TXT complemento. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 13:57:46,210 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/security/ir.model.access.csv 
+2026-07-15 13:57:46,237 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_import_batch_views.xml 
+2026-07-15 13:57:46,263 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_period_views.xml 
+2026-07-15 13:57:46,284 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_purchase_accounting_line_views.xml 
+2026-07-15 13:57:46,307 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_purchase_sunat_line_views.xml 
+2026-07-15 13:57:46,329 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_purchase_reconciliation_line_views.xml 
+2026-07-15 13:57:46,355 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_sales_accounting_line_views.xml 
+2026-07-15 13:57:46,376 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_sales_reconciliation_line_views.xml 
+2026-07-15 13:57:46,401 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_sales_sunat_line_views.xml 
+2026-07-15 13:57:46,422 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/wizards/sire_ple_import_wizard_views.xml 
+2026-07-15 13:57:46,435 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/wizards/sire_sunat_proposal_import_wizard_views.xml 
+2026-07-15 13:57:46,454 1 INFO odoo18 odoo.addons.base.models.ir_module: module l10n_pe_sire_ple_import: no translation for language es_419 
+2026-07-15 13:57:46,467 1 INFO odoo18 odoo.modules.loading: Module l10n_pe_sire_ple_import loaded in 0.45s, 374 queries (+374 other) 
+2026-07-15 13:57:46,473 1 INFO odoo18 odoo.modules.loading: 48 modules loaded in 0.48s, 374 queries (+374 extra) 
+2026-07-15 13:57:46,532 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:57:46,542 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:57:46,595 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:57:46,605 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:57:46,710 1 INFO odoo18 odoo.modules.registry: verifying fields for every extended model 
+2026-07-15 13:57:46,738 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_replace_txt, sire_replace_txt_filename) of sire.period() have the same label: TXT reemplazo. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 13:57:46,739 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_complement_txt, sire_complement_txt_filename) of sire.period() have the same label: TXT complemento. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 13:57:47,056 1 INFO odoo18 odoo.modules.loading: Modules loaded. 
+2026-07-15 13:57:47,061 1 INFO odoo18 odoo.modules.registry: Registry changed, signaling through the database 
+2026-07-15 13:57:47,062 1 INFO odoo18 odoo.modules.registry: Registry loaded in 1.725s 
+2026-07-15 13:57:47,063 1 INFO odoo18 odoo.addons.base.models.ir_module: getting next ir.actions.todo() 
+2026-07-15 13:57:47,070 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:47] "POST /web/dataset/call_button/ir.module.module/button_immediate_upgrade HTTP/1.1" 200 - 4858 1.321 1.635
+2026-07-15 13:57:47,094 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-15 13:57:49,236 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:49] "GET /odoo HTTP/1.1" 200 - 104 0.030 2.114
+2026-07-15 13:57:49,410 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:49] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.003 0.005
+2026-07-15 13:57:49,481 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:49] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 4 0.002 0.004
+2026-07-15 13:57:49,607 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:49] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.000 0.005
+2026-07-15 13:57:49,630 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:49] "POST /mail/data HTTP/1.1" 200 - 27 0.018 0.017
+2026-07-15 13:57:51,255 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:57:51] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2026-07-15 13:58:19,749 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:19] "POST /web/action/load HTTP/1.1" 200 - 7 0.006 0.006
+2026-07-15 13:58:19,752 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:19] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.007 0.010
+2026-07-15 13:58:19,756 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:19] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 10 0.010 0.009
+2026-07-15 13:58:19,840 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:19] "POST /mail/data HTTP/1.1" 200 - 39 0.016 0.021
+2026-07-15 13:58:19,922 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:19] "POST /mail/inbox/messages HTTP/1.1" 200 - 5 0.008 0.022
+2026-07-15 13:58:19,922 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:19] "GET /web/image/discuss.channel/2/avatar_128?unique=10381acd1686ee75c9b4268c94fb1701d47ca689328c0e06d92091ad5f24aa4e21e3ce5d3235ec0689f75caccc0670e2d0008a60ef06c7e4914eff646a1774c1 HTTP/1.1" 200 - 4 0.003 0.022
+2026-07-15 13:58:19,922 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:19] "GET /web/image/discuss.channel/1/avatar_128?unique=12f01460db58c86a4f5a221a0fce01a47fb8664c2cd64c907f70154940f7b19bce23206d19a56369d1e829acd60fe4cd891a6c7965e797146b00b9414ac37ea9 HTTP/1.1" 200 - 4 0.003 0.021
+2026-07-15 13:58:19,930 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:19] "GET /web/image/discuss.channel/4/avatar_128?unique=34401ea1eb620729360d9d3002b0c063c849a842fc06c6374a4af8121b6ee7606117167a112e4da8f12aad2c9ec65902881076c1c6577e344273d9bac304f9c5 HTTP/1.1" 200 - 4 0.003 0.026
+2026-07-15 13:58:19,937 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:19] "GET /web/image/res.partner/2/avatar_128?unique=1784052879000 HTTP/1.1" 200 - 7 0.006 0.031
+2026-07-15 13:58:28,996 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:28] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.184
+2026-07-15 13:58:29,067 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:29] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 56 0.019 0.032
+2026-07-15 13:58:29,082 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:29] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.003
+2026-07-15 13:58:29,085 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:29] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 4 0.003 0.004
+2026-07-15 13:58:32,783 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:32] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-07-15 13:58:32,824 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:32] "POST /web/dataset/call_kw/sire.import.batch/get_views HTTP/1.1" 200 - 25 0.009 0.019
+2026-07-15 13:58:33,157 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:33] "POST /web/dataset/call_kw/sire.import.batch/web_search_read HTTP/1.1" 200 - 30 0.123 0.204
+2026-07-15 13:58:35,449 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:35] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-07-15 13:58:35,473 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:35] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 2 0.001 0.010
+2026-07-15 13:58:35,483 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:35] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 3 0.001 0.003
+2026-07-15 13:58:36,256 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:36] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 30 0.065 0.107
+2026-07-15 13:58:36,346 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:36] "POST /mail/thread/data HTTP/1.1" 200 - 24 0.012 0.012
+2026-07-15 13:58:36,379 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:36] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.008 0.027
+2026-07-15 13:58:37,505 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:37] "POST /web/dataset/call_button/sire.period/action_open_sales_reconciliation HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 13:58:37,546 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:37] "POST /web/dataset/call_kw/sire.sales.reconciliation.line/get_views HTTP/1.1" 200 - 18 0.007 0.017
+2026-07-15 13:58:37,557 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:37] "POST /web/dataset/call_kw/sire.period/read HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 13:58:37,582 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:37] "POST /web/dataset/call_kw/sire.sales.reconciliation.line/web_search_read HTTP/1.1" 200 - 9 0.004 0.015
+2026-07-15 13:58:53,442 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:53] "POST /web/dataset/call_kw/sire.import.batch/web_search_read HTTP/1.1" 200 - 26 0.112 0.202
+2026-07-15 13:58:55,412 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:55] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 3 0.002 0.004
+2026-07-15 13:58:56,222 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:56] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.060 0.106
+2026-07-15 13:58:56,274 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:56] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.008 0.011
+2026-07-15 13:58:56,280 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:58:56] "POST /mail/thread/messages HTTP/1.1" 200 - 3 0.002 0.004
+2026-07-15 13:59:00,461 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "GET /odoo/action-234/1131?debug=1 HTTP/1.1" 200 - 22 0.005 0.013
+2026-07-15 13:59:00,598 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 7 0.004 0.018
+2026-07-15 13:59:00,609 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 3 0.001 0.003
+2026-07-15 13:59:00,673 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 5 0.006 0.009
+2026-07-15 13:59:00,679 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.010 0.012
+2026-07-15 13:59:00,686 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.001 0.011
+2026-07-15 13:59:00,694 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "POST /web/action/load HTTP/1.1" 200 - 9 0.012 0.016
+2026-07-15 13:59:00,700 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "POST /mail/data HTTP/1.1" 200 - 17 0.015 0.018
+2026-07-15 13:59:00,729 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 2 0.001 0.011
+2026-07-15 13:59:00,901 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:00] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 29 0.059 0.102
+2026-07-15 13:59:01,009 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:01] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.009 0.012
+2026-07-15 13:59:01,051 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:01] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.007 0.030
+2026-07-15 13:59:02,502 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:02] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.002
+2026-07-15 13:59:33,899 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-07-15 13:59:33,900 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-07-15 13:59:34,145 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 7 connections  
+2026-07-15 13:59:35,286 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-07-15 13:59:35,288 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-07-15 13:59:35,288 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/extra-addons'] 
+2026-07-15 13:59:35,289 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-07-15 13:59:35,434 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-07-15 13:59:35,440 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-07-15 13:59:35,559 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0d267431375d:8069 
+2026-07-15 13:59:36,440 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-07-15 13:59:36,446 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-07-15 13:59:36,539 1 INFO ? odoo.modules.loading: loading 48 modules... 
+2026-07-15 13:59:37,246 1 INFO ? odoo.modules.loading: 48 modules loaded in 0.71s, 0 queries (+0 extra) 
+2026-07-15 13:59:37,304 1 WARNING ? odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:59:37,316 1 WARNING ? odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 13:59:37,376 1 INFO ? odoo.modules.loading: Modules loaded. 
+2026-07-15 13:59:37,379 1 INFO ? odoo.modules.registry: Registry loaded in 0.953s 
+2026-07-15 13:59:37,381 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-15 13:59:37,401 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:37] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 20 0.011 0.965
+2026-07-15 13:59:37,413 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:37] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.002
+2026-07-15 13:59:37,772 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-07-15 13:59:39,843 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:39] "GET /odoo/action-234/1131?debug=1 HTTP/1.1" 200 - 101 0.030 1.909
+2026-07-15 13:59:39,968 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:39] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.003 0.004
+2026-07-15 13:59:39,976 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:39] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 4 0.001 0.003
+2026-07-15 13:59:40,063 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 10 0.004 0.032
+2026-07-15 13:59:40,073 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.011 0.036
+2026-07-15 13:59:40,083 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "GET /web/image/res.company/1/favicon HTTP/1.1" 304 - 5 0.010 0.039
+2026-07-15 13:59:40,085 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.002 0.020
+2026-07-15 13:59:40,264 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "POST /web/action/load HTTP/1.1" 200 - 10 0.016 0.220
+2026-07-15 13:59:40,264 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "POST /mail/data HTTP/1.1" 200 - 27 0.190 0.043
+2026-07-15 13:59:40,323 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 60 0.020 0.031
+2026-07-15 13:59:40,501 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 35 0.064 0.104
+2026-07-15 13:59:40,602 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "POST /mail/thread/data HTTP/1.1" 200 - 24 0.012 0.013
+2026-07-15 13:59:40,636 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:40] "POST /mail/thread/messages HTTP/1.1" 200 - 21 0.011 0.030
+2026-07-15 13:59:42,023 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:42] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2026-07-15 13:59:59,334 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:59] "POST /web/action/load HTTP/1.1" 200 - 10 0.004 0.005
+2026-07-15 13:59:59,388 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:59] "POST /web/dataset/call_kw/ir.module.module/get_views HTTP/1.1" 200 - 50 0.016 0.025
+2026-07-15 13:59:59,401 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:59] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 1 0.002 0.004
+2026-07-15 13:59:59,436 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:59] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 58 0.028 0.012
+2026-07-15 13:59:59,456 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 13:59:59] "POST /web/dataset/call_kw/ir.module.module/web_search_read HTTP/1.1" 200 - 4 0.005 0.054
+2026-07-15 14:00:00,482 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:00] "POST /web/action/load HTTP/1.1" 200 - 9 0.002 0.004
+2026-07-15 14:00:00,509 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:00] "POST /web/dataset/call_kw/base.module.update/get_views HTTP/1.1" 200 - 12 0.004 0.006
+2026-07-15 14:00:00,519 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:00] "POST /web/dataset/call_kw/base.module.update/onchange HTTP/1.1" 200 - 2 0.001 0.002
+2026-07-15 14:00:01,312 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:01] "POST /web/dataset/call_kw/base.module.update/web_save HTTP/1.1" 200 - 5 0.002 0.005
+2026-07-15 14:00:01,322 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:00:02,506 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:02] "POST /web/dataset/call_button/base.module.update/update_module HTTP/1.1" 200 - 1769 0.493 0.695
+2026-07-15 14:00:15,030 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:15] "POST /web/dataset/call_kw/base.module.update/onchange HTTP/1.1" 200 - 1 0.000 0.002
+2026-07-15 14:00:16,159 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:16] "POST /web/dataset/call_kw/base.module.update/web_save HTTP/1.1" 200 - 3 0.001 0.004
+2026-07-15 14:00:16,170 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:00:16,790 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:16] "POST /web/dataset/call_button/base.module.update/update_module HTTP/1.1" 200 - 1765 0.353 0.270
+2026-07-15 14:00:17,493 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:17] "POST /web/dataset/call_kw/ir.module.module/web_search_read HTTP/1.1" 200 - 4 0.004 0.026
+2026-07-15 14:00:17,494 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:17] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 56 0.024 0.012
+2026-07-15 14:00:18,656 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:18] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 56 0.018 0.014
+2026-07-15 14:00:18,669 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:18] "POST /web/dataset/call_kw/ir.module.module/web_search_read HTTP/1.1" 200 - 3 0.003 0.003
+2026-07-15 14:00:20,875 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_immediate_upgrade on ['Peru SIRE PLE Import'] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:00:20,877 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Peru SIRE PLE Import'] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:00:20,878 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Peru SIRE PLE Import'] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:00:21,565 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:00:22,267 1 INFO odoo18 odoo.modules.loading: loading 1 modules... 
+2026-07-15 14:00:22,273 1 INFO odoo18 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-07-15 14:00:22,291 1 INFO odoo18 odoo.modules.loading: updating modules list 
+2026-07-15 14:00:22,293 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via 172.19.0.1 
+2026-07-15 14:00:22,906 1 INFO odoo18 odoo.modules.loading: loading 48 modules... 
+2026-07-15 14:00:22,927 1 INFO odoo18 odoo.modules.loading: Loading module l10n_pe_sire_ple_import (40/48) 
+2026-07-15 14:00:23,030 1 INFO odoo18 odoo.modules.registry: module l10n_pe_sire_ple_import: creating or updating database tables 
+2026-07-15 14:00:23,060 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_replace_txt, sire_replace_txt_filename) of sire.period() have the same label: TXT reemplazo. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 14:00:23,061 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_complement_txt, sire_complement_txt_filename) of sire.period() have the same label: TXT complemento. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 14:00:23,144 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/security/ir.model.access.csv 
+2026-07-15 14:00:23,179 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_import_batch_views.xml 
+2026-07-15 14:00:23,211 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_period_views.xml 
+2026-07-15 14:00:23,235 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_purchase_accounting_line_views.xml 
+2026-07-15 14:00:23,262 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_purchase_sunat_line_views.xml 
+2026-07-15 14:00:23,287 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_purchase_reconciliation_line_views.xml 
+2026-07-15 14:00:23,317 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_sales_accounting_line_views.xml 
+2026-07-15 14:00:23,342 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_sales_reconciliation_line_views.xml 
+2026-07-15 14:00:23,371 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_sales_sunat_line_views.xml 
+2026-07-15 14:00:23,395 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/wizards/sire_ple_import_wizard_views.xml 
+2026-07-15 14:00:23,410 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/wizards/sire_sunat_proposal_import_wizard_views.xml 
+2026-07-15 14:00:23,432 1 INFO odoo18 odoo.addons.base.models.ir_module: module l10n_pe_sire_ple_import: no translation for language es_419 
+2026-07-15 14:00:23,446 1 INFO odoo18 odoo.modules.loading: Module l10n_pe_sire_ple_import loaded in 0.52s, 372 queries (+372 other) 
+2026-07-15 14:00:23,454 1 INFO odoo18 odoo.modules.loading: 48 modules loaded in 0.55s, 372 queries (+372 extra) 
+2026-07-15 14:00:23,519 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 14:00:23,529 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 14:00:23,582 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 14:00:23,595 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 14:00:23,709 1 INFO odoo18 odoo.modules.registry: verifying fields for every extended model 
+2026-07-15 14:00:23,739 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_replace_txt, sire_replace_txt_filename) of sire.period() have the same label: TXT reemplazo. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 14:00:23,741 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_complement_txt, sire_complement_txt_filename) of sire.period() have the same label: TXT complemento. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 14:00:24,076 1 INFO odoo18 odoo.modules.loading: Modules loaded. 
+2026-07-15 14:00:24,083 1 INFO odoo18 odoo.modules.registry: Registry changed, signaling through the database 
+2026-07-15 14:00:24,084 1 INFO odoo18 odoo.modules.registry: Registry loaded in 1.828s 
+2026-07-15 14:00:24,085 1 INFO odoo18 odoo.addons.base.models.ir_module: getting next ir.actions.todo() 
+2026-07-15 14:00:24,090 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:24] "POST /web/dataset/call_button/ir.module.module/button_immediate_upgrade HTTP/1.1" 200 - 4856 1.320 1.899
+2026-07-15 14:00:24,103 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-15 14:00:24,793 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:24] "GET /odoo HTTP/1.1" 200 - 104 0.030 0.661
+2026-07-15 14:00:24,904 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:24] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.007 0.007
+2026-07-15 14:00:24,915 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:24] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 4 0.002 0.011
+2026-07-15 14:00:24,995 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:24] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.000 0.003
+2026-07-15 14:00:25,609 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:25] "POST /mail/data HTTP/1.1" 200 - 27 0.009 0.010
+2026-07-15 14:00:26,604 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:26] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2026-07-15 14:00:35,639 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-07-15 14:00:35,659 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-15 14:00:35,698 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-07-15 14:00:35,706 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-07-15 14:00:35,712 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-15 14:00:35,715 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-15 14:00:35,728 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-07-15 14:00:35,795 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-07-15 14:00:35,834 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.194s 
+2026-07-15 14:00:35,838 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-07-15 14:00:35,843 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2026-07-15 14:00:51,964 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:51] "POST /web/action/load HTTP/1.1" 200 - 7 0.006 0.008
+2026-07-15 14:00:51,968 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:51] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.007 0.010
+2026-07-15 14:00:51,969 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:51] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 10 0.009 0.008
+2026-07-15 14:00:52,046 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:52] "POST /mail/data HTTP/1.1" 200 - 39 0.016 0.024
+2026-07-15 14:00:52,100 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:52] "POST /mail/inbox/messages HTTP/1.1" 200 - 5 0.003 0.005
+2026-07-15 14:00:53,431 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:53] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-07-15 14:00:53,507 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:53] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 56 0.020 0.036
+2026-07-15 14:00:53,521 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:53] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.003
+2026-07-15 14:00:53,523 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:53] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 4 0.002 0.004
+2026-07-15 14:00:54,655 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:54] "POST /web/dataset/call_kw/sire.period/web_read HTTP/1.1" 200 - 35 0.033 0.031
+2026-07-15 14:00:54,751 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:54] "POST /mail/thread/data HTTP/1.1" 200 - 24 0.011 0.015
+2026-07-15 14:00:54,807 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:00:54] "POST /mail/thread/messages HTTP/1.1" 200 - 19 0.016 0.040
+2026-07-15 14:01:05,038 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:05] "POST /web/action/load HTTP/1.1" 200 - 10 0.004 0.006
+2026-07-15 14:01:05,094 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:05] "POST /web/dataset/call_kw/ir.module.module/get_views HTTP/1.1" 200 - 50 0.016 0.024
+2026-07-15 14:01:05,107 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:05] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 1 0.001 0.005
+2026-07-15 14:01:05,129 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:05] "POST /web/dataset/call_kw/ir.module.module/web_search_read HTTP/1.1" 200 - 4 0.003 0.023
+2026-07-15 14:01:05,138 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:05] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 58 0.021 0.015
+2026-07-15 14:01:06,119 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:06] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-07-15 14:01:06,148 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:06] "POST /web/dataset/call_kw/base.module.update/get_views HTTP/1.1" 200 - 12 0.005 0.007
+2026-07-15 14:01:06,158 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:06] "POST /web/dataset/call_kw/base.module.update/onchange HTTP/1.1" 200 - 2 0.001 0.003
+2026-07-15 14:01:06,872 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:06] "POST /web/dataset/call_kw/base.module.update/web_save HTTP/1.1" 200 - 5 0.002 0.005
+2026-07-15 14:01:06,884 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:01:07,571 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:07] "POST /web/dataset/call_button/base.module.update/update_module HTTP/1.1" 200 - 1769 0.412 0.277
+2026-07-15 14:01:08,017 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:08] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 56 0.019 0.012
+2026-07-15 14:01:08,022 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:08] "POST /web/dataset/call_kw/ir.module.module/web_search_read HTTP/1.1" 200 - 4 0.004 0.028
+2026-07-15 14:01:09,360 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:09] "POST /web/dataset/call_kw/ir.module.module/search_panel_select_range HTTP/1.1" 200 - 56 0.019 0.014
+2026-07-15 14:01:09,372 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:09] "POST /web/dataset/call_kw/ir.module.module/web_search_read HTTP/1.1" 200 - 3 0.003 0.004
+2026-07-15 14:01:11,901 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_immediate_upgrade on ['Peru SIRE Core'] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:01:11,902 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Peru SIRE Core'] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:01:11,903 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Peru SIRE Core'] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:01:12,568 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user gunz9v@gmail.com #2 via 172.19.0.1 
+2026-07-15 14:01:12,599 1 INFO odoo18 odoo.modules.loading: loading 1 modules... 
+2026-07-15 14:01:12,604 1 INFO odoo18 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-07-15 14:01:12,621 1 INFO odoo18 odoo.modules.loading: updating modules list 
+2026-07-15 14:01:12,623 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via 172.19.0.1 
+2026-07-15 14:01:13,210 1 INFO odoo18 odoo.modules.loading: loading 48 modules... 
+2026-07-15 14:01:13,223 1 INFO odoo18 odoo.modules.loading: Loading module l10n_pe_sire_core (24/48) 
+2026-07-15 14:01:13,294 1 INFO odoo18 odoo.modules.registry: module l10n_pe_sire_core: creating or updating database tables 
+2026-07-15 14:01:13,342 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_core/security/security.xml 
+2026-07-15 14:01:13,781 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_core/security/ir.model.access.csv 
+2026-07-15 14:01:13,809 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_core/views/menu_views.xml 
+2026-07-15 14:01:13,827 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_core/views/sire_period_views.xml 
+2026-07-15 14:01:13,862 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_core/views/sire_period_server_actions.xml 
+2026-07-15 14:01:13,875 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_core/views/sire_import_batch_views.xml 
+2026-07-15 14:01:13,914 1 INFO odoo18 odoo.addons.base.models.ir_module: module l10n_pe_sire_core: no translation for language es_419 
+2026-07-15 14:01:13,929 1 INFO odoo18 odoo.modules.loading: Module l10n_pe_sire_core loaded in 0.71s, 335 queries (+335 other) 
+2026-07-15 14:01:13,934 1 INFO odoo18 odoo.modules.loading: Loading module l10n_pe_sire_api (32/48) 
+2026-07-15 14:01:14,013 1 INFO odoo18 odoo.modules.registry: module l10n_pe_sire_api: creating or updating database tables 
+2026-07-15 14:01:14,034 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (submitted_file, submitted_filename) of sire.api.ticket() have the same label: Archivo enviado. [Modules: l10n_pe_sire_api and l10n_pe_sire_api] 
+2026-07-15 14:01:14,035 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (receipt_file, receipt_filename) of sire.api.ticket() have the same label: Constancia. [Modules: l10n_pe_sire_api and l10n_pe_sire_api] 
+2026-07-15 14:01:14,077 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_api/security/ir.model.access.csv 
+2026-07-15 14:01:14,092 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_api/views/res_company_views.xml 
+2026-07-15 14:01:14,119 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_api/views/sire_api_ticket_views.xml 
+2026-07-15 14:01:14,141 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_api/views/sire_period_views.xml 
+2026-07-15 14:01:14,161 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_api/views/menu_views.xml 
+2026-07-15 14:01:14,181 1 INFO odoo18 odoo.addons.base.models.ir_module: module l10n_pe_sire_api: no translation for language es_419 
+2026-07-15 14:01:14,190 1 INFO odoo18 odoo.modules.loading: Module l10n_pe_sire_api loaded in 0.26s, 169 queries (+169 other) 
+2026-07-15 14:01:14,196 1 INFO odoo18 odoo.modules.loading: Loading module l10n_pe_sire_ple_import (40/48) 
+2026-07-15 14:01:14,294 1 INFO odoo18 odoo.modules.registry: module l10n_pe_sire_ple_import: creating or updating database tables 
+2026-07-15 14:01:14,322 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_replace_txt, sire_replace_txt_filename) of sire.period() have the same label: TXT reemplazo. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 14:01:14,323 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_complement_txt, sire_complement_txt_filename) of sire.period() have the same label: TXT complemento. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 14:01:14,390 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/security/ir.model.access.csv 
+2026-07-15 14:01:14,418 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_import_batch_views.xml 
+2026-07-15 14:01:14,444 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_period_views.xml 
+2026-07-15 14:01:14,467 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_purchase_accounting_line_views.xml 
+2026-07-15 14:01:14,493 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_purchase_sunat_line_views.xml 
+2026-07-15 14:01:14,517 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_purchase_reconciliation_line_views.xml 
+2026-07-15 14:01:14,540 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_sales_accounting_line_views.xml 
+2026-07-15 14:01:14,562 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_sales_reconciliation_line_views.xml 
+2026-07-15 14:01:14,588 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/views/sire_sales_sunat_line_views.xml 
+2026-07-15 14:01:14,612 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/wizards/sire_ple_import_wizard_views.xml 
+2026-07-15 14:01:14,627 1 INFO odoo18 odoo.modules.loading: loading l10n_pe_sire_ple_import/wizards/sire_sunat_proposal_import_wizard_views.xml 
+2026-07-15 14:01:14,651 1 INFO odoo18 odoo.addons.base.models.ir_module: module l10n_pe_sire_ple_import: no translation for language es_419 
+2026-07-15 14:01:14,665 1 INFO odoo18 odoo.modules.loading: Module l10n_pe_sire_ple_import loaded in 0.47s, 370 queries (+370 other) 
+2026-07-15 14:01:14,672 1 INFO odoo18 odoo.modules.loading: 48 modules loaded in 1.46s, 874 queries (+874 extra) 
+2026-07-15 14:01:14,732 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 14:01:14,742 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 14:01:14,792 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 14:01:14,802 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-07-15 14:01:14,912 1 INFO odoo18 odoo.modules.registry: verifying fields for every extended model 
+2026-07-15 14:01:14,952 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (submitted_file, submitted_filename) of sire.api.ticket() have the same label: Archivo enviado. [Modules: l10n_pe_sire_api and l10n_pe_sire_api] 
+2026-07-15 14:01:14,953 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (receipt_file, receipt_filename) of sire.api.ticket() have the same label: Constancia. [Modules: l10n_pe_sire_api and l10n_pe_sire_api] 
+2026-07-15 14:01:14,954 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_replace_txt, sire_replace_txt_filename) of sire.period() have the same label: TXT reemplazo. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 14:01:14,955 1 WARNING odoo18 odoo.addons.base.models.ir_model: Two fields (sire_complement_txt, sire_complement_txt_filename) of sire.period() have the same label: TXT complemento. [Modules: l10n_pe_sire_ple_import and l10n_pe_sire_ple_import] 
+2026-07-15 14:01:15,300 1 INFO odoo18 odoo.modules.loading: Modules loaded. 
+2026-07-15 14:01:15,305 1 INFO odoo18 odoo.modules.registry: Registry changed, signaling through the database 
+2026-07-15 14:01:15,306 1 INFO odoo18 odoo.modules.registry: Registry loaded in 2.714s 
+2026-07-15 14:01:15,307 1 INFO odoo18 odoo.addons.base.models.ir_module: getting next ir.actions.todo() 
+2026-07-15 14:01:15,311 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:15] "POST /web/dataset/call_button/ir.module.module/button_immediate_upgrade HTTP/1.1" 200 - 5411 1.848 1.567
+2026-07-15 14:01:15,328 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-07-15 14:01:15,983 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:15] "GET /odoo HTTP/1.1" 200 - 104 0.030 0.627
+2026-07-15 14:01:16,096 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.008 0.006
+2026-07-15 14:01:16,138 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 4 0.002 0.004
+2026-07-15 14:01:16,205 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.014 0.017
+2026-07-15 14:01:16,207 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 10 0.017 0.014
+2026-07-15 14:01:16,208 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.004 0.016
+2026-07-15 14:01:16,209 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "POST /web/action/load HTTP/1.1" 200 - 7 0.018 0.013
+2026-07-15 14:01:16,228 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "POST /mail/data HTTP/1.1" 200 - 27 0.022 0.025
+2026-07-15 14:01:16,297 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "POST /mail/data HTTP/1.1" 200 - 39 0.015 0.024
+2026-07-15 14:01:16,355 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "POST /mail/inbox/messages HTTP/1.1" 200 - 5 0.004 0.005
+2026-07-15 14:01:16,362 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:16] "GET /web/image/res.partner/2/avatar_128?unique=1784124072000 HTTP/1.1" 200 - 7 0.003 0.007
+2026-07-15 14:01:17,898 1 INFO odoo18 werkzeug: 172.19.0.1 - - [15/Jul/2026 14:01:17] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.002
+2026-07-15 14:01:35,912 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-07-15 14:01:35,932 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-15 14:01:35,972 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-07-15 14:01:35,979 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-07-15 14:01:35,984 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-15 14:01:35,987 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-15 14:01:35,999 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-07-15 14:01:36,060 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-07-15 14:01:36,096 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.183s 
+2026-07-15 14:01:36,100 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-07-15 14:01:36,104 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2026-07-15 14:02:36,186 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-07-15 14:02:36,204 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-07-15 14:02:36,245 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-07-15 14:02:36,253 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-07-15 14:02:36,258 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-15 14:02:36,260 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-07-15 14:02:36,270 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-07-15 14:02:36,326 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-07-15 14:02:36,363 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.176s 
+2026-07-15 14:02:36,367 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-07-15 14:02:36,370 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 

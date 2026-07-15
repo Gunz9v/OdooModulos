@@ -1017,22 +1017,12 @@ class SirePeriod(models.Model):
             )
         )
         return {
-            "type": "ir.actions.client",
-            "tag": "display_notification",
-            "params": {
-                "title": _("Conciliacion RCE generada"),
-                "message": _(
-                    "%s coincidentes, %s con diferencias, %s solo sistema, %s solo SUNAT."
-                )
-                % (
-                    self.matched_count,
-                    self.difference_count,
-                    self.system_only_count,
-                    self.sunat_only_count,
-                ),
-                "type": "success",
-                "sticky": False,
-            },
+            "type": "ir.actions.act_window",
+            "name": _("Periodo SIRE"),
+            "res_model": "sire.period",
+            "view_mode": "form",
+            "res_id": self.id,
+            "target": "current",
         }
 
     def action_open_purchase_reconciliation(self):
@@ -1133,22 +1123,12 @@ class SirePeriod(models.Model):
             )
         )
         return {
-            "type": "ir.actions.client",
-            "tag": "display_notification",
-            "params": {
-                "title": _("Conciliacion RVIE generada"),
-                "message": _(
-                    "%s coincidentes, %s con diferencias, %s solo sistema, %s solo SUNAT."
-                )
-                % (
-                    self.matched_count,
-                    self.difference_count,
-                    self.system_only_count,
-                    self.sunat_only_count,
-                ),
-                "type": "success",
-                "sticky": False,
-            },
+            "type": "ir.actions.act_window",
+            "name": _("Periodo SIRE"),
+            "res_model": "sire.period",
+            "view_mode": "form",
+            "res_id": self.id,
+            "target": "current",
         }
 
     def action_open_sales_reconciliation(self):

@@ -8,8 +8,7 @@
                 <field name="period_id"/>
                 <field name="status"/>
                 <field name="normalized_key"/>
-                <field name="accounting_cuo" optional="hide"/>
-                <field name="accounting_car_sunat" optional="hide"/>
+                <field name="accounting_cuo"/>
                 <field name="sunat_car_sunat"/>
                 <field name="accounting_record_state"/>
                 <field name="sunat_record_state"/>
@@ -89,7 +88,6 @@
                         <group string="Contable">
                             <field name="accounting_issue_date"/>
                             <field name="accounting_cuo"/>
-                            <field name="accounting_car_sunat"/>
                             <field name="accounting_record_state"/>
                             <field name="accounting_document_type"/>
                             <field name="accounting_series"/>
@@ -150,7 +148,6 @@
                 <field name="period_id"/>
                 <field name="normalized_key"/>
                 <field name="accounting_cuo"/>
-                <field name="accounting_car_sunat"/>
                 <field name="sunat_car_sunat"/>
                 <field name="accounting_record_state"/>
                 <field name="sunat_record_state"/>
