@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sire_register_generation_tree" model="ir.ui.view">
+        <field name="name">sire.register.generation.list</field>
+        <field name="model">sire.register.generation</field>
+        <field name="arch" type="xml">
+            <list decoration-warning="has_pending_generation">
+                <field name="period_code"/>
+                <field name="company_id"/>
+                <field name="has_pending_generation"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sire_register_generation_form" model="ir.ui.view">
+        <field name="name">sire.register.generation.form</field>
+        <field name="model">sire.register.generation</field>
+        <field name="arch" type="xml">
+            <form string="Generacion de Registros">
+                <header>
+                    <button name="action_generate_records" type="object" string="Generar registros" class="btn-primary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="not has_pending_generation"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="company_id" readonly="1"/>
+                        <field name="period_code" readonly="1"/>
+                        <field name="year" readonly="1" options="{'format': false}"/>
+                        <field name="month" readonly="1"/>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="registry_type" readonly="1"/>
+                            <field name="period_code" readonly="1"/>
+                            <field name="content_indicator" readonly="1"/>
+                            <field name="preliminary_state" readonly="1"/>
+                            <field name="preliminary_deletion_state" readonly="1"/>
+                            <field name="update_state" readonly="1"/>
+                            <field name="generation_state" readonly="1"/>
+                            <field name="selected"/>
+                            <button name="action_open_period" type="object" string="Abrir periodo" class="btn-link"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sire_register_generation_search" model="ir.ui.view">
+        <field name="name">sire.register.generation.search</field>
+        <field name="model">sire.register.generation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="period_code"/>
+                <field name="company_id"/>
+                <filter string="Pendientes" name="pending" domain="[('has_pending_generation', '=', True)]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="Periodo" name="group_period" context="{'group_by': 'period_code'}"/>
+                    <filter string="Empresa" name="group_company" context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_sire_register_generation" model="ir.actions.act_window">
+        <field name="name">Registros</field>
+        <field name="res_model">sire.register.generation</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_sire_register_generation_search"/>
+        <field name="context">{'search_default_pending': 1}</field>
+    </record>
+
+    <menuitem id="menu_sire_register_generation" name="Registros" parent="l10n_pe_sire_core.menu_sire_root" action="action_sire_register_generation" sequence="60"/>
+</odoo>

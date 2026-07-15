@@ -185,6 +185,31 @@ class SireApiClient(models.AbstractModel):
         period.message_post(body=_("Aceptacion de propuesta SUNAT enviada. Ticket: %s") % num_ticket)
         return ticket
 
+    def generate_records(self, generation):
+        generation.ensure_one()
+        company = generation.company_id
+        self._ensure_token(company)
+        per_tributario = (generation.period_code or "").replace("-", "")
+        path = "/v1/contribuyente/migeigv/libros/rvierce/gestionlibro/web/registroslibros/%s/registrapreliminar" % per_tributario
+        url = self._build_url(company, path)
+        ticket = self._create_ticket(
+            company,
+            "generate_records",
+            "POST",
+            url,
+            {"period": per_tributario},
+        )
+        self._request(ticket, "POST", url, company, retry_auth=True)
+        ticket.write(
+            {
+                "state": "done",
+                "status_description": "Registros generados",
+                "sunat_process_code": "5",
+                "sunat_book_code": "080000/140000",
+            }
+        )
+        return ticket
+
     def get_rvie_periods(self, company):
         self._ensure_token(company)
         url = self._build_url(
@@ -265,6 +290,13 @@ class SireApiClient(models.AbstractModel):
                 }
             )
         ticket.write(values)
+        if (
+            ticket.state == "done"
+            and ticket.status_code == "06"
+            and ticket.process_type == "submit_acceptance"
+            and ticket.period_id
+        ):
+            self.env["sire.register.generation"].sync_period_after_acceptance(ticket.period_id, ticket=ticket)
         return data
 
     def download_ticket_file(self, ticket):

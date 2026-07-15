@@ -2,3 +2,9 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_sire_api_ticket_user,sire.api.ticket.user,model_sire_api_ticket,l10n_pe_sire_core.group_sire_user,1,0,0,0
 access_sire_api_ticket_analyst,sire.api.ticket.analyst,model_sire_api_ticket,l10n_pe_sire_core.group_sire_analyst,1,1,1,0
 access_sire_api_ticket_manager,sire.api.ticket.manager,model_sire_api_ticket,l10n_pe_sire_core.group_sire_manager,1,1,1,1
+access_sire_register_generation_user,sire.register.generation.user,model_sire_register_generation,l10n_pe_sire_core.group_sire_user,1,0,0,0
+access_sire_register_generation_analyst,sire.register.generation.analyst,model_sire_register_generation,l10n_pe_sire_core.group_sire_analyst,1,1,1,0
+access_sire_register_generation_manager,sire.register.generation.manager,model_sire_register_generation,l10n_pe_sire_core.group_sire_manager,1,1,1,1
+access_sire_register_generation_line_user,sire.register.generation.line.user,model_sire_register_generation_line,l10n_pe_sire_core.group_sire_user,1,0,0,0
+access_sire_register_generation_line_analyst,sire.register.generation.line.analyst,model_sire_register_generation_line,l10n_pe_sire_core.group_sire_analyst,1,1,1,0
+access_sire_register_generation_line_manager,sire.register.generation.line.manager,model_sire_register_generation_line,l10n_pe_sire_core.group_sire_manager,1,1,1,1

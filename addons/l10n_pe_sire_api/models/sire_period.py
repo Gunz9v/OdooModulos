@@ -71,6 +71,7 @@ class SirePeriod(models.Model):
             if ticket.result_filename:
                 client.download_ticket_file(ticket)
             client.download_receipt_file(ticket, raise_if_missing=False)
+            self.env["sire.register.generation"].sync_period_after_acceptance(self, ticket=ticket)
             self.write({"state": "closed"})
 
         return {

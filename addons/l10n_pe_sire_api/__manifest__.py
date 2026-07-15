@@ -12,6 +12,7 @@
         "security/ir.model.access.csv",
         "views/res_company_views.xml",
         "views/sire_api_ticket_views.xml",
+        "views/sire_register_generation_views.xml",
         "views/sire_period_views.xml",
         "views/menu_views.xml",
     ],

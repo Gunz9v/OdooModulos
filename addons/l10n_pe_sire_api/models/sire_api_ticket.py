@@ -30,6 +30,8 @@ class SireApiTicket(models.Model):
             ("parse_proposal", "Procesar propuesta"),
             ("run_reconciliation", "Ejecutar conciliacion"),
             ("submit_acceptance", "Aceptar propuesta"),
+            ("register_preliminary", "Registrar preliminar"),
+            ("generate_records", "Generar registros"),
             ("submit_complement", "Complementar propuesta"),
             ("submit_replacement", "Reemplazar propuesta"),
             ("download_result", "Descargar resultado"),
