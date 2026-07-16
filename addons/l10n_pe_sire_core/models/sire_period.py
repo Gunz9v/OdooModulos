@@ -132,6 +132,41 @@ class SirePeriod(models.Model):
             )
         return super().unlink()
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        for values in vals_list:
+            self._check_decision_type_write(values)
+        return super().create(vals_list)
+
+    def write(self, values):
+        self._check_decision_type_write(values)
+        if values and not self.env.context.get("allow_sire_closed_write"):
+            allowed_fields = {
+                "message_follower_ids",
+                "message_ids",
+                "activity_ids",
+            }
+            protected_values = set(values) - allowed_fields
+            closed_periods = self.filtered(lambda period: period.state == "closed")
+            if closed_periods and protected_values:
+                names = ", ".join(closed_periods.mapped("period_code"))
+                raise UserError(
+                    _("No se puede modificar un periodo SIRE cerrado: %s. Elimina el preliminar desde Registros para reabrirlo.")
+                    % names
+                )
+        return super().write(values)
+
+    def _check_decision_type_write(self, values):
+        if not values or self.env.context.get("allow_sire_decision_type_write"):
+            return
+        if "decision_type" in values:
+            raise UserError(
+                _(
+                    "La decision tributaria no se selecciona manualmente. "
+                    "Se asigna automaticamente al usar el boton correspondiente."
+                )
+            )
+
     def action_server_set_closed_or_error(self):
         for period in self:
             next_state = "error" if period.state == "closed" else "closed"
@@ -145,7 +180,7 @@ class SirePeriod(models.Model):
                         "closed_at": fields.Datetime.now(),
                     }
                 )
-            period.write(values)
+            period.with_context(allow_sire_closed_write=True).write(values)
         return {
             "type": "ir.actions.client",
             "tag": "display_notification",
@@ -163,7 +198,7 @@ class SirePeriod(models.Model):
             names = ", ".join(missing_previous.mapped("period_code"))
             raise UserError(_("No hay estado anterior guardado para: %s.") % names)
         for period in self:
-            period.write(
+            period.with_context(allow_sire_closed_write=True).write(
                 {
                     "state": period.state_before_validation,
                     "state_before_validation": False,

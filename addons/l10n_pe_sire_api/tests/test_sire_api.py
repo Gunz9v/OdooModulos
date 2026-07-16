@@ -166,7 +166,6 @@ class TestSireApi(TransactionCase):
                 "registry_type": "rvie",
                 "year": 2097,
                 "month": "05",
-                "decision_type": "accept",
             }
         )
         response = Mock()
@@ -203,7 +202,6 @@ class TestSireApi(TransactionCase):
                 "registry_type": "rce",
                 "year": 2097,
                 "month": "05",
-                "decision_type": "accept",
             }
         )
         response = Mock()
@@ -225,6 +223,141 @@ class TestSireApi(TransactionCase):
         self.assertEqual(ticket.sunat_book_code, "080000")
         self.assertEqual(request.call_args[0][0], "POST")
         self.assertIn("/v1/contribuyente/migeigv/libros/rce/propuesta/web/registroslibros/209705/aceptarpropuesta", request.call_args[0][1])
+
+    def test_accept_proposal_button_sets_decision_and_closes_period(self):
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2097,
+                "month": "05",
+            }
+        )
+        ticket = self.env["sire.api.ticket"].create(
+            {
+                "company_id": self.company.id,
+                "period_id": period.id,
+                "process_type": "submit_acceptance",
+                "ticket_number": "20260300004502",
+                "state": "done",
+                "status_code": "06",
+            }
+        )
+
+        with patch(
+            "odoo.addons.l10n_pe_sire_api.models.sire_api_client.SireApiClient.accept_proposal",
+            return_value=ticket,
+        ), patch(
+            "odoo.addons.l10n_pe_sire_api.models.sire_api_client.SireApiClient.check_ticket_status",
+            return_value={},
+        ), patch(
+            "odoo.addons.l10n_pe_sire_api.models.sire_api_client.SireApiClient.download_receipt_file",
+            return_value=False,
+        ):
+            action = period.with_context(sire_accept_max_checks=1, sire_accept_sleep_seconds=0).action_accept_sunat_proposal()
+
+        self.assertEqual(action["res_id"], ticket.id)
+        self.assertEqual(period.decision_type, "accept")
+        self.assertEqual(period.state, "closed")
+        self.assertTrue(period.closed_by)
+        self.assertTrue(period.closed_at)
+        line = self.env["sire.register.generation.line"].search([("period_id", "=", period.id)], limit=1)
+        self.assertEqual(line.preliminary_state, "registered")
+        self.assertEqual(line.preliminary_deletion_state, "available")
+
+    def test_decision_type_cannot_be_selected_manually(self):
+        with self.assertRaises(UserError):
+            self.env["sire.period"].create(
+                {
+                    "company_id": self.company.id,
+                    "registry_type": "rvie",
+                    "year": 2097,
+                    "month": "05",
+                    "decision_type": "accept",
+                }
+            )
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2097,
+                "month": "05",
+            }
+        )
+
+        with self.assertRaises(UserError):
+            period.write({"decision_type": "accept"})
+
+    def test_closed_period_blocks_manual_changes(self):
+        period = self.env["sire.period"].with_context(allow_sire_decision_type_write=True).create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2097,
+                "month": "05",
+                "state": "closed",
+                "decision_type": "accept",
+            }
+        )
+
+        with self.assertRaises(UserError):
+            period.write({"month": "06"})
+        with self.assertRaises(UserError):
+            period.write({"state": "reconciled"})
+
+    def test_delete_registered_preliminary_reopens_period(self):
+        self.company.write(
+            {
+                "sire_access_token": "abc",
+                "sire_token_expiration": False,
+            }
+        )
+        period = self.env["sire.period"].with_context(allow_sire_decision_type_write=True).create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rce",
+                "year": 2097,
+                "month": "05",
+                "state": "closed",
+                "decision_type": "accept",
+            }
+        )
+        generation = self.env["sire.register.generation"].create(
+            {
+                "company_id": self.company.id,
+                "period_code": period.period_code,
+                "year": period.year,
+                "month": period.month,
+            }
+        )
+        line = self.env["sire.register.generation.line"].create(
+            {
+                "generation_id": generation.id,
+                "period_id": period.id,
+                "company_id": self.company.id,
+                "registry_type": "rce",
+                "period_code": period.period_code,
+                "preliminary_state": "registered",
+            }
+        )
+        response = Mock()
+        response.status_code = 200
+        response.text = "{}"
+        response.content = response.text.encode()
+        response.headers = {"Content-Type": "application/json"}
+
+        with patch("odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.request", return_value=response) as request:
+            line.unlink()
+
+        self.assertFalse(line.exists())
+        self.assertEqual(period.state, "reconciled")
+        self.assertFalse(period.decision_type)
+        self.assertFalse(period.closed_by)
+        self.assertFalse(period.closed_at)
+        self.assertEqual(request.call_args[0][0], "PUT")
+        self.assertIn("/v1/contribuyente/migeigv/libros/rvierce/gestionlibro/web/registroslibros/209705/eliminapreliminar", request.call_args[0][1])
+        self.assertIn("codLibro=080000", request.call_args[0][1])
+        self.assertEqual(request.call_args[1]["json"]["codTipoRegistro"], "08")
 
     def test_sync_sunat_proposal_downloads_and_imports_when_ticket_finishes(self):
         period = self.env["sire.period"].create(
@@ -792,6 +925,51 @@ class TestSireApi(TransactionCase):
         url = request.call_args[0][1]
         self.assertIn("codProceso=3", url)
         self.assertIn("codLibro=140000", url)
+
+    def test_request_rvie_cp_inconsistencies_creates_ticket(self):
+        self.company.write(
+            {
+                "sire_access_token": "abc",
+                "sire_token_expiration": False,
+            }
+        )
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2097,
+                "month": "05",
+            }
+        )
+        source_ticket = self.env["sire.api.ticket"].create(
+            {
+                "company_id": self.company.id,
+                "period_id": period.id,
+                "process_type": "submit_complement",
+                "ticket_number": "20260100000002",
+                "sunat_process_code": "1",
+                "sunat_book_code": "140000",
+                "error_document_count": 23,
+            }
+        )
+        response = Mock()
+        response.status_code = 200
+        response.text = '{"numTicket":"20261300000099"}'
+        response.content = response.text.encode()
+        response.headers = {"Content-Type": "application/json"}
+        response.json.return_value = {"numTicket": "20261300000099"}
+
+        with patch("odoo.addons.l10n_pe_sire_api.models.sire_api_client.requests.request", return_value=response) as request:
+            action = self.env["sire.api.client"].request_rvie_cp_inconsistencies(source_ticket)
+
+        ticket = self.env["sire.api.ticket"].browse(action["res_id"])
+        self.assertEqual(ticket.process_type, "request_cp_inconsistencies")
+        self.assertEqual(ticket.ticket_number, "20261300000099")
+        self.assertEqual(ticket.sunat_process_code, "13")
+        self.assertEqual(ticket.sunat_book_code, "140000")
+        url = request.call_args[0][1]
+        self.assertIn("/rvie/inconsistencias/web/periodoinconsistencias/209705/exporta", url)
+        self.assertIn("codTipoArchivo=0", url)
 
     def test_download_receipt_file_stores_pdf(self):
         self.company.write(

@@ -22,31 +22,31 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_open_import_wizard" type="object" string="Importar archivo contable" class="btn-primary" groups="l10n_pe_sire_core.group_sire_analyst"/>
+                    <button name="action_open_import_wizard" type="object" string="Importar archivo contable" class="btn-primary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="state == 'closed'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,file_imported,proposal_downloaded,reconciled,closed,error"/>
                 </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="company_id"/>
+                            <field name="company_id" readonly="state == 'closed'"/>
                             <field name="registry_type" invisible="1" readonly="1"/>
-                            <field name="year" options="{'format': false}"/>
-                            <field name="month"/>
+                            <field name="year" options="{'format': false}" readonly="state == 'closed'"/>
+                            <field name="month" readonly="state == 'closed'"/>
                             <field name="period_code" readonly="1"/>
                         </group>
                         <group>
-                            <field name="decision_type"/>
+                            <field name="decision_type" readonly="1"/>
                             <field name="accounting_batch_id" readonly="1" invisible="1"/>
                             <field name="sunat_proposal_id" readonly="1" invisible="1"/>
                         </group>
                     </group>
                     <group string="Totales">
-                        <field name="total_accounting_records"/>
-                        <field name="total_sunat_records"/>
-                        <field name="matched_count"/>
-                        <field name="difference_count"/>
-                        <field name="sunat_only_count"/>
-                        <field name="system_only_count"/>
+                        <field name="total_accounting_records" readonly="state == 'closed'"/>
+                        <field name="total_sunat_records" readonly="state == 'closed'"/>
+                        <field name="matched_count" readonly="state == 'closed'"/>
+                        <field name="difference_count" readonly="state == 'closed'"/>
+                        <field name="sunat_only_count" readonly="state == 'closed'"/>
+                        <field name="system_only_count" readonly="state == 'closed'"/>
                     </group>
                     <notebook>
                         <page string="Importaciones">
@@ -60,7 +60,7 @@
                                     <field name="warning_rows"/>
                                     <field name="invalid_rows"/>
                                     <field name="imported_at"/>
-                                    <button name="action_delete_import_batch" type="object" string="Eliminar" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" confirm="Al eliminar esta importacion se borraran sus lineas y se limpiara la conciliacion del periodo. Deseas continuar?"/>
+                                    <button name="action_delete_import_batch" type="object" string="Eliminar" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="parent.state == 'closed'" confirm="Al eliminar esta importacion se borraran sus lineas y se limpiara la conciliacion del periodo. Deseas continuar?"/>
                                 </list>
                             </field>
                         </page>

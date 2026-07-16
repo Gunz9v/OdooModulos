@@ -39,11 +39,25 @@ class SirePeriod(models.Model):
     sire_replace_zip_filename = fields.Char(string="ZIP reemplazo", copy=False)
     sire_replace_zip = fields.Binary(string="Reemplazo", attachment=True, copy=False)
     sire_replace_count = fields.Integer(string="Registros reemplazo", copy=False)
+    sire_sunat_original_replace_txt_filename = fields.Char(string="TXT respaldo propuesta SUNAT original", copy=False)
+    sire_sunat_original_replace_txt = fields.Binary(
+        string="TXT respaldo propuesta SUNAT original",
+        attachment=True,
+        copy=False,
+    )
+    sire_sunat_original_replace_zip_filename = fields.Char(string="ZIP respaldo propuesta SUNAT original", copy=False)
+    sire_sunat_original_replace_zip = fields.Binary(
+        string="Respaldo propuesta SUNAT original",
+        attachment=True,
+        copy=False,
+    )
+    sire_sunat_original_replace_count = fields.Integer(string="Registros respaldo propuesta SUNAT original", copy=False)
     sire_complement_txt_filename = fields.Char(string="TXT complemento", copy=False)
     sire_complement_txt = fields.Binary(string="TXT complemento", attachment=True, copy=False)
     sire_complement_zip_filename = fields.Char(string="ZIP complemento", copy=False)
     sire_complement_zip = fields.Binary(string="Complemento", attachment=True, copy=False)
     sire_complement_count = fields.Integer(string="Registros complemento", copy=False)
+    sire_complement_correlative = fields.Integer(string="Correlativo complemento", default=1, copy=False)
     sire_non_domiciled_zip_filename = fields.Char(string="ZIP no domiciliados", copy=False)
     sire_non_domiciled_zip = fields.Binary(string="No domiciliados", attachment=True, copy=False)
     sire_non_domiciled_count = fields.Integer(string="Registros no domiciliados", copy=False)
@@ -78,7 +92,10 @@ class SirePeriod(models.Model):
 
     def _reset_after_import_batch_delete(self, import_kind):
         for period in self:
-            period._clear_reconciliation_and_generated_files()
+            preserve_sunat_original_backup = import_kind == "sunat"
+            period._clear_reconciliation_and_generated_files(
+                preserve_sunat_original_backup=preserve_sunat_original_backup
+            )
             values = {
                 "matched_count": 0,
                 "difference_count": 0,
@@ -103,50 +120,67 @@ class SirePeriod(models.Model):
                 )
             values["state"] = period._state_after_import_delete(values)
             period.write(values)
-            period.message_post(body=_("Importacion eliminada. Se limpiaron conciliacion y estructuras generadas."))
+            if preserve_sunat_original_backup and period.sire_sunat_original_replace_zip:
+                message = _(
+                    "Importacion SUNAT eliminada. Se limpiaron conciliacion y estructuras generadas, "
+                    "conservando el respaldo de la propuesta SUNAT original."
+                )
+            else:
+                message = _("Importacion eliminada. Se limpiaron conciliacion y estructuras generadas.")
+            period.message_post(body=message)
 
-    def _clear_reconciliation_and_generated_files(self):
+    def _clear_reconciliation_and_generated_files(self, preserve_sunat_original_backup=False):
         self.ensure_one()
         self.sales_reconciliation_line_ids.unlink()
         self.purchase_reconciliation_line_ids.unlink()
-        self.write(
-            {
-                "sire_generated_txt_filename": False,
-                "sire_generated_zip_filename": False,
-                "sire_generated_zip": False,
-                "sire_generated_at": False,
-                "sire_replace_txt_filename": False,
-                "sire_replace_txt": False,
-                "sire_replace_zip_filename": False,
-                "sire_replace_zip": False,
-                "sire_replace_count": 0,
-                "sire_complement_txt_filename": False,
-                "sire_complement_txt": False,
-                "sire_complement_zip_filename": False,
-                "sire_complement_zip": False,
-                "sire_complement_count": 0,
-                "sire_non_domiciled_zip_filename": False,
-                "sire_non_domiciled_zip": False,
-                "sire_non_domiciled_count": 0,
-                "sire_adjustment_zip_filename": False,
-                "sire_adjustment_zip": False,
-                "sire_adjustment_count": 0,
-                "rce_cp_txt_filename": False,
-                "rce_cp_txt": False,
-                "rce_cp_count": 0,
-                "rce_cp_duplicate_count": 0,
-                "rce_cp_duplicate_summary": False,
-                "rcecom_txt_filename": False,
-                "rcecom_txt": False,
-                "rcecom_count": 0,
-                "rceinex_txt_filename": False,
-                "rceinex_txt": False,
-                "rceinex_count": 0,
-                "rcetca_txt_filename": False,
-                "rcetca_txt": False,
-                "rcetca_count": 0,
-            }
-        )
+        values = {
+            "sire_generated_txt_filename": False,
+            "sire_generated_zip_filename": False,
+            "sire_generated_zip": False,
+            "sire_generated_at": False,
+            "sire_replace_txt_filename": False,
+            "sire_replace_txt": False,
+            "sire_replace_zip_filename": False,
+            "sire_replace_zip": False,
+            "sire_replace_count": 0,
+            "sire_complement_txt_filename": False,
+            "sire_complement_txt": False,
+            "sire_complement_zip_filename": False,
+            "sire_complement_zip": False,
+            "sire_complement_count": 0,
+            "sire_complement_correlative": 1,
+            "sire_non_domiciled_zip_filename": False,
+            "sire_non_domiciled_zip": False,
+            "sire_non_domiciled_count": 0,
+            "sire_adjustment_zip_filename": False,
+            "sire_adjustment_zip": False,
+            "sire_adjustment_count": 0,
+            "rce_cp_txt_filename": False,
+            "rce_cp_txt": False,
+            "rce_cp_count": 0,
+            "rce_cp_duplicate_count": 0,
+            "rce_cp_duplicate_summary": False,
+            "rcecom_txt_filename": False,
+            "rcecom_txt": False,
+            "rcecom_count": 0,
+            "rceinex_txt_filename": False,
+            "rceinex_txt": False,
+            "rceinex_count": 0,
+            "rcetca_txt_filename": False,
+            "rcetca_txt": False,
+            "rcetca_count": 0,
+        }
+        if not preserve_sunat_original_backup:
+            values.update(
+                {
+                    "sire_sunat_original_replace_txt_filename": False,
+                    "sire_sunat_original_replace_txt": False,
+                    "sire_sunat_original_replace_zip_filename": False,
+                    "sire_sunat_original_replace_zip": False,
+                    "sire_sunat_original_replace_count": 0,
+                }
+            )
+        self.write(values)
 
     def _state_after_import_delete(self, pending_values):
         self.ensure_one()
@@ -174,11 +208,13 @@ class SirePeriod(models.Model):
         self.message_post(
             body=_(
                 "Estructuras SIRE generadas: reemplazo %(replace)s, complemento %(complement)s, "
-                "CP %(cp)s, RCECOM %(rcecom)s, RCEINEX %(rceinex)s, duplicados CP omitidos %(duplicates)s."
+                "propuesta original %(sunat_original)s, CP %(cp)s, RCECOM %(rcecom)s, "
+                "RCEINEX %(rceinex)s, duplicados CP omitidos %(duplicates)s."
             )
             % {
                 "replace": counts.get("replace", 0),
                 "complement": counts.get("complement", 0),
+                "sunat_original": counts.get("sunat_original", 0),
                 "cp": counts.get("cp", 0),
                 "rcecom": counts.get("rcecom", 0),
                 "rceinex": counts.get("rceinex", 0),
@@ -208,6 +244,7 @@ class SirePeriod(models.Model):
 
         generated_at = fields.Datetime.now()
         replacement = self._build_sire_zip_payload(replacement_lines, "replace")
+        sunat_original_updates, sunat_original_count = self._prepare_sunat_original_replace_updates()
         complement_lines = self._get_complement_source_lines()
         complement = self._build_sire_zip_payload(complement_lines, "complement") if complement_lines else {}
         updates = {
@@ -235,6 +272,7 @@ class SirePeriod(models.Model):
             "final_generation_date": generated_at,
             "state": "ready_to_submit",
         }
+        updates.update(sunat_original_updates)
         if complement:
             updates.update(
                 {
@@ -245,7 +283,45 @@ class SirePeriod(models.Model):
                     "sire_complement_count": len(complement_lines),
                 }
             )
-        return updates, {"replace": len(replacement_lines), "complement": len(complement_lines)}
+        return updates, {
+            "replace": len(replacement_lines),
+            "complement": len(complement_lines),
+            "sunat_original": sunat_original_count,
+        }
+
+    def _prepare_sunat_original_replace_updates(self):
+        if self.sire_sunat_original_replace_zip:
+            return {}, self.sire_sunat_original_replace_count
+        updates = {
+            "sire_sunat_original_replace_txt_filename": False,
+            "sire_sunat_original_replace_txt": False,
+            "sire_sunat_original_replace_zip_filename": False,
+            "sire_sunat_original_replace_zip": False,
+            "sire_sunat_original_replace_count": 0,
+        }
+        sunat_original_lines = self._get_sunat_original_source_lines()
+        if not sunat_original_lines:
+            return updates, 0
+        sunat_original = self._build_sire_zip_payload(sunat_original_lines, "sunat_original")
+        updates.update(
+            {
+                "sire_sunat_original_replace_txt_filename": sunat_original["txt_filename"],
+                "sire_sunat_original_replace_txt": sunat_original["txt_data"],
+                "sire_sunat_original_replace_zip_filename": sunat_original["zip_filename"],
+                "sire_sunat_original_replace_zip": sunat_original["zip_data"],
+                "sire_sunat_original_replace_count": len(sunat_original_lines),
+            }
+        )
+        return updates, len(sunat_original_lines)
+
+    def _generate_sunat_original_replace_from_proposal(self):
+        self.ensure_one()
+        updates, count = self._prepare_sunat_original_replace_updates()
+        self.write(updates)
+        if count:
+            self.message_post(
+                body=_("Respaldo de la propuesta SUNAT original generado: %s filas.") % count
+            )
 
     def action_generate_sire_replacement_zip(self):
         return self.action_generate_structures()
@@ -341,7 +417,7 @@ class SirePeriod(models.Model):
     def _build_sire_zip_payload(self, lines, decision_key):
         txt_filename = self._build_sire_replacement_filename("TXT", decision_key=decision_key)
         zip_filename = self._build_sire_replacement_filename("", decision_key=decision_key)
-        line_texts = [self._build_sire_line_text(line) for line in lines]
+        line_texts = [self._build_sire_line_text(line, decision_key=decision_key) for line in lines]
         if any(text.lower().startswith("ruc|") for text in line_texts):
             raise UserError(_("El TXT SIRE no debe contener cabecera."))
         txt_content = "\r\n".join(line_texts) + "\r\n"
@@ -361,7 +437,11 @@ class SirePeriod(models.Model):
             "zip_data": base64.b64encode(zip_data),
         }
 
-    def _build_sire_line_text(self, line):
+    def _build_sire_line_text(self, line, decision_key=None):
+        if decision_key == "sunat_original":
+            if self.registry_type == "rvie":
+                return self._build_rvie_sunat_original_replacement_line_text(line)
+            return self._build_rce_sunat_original_replacement_line_text(line)
         if self.registry_type == "rvie":
             return self._build_rvie_replacement_line_text(line)
         return self._build_rce_replacement_line_text(line)
@@ -483,6 +563,54 @@ class SirePeriod(models.Model):
         if document_type not in ("07", "08", "87", "88") and any(values[28:32]):
             raise UserError(_("Los campos 29 al 32 solo deben informarse para notas 07, 08, 87 u 88."))
 
+    def _build_rvie_sunat_original_replacement_line_text(self, line):
+        values = self._split_source_values(line, 40)
+        company_name = (self.company_id.name or "").strip()
+        document_type = (values[6] or "").strip()
+        modified_document_values = (
+            [values[28], values[29], values[30], values[31]]
+            if document_type in ("07", "08", "87", "88")
+            else ["", "", "", ""]
+        )
+        currency_code = (values[26] or "").strip().upper()
+        exchange_rate = "" if currency_code == "PEN" else values[27]
+        base_values = [
+            (self.company_id.sire_ruc or self.company_id.vat or "").strip(),
+            company_name,
+            "%04d%s" % (self.year, self.month),
+            "",
+            values[4],
+            values[5],
+            values[6],
+            values[7],
+            values[8],
+            values[9],
+            values[10],
+            values[11],
+            values[12],
+            values[13],
+            values[14],
+            values[15],
+            values[16],
+            values[17],
+            values[18],
+            values[19],
+            values[20],
+            values[21],
+            values[22],
+            values[23],
+            values[24],
+            values[25],
+            values[26],
+            exchange_rate,
+            *modified_document_values,
+            values[32],
+        ]
+        clu_values = [values[39]] if len(values) > 39 else []
+        output_values = self._build_rvie_output_values(base_values, clu_values)
+        self._validate_rvie_replacement_values(output_values, document_type)
+        return "|".join(output_values) + "|"
+
     def _build_rce_replacement_line_text(self, line):
         values = self._split_source_values(line, 42)
         document_type = (values[5] or "").strip()
@@ -567,6 +695,53 @@ class SirePeriod(models.Model):
         if len(values) >= 37 and values[36]:
             raise UserError(_("El campo 37 CAR original debe ir vacio para reemplazo RCE."))
 
+    def _build_rce_sunat_original_replacement_line_text(self, line):
+        values = self._split_source_values(line, 80)
+        document_type = (values[6] or "").strip()
+        series = (values[7] or "").strip().upper()
+        if series == "-":
+            series = ""
+        currency_code = (values[25] or "").strip().upper()
+        exchange_rate = "" if currency_code == "PEN" or (values[26] or "").strip() == "0.000" else values[26]
+        modified_document_values = (
+            [values[27], values[28], values[29], values[30], values[31]]
+            if document_type in ("07", "08", "87", "88")
+            else ["", "", "", "", ""]
+        )
+        base_values = [
+            (self.company_id.sire_ruc or self.company_id.vat or "").strip(),
+            self.company_id.name or "",
+            "%04d%s" % (self.year, self.month),
+            "",
+            values[4],
+            values[5],
+            values[6],
+            series,
+            values[8],
+            values[9],
+            values[10],
+            values[11],
+            values[12],
+            values[13],
+            *values[14:25],
+            values[25],
+            exchange_rate,
+            *modified_document_values,
+            values[32],
+            values[33],
+            values[34],
+            values[35],
+            "",
+            "",
+            "",
+            "",
+            "",
+        ]
+        clu_values = list(values[41:80])
+        output_values = self._build_rce_output_values(base_values, clu_values)
+        self._validate_rce_replacement_values(output_values)
+        return "|".join(output_values) + "|"
+
     def action_download_sire_replacement_zip(self):
         self.ensure_one()
         if not self.sire_generated_zip:
@@ -589,6 +764,24 @@ class SirePeriod(models.Model):
         if not self.sire_replace_txt:
             raise UserError(_("Primero genera los archivos SIRE."))
         return self._download_generated_zip("sire_replace_txt", self.sire_replace_txt_filename)
+
+    def action_download_sire_sunat_original_replace_zip(self):
+        self.ensure_one()
+        if not self.sire_sunat_original_replace_zip:
+            raise UserError(_("Primero importa la propuesta SUNAT y genera las estructuras."))
+        return self._download_generated_zip(
+            "sire_sunat_original_replace_zip",
+            self.sire_sunat_original_replace_zip_filename,
+        )
+
+    def action_download_sire_sunat_original_replace_txt(self):
+        self.ensure_one()
+        if not self.sire_sunat_original_replace_txt:
+            raise UserError(_("Primero importa la propuesta SUNAT y genera las estructuras."))
+        return self._download_generated_zip(
+            "sire_sunat_original_replace_txt",
+            self.sire_sunat_original_replace_txt_filename,
+        )
 
     def action_download_sire_complement_zip(self):
         self.ensure_one()
@@ -644,11 +837,71 @@ class SirePeriod(models.Model):
             raise UserError(_("Primero genera el archivo de reemplazo."))
         return self._submit_generated_sire_file("replacement", self.sire_replace_zip, self.sire_replace_zip_filename)
 
+    def action_submit_sire_sunat_original_replace(self):
+        self.ensure_one()
+        if not self.sire_sunat_original_replace_zip:
+            raise UserError(_("Primero genera el reemplazo de contingencia SUNAT."))
+        return self._submit_generated_sire_file(
+            "replacement",
+            self.sire_sunat_original_replace_zip,
+            self.sire_sunat_original_replace_zip_filename,
+        )
+
     def action_submit_sire_complement(self):
         self.ensure_one()
-        if not self.sire_complement_zip:
-            raise UserError(_("No hay archivo de complemento generado para enviar."))
-        return self._submit_generated_sire_file("complement", self.sire_complement_zip, self.sire_complement_zip_filename)
+        max_attempts = 99 if self.registry_type == "rvie" else 1
+        last_error = False
+        for _attempt in range(max_attempts):
+            if self.registry_type == "rvie":
+                self._refresh_rvie_complement_file()
+            if not self.sire_complement_zip:
+                raise UserError(_("No hay archivo de complemento generado para enviar."))
+            try:
+                return self._submit_generated_sire_file(
+                    "complement",
+                    self.sire_complement_zip,
+                    self.sire_complement_zip_filename,
+                )
+            except UserError as error:
+                last_error = error
+                if self.registry_type != "rvie" or "previamente enviado" not in str(error):
+                    raise
+                next_correlative = min((self.sire_complement_correlative or 1) + 1, 99)
+                if next_correlative == self.sire_complement_correlative:
+                    raise
+                self.sire_complement_correlative = next_correlative
+        if last_error:
+            raise last_error
+        raise UserError(_("No se pudo enviar el complemento RVIE."))
+
+    def _refresh_rvie_complement_file(self):
+        if self.registry_type != "rvie":
+            return
+        complement_lines = self._get_complement_source_lines()
+        if not complement_lines:
+            raise UserError(
+                _(
+                    "No hay comprobantes fisicos solo en sistema contable para complementar la propuesta RVIE. "
+                    "El complemento CPF no incluye series que empiezan con F, B o E; esos comprobantes van por reemplazo RVIE."
+                )
+            )
+        complement = self._build_sire_zip_payload(complement_lines, "complement")
+        self.write(
+            {
+                "sire_complement_txt_filename": complement["txt_filename"],
+                "sire_complement_txt": complement["txt_data"],
+                "sire_complement_zip_filename": complement["zip_filename"],
+                "sire_complement_zip": complement["zip_data"],
+                "sire_complement_count": len(complement_lines),
+            }
+        )
+
+    def _is_rvie_electronic_series(self, line):
+        series = (line.series or "").strip().upper()
+        if not series and line.source_raw_text:
+            values = self._split_source_values(line, 35)
+            series = (values[6] or "").strip().upper()
+        return bool(series) and series[0] in ("E", "F", "B")
 
     def action_submit_rce_cp(self):
         self.ensure_one()
@@ -899,19 +1152,42 @@ class SirePeriod(models.Model):
         reconciliation_lines = self.sales_reconciliation_line_ids.filtered(
             lambda line: line.status == "system_only" and line.accounting_line_id
         )
-        return reconciliation_lines.mapped("accounting_line_id").sorted(
+        accounting_lines = reconciliation_lines.mapped("accounting_line_id").filtered(
+            lambda line: not self._is_rvie_electronic_series(line)
+        )
+        return accounting_lines.sorted(
             key=lambda line: (line.source_line_number, line.id)
         )
 
+    def _get_sunat_original_source_lines(self):
+        model_name = (
+            "sire.purchase.sunat.line"
+            if self.registry_type == "rce"
+            else "sire.sales.sunat.line"
+        )
+        return self.env[model_name].search(
+            [
+                ("period_id", "=", self.id),
+                ("validation_state", "!=", "invalid"),
+            ],
+            order="source_line_number, id",
+        )
+
     def _build_sire_replacement_filename(self, extension, decision_key=None):
-        extension = (extension or "").upper()
+        if self.registry_type == "rvie" and decision_key == "complement":
+            extension = (extension or "").lower()
+        else:
+            extension = (extension or "").upper()
         filename = self._build_sire_replacement_filename_base(decision_key=decision_key)
         return "%s.%s" % (filename, extension) if extension else filename
 
     def _build_sire_replacement_filename_base(self, decision_key=None):
-        ruc = (self.company_id.vat or "").strip()
+        ruc = (self.company_id.sire_ruc or self.company_id.vat or "").strip()
         if len(ruc) != 11 or not ruc.isdigit():
             raise UserError(_("Configura un RUC valido de 11 digitos en la empresa."))
+        if self.registry_type == "rvie" and decision_key == "complement":
+            correlative = min(max(self.sire_complement_correlative or 1, 1), 99)
+            return "%s-CPF-%04d%s-%02d" % (ruc, self.year, self.month, correlative)
         book_code = "080400" if self.registry_type == "rce" else "140400"
         opportunity_codes = {
             "replace": "02",

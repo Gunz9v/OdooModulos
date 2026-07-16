@@ -28,7 +28,7 @@
                         <field name="month" readonly="1"/>
                     </group>
                     <field name="line_ids">
-                        <list editable="bottom">
+                        <list>
                             <field name="registry_type" readonly="1"/>
                             <field name="period_code" readonly="1"/>
                             <field name="content_indicator" readonly="1"/>
@@ -38,6 +38,7 @@
                             <field name="generation_state" readonly="1"/>
                             <field name="selected"/>
                             <button name="action_open_period" type="object" string="Abrir periodo" class="btn-link"/>
+                            <button name="action_delete_preliminary" type="object" string="Eliminar preliminar" class="btn-secondary" invisible="preliminary_state != 'registered'" groups="l10n_pe_sire_core.group_sire_analyst" confirm="Se eliminara el preliminar registrado en SUNAT y el periodo volvera a Conciliado. Deseas continuar?"/>
                         </list>
                     </field>
                 </sheet>

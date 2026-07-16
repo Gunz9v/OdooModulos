@@ -6,10 +6,11 @@
         <field name="inherit_id" ref="l10n_pe_sire_core.view_sire_period_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header/button[@name='action_open_import_wizard']" position="after">
-                <button name="action_sync_sunat_proposal" type="object" string="Sincronizar propuesta SUNAT" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst"/>
+                <button name="action_sync_sunat_proposal" type="object" string="Sincronizar propuesta SUNAT" class="btn-secondary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="state == 'closed'"/>
             </xpath>
             <xpath expr="//header/field[@name='state']" position="after">
-                <button name="action_accept_sunat_proposal" type="object" string="Aceptar propuesta" class="btn-primary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="decision_type != 'accept'"/>
+                <button name="action_accept_sunat_proposal" type="object" string="Aceptar propuesta" class="btn-primary" groups="l10n_pe_sire_core.group_sire_analyst" invisible="decision_type == 'accept'"/>
+                <button name="action_accept_sunat_proposal" type="object" string="Propuesta aceptada" class="btn-success" groups="l10n_pe_sire_core.group_sire_analyst" invisible="decision_type != 'accept'"/>
             </xpath>
             <xpath expr="//notebook" position="inside">
                 <page string="Tickets SUNAT">

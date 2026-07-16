@@ -210,6 +210,42 @@ class SireApiClient(models.AbstractModel):
         )
         return ticket
 
+    def delete_registered_preliminary(self, generation_line):
+        generation_line.ensure_one()
+        period = generation_line.period_id
+        company = generation_line.company_id
+        self._ensure_token(company)
+        per_tributario = self._format_period(period)
+        cod_libro = "080000" if generation_line.registry_type == "rce" else "140000"
+        payload = {
+            "id": "",
+            "codTipoRegistro": "08" if generation_line.registry_type == "rce" else "14",
+        }
+        url = self._build_url(
+            company,
+            "/v1/contribuyente/migeigv/libros/rvierce/gestionlibro/web/registroslibros/%s/eliminapreliminar"
+            % per_tributario,
+            {"codLibro": cod_libro},
+        )
+        ticket = self._create_ticket(
+            company,
+            "delete_preliminary",
+            "PUT",
+            url,
+            payload,
+            period=period,
+        )
+        self._request(ticket, "PUT", url, company, retry_auth=True, payload=payload)
+        ticket.write(
+            {
+                "state": "done",
+                "status_description": "Preliminar eliminado",
+                "sunat_process_code": "delete_preliminary",
+                "sunat_book_code": cod_libro,
+            }
+        )
+        return ticket
+
     def get_rvie_periods(self, company):
         self._ensure_token(company)
         url = self._build_url(
@@ -329,6 +365,62 @@ class SireApiClient(models.AbstractModel):
             )
             ticket.period_id.write({"state": "proposal_downloaded"})
         return response
+
+    def request_rvie_cp_inconsistencies(self, source_ticket):
+        source_ticket.ensure_one()
+        period = source_ticket.period_id
+        if not period or period.registry_type != "rvie":
+            raise UserError(_("Las inconsistencias por CP corresponden al RVIE."))
+        company = source_ticket.company_id
+        self._ensure_token(company)
+        per_tributario = self._format_period(period)
+        last_day = calendar.monthrange(period.year, int(period.month))[1]
+        params = {
+            "codTipoArchivo": "0",
+            "fecEmisionIni": "01/%s/%04d" % (period.month, period.year),
+            "fecEmisionFin": "%02d/%s/%04d" % (last_day, period.month, period.year),
+            "codInconsistencia": "",
+            "numDocAdquiriente": "",
+            "codTipoCDP": "",
+            "numSerieCDP": "",
+            "numCDP": "",
+            "s": "",
+            "ord": "",
+        }
+        url = self._build_url(
+            company,
+            "/v1/contribuyente/migeigv/libros/rvie/inconsistencias/web/periodoinconsistencias/%s/exporta"
+            % per_tributario,
+            params,
+        )
+        ticket = self._create_ticket(
+            company,
+            "request_cp_inconsistencies",
+            "GET",
+            url,
+            params,
+            period=period,
+        )
+        data = self._request_json(ticket, "GET", url, company)
+        num_ticket = data.get("numTicket") if isinstance(data, dict) else False
+        if not num_ticket:
+            raise UserError(_("SUNAT no devolvio numTicket para el reporte de inconsistencias CP."))
+        ticket.write(
+            {
+                "ticket_number": num_ticket,
+                "state": "sent",
+                "status_description": "Solicitud de inconsistencias CP enviada",
+                "sunat_process_code": "13",
+                "sunat_book_code": "140000",
+            }
+        )
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Ticket inconsistencias CP"),
+            "res_model": "sire.api.ticket",
+            "view_mode": "form",
+            "res_id": ticket.id,
+        }
 
     def submit_generated_file(self, period, submission_type, file_data, filename):
         period.ensure_one()
@@ -781,17 +873,21 @@ class SireApiClient(models.AbstractModel):
     def _request_binary(self, ticket, method, url, company):
         return self._request(ticket, method, url, company, retry_auth=True)
 
-    def _request(self, ticket, method, url, company, retry_auth=False):
+    def _request(self, ticket, method, url, company, retry_auth=False, payload=False):
+        request_kwargs = {"headers": self._headers(company), "timeout": 60}
+        if payload is not False:
+            request_kwargs["json"] = payload
         try:
-            response = requests.request(method, url, headers=self._headers(company), timeout=60)
+            response = requests.request(method, url, **request_kwargs)
         except requests.RequestException as error:
             self._mark_error(ticket, company, "request_error", str(error))
             raise UserError(_("No se pudo conectar con SUNAT: %s") % error) from error
         if response.status_code == 401 and retry_auth:
             company.write({"sire_access_token": False, "sire_token_expiration": False})
             self.get_token(company)
+            request_kwargs["headers"] = self._headers(company)
             try:
-                response = requests.request(method, url, headers=self._headers(company), timeout=60)
+                response = requests.request(method, url, **request_kwargs)
             except requests.RequestException as error:
                 self._mark_error(ticket, company, "request_error", str(error))
                 raise UserError(_("No se pudo conectar con SUNAT: %s") % error) from error

@@ -25,6 +25,7 @@
                 <header>
                     <button name="action_check_ticket_status" type="object" string="Consultar estado" class="btn-primary" invisible="not ticket_number"/>
                     <button name="action_download_ticket_file" type="object" string="Descargar archivo" class="btn-secondary" invisible="not result_filename"/>
+                    <button name="action_request_cp_inconsistencies" type="object" string="Solicitar inconsistencias CP" class="btn-secondary" invisible="sunat_book_code != '140000' or error_document_count == 0"/>
                     <button name="action_download_receipt_file" type="object" string="Descargar constancia" class="btn-secondary" invisible="not submitted_filename"/>
                     <field name="state" widget="statusbar"/>
                 </header>

@@ -4,7 +4,7 @@
         <field name="name">sire.sales.sunat.line.list</field>
         <field name="model">sire.sales.sunat.line</field>
         <field name="arch" type="xml">
-            <list>
+            <list create="0" edit="0" delete="0">
                 <field name="period_id"/>
                 <field name="proposal_id" column_invisible="1"/>
                 <field name="source_line_number"/>
@@ -44,7 +44,7 @@
         <field name="name">sire.sales.sunat.line.form</field>
         <field name="model">sire.sales.sunat.line</field>
         <field name="arch" type="xml">
-            <form>
+            <form create="0" edit="0" delete="0">
                 <sheet>
                     <group>
                         <group>

@@ -341,6 +341,7 @@ class SireSunatProposalImportWizard(models.TransientModel):
             body=_("Propuesta SUNAT importada manualmente: %s (%s filas validas).")
             % (self.filename, len(parsed_file.valid_lines))
         )
+        self.period_id._generate_sunat_original_replace_from_proposal()
 
     def _build_error_summary(self, issues):
         if not issues:

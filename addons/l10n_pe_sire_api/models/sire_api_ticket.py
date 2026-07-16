@@ -32,8 +32,10 @@ class SireApiTicket(models.Model):
             ("submit_acceptance", "Aceptar propuesta"),
             ("register_preliminary", "Registrar preliminar"),
             ("generate_records", "Generar registros"),
+            ("delete_preliminary", "Eliminar preliminar"),
             ("submit_complement", "Complementar propuesta"),
             ("submit_replacement", "Reemplazar propuesta"),
+            ("request_cp_inconsistencies", "Solicitar inconsistencias CP"),
             ("download_result", "Descargar resultado"),
         ],
         string="Proceso",
@@ -94,3 +96,7 @@ class SireApiTicket(models.Model):
         self.ensure_one()
         self.env["sire.api.client"].download_receipt_file(self)
         return True
+
+    def action_request_cp_inconsistencies(self):
+        self.ensure_one()
+        return self.env["sire.api.client"].request_rvie_cp_inconsistencies(self)

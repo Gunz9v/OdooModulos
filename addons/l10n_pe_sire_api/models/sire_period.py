@@ -54,8 +54,19 @@ class SirePeriod(models.Model):
         self.ensure_one()
         if self.registry_type not in ("rvie", "rce"):
             raise UserError(_("La aceptacion automatica de propuesta esta disponible para RVIE o RCE."))
+        if self.decision_type == "accept" and self.state == "closed":
+            return {
+                "type": "ir.actions.client",
+                "tag": "display_notification",
+                "params": {
+                    "title": _("Propuesta aceptada"),
+                    "message": _("La propuesta ya fue aceptada para este periodo."),
+                    "type": "success",
+                    "sticky": False,
+                },
+            }
         if self.decision_type != "accept":
-            raise UserError(_("Selecciona la decision tributaria 'Aceptar propuesta' antes de enviar la aceptacion."))
+            self.with_context(allow_sire_decision_type_write=True).write({"decision_type": "accept"})
         client = self.env["sire.api.client"]
         ticket = client.accept_proposal(self)
         max_checks = int(self.env.context.get("sire_accept_max_checks", 8))
@@ -72,7 +83,13 @@ class SirePeriod(models.Model):
                 client.download_ticket_file(ticket)
             client.download_receipt_file(ticket, raise_if_missing=False)
             self.env["sire.register.generation"].sync_period_after_acceptance(self, ticket=ticket)
-            self.write({"state": "closed"})
+            self.write(
+                {
+                    "state": "closed",
+                    "closed_by": self.env.user.id,
+                    "closed_at": fields.Datetime.now(),
+                }
+            )
 
         return {
             "type": "ir.actions.act_window",

@@ -4,7 +4,7 @@
         <field name="name">sire.sales.accounting.line.list</field>
         <field name="model">sire.sales.accounting.line</field>
         <field name="arch" type="xml">
-            <list>
+            <list create="0" edit="0" delete="0">
                 <field name="period_id"/>
                 <field name="source_line_number"/>
                 <field name="cuo"/>
@@ -32,7 +32,7 @@
         <field name="name">sire.sales.accounting.line.form</field>
         <field name="model">sire.sales.accounting.line</field>
         <field name="arch" type="xml">
-            <form>
+            <form create="0" edit="0" delete="0">
                 <sheet>
                     <group>
                         <group>

@@ -498,6 +498,7 @@ class TestPleImport(TransactionCase):
             wizard.action_import_file()
 
     def test_sunat_proposal_wizard_imports_zip(self):
+        self.company.sire_ruc = "20100080932"
         period = self.env["sire.period"].create(
             {
                 "company_id": self.company.id,
@@ -530,6 +531,54 @@ class TestPleImport(TransactionCase):
         self.assertEqual(line.car_sunat, "2010008093201F2500000005699")
         self.assertEqual(line.series, "F250")
         self.assertEqual(line.total_amount, 2202.32)
+        self.assertEqual(period.sire_sunat_original_replace_count, 1)
+        self.assertEqual(
+            period.sire_sunat_original_replace_txt_filename,
+            "LE2010008093220980300140400021112.TXT",
+        )
+        fields = self._logical_fields(
+            base64.b64decode(period.sire_sunat_original_replace_txt).decode("latin-1").splitlines()[0]
+        )
+        self.assertEqual(len(fields), 33)
+        self.assertEqual(fields[0], "20100080932")
+        self.assertEqual(fields[2], "209803")
+        self.assertEqual(fields[3], "")
+        self.assertEqual(fields[6], "01")
+        self.assertEqual(fields[7], "F250")
+        self.assertEqual(fields[8], "5699")
+        self.assertEqual(fields[27], "3.521")
+
+    def test_sunat_original_backup_is_not_overwritten_by_later_proposal(self):
+        self.company.sire_ruc = "20100080932"
+        period = self.env["sire.period"].create(
+            {
+                "company_id": self.company.id,
+                "registry_type": "rvie",
+                "year": 2098,
+                "month": "03",
+            }
+        )
+        txt_name = self._sunat_filename("2098", "03")
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+            archive.writestr(txt_name, self._sunat_content("2098", "03"))
+        wizard = self.env["sire.sunat.proposal.import.wizard"].create(
+            {
+                "period_id": period.id,
+                "filename": "LE2010008093220980300140400001EXP2.zip",
+                "file_data": base64.b64encode(zip_buffer.getvalue()),
+            }
+        )
+        wizard.action_import_file()
+        original_txt = period.sire_sunat_original_replace_txt
+        original_filename = period.sire_sunat_original_replace_txt_filename
+        original_count = period.sire_sunat_original_replace_count
+
+        period._generate_sunat_original_replace_from_proposal()
+
+        self.assertEqual(period.sire_sunat_original_replace_txt, original_txt)
+        self.assertEqual(period.sire_sunat_original_replace_txt_filename, original_filename)
+        self.assertEqual(period.sire_sunat_original_replace_count, original_count)
 
     def test_sunat_proposal_import_rejects_content_from_other_period_even_with_generated_zip_name(self):
         period = self.env["sire.period"].create(
@@ -622,6 +671,11 @@ class TestPleImport(TransactionCase):
                 "sire_replace_zip": base64.b64encode(b"dummy"),
             }
         )
+        original_backup_txt = period.sire_sunat_original_replace_txt
+        original_backup_txt_filename = period.sire_sunat_original_replace_txt_filename
+        original_backup_zip = period.sire_sunat_original_replace_zip
+        original_backup_zip_filename = period.sire_sunat_original_replace_zip_filename
+        original_backup_count = period.sire_sunat_original_replace_count
 
         with self.assertRaises(UserError):
             self.env["sire.sunat.proposal.import.wizard"].create(
@@ -638,6 +692,11 @@ class TestPleImport(TransactionCase):
         self.assertEqual(period.total_sunat_records, 0)
         self.assertEqual(period.matched_count, 0)
         self.assertFalse(period.sire_replace_zip)
+        self.assertEqual(period.sire_sunat_original_replace_txt, original_backup_txt)
+        self.assertEqual(period.sire_sunat_original_replace_txt_filename, original_backup_txt_filename)
+        self.assertEqual(period.sire_sunat_original_replace_zip, original_backup_zip)
+        self.assertEqual(period.sire_sunat_original_replace_zip_filename, original_backup_zip_filename)
+        self.assertEqual(period.sire_sunat_original_replace_count, original_backup_count)
         self.assertFalse(self.env["sire.sales.sunat.line"].search([("period_id", "=", period.id)]))
         self.assertFalse(self.env["sire.sales.reconciliation.line"].search([("period_id", "=", period.id)]))
 
@@ -948,6 +1007,89 @@ class TestPleImport(TransactionCase):
             "LE2010008093220260500080400021112",
         )
 
+    def test_rvie_complement_filename_uses_cpf_pattern(self):
+        period = self._create_rvie_generation_period()
+
+        self.assertEqual(
+            period._build_sire_replacement_filename("TXT", decision_key="complement"),
+            "20100080932-CPF-202605-01.txt",
+        )
+        self.assertEqual(
+            period._build_sire_replacement_filename("", decision_key="complement"),
+            "20100080932-CPF-202605-01",
+        )
+
+    def test_rvie_complement_filename_prefers_sire_ruc(self):
+        period = self._create_rvie_generation_period()
+        self.company.write({"sire_ruc": "20123456789", "vat": "20100080932"})
+
+        self.assertEqual(
+            period._build_sire_replacement_filename("TXT", decision_key="complement"),
+            "20123456789-CPF-202605-01.txt",
+        )
+
+    def test_rvie_complement_filename_uses_period_correlative(self):
+        period = self._create_rvie_generation_period()
+        period.sire_complement_correlative = 2
+
+        self.assertEqual(
+            period._build_sire_replacement_filename("TXT", decision_key="complement"),
+            "20100080932-CPF-202605-02.txt",
+        )
+
+    def test_rvie_complement_uses_rvie_upload_structure(self):
+        period = self._create_rvie_generation_period()
+        values = self._rvie_source_values("01")
+        values[6] = "0001"
+        line = self._create_rvie_generation_line(period, values)
+
+        fields = self._logical_fields(period._build_sire_line_text(line, decision_key="complement"))
+
+        self.assertEqual(len(fields), 33)
+        self.assertEqual(fields[0], "20100080932")
+        self.assertEqual(fields[2], "202605")
+        self.assertEqual(fields[6], "01")
+        self.assertEqual(fields[7], "0001")
+        self.assertEqual(fields[8], "00001234")
+
+    def test_rvie_complement_rejects_electronic_series(self):
+        period = self._create_rvie_generation_period()
+        line = self._create_rvie_generation_line(period, self._rvie_source_values("01"))
+
+        self.assertTrue(period._is_rvie_electronic_series(line))
+
+    def test_rvie_complement_generates_only_physical_series(self):
+        period = self._create_rvie_generation_period()
+        electronic_values = self._rvie_source_values("01")
+        electronic_values[7] = "00001235"
+        electronic_line = self._create_rvie_generation_line(period, electronic_values)
+        physical_values = self._rvie_source_values("01")
+        physical_values[5] = "03"
+        physical_values[6] = "0001"
+        physical_values[7] = "00001236"
+        physical_line = self._create_rvie_generation_line(period, physical_values)
+        self.env["sire.sales.reconciliation.line"].create(
+            {
+                "period_id": period.id,
+                "accounting_line_id": electronic_line.id,
+                "status": "system_only",
+            }
+        )
+        self.env["sire.sales.reconciliation.line"].create(
+            {
+                "period_id": period.id,
+                "accounting_line_id": physical_line.id,
+                "status": "system_only",
+            }
+        )
+
+        complement_lines = period._get_complement_source_lines()
+        updates, counts = period._prepare_sire_file_updates()
+
+        self.assertEqual(complement_lines, physical_line)
+        self.assertEqual(counts["complement"], 1)
+        self.assertTrue(updates["sire_complement_zip"])
+
     def test_rce_replacement_line_uses_purchase_structure_not_rvie(self):
         period = self._create_rce_generation_period()
         line = self._create_rce_generation_line(period)
@@ -965,6 +1107,84 @@ class TestPleImport(TransactionCase):
         self.assertEqual(fields[26], "")
         self.assertEqual(fields[27:32], ["", "", "", "", ""])
         self.assertEqual(fields[32], "")
+        self.assertEqual(fields[36:41], ["", "", "", "", ""])
+
+    def test_rce_sunat_original_replacement_uses_purchase_structure(self):
+        period = self._create_rce_generation_period()
+        self.company.sire_ruc = "20100080932"
+        batch = self.env["sire.import.batch"].create(
+            {
+                "company_id": self.company.id,
+                "period_id": period.id,
+                "filename": "LE2010008093220260500080400001EXP2.txt",
+                "file_data": base64.b64encode(b"data"),
+                "file_hash": "%s-rce-original-sunat" % period.id,
+                "book_code": "080400",
+                "format_version": "8.4",
+            }
+        )
+        values = [
+            "20100080932",
+            "YOHERSA YOSHIMOTO HERMANOS S.A.C.",
+            "202605",
+            "1712442343101E0010000001027",
+            "11/05/2026",
+            "",
+            "01",
+            "E001",
+            "",
+            "1027",
+            "",
+            "6",
+            "17124423431",
+            "YOSHIMOTO YOSHIMOTO DE KITSUTANI CONSUEL",
+            "982.21",
+            "176.80",
+            "0.00",
+            "0.00",
+            "0.00",
+            "0.00",
+            "0.00",
+            "0.00",
+            "0.00",
+            "0.00",
+            "1159.01",
+            "PEN",
+            "1.000",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "0.00",
+            "",
+            "D",
+            "",
+            "",
+            "1",
+            "0",
+        ]
+        line = self.env["sire.purchase.sunat.line"].create(
+            {
+                "period_id": period.id,
+                "batch_id": batch.id,
+                "source_line_number": 1,
+                "source_raw_text": "|".join(values) + "|",
+            }
+        )
+
+        fields = self._logical_fields(period._build_sire_line_text(line, decision_key="sunat_original"))
+
+        self.assertEqual(len(fields), 41)
+        self.assertEqual(fields[0], "20100080932")
+        self.assertEqual(fields[2], "202605")
+        self.assertEqual(fields[3], "")
+        self.assertEqual(fields[6], "01")
+        self.assertEqual(fields[7], "E001")
+        self.assertEqual(fields[14], "982.21")
+        self.assertEqual(fields[26], "")
         self.assertEqual(fields[36:41], ["", "", "", "", ""])
 
     def test_rce_replacement_normalizes_series(self):

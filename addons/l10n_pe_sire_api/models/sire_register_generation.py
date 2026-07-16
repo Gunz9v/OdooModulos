@@ -110,6 +110,7 @@ class SireRegisterGeneration(models.Model):
             if (period.total_sunat_records or period.total_accounting_records)
             else "without_info",
             "preliminary_state": "registered",
+            "preliminary_deletion_state": "available",
             "update_state": "updated",
             "generation_state": "not_generated",
             "last_ticket_id": ticket.id if ticket else False,
@@ -192,6 +193,49 @@ class SireRegisterGenerationLine(models.Model):
     )
     selected = fields.Boolean(string="Seleccionar")
     last_ticket_id = fields.Many2one("sire.api.ticket", string="Ultimo ticket", readonly=True)
+
+    def unlink(self):
+        if not self.env.context.get("skip_sire_preliminary_delete"):
+            for line in self:
+                line._delete_preliminary_in_sunat_if_needed()
+        return super().unlink()
+
+    def action_delete_preliminary(self):
+        self.ensure_one()
+        self.unlink()
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Preliminar eliminado"),
+                "message": _("Se elimino el preliminar SUNAT y el periodo volvio a Conciliado."),
+                "type": "success",
+                "sticky": False,
+                "next": {"type": "ir.actions.client", "tag": "soft_reload"},
+            },
+        }
+
+    def _delete_preliminary_in_sunat_if_needed(self):
+        self.ensure_one()
+        period = self.period_id
+        if self.preliminary_state != "registered" or period.decision_type != "accept":
+            return False
+        ticket = self.env["sire.api.client"].delete_registered_preliminary(self)
+        period.with_context(
+            allow_sire_closed_write=True,
+            allow_sire_decision_type_write=True,
+        ).write(
+            {
+                "state": "reconciled",
+                "decision_type": False,
+                "closed_by": False,
+                "closed_at": False,
+            }
+        )
+        period.message_post(
+            body=_("Preliminar SUNAT eliminado. Ticket: %s") % (ticket.ticket_number or ticket.id)
+        )
+        return ticket
 
     def action_open_period(self):
         self.ensure_one()
