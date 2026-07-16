@@ -14,3 +14,5 @@ class SireSalesAccountingLine(models.Model):
     original_document_type = fields.Char(string="Tipo comprobante original")
     original_document_series = fields.Char(string="Serie original")
     original_document_number = fields.Char(string="Numero original")
+    taxable_base_discount = fields.Monetary(string="Dscto BI", currency_field="company_currency_id")
+    igv_discount = fields.Monetary(string="Dscto IGV", currency_field="company_currency_id")

@@ -69,7 +69,9 @@ class TestPleImport(TransactionCase):
         self.assertEqual(normalized["series"], "F001")
         self.assertEqual(normalized["currency_code"], "PEN")
         self.assertEqual(normalized["taxable_base"], Decimal("100.00"))
+        self.assertEqual(normalized["taxable_base_discount"], Decimal("0.00"))
         self.assertEqual(normalized["igv_amount"], Decimal("18.00"))
+        self.assertEqual(normalized["igv_discount"], Decimal("0.00"))
         self.assertEqual(normalized["total_amount"], Decimal("118.00"))
         self.assertFalse(normalized["original_document_date"])
         self.assertEqual(normalized["normalized_key"], "6|10456789123|01|F001|1234")
@@ -93,9 +95,28 @@ class TestPleImport(TransactionCase):
         self.assertEqual(normalized["series"], "F250")
         self.assertEqual(normalized["number"], "5699")
         self.assertEqual(normalized["taxable_base"], Decimal("1866.38"))
+        self.assertEqual(normalized["taxable_base_discount"], Decimal("0"))
         self.assertEqual(normalized["igv_amount"], Decimal("335.94"))
+        self.assertEqual(normalized["igv_discount"], Decimal("0"))
         self.assertEqual(normalized["total_amount"], Decimal("2202.32"))
         self.assertEqual(normalized["normalized_key"], "6|20332839200|01|F250|5699")
+
+    def test_sunat_proposal_keeps_taxable_and_discount_columns_separated(self):
+        content = (
+            self.sunat_header
+            + "\n"
+            + "20100080932|YOHERSA YOSHIMOTO HERMANOS S.A.C.|202605|2010008093207B3580000000058|"
+            + "05/05/2026||07|B358|58||1|44217879|-|0|0|-176.99|0|-31.85|0|0|0|0|0|0|0|"
+            + "-208.84|PEN|1.000|11/02/2026|03|B351|21097|||1|0|0|||\n"
+        ).encode("latin-1")
+
+        parsed = PleFileParser().parse("LE2010008093220260500140400001EXP2.txt", content)
+        normalized = parsed.valid_lines[0].normalized
+
+        self.assertEqual(normalized["taxable_base"], Decimal("0"))
+        self.assertEqual(normalized["taxable_base_discount"], Decimal("-176.99"))
+        self.assertEqual(normalized["igv_amount"], Decimal("0"))
+        self.assertEqual(normalized["igv_discount"], Decimal("-31.85"))
 
     def test_normalized_key_ignores_document_number_leading_zeroes(self):
         sunat_content = (
@@ -349,7 +370,7 @@ class TestPleImport(TransactionCase):
         self.assertEqual(period.sunat_only_count, 0)
         self.assertEqual(period.system_only_count, 0)
 
-    def test_sunat_credit_note_uses_discount_columns_as_negative_amounts(self):
+    def test_sunat_credit_note_keeps_discount_columns_separated(self):
         sunat_content = (
             self.sunat_header
             + "\n"
@@ -370,11 +391,15 @@ class TestPleImport(TransactionCase):
 
         self.assertEqual(sunat.valid_lines[0].normalized["normalized_key"], "1|44217879|07|B358|58")
         self.assertEqual(ple.valid_lines[0].normalized["normalized_key"], "1|44217879|07|B358|58")
-        self.assertEqual(sunat.valid_lines[0].normalized["taxable_base"], Decimal("-176.99"))
-        self.assertEqual(sunat.valid_lines[0].normalized["igv_amount"], Decimal("-31.85"))
+        self.assertEqual(sunat.valid_lines[0].normalized["taxable_base"], Decimal("0"))
+        self.assertEqual(sunat.valid_lines[0].normalized["taxable_base_discount"], Decimal("-176.99"))
+        self.assertEqual(sunat.valid_lines[0].normalized["igv_amount"], Decimal("0"))
+        self.assertEqual(sunat.valid_lines[0].normalized["igv_discount"], Decimal("-31.85"))
         self.assertEqual(sunat.valid_lines[0].normalized["total_amount"], Decimal("-208.84"))
-        self.assertEqual(sunat.valid_lines[0].normalized["taxable_base"], ple.valid_lines[0].normalized["taxable_base"])
-        self.assertEqual(sunat.valid_lines[0].normalized["igv_amount"], ple.valid_lines[0].normalized["igv_amount"])
+        self.assertEqual(ple.valid_lines[0].normalized["taxable_base"], Decimal("-176.99"))
+        self.assertEqual(ple.valid_lines[0].normalized["taxable_base_discount"], Decimal("0.00"))
+        self.assertEqual(ple.valid_lines[0].normalized["igv_amount"], Decimal("-31.85"))
+        self.assertEqual(ple.valid_lines[0].normalized["igv_discount"], Decimal("0.00"))
         self.assertEqual(sunat.valid_lines[0].normalized["total_amount"], ple.valid_lines[0].normalized["total_amount"])
 
     def test_wizard_imports_141_and_preserves_traceability(self):

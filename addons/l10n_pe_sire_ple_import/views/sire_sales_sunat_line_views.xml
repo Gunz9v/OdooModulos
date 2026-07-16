@@ -20,15 +20,17 @@
                 <field name="customer_name"/>
                 <field name="currency_code"/>
                 <field name="exchange_rate" optional="hide"/>
-                <field name="export_amount"/>
-                <field name="taxable_base"/>
-                <field name="exempt_amount"/>
-                <field name="unaffected_amount"/>
-                <field name="igv_amount"/>
-                <field name="non_taxable_amount" optional="hide"/>
-                <field name="isc_amount" optional="hide"/>
-                <field name="other_tax_amount" optional="hide"/>
-                <field name="total_amount"/>
+                <field name="export_amount" sum="Total exportacion"/>
+                <field name="taxable_base" sum="Total BI"/>
+                <field name="taxable_base_discount" optional="hide" sum="Total dscto BI"/>
+                <field name="exempt_amount" sum="Total exonerado"/>
+                <field name="unaffected_amount" sum="Total inafecto"/>
+                <field name="igv_amount" sum="Total IGV"/>
+                <field name="igv_discount" optional="hide" sum="Total dscto IGV"/>
+                <field name="non_taxable_amount" optional="hide" sum="Total no gravado"/>
+                <field name="isc_amount" optional="hide" sum="Total ISC"/>
+                <field name="other_tax_amount" optional="hide" sum="Total otros tributos"/>
+                <field name="total_amount" sum="Total CP"/>
                 <field name="original_document_date" optional="hide"/>
                 <field name="original_document_type" optional="hide"/>
                 <field name="original_document_series" optional="hide"/>
@@ -77,9 +79,11 @@
                         <field name="exchange_rate"/>
                         <field name="export_amount"/>
                         <field name="taxable_base"/>
+                        <field name="taxable_base_discount"/>
                         <field name="exempt_amount"/>
                         <field name="unaffected_amount"/>
                         <field name="igv_amount"/>
+                        <field name="igv_discount"/>
                         <field name="non_taxable_amount"/>
                         <field name="isc_amount"/>
                         <field name="other_tax_amount"/>

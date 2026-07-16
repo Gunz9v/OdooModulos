@@ -24,6 +24,11 @@ class SireImportBatch(models.Model):
         currency_field="company_currency_id",
         compute="_compute_amount_totals",
     )
+    total_taxable_base_discount = fields.Monetary(
+        string="Total dscto BI",
+        currency_field="company_currency_id",
+        compute="_compute_amount_totals",
+    )
     total_exempt_amount = fields.Monetary(
         string="Total exonerado",
         currency_field="company_currency_id",
@@ -36,6 +41,11 @@ class SireImportBatch(models.Model):
     )
     total_igv_amount = fields.Monetary(
         string="Total IGV",
+        currency_field="company_currency_id",
+        compute="_compute_amount_totals",
+    )
+    total_igv_discount = fields.Monetary(
+        string="Total dscto IGV",
         currency_field="company_currency_id",
         compute="_compute_amount_totals",
     )
@@ -113,9 +123,11 @@ class SireImportBatch(models.Model):
         return {
             "total_export_amount": "export_amount",
             "total_taxable_base": "taxable_base",
+            "total_taxable_base_discount": "taxable_base_discount",
             "total_exempt_amount": "exempt_amount",
             "total_unaffected_amount": "unaffected_amount",
             "total_igv_amount": "igv_amount",
+            "total_igv_discount": "igv_discount",
             "total_taxable_base_dg": "taxable_base_dg",
             "total_igv_dg": "igv_dg",
             "total_taxable_base_dgng": "taxable_base_dgng",

@@ -19,9 +19,11 @@
                 <field name="currency_code"/>
                 <field name="export_amount"/>
                 <field name="taxable_base"/>
+                <field name="taxable_base_discount" optional="hide"/>
                 <field name="exempt_amount"/>
                 <field name="unaffected_amount"/>
                 <field name="igv_amount"/>
+                <field name="igv_discount" optional="hide"/>
                 <field name="total_amount"/>
                 <field name="validation_state"/>
             </list>
@@ -66,9 +68,11 @@
                         <field name="exchange_rate"/>
                         <field name="export_amount"/>
                         <field name="taxable_base"/>
+                        <field name="taxable_base_discount"/>
                         <field name="exempt_amount"/>
                         <field name="unaffected_amount"/>
                         <field name="igv_amount"/>
+                        <field name="igv_discount"/>
                         <field name="non_taxable_amount"/>
                         <field name="isc_amount"/>
                         <field name="other_tax_amount"/>

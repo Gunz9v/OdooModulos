@@ -68,9 +68,11 @@
                 <field name="total_document_amount" optional="show"/>
                 <field name="total_export_amount" optional="hide" column_invisible="parent.registry_type != 'rvie'"/>
                 <field name="total_taxable_base" optional="show" column_invisible="parent.registry_type != 'rvie'"/>
+                <field name="total_taxable_base_discount" optional="hide" column_invisible="parent.registry_type != 'rvie'"/>
                 <field name="total_exempt_amount" optional="hide" column_invisible="parent.registry_type != 'rvie'"/>
                 <field name="total_unaffected_amount" optional="hide" column_invisible="parent.registry_type != 'rvie'"/>
                 <field name="total_igv_amount" optional="show" column_invisible="parent.registry_type != 'rvie'"/>
+                <field name="total_igv_discount" optional="hide" column_invisible="parent.registry_type != 'rvie'"/>
             </xpath>
         </field>
     </record>

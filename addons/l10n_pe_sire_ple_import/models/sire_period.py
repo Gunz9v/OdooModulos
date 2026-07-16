@@ -1481,7 +1481,9 @@ class SirePeriod(models.Model):
                 updates = {
                     "export_amount": parse_decimal(values[12]),
                     "taxable_base": parse_decimal(values[13]),
+                    "taxable_base_discount": parse_decimal(values[14]),
                     "igv_amount": parse_decimal(values[15]),
+                    "igv_discount": parse_decimal(values[16]),
                     "exempt_amount": parse_decimal(values[17]),
                     "unaffected_amount": parse_decimal(values[18]),
                     "non_taxable_amount": parse_decimal(values[18]),
@@ -1493,16 +1495,10 @@ class SirePeriod(models.Model):
                 if len(values) == 40:
                     updates = {
                         "export_amount": parse_decimal(values[13]),
-                        "taxable_base": (
-                            first_nonzero_decimal(values[14], values[15])
-                            if line.document_type == "07"
-                            else parse_decimal(values[14])
-                        ),
-                        "igv_amount": (
-                            first_nonzero_decimal(values[16], values[17])
-                            if line.document_type == "07"
-                            else parse_decimal(values[16])
-                        ),
+                        "taxable_base": parse_decimal(values[14]),
+                        "taxable_base_discount": parse_decimal(values[15]),
+                        "igv_amount": parse_decimal(values[16]),
+                        "igv_discount": parse_decimal(values[17]),
                         "exempt_amount": parse_decimal(values[18]),
                         "unaffected_amount": parse_decimal(values[19]),
                         "non_taxable_amount": parse_decimal(values[19]),
@@ -1527,14 +1523,20 @@ class SirePeriod(models.Model):
                 values.append("")
             if len(values) != 40:
                 continue
-            taxable_base = first_nonzero_decimal(values[14], values[15])
-            igv_amount = first_nonzero_decimal(values[16], values[17])
+            taxable_base = parse_decimal(values[14])
+            taxable_base_discount = parse_decimal(values[15])
+            igv_amount = parse_decimal(values[16])
+            igv_discount = parse_decimal(values[17])
             total_amount = parse_decimal(values[25])
             updates = {}
             if self._decimal(line.taxable_base) != taxable_base:
                 updates["taxable_base"] = taxable_base
+            if self._decimal(line.taxable_base_discount) != taxable_base_discount:
+                updates["taxable_base_discount"] = taxable_base_discount
             if self._decimal(line.igv_amount) != igv_amount:
                 updates["igv_amount"] = igv_amount
+            if self._decimal(line.igv_discount) != igv_discount:
+                updates["igv_discount"] = igv_discount
             if self._decimal(line.total_amount) != total_amount:
                 updates["total_amount"] = total_amount
             if updates:

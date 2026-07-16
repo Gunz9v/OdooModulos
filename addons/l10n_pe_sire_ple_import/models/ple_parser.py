@@ -261,7 +261,9 @@ class Format141Parser:
             ("due_date", parse_date, values[4]),
             ("export_amount", parse_decimal, values[12]),
             ("taxable_base", parse_decimal, values[13]),
+            ("taxable_base_discount", parse_decimal, values[14]),
             ("igv_amount", parse_decimal, values[15]),
+            ("igv_discount", parse_decimal, values[16]),
             ("exempt_amount", parse_decimal, values[17]),
             ("unaffected_amount", parse_decimal, values[18]),
             ("isc_amount", parse_decimal, values[19]),
@@ -561,16 +563,10 @@ class SunatProposalSalesParser:
                 )
 
         try:
-            normalized["taxable_base"] = (
-                first_nonzero_decimal(values[14], values[15])
-                if document_type == "07"
-                else parse_decimal(values[14])
-            )
-            normalized["igv_amount"] = (
-                first_nonzero_decimal(values[16], values[17])
-                if document_type == "07"
-                else parse_decimal(values[16])
-            )
+            normalized["taxable_base"] = parse_decimal(values[14])
+            normalized["taxable_base_discount"] = parse_decimal(values[15])
+            normalized["igv_amount"] = parse_decimal(values[16])
+            normalized["igv_discount"] = parse_decimal(values[17])
         except PleParserError as error:
             issues.append(
                 PleLineIssue(

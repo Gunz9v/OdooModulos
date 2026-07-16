@@ -4,7 +4,7 @@
         <field name="name">sire.purchase.reconciliation.line.list</field>
         <field name="model">sire.purchase.reconciliation.line</field>
         <field name="arch" type="xml">
-            <list decoration-success="status == 'matched'" decoration-warning="status == 'difference'" decoration-danger="status in ('system_only', 'sunat_only')">
+            <list create="0" edit="0" delete="0" decoration-success="status == 'matched'" decoration-warning="status == 'difference'" decoration-danger="status in ('system_only', 'sunat_only')">
                 <field name="period_id" optional="hide"/>
                 <field name="status"/>
                 <field name="normalized_key" optional="hide"/>
@@ -51,7 +51,7 @@
         <field name="name">sire.purchase.reconciliation.line.form</field>
         <field name="model">sire.purchase.reconciliation.line</field>
         <field name="arch" type="xml">
-            <form>
+            <form create="0" edit="0" delete="0">
                 <sheet>
                     <group>
                         <group>
