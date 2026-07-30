@@ -34,6 +34,7 @@ services:
     volumes:
       - odoo18-data:/var/lib/odoo
       - ./config:/etc/odoo
+      - ./enterprise:/mnt/enterprise:ro
       - ./addons:/mnt/extra-addons
       - ./logs:/var/log/odoo
     restart: unless-stopped
