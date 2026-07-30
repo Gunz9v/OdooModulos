@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="salesperson_route_tracking.RouteTracker">
+        <div class="o_route_tracker h-100 overflow-auto">
+            <div class="container py-4 py-lg-5">
+                <div class="o_route_tracker_card mx-auto shadow-sm">
+                    <div class="p-4 p-lg-5 text-center">
+                        <div class="o_route_tracker_icon mb-3">
+                            <i class="fa fa-location-arrow"/>
+                        </div>
+                        <h2 class="mb-2">Mi recorrido</h2>
+                        <p class="text-muted mb-4" t-if="!state.active">Inicie el rastreo al comenzar sus visitas.</p>
+                        <p class="fw-semibold mb-1" t-if="state.active"><t t-esc="state.name"/></p>
+                        <div t-attf-class="o_route_gps_status o_status_#{state.gpsStatus} mb-4">
+                            <span class="o_route_status_dot"/>
+                            <t t-esc="state.gpsMessage"/>
+                        </div>
+
+                        <div class="row g-3 mb-4" t-if="state.active">
+                            <div class="col-4">
+                                <div class="o_route_metric"><strong t-esc="state.pointCount"/><span>Puntos</span></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="o_route_metric"><strong t-esc="state.distanceKm.toFixed(2)"/><span>km</span></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="o_route_metric"><strong t-esc="state.queueCount"/><span>Pendientes</span></div>
+                            </div>
+                        </div>
+
+                        <button t-if="!state.active" class="btn btn-primary btn-lg w-100" t-on-click="startTracking" t-att-disabled="state.loading">
+                            <i class="fa fa-play me-2"/>Iniciar recorrido
+                        </button>
+                        <div class="d-grid gap-2" t-else="">
+                            <button t-if="state.status === 'running'" class="btn btn-outline-secondary btn-lg" t-on-click="pauseTracking">
+                                <i class="fa fa-pause me-2"/>Pausar
+                            </button>
+                            <button t-if="state.status === 'paused'" class="btn btn-primary btn-lg" t-on-click="resumeTracking">
+                                <i class="fa fa-play me-2"/>Reanudar
+                            </button>
+                            <button class="btn btn-outline-danger" t-on-click="finishTracking">
+                                <i class="fa fa-stop me-2"/>Finalizar recorrido
+                            </button>
+                        </div>
+                        <div class="alert alert-warning text-start mt-4 mb-0">
+                            <i class="fa fa-mobile me-2"/>
+                            Mantenga esta pantalla abierta. El rastreo puede detenerse si bloquea el celular o cambia de aplicación.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
+

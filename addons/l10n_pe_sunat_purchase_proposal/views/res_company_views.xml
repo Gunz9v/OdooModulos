@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_sunat_purchase_proposal" model="ir.ui.view">
+        <field name="name">res.config.settings.form.sunat.purchase.proposal</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Propuestas SUNAT" name="sunat_purchase_proposal" groups="l10n_pe_sunat_purchase_proposal.group_sunat_purchase_proposal_manager">
+                    <block title="Generacion de facturas">
+                        <setting string="Diario de compras" help="Diario usado para las facturas borrador generadas desde la propuesta.">
+                            <field name="sunat_purchase_journal_id"/>
+                        </setting>
+                        <setting string="Producto resumido" help="Producto utilizado para representar el total del comprobante importado.">
+                            <field name="sunat_purchase_product_id"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

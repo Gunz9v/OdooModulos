@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_route_session_user,route.session.user,model_salesperson_route_session,group_route_tracking_user,1,1,1,0
+access_route_session_manager,route.session.manager,model_salesperson_route_session,group_route_tracking_manager,1,1,1,1
+access_route_point_user,route.point.user,model_salesperson_route_point,group_route_tracking_user,1,0,1,0
+access_route_point_manager,route.point.manager,model_salesperson_route_point,group_route_tracking_manager,1,1,1,1
+

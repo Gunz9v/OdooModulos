@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="salesperson_route_tracking.RouteHistory">
+        <div class="o_route_history d-flex flex-column h-100">
+            <div class="o_control_panel px-3 py-2 border-bottom bg-white">
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                    <div>
+                        <h4 class="mb-0" t-esc="state.session.name || 'Recorrido'"/>
+                        <small class="text-muted" t-esc="state.session.seller || ''"/>
+                    </div>
+                    <div class="ms-auto d-flex gap-3" t-if="!state.loading">
+                        <span><strong t-esc="state.pointCount"/> puntos</span>
+                        <span><strong t-esc="state.session.distance_km || 0"/> km</span>
+                    </div>
+                </div>
+            </div>
+            <div class="position-relative flex-grow-1">
+                <div t-ref="map" class="o_route_history_map h-100"/>
+                <div t-if="state.loading" class="o_route_map_loading">
+                    <i class="fa fa-spinner fa-spin me-2"/>Cargando recorrido…
+                </div>
+                <div t-if="!state.loading and state.loaded and !state.pointCount" class="o_route_empty_map alert alert-info">
+                    Este recorrido todavía no tiene puntos GPS.
+                </div>
+                <div t-if="!state.loading and state.error" class="o_route_empty_map alert alert-danger">
+                    No se pudo cargar el mapa. Recarga la pÃ¡gina y vuelve a intentarlo.
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

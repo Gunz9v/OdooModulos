@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_sunat_purchase_proposal_root"
+              name="Propuestas SUNAT"
+              groups="group_sunat_purchase_proposal_user"
+              sequence="45"/>
+    <menuitem id="menu_sunat_purchase_proposals"
+              name="Propuestas de compras"
+              parent="menu_sunat_purchase_proposal_root"
+              action="action_sunat_purchase_proposal"
+              sequence="10"/>
+    <menuitem id="menu_sunat_purchase_proposal_import"
+              name="Importar propuesta RCE"
+              parent="menu_sunat_purchase_proposal_root"
+              action="action_sunat_purchase_proposal_import_wizard"
+              sequence="20"/>
+    <menuitem id="menu_sunat_purchase_proposal_lines"
+              name="Comprobantes"
+              parent="menu_sunat_purchase_proposal_root"
+              action="action_sunat_purchase_proposal_line"
+              sequence="30"/>
+    <menuitem id="menu_sunat_purchase_proposal_settings"
+              name="Configuracion"
+              parent="menu_sunat_purchase_proposal_root"
+              action="account.action_account_config"
+              groups="group_sunat_purchase_proposal_manager"
+              sequence="90"/>
+</odoo>

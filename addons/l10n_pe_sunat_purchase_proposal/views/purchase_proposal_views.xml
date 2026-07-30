@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sunat_purchase_proposal_list" model="ir.ui.view">
+        <field name="name">sunat.purchase.proposal.list</field>
+        <field name="model">sunat.purchase.proposal</field>
+        <field name="arch" type="xml">
+            <list create="0" decoration-success="state == 'processed'" decoration-warning="state == 'compared'" decoration-danger="state == 'error'">
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="period"/>
+                <field name="imported_at"/>
+                <field name="line_count"/>
+                <field name="matched_count"/>
+                <field name="difference_count"/>
+                <field name="missing_count"/>
+                <field name="ambiguous_count"/>
+                <field name="generated_count"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sunat_purchase_proposal_form" model="ir.ui.view">
+        <field name="name">sunat.purchase.proposal.form</field>
+        <field name="model">sunat.purchase.proposal</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <header>
+                    <button name="action_compare" type="object" string="Comparar con Odoo" class="oe_highlight"/>
+                    <button name="action_open_missing_lines" type="object" string="Revisar faltantes" invisible="missing_count == 0"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_lines" type="object" class="oe_stat_button" icon="fa-list">
+                            <field name="line_count" widget="statinfo" string="Comprobantes"/>
+                        </button>
+                        <button name="action_open_missing_lines" type="object" class="oe_stat_button" icon="fa-exclamation-triangle">
+                            <field name="missing_count" widget="statinfo" string="Faltantes"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Con errores" bg_color="text-bg-danger" invisible="state != 'error'"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="period"/>
+                            <field name="imported_at"/>
+                        </group>
+                        <group>
+                            <field name="source_filename"/>
+                            <field name="source_file" filename="source_filename"/>
+                            <field name="source_hash" groups="base.group_system"/>
+                        </group>
+                    </group>
+                    <group string="Resultado">
+                        <field name="matched_count"/>
+                        <field name="difference_count"/>
+                        <field name="missing_count"/>
+                        <field name="ambiguous_count"/>
+                        <field name="generated_count"/>
+                        <field name="invalid_count"/>
+                    </group>
+                    <notebook>
+                        <page string="Comprobantes">
+                            <field name="line_ids" readonly="1">
+                                <list decoration-success="match_state in ('matched', 'generated')" decoration-warning="match_state == 'difference'" decoration-danger="match_state in ('missing', 'ambiguous', 'invalid')">
+                                    <field name="source_line_number"/>
+                                    <field name="match_state" widget="badge"/>
+                                    <field name="issue_date"/>
+                                    <field name="document_type_code"/>
+                                    <field name="series"/>
+                                    <field name="number"/>
+                                    <field name="supplier_document_number"/>
+                                    <field name="supplier_name"/>
+                                    <field name="currency_code"/>
+                                    <field name="total_amount"/>
+                                    <field name="matched_move_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sunat_purchase_proposal_search" model="ir.ui.view">
+        <field name="name">sunat.purchase.proposal.search</field>
+        <field name="model">sunat.purchase.proposal</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="period"/>
+                <field name="company_id"/>
+                <filter name="compared" string="Comparadas" domain="[('state', 'in', ('compared', 'processed'))]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_period" string="Periodo" context="{'group_by': 'period'}"/>
+                    <filter name="group_company" string="Empresa" context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_sunat_purchase_proposal" model="ir.actions.act_window">
+        <field name="name">Propuestas de compras</field>
+        <field name="res_model">sunat.purchase.proposal</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_sunat_purchase_proposal_search"/>
+    </record>
+</odoo>
+
