@@ -1,14 +1,13 @@
 {
     "name": "Salesperson Route Tracking",
     "summary": "Captura GPS en primer plano y recorrido historico de vendedores.",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.1.0",
     "category": "Sales/Sales",
     "author": "Gustavo",
     "license": "LGPL-3",
     "depends": [
         "mail",
         "web",
-        "web_map",
     ],
     "data": [
         "security/security.xml",
@@ -26,4 +25,3 @@
     "application": True,
     "installable": True,
 }
-

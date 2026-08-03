@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tracking_device_list" model="ir.ui.view">
+        <field name="name">hr.attendance.tracking.device.list</field>
+        <field name="model">hr.attendance.tracking.device</field>
+        <field name="arch" type="xml">
+            <list decoration-success="state == 'active'" decoration-muted="state == 'revoked'">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="asset_code"/>
+                <field name="state" widget="badge"/>
+                <field name="manufacturer" optional="hide"/>
+                <field name="device_model"/>
+                <field name="android_version" optional="hide"/>
+                <field name="app_version" optional="hide"/>
+                <field name="last_seen_at"/>
+                <field name="last_accuracy" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_tracking_device_form" model="ir.ui.view">
+        <field name="name">hr.attendance.tracking.device.form</field>
+        <field name="model">hr.attendance.tracking.device</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_generate_enrollment_code" type="object" string="Generar codigo" class="btn-primary" invisible="state == 'active'"/>
+                    <button name="action_revoke" type="object" string="Revocar" class="btn-secondary" invisible="state != 'active'" confirm="¿Revocar este dispositivo y finalizar su seguimiento activo?"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pending,active,revoked"/>
+                </header>
+                <sheet>
+                    <h1><field name="name" placeholder="Ej. Samsung A25 - Ventas 04"/></h1>
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="state == 'active'"/>
+                            <field name="asset_code"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="enrollment_code" invisible="not enrollment_code"/>
+                            <field name="enrollment_expires_at" invisible="not enrollment_expires_at"/>
+                        </group>
+                        <group string="Aplicacion">
+                            <field name="manufacturer"/>
+                            <field name="device_model"/>
+                            <field name="android_version"/>
+                            <field name="app_version"/>
+                            <field name="enrolled_at"/>
+                            <field name="last_seen_at"/>
+                        </group>
+                    </group>
+                    <group string="Ultima ubicacion" invisible="not last_seen_at">
+                        <field name="last_latitude"/>
+                        <field name="last_longitude"/>
+                        <field name="last_accuracy"/>
+                    </group>
+                    <notebook>
+                        <page string="Jornadas">
+                            <field name="session_ids" readonly="1">
+                                <list create="0" delete="0">
+                                    <field name="name"/>
+                                    <field name="started_at"/>
+                                    <field name="ended_at"/>
+                                    <field name="state" widget="badge"/>
+                                    <field name="point_count"/>
+                                    <field name="distance_km"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_location_session_search" model="ir.ui.view">
+        <field name="name">hr.attendance.location.session.search</field>
+        <field name="model">hr.attendance.location.session</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id"/>
+                <field name="device_id"/>
+                <field name="attendance_id"/>
+                <filter name="running" string="En curso" domain="[('state', '=', 'running')]"/>
+                <filter name="today" string="Hoy" domain="[('started_at', '&gt;=', datetime.datetime.combine(context_today(), datetime.time(0, 0, 0)))]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_employee" string="Empleado" context="{'group_by': 'employee_id'}"/>
+                    <filter name="group_day" string="Dia" context="{'group_by': 'started_at:day'}"/>
+                    <filter name="group_state" string="Estado" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_location_session_list" model="ir.ui.view">
+        <field name="name">hr.attendance.location.session.list</field>
+        <field name="model">hr.attendance.location.session</field>
+        <field name="arch" type="xml">
+            <list decoration-success="state == 'running'" decoration-muted="state == 'done'" create="0">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="device_id"/>
+                <field name="started_at"/>
+                <field name="ended_at"/>
+                <field name="state" widget="badge"/>
+                <field name="point_count"/>
+                <field name="distance_km"/>
+                <field name="last_position_at"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_location_session_form" model="ir.ui.view">
+        <field name="name">hr.attendance.location.session.form</field>
+        <field name="model">hr.attendance.location.session</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0" delete="0">
+                <header><field name="state" widget="statusbar" statusbar_visible="running,done"/></header>
+                <sheet>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="attendance_id"/>
+                            <field name="device_id"/>
+                        </group>
+                        <group>
+                            <field name="started_at"/>
+                            <field name="ended_at"/>
+                            <field name="point_count"/>
+                            <field name="distance_km"/>
+                        </group>
+                    </group>
+                    <group string="Ultima posicion">
+                        <field name="last_position_at"/>
+                        <field name="last_latitude"/>
+                        <field name="last_longitude"/>
+                    </group>
+                    <notebook>
+                        <page string="Puntos GPS">
+                            <field name="point_ids">
+                                <list create="0" delete="0">
+                                    <field name="recorded_at"/>
+                                    <field name="latitude"/>
+                                    <field name="longitude"/>
+                                    <field name="accuracy"/>
+                                    <field name="speed" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tracking_devices" model="ir.actions.act_window">
+        <field name="name">Dispositivos moviles</field>
+        <field name="res_model">hr.attendance.tracking.device</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_location_sessions" model="ir.actions.act_window">
+        <field name="name">Ubicacion durante jornada</field>
+        <field name="res_model">hr.attendance.location.session</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_location_session_search"/>
+        <field name="context">{'search_default_today': 1, 'search_default_group_employee': 1}</field>
+    </record>
+</odoo>

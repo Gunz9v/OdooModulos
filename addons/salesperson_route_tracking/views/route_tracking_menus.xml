@@ -3,5 +3,5 @@
     <menuitem id="menu_route_tracking_root" name="Rutas de vendedores" sequence="55" groups="group_route_tracking_user"/>
     <menuitem id="menu_route_tracker" name="Mi recorrido" parent="menu_route_tracking_root" action="action_route_tracker" sequence="10" groups="group_route_tracking_user"/>
     <menuitem id="menu_route_sessions" name="Historial" parent="menu_route_tracking_root" action="action_route_sessions" sequence="20" groups="group_route_tracking_user"/>
+    <menuitem id="menu_route_team_sessions" name="Recorridos del equipo" parent="menu_route_tracking_root" action="action_route_team_sessions" sequence="30" groups="group_route_tracking_manager"/>
 </odoo>
-
