@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_location_sessions" name="Ubicacion del equipo" parent="hr_attendance.menu_hr_attendance_root" action="action_location_sessions" sequence="20" groups="hr_attendance.group_hr_attendance_officer"/>
+    <menuitem id="menu_team_live_map" name="Mapa del equipo" parent="hr_attendance.menu_hr_attendance_root" action="action_team_live_map" sequence="20" groups="hr_attendance.group_hr_attendance_officer"/>
+    <menuitem id="menu_location_sessions" name="Jornadas GPS" parent="hr_attendance.menu_hr_attendance_root" action="action_location_sessions" sequence="21" groups="hr_attendance.group_hr_attendance_officer"/>
     <menuitem id="menu_tracking_devices" name="Dispositivos moviles" parent="hr_attendance.menu_hr_attendance_root" action="action_tracking_devices" sequence="30" groups="hr_attendance.group_hr_attendance_manager"/>
 </odoo>

@@ -176,6 +176,62 @@ class HrAttendanceLocationSession(models.Model):
             "state": "done", "ended_at": fields.Datetime.now(),
         })
 
+    def action_open_map(self):
+        self.ensure_one()
+        self.check_access("read")
+        return {
+            "type": "ir.actions.client",
+            "tag": "attendance_location_journey_map",
+            "name": _("Mapa: %s", self.display_name),
+            "params": {"session_id": self.id},
+        }
+
+    @api.model
+    def route_data(self, session_id):
+        session = self.browse(session_id).exists()
+        if not session:
+            raise UserError(_("La jornada solicitada no existe."))
+        session.check_access("read")
+        return {
+            "session": {
+                "id": session.id,
+                "name": session.display_name,
+                "employee": session.employee_id.name,
+                "state": session.state,
+                "started_at": fields.Datetime.to_string(session.started_at),
+                "ended_at": fields.Datetime.to_string(session.ended_at) if session.ended_at else False,
+                "distance_km": round(session.distance_km, 2),
+            },
+            "points": [
+                {
+                    "latitude": point.latitude,
+                    "longitude": point.longitude,
+                    "accuracy": point.accuracy,
+                    "recorded_at": fields.Datetime.to_string(point.recorded_at),
+                }
+                for point in session.point_ids.sorted(lambda point: (point.recorded_at, point.id))
+            ],
+        }
+
+    @api.model
+    def team_map_data(self):
+        sessions = self.search([("state", "=", "running"), ("last_position_at", "!=", False)])
+        now = fields.Datetime.now()
+        return [
+            {
+                "session_id": session.id,
+                "employee": session.employee_id.name,
+                "device": session.device_id.name,
+                "latitude": session.last_latitude,
+                "longitude": session.last_longitude,
+                "accuracy": session.device_id.last_accuracy,
+                "last_position_at": fields.Datetime.to_string(session.last_position_at),
+                "age_seconds": max(int((now - session.last_position_at).total_seconds()), 0),
+                "started_at": fields.Datetime.to_string(session.started_at),
+            }
+            for session in sessions
+        ]
+
     def ingest_points(self, points):
         self.ensure_one()
         if self.state != "running" or self.attendance_id.check_out:

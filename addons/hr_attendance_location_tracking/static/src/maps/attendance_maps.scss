@@ -1,0 +1,16 @@
+.o_attendance_location_map {
+    min-height: 520px;
+    z-index: 0;
+}
+
+.o_attendance_map_message {
+    position: absolute;
+    z-index: 500;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}

@@ -41,6 +41,11 @@ class TestAttendanceMobileTracking(TransactionCase):
         self.assertEqual(accepted, 2)
         self.assertEqual(session.point_count, 2)
         self.assertGreater(session.distance_m, 0)
+        route_data = self.env["hr.attendance.location.session"].route_data(session.id)
+        self.assertEqual(len(route_data["points"]), 2)
+        self.assertEqual(session.action_open_map()["tag"], "attendance_location_journey_map")
+        team_data = self.env["hr.attendance.location.session"].team_map_data()
+        self.assertIn(session.id, [item["session_id"] for item in team_data])
         self.assertEqual(session.ingest_points([
             {"uuid": "point-1", "latitude": -12.05, "longitude": -77.04, "accuracy": 8},
         ]), 0)

@@ -68,6 +68,9 @@ class AttendanceMobileApi(http.Controller):
         session = self._model("hr.attendance.location.session").search([
             ("device_id", "=", device.id), ("state", "=", "running")
         ], order="started_at desc", limit=1)
+        last_attendance = attendance or self._model("hr.attendance").search([
+            ("employee_id", "=", device.employee_id.id)
+        ], order="check_in desc", limit=1)
         return self._response({
             "ok": True,
             "employee": {"id": device.employee_id.id, "name": device.employee_id.name},
@@ -75,6 +78,10 @@ class AttendanceMobileApi(http.Controller):
             "attendance_id": attendance.id or False,
             "session_id": session.id or False,
             "check_in": fields.Datetime.to_string(attendance.check_in) if attendance else False,
+            "last_check_in": fields.Datetime.to_string(last_attendance.check_in) if last_attendance else False,
+            "last_check_out": fields.Datetime.to_string(last_attendance.check_out) if last_attendance and last_attendance.check_out else False,
+            "can_check_in": not bool(attendance),
+            "can_check_out": bool(attendance),
         })
 
     @http.route("/mobile_tracking/v1/attendance/check-in", type="http", auth="none", methods=["POST"], csrf=False)
@@ -88,6 +95,7 @@ class AttendanceMobileApi(http.Controller):
             attendance = Attendance.search([
                 ("employee_id", "=", device.employee_id.id), ("check_out", "=", False)
             ], order="check_in desc", limit=1)
+            already_checked_in = bool(attendance)
             if not attendance:
                 attendance = device.employee_id.sudo()._attendance_action_change(self._geo(payload))
             Session = self._model("hr.attendance.location.session")
@@ -108,6 +116,7 @@ class AttendanceMobileApi(http.Controller):
             return self._response({
                 "ok": True, "attendance_id": attendance.id, "session_id": session.id,
                 "check_in": fields.Datetime.to_string(attendance.check_in),
+                "already_checked_in": already_checked_in,
             })
         except (UserError, ValidationError, ValueError, TypeError) as error:
             return self._error(error)
@@ -153,6 +162,7 @@ class AttendanceMobileApi(http.Controller):
             sessions.action_finish()
             return self._response({
                 "ok": True, "attendance_id": attendance.id,
+                "check_in": fields.Datetime.to_string(attendance.check_in),
                 "check_out": fields.Datetime.to_string(attendance.check_out),
             })
         except (UserError, ValidationError, ValueError, TypeError) as error:

@@ -50704,3 +50704,825 @@ DETAIL:  Failing row contains (10, null, 2026-07-27 16:23:34.985257, Vendedor GP
 2026-08-03 15:00:17,155 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 15:00:17] "POST /web/dataset/call_kw/hr.attendance.tracking.device/web_save HTTP/1.1" 200 - 23 0.024 0.021
 2026-08-03 15:00:17,185 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 15:00:17] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.010 0.012
 2026-08-03 15:00:17,202 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 15:00:17] "POST /mail/thread/messages HTTP/1.1" 200 - 18 0.013 0.012
+2026-08-03 15:00:18,774 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 15:00:18] "POST /web/dataset/call_button/hr.attendance.tracking.device/action_generate_enrollment_code HTTP/1.1" 200 - 8 0.003 0.011
+2026-08-03 15:38:22,921 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-03 15:41:09,144 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-03 15:41:09,149 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-08-03 15:41:09,153 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-03 15:41:09,156 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-03 15:41:09,164 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-03 15:41:09,171 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-08-03 15:41:09,175 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-03 15:41:09,177 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-03 15:41:09,185 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-03 15:41:09,189 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.002s 
+2026-08-03 15:41:09,192 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-03 15:41:09,195 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-03 15:41:09,202 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-03 15:41:09,206 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-08-03 15:41:09,209 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-03 15:41:09,213 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-03 15:41:09,221 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-03 15:41:09,224 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-03 15:41:09,228 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-03 15:41:09,231 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-03 15:53:38,492 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-03 15:53:38,495 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 15:53:38] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 2 0.001 0.005
+2026-08-03 15:53:38,510 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 15:53:38] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-03 16:41:12,559 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-03 16:41:12,563 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.003s 
+2026-08-03 16:41:12,569 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-03 16:41:12,572 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-03 16:41:12,583 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-03 16:41:12,589 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-08-03 16:41:12,595 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-03 16:41:12,599 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-03 16:41:12,610 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-03 16:41:12,614 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.002s 
+2026-08-03 16:41:12,618 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-03 16:41:12,621 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-03 16:41:12,629 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-03 16:41:12,633 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-08-03 16:41:12,637 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-03 16:41:12,640 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-03 16:41:12,650 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-03 16:41:12,653 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-03 16:41:12,657 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-03 16:41:12,660 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-03 16:42:12,725 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (22) starting 
+2026-08-03 16:42:12,730 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (22) done in 0.004s 
+2026-08-03 16:42:12,734 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (22) processed 0 records, 0 records remaining 
+2026-08-03 16:42:12,737 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (22) completed 
+2026-08-03 16:42:12,746 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base VAT: Sync updates from IAP VIES' (23) starting 
+2026-08-03 16:42:13,769 1 INFO odoo18 odoo.addons.base_vat.models.res_partner: IAP VIES check response: {} 
+2026-08-03 16:42:13,770 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base VAT: Sync updates from IAP VIES' (23) done in 1.023s 
+2026-08-03 16:42:13,775 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base VAT: Sync updates from IAP VIES' (23) processed 0 records, 0 records remaining 
+2026-08-03 16:42:13,778 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base VAT: Sync updates from IAP VIES' (23) completed 
+2026-08-03 17:19:46,700 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-03 17:19:46,704 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 17:19:46] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 2 0.001 0.005
+2026-08-03 17:19:46,718 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 17:19:46] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-03 17:41:16,661 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-03 17:41:16,666 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-08-03 17:41:16,671 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-03 17:41:16,675 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-03 17:41:16,685 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-03 17:41:16,693 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.007s 
+2026-08-03 17:41:16,698 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-03 17:41:16,701 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-03 17:41:16,710 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-03 17:41:16,713 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-08-03 17:41:16,716 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-03 17:41:16,719 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-03 17:41:16,726 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-03 17:41:16,730 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-08-03 17:41:16,734 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-03 17:41:16,737 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-03 17:41:16,746 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-03 17:41:16,749 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-03 17:41:16,752 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-03 17:41:16,755 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-03 17:58:17,575 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) starting 
+2026-08-03 17:58:17,582 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) done in 0.006s 
+2026-08-03 17:58:17,586 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) processed 0 records, 0 records remaining 
+2026-08-03 17:58:17,590 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) completed 
+2026-08-03 17:58:17,599 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) starting 
+2026-08-03 17:58:17,603 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) done in 0.003s 
+2026-08-03 17:58:17,606 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) processed 0 records, 0 records remaining 
+2026-08-03 17:58:17,610 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) completed 
+2026-08-03 18:40:19,887 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-03 18:40:19,897 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.005s 
+2026-08-03 18:40:19,902 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-03 18:40:19,906 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-03 18:40:19,918 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-03 18:40:19,923 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.004s 
+2026-08-03 18:40:19,929 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-03 18:40:19,934 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-03 18:41:19,135 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-03 18:41:19,143 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.008s 
+2026-08-03 18:41:19,147 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-03 18:41:19,151 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-03 18:41:19,160 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-03 18:41:19,165 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-08-03 18:41:19,170 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-03 18:41:19,175 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-03 18:41:19,185 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-03 18:41:19,188 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-03 18:41:19,193 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-03 18:41:19,196 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-03 18:43:32,924 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-03 18:43:32,932 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 18:43:32] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 2 0.001 0.011
+2026-08-03 18:43:32,949 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 18:43:32] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.002
+2026-08-03 19:27:07,218 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) starting 
+2026-08-03 19:27:07,229 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) done in 0.010s 
+2026-08-03 19:27:07,235 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) processed 0 records, 0 records remaining 
+2026-08-03 19:27:07,238 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) completed 
+2026-08-03 19:40:21,127 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-03 19:40:21,132 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-08-03 19:40:21,137 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-03 19:40:21,141 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-03 19:40:21,152 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-03 19:40:21,157 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.004s 
+2026-08-03 19:40:21,161 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-03 19:40:21,166 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-03 19:40:23,180 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-03 19:40:23,184 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-03 19:40:23,189 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-03 19:40:23,193 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-03 19:41:22,245 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-03 19:41:22,254 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.008s 
+2026-08-03 19:41:22,260 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-03 19:41:22,265 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-03 19:41:22,276 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-03 19:41:22,280 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-08-03 19:41:22,286 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-03 19:41:22,291 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-03 19:50:19,616 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-03 19:50:19,626 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 19:50:19] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 2 0.001 0.013
+2026-08-03 19:50:19,641 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 19:50:19] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-03 20:40:23,993 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-03 20:40:23,998 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-08-03 20:40:24,002 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-03 20:40:24,006 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-03 20:40:24,015 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-03 20:40:24,019 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-08-03 20:40:24,023 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-03 20:40:24,026 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-03 20:40:24,034 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-03 20:40:24,037 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-03 20:40:24,040 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-03 20:40:24,044 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-03 20:40:26,348 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-03 20:40:26,355 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-08-03 20:40:26,359 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-03 20:40:26,363 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-03 20:40:26,371 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-03 20:40:26,374 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.002s 
+2026-08-03 20:40:26,377 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-03 20:40:26,380 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-03 21:39:25,760 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-08-03 21:39:25,875 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-08-03 21:39:25,883 1 INFO odoo18 odoo.models.unlink: User #1 deleted ir.cron.progress records with IDs: [1187, 1188, 1189, 1190, 1191, 1192, 1193, 1194, 1195, 1196, 1197, 1198, 1199, 1200, 1201, 1202, 1203, 1204, 1205, 1206, 1207, 1208, 1209, 1210, 1211, 1212, 1213, 1214, 1215, 1216, 1217] 
+2026-08-03 21:39:25,965 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 1 user log entries 
+2026-08-03 21:39:25,974 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-08-03 21:39:25,979 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 5 entries 
+2026-08-03 21:39:25,983 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-08-03 21:39:25,995 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-08-03 21:39:26,077 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-08-03 21:39:26,186 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.424s 
+2026-08-03 21:39:26,190 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-08-03 21:39:26,193 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2026-08-03 21:39:26,202 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) starting 
+2026-08-03 21:39:26,206 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) done in 0.003s 
+2026-08-03 21:39:26,210 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) processed 0 records, 0 records remaining 
+2026-08-03 21:39:26,213 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) completed 
+2026-08-03 21:40:27,294 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) starting 
+2026-08-03 21:40:27,299 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) done in 0.004s 
+2026-08-03 21:40:27,303 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,306 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) completed 
+2026-08-03 21:40:27,315 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) starting 
+2026-08-03 21:40:27,319 1 INFO odoo18 odoo.addons.mail.models.mail_scheduled_message: Posting 0 scheduled messages 
+2026-08-03 21:40:27,320 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) done in 0.004s 
+2026-08-03 21:40:27,324 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,327 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) completed 
+2026-08-03 21:40:27,336 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-03 21:40:27,339 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.002s 
+2026-08-03 21:40:27,342 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,345 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-03 21:40:27,354 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) starting 
+2026-08-03 21:40:27,357 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) done in 0.002s 
+2026-08-03 21:40:27,361 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,364 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) completed 
+2026-08-03 21:40:27,374 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) starting 
+2026-08-03 21:40:27,377 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) done in 0.002s 
+2026-08-03 21:40:27,381 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,384 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) completed 
+2026-08-03 21:40:27,393 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) starting 
+2026-08-03 21:40:27,396 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) done in 0.002s 
+2026-08-03 21:40:27,400 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,403 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) completed 
+2026-08-03 21:40:27,413 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-03 21:40:27,419 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.005s 
+2026-08-03 21:40:27,423 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,426 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-03 21:40:27,435 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-03 21:40:27,439 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-08-03 21:40:27,443 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,446 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-03 21:40:27,455 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-03 21:40:27,459 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-08-03 21:40:27,463 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,466 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-03 21:40:27,475 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) starting 
+2026-08-03 21:40:27,480 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) done in 0.004s 
+2026-08-03 21:40:27,484 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,487 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) completed 
+2026-08-03 21:40:27,496 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-03 21:40:27,499 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-03 21:40:27,503 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-03 21:40:27,506 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-03 21:40:29,569 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) starting 
+2026-08-03 21:40:29,586 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) done in 0.014s 
+2026-08-03 21:40:29,594 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) processed 0 records, 0 records remaining 
+2026-08-03 21:40:29,600 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) completed 
+2026-08-03 21:57:26,155 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-03 21:57:26,177 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "GET /odoo/action-210?debug=1 HTTP/1.1" 200 - 23 0.009 0.019
+2026-08-03 21:57:26,565 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 7 0.004 0.011
+2026-08-03 21:57:26,569 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 3 0.002 0.013
+2026-08-03 21:57:26,586 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 7 0.003 0.008
+2026-08-03 21:57:26,622 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 5 0.003 0.012
+2026-08-03 21:57:26,628 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.009 0.012
+2026-08-03 21:57:26,633 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "POST /web/action/load HTTP/1.1" 200 - 10 0.005 0.018
+2026-08-03 21:57:26,659 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "POST /mail/data HTTP/1.1" 200 - 18 0.007 0.009
+2026-08-03 21:57:26,672 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "POST /web/dataset/call_kw/employee.document.file/get_views HTTP/1.1" 200 - 2 0.001 0.008
+2026-08-03 21:57:26,680 1 INFO ? werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "GET /web/static/img/odoo-icon-192x192.png HTTP/1.1" 304 - 0 0.000 0.002
+2026-08-03 21:57:26,693 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "POST /web/dataset/call_kw/employee.document.file/web_read_group HTTP/1.1" 200 - 3 0.002 0.007
+2026-08-03 21:57:26,694 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.001 0.006
+2026-08-03 21:57:26,694 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:26] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.001 0.008
+2026-08-03 21:57:28,954 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:28] "POST /web/action/load HTTP/1.1" 200 - 11 0.006 0.005
+2026-08-03 21:57:29,192 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:29] "POST /web/dataset/call_kw/account.move/get_views HTTP/1.1" 200 - 104 0.051 0.174
+2026-08-03 21:57:29,209 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:29] "POST /web/dataset/call_kw/account.move/web_search_read HTTP/1.1" 200 - 6 0.003 0.004
+2026-08-03 21:57:29,294 1 INFO ? werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:29] "GET /web/static/img/smiling_face.svg HTTP/1.1" 200 - 0 0.000 0.001
+2026-08-03 21:57:29,958 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:29] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.003
+2026-08-03 21:57:34,799 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:34] "POST /web/dataset/call_kw/account.move/web_search_read HTTP/1.1" 200 - 2 0.002 0.005
+2026-08-03 21:57:38,785 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:57:38] "GET /web/image?model=res.company&field=background_image&id=1 HTTP/1.1" 200 - 5 0.003 0.007
+2026-08-03 21:58:00,076 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:58:00] "POST /web/dataset/call_kw/account.move/web_search_read HTTP/1.1" 200 - 2 0.001 0.004
+2026-08-03 21:58:03,001 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:58:03] "POST /web/dataset/call_kw/account.move/web_search_read HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-03 21:58:04,049 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:58:04] "POST /web/dataset/call_kw/account.move/onchange HTTP/1.1" 200 - 20 0.014 0.205
+2026-08-03 21:58:04,126 1 INFO ? werkzeug: 172.19.0.1 - - [03/Aug/2026 21:58:04] "GET /partner_autocomplete/static/lib/jsvat.js HTTP/1.1" 200 - 0 0.000 0.003
+2026-08-03 21:58:11,687 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 21:58:11] "POST /web/dataset/call_kw/account.move/web_search_read HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-03 21:58:30,554 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) starting 
+2026-08-03 21:58:30,559 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) done in 0.005s 
+2026-08-03 21:58:30,564 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) processed 0 records, 0 records remaining 
+2026-08-03 21:58:30,567 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) completed 
+2026-08-03 21:58:30,576 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) starting 
+2026-08-03 21:58:30,580 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) done in 0.002s 
+2026-08-03 21:58:30,583 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) processed 0 records, 0 records remaining 
+2026-08-03 21:58:30,587 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) completed 
+2026-08-03 22:40:30,238 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-03 22:40:30,243 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-08-03 22:40:30,247 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-03 22:40:30,250 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-03 22:40:30,259 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-03 22:40:30,266 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-08-03 22:40:30,270 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-03 22:40:30,273 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-03 22:40:30,281 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-03 22:40:30,285 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-08-03 22:40:30,289 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-03 22:40:30,292 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-03 22:40:30,300 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-03 22:40:30,304 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-08-03 22:40:30,308 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-03 22:40:30,311 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-03 22:40:30,321 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-03 22:40:30,324 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-03 22:40:30,328 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-03 22:40:30,331 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-03 22:48:30,684 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:48:30] "GET /odoo/customer-invoices?debug=1 HTTP/1.1" 200 - 22 0.007 0.017
+2026-08-03 22:48:30,956 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:48:30] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 3 0.001 0.003
+2026-08-03 22:48:31,035 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:48:31] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 7 0.004 0.010
+2026-08-03 22:48:31,088 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:48:31] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.000 0.002
+2026-08-03 22:48:31,633 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:48:31] "POST /mail/data HTTP/1.1" 200 - 18 0.007 0.009
+2026-08-03 22:48:33,565 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:48:33] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.003
+2026-08-03 22:49:52,419 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:49:52] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 3 0.002 0.003
+2026-08-03 22:49:52,459 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:49:52] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 7 0.003 0.008
+2026-08-03 22:49:52,507 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:49:52] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.000 0.003
+2026-08-03 22:49:52,628 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:49:52] "POST /mail/data HTTP/1.1" 200 - 18 0.008 0.010
+2026-08-03 22:49:54,125 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:49:54] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2026-08-03 22:51:18,550 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:51:18] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 5 0.007 0.024
+2026-08-03 22:51:18,554 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:51:18] "POST /web/action/load HTTP/1.1" 200 - 12 0.012 0.024
+2026-08-03 22:51:18,556 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:51:18] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.011 0.028
+2026-08-03 22:51:18,587 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:51:18] "POST /web/dataset/call_kw/account.move/get_views HTTP/1.1" 200 - 3 0.002 0.021
+2026-08-03 22:51:18,606 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:51:18] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.003
+2026-08-03 22:51:18,607 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 22:51:18] "POST /web/dataset/call_kw/account.move/web_search_read HTTP/1.1" 200 - 2 0.002 0.004
+2026-08-03 23:08:17,619 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-03 23:08:17,621 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-03 23:08:17,623 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-03 23:08:17,627 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:08:17] "POST /web/dataset/call_kw/ir.rule/has_access HTTP/1.1" 200 - 2 0.001 0.030
+2026-08-03 23:08:17,630 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:08:17] "POST /web/dataset/call_kw/ir.model.access/has_access HTTP/1.1" 200 - 2 0.004 0.030
+2026-08-03 23:08:17,631 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:08:17] "POST /web/dataset/call_kw/ir.ui.view/has_access HTTP/1.1" 200 - 2 0.004 0.031
+2026-08-03 23:08:20,306 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:08:20] "POST /web/dataset/call_kw/ir.ui.view/get_views HTTP/1.1" 200 - 16 0.007 0.010
+2026-08-03 23:08:20,367 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:08:20] "POST /web/dataset/call_kw/ir.ui.view/web_search_read HTTP/1.1" 200 - 6 0.048 0.005
+2026-08-03 23:08:20,425 1 INFO ? werkzeug: 172.19.0.1 - - [03/Aug/2026 23:08:20] "GET /web/static/img/openhand.cur HTTP/1.1" 200 - 0 0.000 0.001
+2026-08-03 23:18:13,850 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:13] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-08-03 23:18:13,924 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:13] "POST /web/dataset/call_kw/sire.period/get_views HTTP/1.1" 200 - 54 0.021 0.035
+2026-08-03 23:18:13,942 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:13] "POST /web/dataset/call_kw/sire.period/web_search_read HTTP/1.1" 200 - 4 0.008 0.004
+2026-08-03 23:18:20,044 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:20] "POST /web/action/load HTTP/1.1" 200 - 11 0.004 0.006
+2026-08-03 23:18:20,123 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:20] "POST /web/dataset/call_kw/project.project/get_views HTTP/1.1" 200 - 62 0.026 0.039
+2026-08-03 23:18:20,164 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:20] "POST /web/dataset/call_kw/project.project/web_search_read HTTP/1.1" 200 - 20 0.019 0.012
+2026-08-03 23:18:20,238 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:20] "GET /web/image/res.users/2/avatar_128 HTTP/1.1" 304 - 9 0.005 0.011
+2026-08-03 23:18:22,699 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:22] "POST /web/action/load HTTP/1.1" 200 - 11 0.004 0.006
+2026-08-03 23:18:22,737 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:22] "POST /web/dataset/call_kw/hr.employee/get_views HTTP/1.1" 200 - 2 0.001 0.019
+2026-08-03 23:18:22,761 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:22] "POST /web/dataset/call_kw/hr.employee/search_panel_select_range HTTP/1.1" 200 - 4 0.003 0.012
+2026-08-03 23:18:22,787 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:22] "POST /web/dataset/call_kw/hr.employee/web_search_read HTTP/1.1" 200 - 24 0.014 0.027
+2026-08-03 23:18:22,848 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:22] "GET /web/image/res.users/6/avatar_128 HTTP/1.1" 304 - 9 0.005 0.009
+2026-08-03 23:18:24,916 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:24] "POST /web/action/load HTTP/1.1" 200 - 10 0.003 0.005
+2026-08-03 23:18:24,943 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:24] "POST /web/dataset/call_kw/hr.attendance/get_views HTTP/1.1" 200 - 2 0.001 0.006
+2026-08-03 23:18:24,957 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:24] "POST /web/dataset/call_kw/hr.attendance/web_read_group HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-03 23:18:25,680 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:25] "POST /web/dataset/call_kw/hr.employee/search_panel_select_range HTTP/1.1" 200 - 4 0.004 0.006
+2026-08-03 23:18:25,701 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:25] "POST /web/dataset/call_kw/hr.employee/web_search_read HTTP/1.1" 200 - 24 0.008 0.020
+2026-08-03 23:18:27,093 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/action/load HTTP/1.1" 200 - 11 0.003 0.005
+2026-08-03 23:18:27,211 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/dataset/call_kw/res.partner/get_views HTTP/1.1" 200 - 72 0.028 0.063
+2026-08-03 23:18:27,239 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/dataset/call_kw/res.partner/web_search_read HTTP/1.1" 200 - 13 0.008 0.012
+2026-08-03 23:18:27,313 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "GET /web/image/res.partner/8/avatar_128?unique=1785169331000 HTTP/1.1" 200 - 8 0.008 0.028
+2026-08-03 23:18:27,330 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "GET /web/image/res.partner/12/avatar_128?unique=1785535624000 HTTP/1.1" 200 - 7 0.011 0.036
+2026-08-03 23:18:27,334 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "GET /web/image/res.partner/7/avatar_128?unique=1785169331000 HTTP/1.1" 200 - 7 0.013 0.041
+2026-08-03 23:18:27,335 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "GET /web/image/res.partner/9/avatar_128?unique=1785169331000 HTTP/1.1" 200 - 7 0.019 0.037
+2026-08-03 23:18:27,339 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "GET /web/image/res.partner/1/avatar_128?unique=1785169331000 HTTP/1.1" 200 - 7 0.018 0.036
+2026-08-03 23:18:27,687 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/action/load HTTP/1.1" 200 - 12 0.004 0.006
+2026-08-03 23:18:27,772 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/action/run HTTP/1.1" 200 - 15 0.005 0.074
+2026-08-03 23:18:27,836 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/dataset/call_kw/project.task/get_views HTTP/1.1" 200 - 46 0.015 0.033
+2026-08-03 23:18:27,856 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/dataset/call_kw/project.task/read_progress_bar HTTP/1.1" 200 - 3 0.007 0.006
+2026-08-03 23:18:27,857 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/dataset/call_kw/project.task/web_read_group HTTP/1.1" 200 - 4 0.005 0.008
+2026-08-03 23:18:27,883 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/dataset/call_kw/project.task/web_search_read HTTP/1.1" 200 - 13 0.008 0.013
+2026-08-03 23:18:27,892 1 INFO odoo18 werkzeug: 172.19.0.1 - - [03/Aug/2026 23:18:27] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.002
+2026-08-04 15:41:50,436 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-08-04 15:41:50,438 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-08-04 15:41:50,439 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/enterprise', '/mnt/extra-addons'] 
+2026-08-04 15:41:50,440 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-08-04 15:41:51,046 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-08-04 15:41:51,280 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-08-04 15:41:52,302 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 3f5a61d32d9d:8069 
+2026-08-04 15:42:36,872 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-08-04 15:42:36,878 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-08-04 15:42:37,518 1 INFO ? odoo.modules.loading: loading 81 modules... 
+2026-08-04 15:42:40,406 1 INFO ? odoo.modules.loading: 81 modules loaded in 2.89s, 0 queries (+0 extra) 
+2026-08-04 15:42:40,576 1 WARNING ? odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 15:42:40,606 1 WARNING ? odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 15:42:40,631 1 INFO ? odoo.modules.loading: Modules loaded. 
+2026-08-04 15:42:40,642 1 INFO ? odoo.modules.registry: Registry loaded in 3.955s 
+2026-08-04 15:42:40,644 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-08-04 15:42:40,718 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-04 15:42:44,431 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:44] "GET /odoo/action-210?debug=1 HTTP/1.1" 200 - 135 0.605 7.140
+2026-08-04 15:42:44,536 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:44] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.043 0.005
+2026-08-04 15:42:44,732 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:44] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 4 0.003 0.003
+2026-08-04 15:42:44,773 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:44] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 8 0.010 0.008
+2026-08-04 15:42:44,834 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:44] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 11 0.015 0.027
+2026-08-04 15:42:44,912 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:44] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 17 0.038 0.083
+2026-08-04 15:42:44,912 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:44] "GET /web/image/res.company/1/favicon HTTP/1.1" 200 - 5 0.016 0.059
+2026-08-04 15:42:44,921 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:44] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.009 0.046
+2026-08-04 15:42:44,976 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:44] "POST /web/action/load HTTP/1.1" 200 - 10 0.026 0.154
+2026-08-04 15:42:45,010 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:45] "POST /mail/data HTTP/1.1" 200 - 28 0.159 0.031
+2026-08-04 15:42:45,055 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:45] "POST /web/dataset/call_kw/employee.document.file/get_views HTTP/1.1" 200 - 50 0.027 0.044
+2026-08-04 15:42:45,069 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:45] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.002
+2026-08-04 15:42:45,079 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:45] "POST /web/dataset/call_kw/employee.document.file/web_read_group HTTP/1.1" 200 - 8 0.007 0.007
+2026-08-04 15:42:45,261 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-08-04 15:42:46,121 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:46] "POST /web/action/load HTTP/1.1" 200 - 10 0.006 0.007
+2026-08-04 15:42:46,171 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:46] "POST /web/dataset/call_kw/hr.attendance/get_views HTTP/1.1" 200 - 24 0.015 0.015
+2026-08-04 15:42:46,307 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:46] "POST /web/dataset/call_kw/hr.attendance/web_read_group HTTP/1.1" 200 - 11 0.008 0.119
+2026-08-04 15:42:47,693 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:47] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.003
+2026-08-04 15:42:49,220 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:49] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-08-04 15:42:49,269 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:49] "POST /web/dataset/call_kw/hr.attendance.tracking.device/get_views HTTP/1.1" 200 - 27 0.011 0.014
+2026-08-04 15:42:49,292 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:49] "POST /web/dataset/call_kw/hr.attendance.tracking.device/web_search_read HTTP/1.1" 200 - 8 0.009 0.006
+2026-08-04 15:42:52,406 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-04 15:42:52,411 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.005s 
+2026-08-04 15:42:52,417 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,420 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-04 15:42:52,429 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-04 15:42:52,441 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.011s 
+2026-08-04 15:42:52,445 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,448 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-04 15:42:52,455 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-04 15:42:52,460 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.004s 
+2026-08-04 15:42:52,464 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,466 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-04 15:42:52,475 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) starting 
+2026-08-04 15:42:52,479 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) done in 0.003s 
+2026-08-04 15:42:52,483 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,486 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) completed 
+2026-08-04 15:42:52,493 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Project: Send rating' (19) starting 
+2026-08-04 15:42:52,500 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Project: Send rating' (19) done in 0.006s 
+2026-08-04 15:42:52,503 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Project: Send rating' (19) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,507 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Project: Send rating' (19) completed 
+2026-08-04 15:42:52,514 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (21) starting 
+2026-08-04 15:42:52,533 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (21) done in 0.018s 
+2026-08-04 15:42:52,536 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (21) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,539 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (21) completed 
+2026-08-04 15:42:52,548 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) starting 
+2026-08-04 15:42:52,554 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) done in 0.005s 
+2026-08-04 15:42:52,558 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,562 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) completed 
+2026-08-04 15:42:52,571 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) starting 
+2026-08-04 15:42:52,575 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) done in 0.002s 
+2026-08-04 15:42:52,578 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,582 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) completed 
+2026-08-04 15:42:52,590 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-04 15:42:52,598 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.006s 
+2026-08-04 15:42:52,601 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,603 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-04 15:42:52,610 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-04 15:42:52,613 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-04 15:42:52,615 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-04 15:42:52,618 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-04 15:42:52,934 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:52] "POST /web/dataset/call_kw/hr.attendance.tracking.device/web_read HTTP/1.1" 200 - 8 0.007 0.007
+2026-08-04 15:42:53,035 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:53] "POST /mail/thread/data HTTP/1.1" 200 - 26 0.029 0.011
+2026-08-04 15:42:53,048 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:53] "POST /mail/thread/messages HTTP/1.1" 200 - 20 0.025 0.011
+2026-08-04 15:42:55,846 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:55] "POST /web/dataset/call_kw/hr.employee/name_search HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-04 15:42:58,627 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:42:58] "POST /web/dataset/call_kw/hr.employee/name_search HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-04 15:56:18,066 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "GET /odoo/action-210?debug=1 HTTP/1.1" 200 - 22 0.008 0.020
+2026-08-04 15:56:18,511 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 7 0.004 0.013
+2026-08-04 15:56:18,515 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 3 0.002 0.014
+2026-08-04 15:56:18,535 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 7 0.003 0.007
+2026-08-04 15:56:18,573 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 5 0.004 0.009
+2026-08-04 15:56:18,577 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.007 0.012
+2026-08-04 15:56:18,588 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "POST /web/action/load HTTP/1.1" 200 - 10 0.008 0.018
+2026-08-04 15:56:18,615 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "POST /mail/data HTTP/1.1" 200 - 18 0.009 0.008
+2026-08-04 15:56:18,629 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "POST /web/dataset/call_kw/employee.document.file/get_views HTTP/1.1" 200 - 2 0.001 0.008
+2026-08-04 15:56:18,636 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.000 0.002
+2026-08-04 15:56:18,646 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.004
+2026-08-04 15:56:18,649 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:18] "POST /web/dataset/call_kw/employee.document.file/web_read_group HTTP/1.1" 200 - 3 0.002 0.006
+2026-08-04 15:56:21,249 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:21] "POST /web/dataset/call_kw/employee.document.file/web_search_read HTTP/1.1" 200 - 11 0.015 0.010
+2026-08-04 15:56:21,833 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:21] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.005
+2026-08-04 15:56:25,019 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:25] "POST /web/action/load HTTP/1.1" 200 - 10 0.003 0.005
+2026-08-04 15:56:25,040 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:25] "POST /web/dataset/call_kw/hr.attendance/get_views HTTP/1.1" 200 - 2 0.001 0.007
+2026-08-04 15:56:25,052 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:25] "POST /web/dataset/call_kw/hr.attendance/web_read_group HTTP/1.1" 200 - 2 0.001 0.004
+2026-08-04 15:56:25,902 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:25] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.005
+2026-08-04 15:56:25,926 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:25] "POST /web/dataset/call_kw/hr.attendance.tracking.device/get_views HTTP/1.1" 200 - 2 0.001 0.005
+2026-08-04 15:56:25,940 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:25] "POST /web/dataset/call_kw/hr.attendance.tracking.device/web_search_read HTTP/1.1" 200 - 4 0.002 0.005
+2026-08-04 15:56:27,111 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:27] "POST /web/dataset/call_kw/hr.attendance.tracking.device/web_read HTTP/1.1" 200 - 4 0.002 0.007
+2026-08-04 15:56:27,192 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:27] "POST /mail/thread/data HTTP/1.1" 200 - 17 0.007 0.011
+2026-08-04 15:56:27,221 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 15:56:27] "POST /mail/thread/messages HTTP/1.1" 200 - 18 0.010 0.013
+2026-08-04 16:36:55,009 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-08-04 16:36:55,012 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-08-04 16:36:55,310 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 4 connections  
+2026-08-04 16:37:09,918 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-08-04 16:37:09,920 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-08-04 16:37:09,921 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/enterprise', '/mnt/extra-addons'] 
+2026-08-04 16:37:09,921 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-08-04 16:37:10,263 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-08-04 16:37:10,363 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-08-04 16:37:10,751 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 95d34a6e0931:8069 
+2026-08-04 16:37:10,822 1 INFO odoo18 odoo.tests.common: Importing test framework 
+2026-08-04 16:37:10,875 1 INFO odoo18 odoo.modules.loading: loading 1 modules... 
+2026-08-04 16:37:10,884 1 INFO odoo18 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-08-04 16:37:10,910 1 INFO odoo18 odoo.modules.loading: updating modules list 
+2026-08-04 16:37:10,913 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-08-04 16:37:15,216 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Attendance Location Tracking'] to user __system__ #1 via n/a 
+2026-08-04 16:37:15,216 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Attendance Location Tracking'] to user __system__ #1 via n/a 
+2026-08-04 16:37:16,015 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-08-04 16:37:16,734 1 INFO odoo18 odoo.modules.loading: loading 81 modules... 
+2026-08-04 16:37:18,928 1 INFO odoo18 odoo.modules.loading: Loading module hr_attendance_location_tracking (74/81) 
+2026-08-04 16:37:19,065 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:19,100 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:19,343 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:19,378 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:19,408 1 INFO odoo18 odoo.modules.registry: module hr_attendance_location_tracking: creating or updating database tables 
+2026-08-04 16:37:19,585 1 INFO odoo18 odoo.modules.loading: loading hr_attendance_location_tracking/security/security.xml 
+2026-08-04 16:37:19,614 1 INFO odoo18 odoo.modules.loading: loading hr_attendance_location_tracking/security/ir.model.access.csv 
+2026-08-04 16:37:19,645 1 INFO odoo18 odoo.modules.loading: loading hr_attendance_location_tracking/views/mobile_tracking_views.xml 
+2026-08-04 16:37:19,717 1 INFO odoo18 odoo.modules.loading: loading hr_attendance_location_tracking/views/mobile_tracking_menus.xml 
+2026-08-04 16:37:19,751 1 INFO odoo18 odoo.addons.base.models.ir_module: module hr_attendance_location_tracking: no translation for language es_419 
+2026-08-04 16:37:20,355 1 INFO odoo18 odoo.addons.hr_attendance_location_tracking.tests.test_mobile_tracking: Starting TestAttendanceMobileTracking.test_enrollment_attendance_and_points ... 
+2026-08-04 16:37:20,602 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:20,632 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:20,685 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 1 removed 
+2026-08-04 16:37:20,722 1 INFO odoo18 odoo.modules.loading: Module hr_attendance_location_tracking loaded in 1.79s (incl. 0.88s test), 200 queries (+172 test, +200 other) 
+2026-08-04 16:37:21,154 1 INFO odoo18 odoo.modules.loading: 81 modules loaded in 4.42s, 200 queries (+372 extra) 
+2026-08-04 16:37:21,258 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:21,289 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:21,422 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:21,555 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:37:22,415 1 INFO odoo18 odoo.modules.loading: Modules loaded. 
+2026-08-04 16:37:22,422 1 INFO odoo18 odoo.modules.registry: Registry changed, signaling through the database 
+2026-08-04 16:37:22,423 1 INFO odoo18 odoo.modules.registry: Registry loaded in 11.670s 
+2026-08-04 16:37:22,424 1 INFO odoo18 odoo.service.server: Starting post tests 
+2026-08-04 16:37:22,426 1 INFO odoo18 odoo.service.server: 0 post-tests in 0.00s, 0 queries 
+2026-08-04 16:37:22,427 1 INFO odoo18 odoo.tests.stats: hr_attendance_location_tracking: 3 tests 0.88s 172 queries 
+2026-08-04 16:37:22,427 1 INFO odoo18 odoo.tests.result: 0 failed, 0 error(s) of 1 tests when loading database 'odoo18' 
+2026-08-04 16:37:22,427 1 INFO odoo18 odoo.service.server: Initiating shutdown 
+2026-08-04 16:37:22,428 1 INFO odoo18 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-08-04 16:37:22,817 1 INFO odoo18 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  
+2026-08-04 16:37:33,553 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-08-04 16:37:33,555 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-08-04 16:37:33,555 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/enterprise', '/mnt/extra-addons'] 
+2026-08-04 16:37:33,556 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-08-04 16:37:33,745 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-08-04 16:37:33,750 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-08-04 16:37:33,930 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 3f5a61d32d9d:8069 
+2026-08-04 16:38:24,854 1 INFO ? werkzeug: 172.19.0.1 - - [04/Aug/2026 16:38:24] "GET /hr_attendance_location_tracking/static/lib/leaflet/leaflet.js HTTP/1.1" 200 - 1 0.009 0.855
+2026-08-04 16:38:24,986 1 INFO ? werkzeug: 172.19.0.1 - - [04/Aug/2026 16:38:24] "GET /hr_attendance_location_tracking/static/lib/leaflet/leaflet.css HTTP/1.1" 200 - 1 0.002 0.030
+2026-08-04 16:38:42,895 22 INFO ? odoo: Odoo version 18.0-20260609 
+2026-08-04 16:38:42,896 22 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-08-04 16:38:42,897 22 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/enterprise', '/mnt/extra-addons'] 
+2026-08-04 16:38:42,898 22 INFO ? odoo: database: odoo@postgres18:5432 
+2026-08-04 16:38:43,075 22 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-08-04 16:38:43,081 22 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-08-04 16:38:43,234 22 INFO ? odoo.service.server: Initiating shutdown 
+2026-08-04 16:38:43,235 22 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-08-04 16:38:43,254 22 INFO odoo18 odoo.modules.loading: loading 1 modules... 
+2026-08-04 16:38:43,262 22 INFO odoo18 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-08-04 16:38:43,473 22 INFO odoo18 odoo.modules.loading: loading 81 modules... 
+2026-08-04 16:38:44,990 22 INFO odoo18 odoo.modules.loading: 81 modules loaded in 1.52s, 0 queries (+0 extra) 
+2026-08-04 16:38:45,113 22 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:38:45,144 22 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:38:45,176 22 INFO odoo18 odoo.modules.loading: Modules loaded. 
+2026-08-04 16:38:45,181 22 INFO odoo18 odoo.modules.registry: Registry loaded in 1.944s 
+2026-08-04 16:39:04,612 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-08-04 16:39:04,619 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-08-04 16:39:04,626 1 INFO ? odoo.modules.loading: loading 81 modules... 
+2026-08-04 16:39:06,109 1 INFO ? odoo.modules.loading: 81 modules loaded in 1.48s, 0 queries (+0 extra) 
+2026-08-04 16:39:06,243 1 WARNING ? odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:06,279 1 WARNING ? odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:06,308 1 INFO ? odoo.modules.loading: Modules loaded. 
+2026-08-04 16:39:06,315 1 INFO ? odoo.modules.registry: Registry loaded in 1.720s 
+2026-08-04 16:39:06,317 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-08-04 16:39:06,468 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 16:39:06] "POST /mobile_tracking/v1/enroll HTTP/1.1" 200 - 48 0.032 1.852
+2026-08-04 16:39:06,722 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 16:39:06] "POST /mobile_tracking/v1/attendance/check-in HTTP/1.1" 200 - 50 0.025 0.183
+2026-08-04 16:39:06,762 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 16:39:06] "POST /mobile_tracking/v1/attendance/check-in HTTP/1.1" 200 - 15 0.006 0.019
+2026-08-04 16:39:06,803 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 16:39:06] "GET /mobile_tracking/v1/status HTTP/1.1" 200 - 13 0.006 0.020
+2026-08-04 16:39:06,869 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 16:39:06] "POST /mobile_tracking/v1/attendance/check-out HTTP/1.1" 200 - 57 0.022 0.040
+2026-08-04 16:39:06,908 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 16:39:06] "GET /mobile_tracking/v1/status HTTP/1.1" 200 - 14 0.005 0.020
+2026-08-04 16:39:06,936 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 16:39:06] "POST /mobile_tracking/v1/attendance/check-out HTTP/1.1" 409 - 10 0.004 0.018
+2026-08-04 16:39:26,862 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-08-04 16:39:26,865 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-08-04 16:39:26,939 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 3 connections  
+2026-08-04 16:39:35,893 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-08-04 16:39:35,896 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-08-04 16:39:35,897 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/enterprise', '/mnt/extra-addons'] 
+2026-08-04 16:39:35,898 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-08-04 16:39:36,114 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-08-04 16:39:36,121 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-08-04 16:39:36,280 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 9b08162fe76a:8069 
+2026-08-04 16:39:36,303 1 INFO odoo18 odoo.tests.common: Importing test framework 
+2026-08-04 16:39:36,331 1 INFO odoo18 odoo.modules.loading: loading 1 modules... 
+2026-08-04 16:39:36,338 1 INFO odoo18 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-08-04 16:39:36,365 1 INFO odoo18 odoo.modules.loading: updating modules list 
+2026-08-04 16:39:36,368 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-08-04 16:39:38,142 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Attendance Location Tracking'] to user __system__ #1 via n/a 
+2026-08-04 16:39:38,143 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Attendance Location Tracking'] to user __system__ #1 via n/a 
+2026-08-04 16:39:39,201 1 INFO odoo18 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-08-04 16:39:39,937 1 INFO odoo18 odoo.modules.loading: loading 81 modules... 
+2026-08-04 16:39:41,176 1 INFO odoo18 odoo.modules.loading: Loading module hr_attendance_location_tracking (74/81) 
+2026-08-04 16:39:41,297 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:41,330 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:41,533 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:41,569 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:41,602 1 INFO odoo18 odoo.modules.registry: module hr_attendance_location_tracking: creating or updating database tables 
+2026-08-04 16:39:41,729 1 INFO odoo18 odoo.modules.loading: loading hr_attendance_location_tracking/security/security.xml 
+2026-08-04 16:39:41,758 1 INFO odoo18 odoo.modules.loading: loading hr_attendance_location_tracking/security/ir.model.access.csv 
+2026-08-04 16:39:41,784 1 INFO odoo18 odoo.modules.loading: loading hr_attendance_location_tracking/views/mobile_tracking_views.xml 
+2026-08-04 16:39:41,839 1 INFO odoo18 odoo.modules.loading: loading hr_attendance_location_tracking/views/mobile_tracking_menus.xml 
+2026-08-04 16:39:41,870 1 INFO odoo18 odoo.addons.base.models.ir_module: module hr_attendance_location_tracking: no translation for language es_419 
+2026-08-04 16:39:42,347 1 INFO odoo18 odoo.addons.hr_attendance_location_tracking.tests.test_mobile_tracking: Starting TestAttendanceMobileTracking.test_enrollment_attendance_and_points ... 
+2026-08-04 16:39:42,592 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:42,619 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:42,666 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 1 removed 
+2026-08-04 16:39:42,703 1 INFO odoo18 odoo.modules.loading: Module hr_attendance_location_tracking loaded in 1.53s (incl. 0.75s test), 198 queries (+175 test, +198 other) 
+2026-08-04 16:39:42,902 1 INFO odoo18 odoo.modules.loading: 81 modules loaded in 2.96s, 198 queries (+373 extra) 
+2026-08-04 16:39:43,008 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:43,036 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:43,153 1 WARNING odoo18 odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:43,270 1 WARNING odoo18 odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 16:39:44,049 1 INFO odoo18 odoo.modules.loading: Modules loaded. 
+2026-08-04 16:39:44,057 1 INFO odoo18 odoo.modules.registry: Registry changed, signaling through the database 
+2026-08-04 16:39:44,060 1 INFO odoo18 odoo.modules.registry: Registry loaded in 7.778s 
+2026-08-04 16:39:44,061 1 INFO odoo18 odoo.service.server: Starting post tests 
+2026-08-04 16:39:44,065 1 INFO odoo18 odoo.service.server: 0 post-tests in 0.00s, 0 queries 
+2026-08-04 16:39:44,065 1 INFO odoo18 odoo.tests.stats: hr_attendance_location_tracking: 3 tests 0.75s 175 queries 
+2026-08-04 16:39:44,066 1 INFO odoo18 odoo.tests.result: 0 failed, 0 error(s) of 1 tests when loading database 'odoo18' 
+2026-08-04 16:39:44,067 1 INFO odoo18 odoo.service.server: Initiating shutdown 
+2026-08-04 16:39:44,067 1 INFO odoo18 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-08-04 16:39:44,386 1 INFO odoo18 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  
+2026-08-04 16:40:12,456 1 INFO ? odoo: Odoo version 18.0-20260609 
+2026-08-04 16:40:12,458 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-08-04 16:40:12,459 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/18.0', '/mnt/enterprise', '/mnt/extra-addons'] 
+2026-08-04 16:40:12,460 1 INFO ? odoo: database: odoo@postgres18:5432 
+2026-08-04 16:40:12,661 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-08-04 16:40:12,667 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-08-04 16:40:12,831 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 3f5a61d32d9d:8069 
+2026-08-04 17:13:18,659 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-08-04 17:13:18,668 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-08-04 17:13:18,857 1 INFO ? odoo.modules.loading: loading 81 modules... 
+2026-08-04 17:13:20,616 1 INFO ? odoo.modules.loading: 81 modules loaded in 1.76s, 0 queries (+0 extra) 
+2026-08-04 17:13:20,720 1 WARNING ? odoo.fields: Field res.users.digital_signature_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 17:13:20,746 1 WARNING ? odoo.fields: Field employee.document.digital.signature.wizard.certificate_password: unknown parameter 'password', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-08-04 17:13:20,770 1 INFO ? odoo.modules.loading: Modules loaded. 
+2026-08-04 17:13:20,774 1 INFO ? odoo.modules.registry: Registry loaded in 2.140s 
+2026-08-04 17:13:20,776 1 INFO odoo18 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-08-04 17:13:20,796 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-04 17:13:24,516 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:24] "GET /odoo/action-210?debug=1 HTTP/1.1" 200 - 135 0.063 5.820
+2026-08-04 17:13:24,587 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:24] "GET /odoo/action-210?debug=1 HTTP/1.1" 200 - 22 0.017 0.039
+2026-08-04 17:13:24,757 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:24] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.016 0.022
+2026-08-04 17:13:24,935 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:24] "GET /web/webclient/load_menus/24d54648761bb1d0acf6b97c01112ace7857a9ce8364a070d7a73ef52dd02d77 HTTP/1.1" 200 - 190 0.196 0.094
+2026-08-04 17:13:24,975 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:24] "GET /web/webclient/load_menus/24d54648761bb1d0acf6b97c01112ace7857a9ce8364a070d7a73ef52dd02d77 HTTP/1.1" 200 - 189 0.181 0.089
+2026-08-04 17:13:27,615 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/2b8fdd6/web.assets_web.min.css (id:3815) 
+2026-08-04 17:13:27,616 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/2b8fdd6/web.assets_web.min.css (id:3814) 
+2026-08-04 17:13:27,619 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Deleting attachments [3785] (matching /web/assets/_______/web.assets_web.min.css) because it was replaced with /web/assets/2b8fdd6/web.assets_web.min.css 
+2026-08-04 17:13:27,619 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Deleting attachments [3785] (matching /web/assets/_______/web.assets_web.min.css) because it was replaced with /web/assets/2b8fdd6/web.assets_web.min.css 
+2026-08-04 17:13:27,645 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:27] "GET /web/assets/2b8fdd6/web.assets_web.min.css HTTP/1.1" 200 - 16 0.061 3.055
+2026-08-04 17:13:27,663 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:27] "GET /web/assets/2b8fdd6/web.assets_web.min.css HTTP/1.1" 200 - 15 0.074 2.941
+2026-08-04 17:13:29,202 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c630a79/web.assets_web_print.min.css (id:3816) 
+2026-08-04 17:13:29,205 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Deleting attachments [3786] (matching /web/assets/_______/web.assets_web_print.min.css) because it was replaced with /web/assets/c630a79/web.assets_web_print.min.css 
+2026-08-04 17:13:29,227 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:29] "GET /web/assets/c630a79/web.assets_web_print.min.css HTTP/1.1" 200 - 10 0.026 1.525
+2026-08-04 17:13:31,625 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/6566ab1/web.assets_web.min.js (id:3817) 
+2026-08-04 17:13:31,627 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Deleting attachments [3787] (matching /web/assets/_______/web.assets_web.min.js) because it was replaced with /web/assets/6566ab1/web.assets_web.min.js 
+2026-08-04 17:13:31,628 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/6566ab1/web.assets_web.min.js (id:3818) 
+2026-08-04 17:13:31,631 1 INFO odoo18 odoo.addons.base.models.assetsbundle: Deleting attachments [3787] (matching /web/assets/_______/web.assets_web.min.js) because it was replaced with /web/assets/6566ab1/web.assets_web.min.js 
+2026-08-04 17:13:31,688 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:31] "GET /web/assets/6566ab1/web.assets_web.min.js HTTP/1.1" 200 - 13 0.016 7.026
+2026-08-04 17:13:31,689 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:31] "GET /web/assets/6566ab1/web.assets_web.min.js HTTP/1.1" 200 - 13 0.013 7.145
+2026-08-04 17:13:31,920 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:31] "GET /bus/websocket_worker_bundle?v=18.0-7 HTTP/1.1" 304 - 4 0.002 0.004
+2026-08-04 17:13:31,986 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:31] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 7 0.004 0.009
+2026-08-04 17:13:32,013 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:32] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 1 0.000 0.002
+2026-08-04 17:13:32,336 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-08-04 17:13:32,674 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:32] "POST /mail/data HTTP/1.1" 200 - 28 0.013 0.011
+2026-08-04 17:13:33,660 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:13:33] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.001 0.003
+2026-08-04 17:13:48,050 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-08-04 17:13:48,156 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 3 removed 
+2026-08-04 17:13:48,247 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-08-04 17:13:48,258 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-08-04 17:13:48,264 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 6 entries 
+2026-08-04 17:13:48,269 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-08-04 17:13:48,288 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-08-04 17:13:48,400 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-08-04 17:13:48,553 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.502s 
+2026-08-04 17:13:48,558 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-08-04 17:13:48,561 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2026-08-04 17:13:48,571 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-04 17:13:48,575 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.003s 
+2026-08-04 17:13:48,579 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-04 17:13:48,583 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-04 17:13:48,593 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-04 17:13:48,600 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-08-04 17:13:48,605 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-04 17:13:48,609 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-04 17:13:48,618 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-04 17:13:48,622 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-08-04 17:13:48,626 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-04 17:13:48,629 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-04 17:13:48,638 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (22) starting 
+2026-08-04 17:13:48,642 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (22) done in 0.003s 
+2026-08-04 17:13:48,649 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (22) processed 0 records, 0 records remaining 
+2026-08-04 17:13:48,653 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (22) completed 
+2026-08-04 17:13:48,663 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base VAT: Sync updates from IAP VIES' (23) starting 
+2026-08-04 17:13:49,831 1 INFO odoo18 odoo.addons.base_vat.models.res_partner: IAP VIES check response: {} 
+2026-08-04 17:13:49,832 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base VAT: Sync updates from IAP VIES' (23) done in 1.169s 
+2026-08-04 17:13:49,837 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base VAT: Sync updates from IAP VIES' (23) processed 0 records, 0 records remaining 
+2026-08-04 17:13:49,840 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base VAT: Sync updates from IAP VIES' (23) completed 
+2026-08-04 17:13:49,850 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-04 17:13:49,855 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.004s 
+2026-08-04 17:13:49,859 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-04 17:13:49,862 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-04 17:13:49,871 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-04 17:13:49,874 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-04 17:13:49,880 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-04 17:13:49,883 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-04 17:18:11,105 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:11] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 10 0.014 0.010
+2026-08-04 17:18:11,136 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:11] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.009 0.046
+2026-08-04 17:18:11,220 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:11] "POST /web/action/load HTTP/1.1" 200 - 10 0.013 0.124
+2026-08-04 17:18:11,342 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:11] "POST /web/dataset/call_kw/employee.document.file/get_views HTTP/1.1" 200 - 49 0.014 0.100
+2026-08-04 17:18:11,362 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:11] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.001 0.003
+2026-08-04 17:18:11,370 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:11] "POST /web/dataset/call_kw/employee.document.file/web_read_group HTTP/1.1" 200 - 8 0.004 0.008
+2026-08-04 17:18:16,612 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:16] "POST /web/action/load HTTP/1.1" 200 - 10 0.003 0.005
+2026-08-04 17:18:16,657 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:16] "POST /web/dataset/call_kw/hr.attendance/get_views HTTP/1.1" 200 - 24 0.008 0.015
+2026-08-04 17:18:16,691 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:16] "POST /web/dataset/call_kw/hr.attendance/web_read_group HTTP/1.1" 200 - 11 0.006 0.021
+2026-08-04 17:18:17,888 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:17] "POST /web/action/load HTTP/1.1" 200 - 6 0.002 0.005
+2026-08-04 17:18:18,910 1 INFO ? werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:18] "GET /hr_attendance_location_tracking/static/lib/leaflet/leaflet.css HTTP/1.1" 200 - 0 0.000 0.991
+2026-08-04 17:18:18,910 1 INFO ? werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:18] "GET /hr_attendance_location_tracking/static/lib/leaflet/leaflet.js HTTP/1.1" 200 - 0 0.000 0.991
+2026-08-04 17:18:18,940 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:18] "POST /web/dataset/call_kw/hr.attendance.location.session/team_map_data HTTP/1.1" 200 - 6 0.003 0.005
+2026-08-04 17:18:28,886 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:28] "POST /web/action/load HTTP/1.1" 200 - 10 0.003 0.005
+2026-08-04 17:18:28,921 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:28] "POST /web/dataset/call_kw/hr.attendance.location.session/get_views HTTP/1.1" 200 - 25 0.008 0.015
+2026-08-04 17:18:28,935 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:28] "POST /web/dataset/call_kw/hr.attendance.location.session/web_read_group HTTP/1.1" 200 - 3 0.001 0.005
+2026-08-04 17:18:30,321 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:30] "POST /web/dataset/call_kw/hr.attendance.location.session/web_search_read HTTP/1.1" 200 - 10 0.004 0.007
+2026-08-04 17:18:31,641 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:31] "POST /web/dataset/call_kw/hr.attendance.location.session/web_read HTTP/1.1" 200 - 10 0.004 0.027
+2026-08-04 17:18:31,722 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:31] "POST /mail/thread/data HTTP/1.1" 200 - 21 0.009 0.010
+2026-08-04 17:18:31,754 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:31] "POST /mail/thread/messages HTTP/1.1" 200 - 21 0.011 0.018
+2026-08-04 17:18:33,425 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:33] "POST /web/dataset/call_button/hr.attendance.location.session/action_open_map HTTP/1.1" 200 - 2 0.001 0.007
+2026-08-04 17:18:33,459 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:33] "POST /web/dataset/call_kw/hr.attendance.location.session/route_data HTTP/1.1" 200 - 6 0.003 0.012
+2026-08-04 17:18:33,490 1 INFO ? werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:33] "GET /hr_attendance_location_tracking/static/lib/leaflet/images/marker-icon.png HTTP/1.1" 200 - 0 0.000 0.020
+2026-08-04 17:18:33,490 1 INFO ? werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:33] "GET /hr_attendance_location_tracking/static/lib/leaflet/images/marker-shadow.png HTTP/1.1" 200 - 0 0.000 0.010
+2026-08-04 17:18:39,700 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:18:39] "POST /web/dataset/call_kw/hr.attendance.location.session/web_read_group HTTP/1.1" 200 - 3 0.002 0.006
+2026-08-04 17:34:56,327 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:34:56] "POST /web/dataset/call_kw/hr.attendance.location.session/team_map_data HTTP/1.1" 200 - 2 0.001 0.004
+2026-08-04 17:35:26,378 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:35:26] "POST /web/dataset/call_kw/hr.attendance.location.session/team_map_data HTTP/1.1" 200 - 2 0.004 0.012
+2026-08-04 17:35:56,350 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 17:35:56] "POST /web/dataset/call_kw/hr.attendance.location.session/team_map_data HTTP/1.1" 200 - 2 0.001 0.002
+2026-08-04 20:46:06,854 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-04 20:46:06,855 1 INFO odoo18 odoo.addons.base.models.res_device: User 2 inserts device log (8_1IeoVhSs03G5RiW83c3Q_h833dOgkbwuZHEpL5ay) 
+2026-08-04 20:46:06,864 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 20:46:06] "GET /websocket?version=18.0-7 HTTP/1.1" 101 - 2 0.003 0.031
+2026-08-04 20:46:06,865 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 20:46:06] "POST /web/dataset/call_kw/hr.attendance.location.session/team_map_data HTTP/1.1" 200 - 3 0.004 0.031
+2026-08-04 20:46:06,874 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 20:46:06] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-04 20:46:12,853 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-04 20:46:12,858 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-08-04 20:46:12,862 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-04 20:46:12,865 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-04 20:46:12,875 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-04 20:46:12,882 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-08-04 20:46:12,885 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-04 20:46:12,888 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-04 20:46:12,904 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-04 20:46:12,907 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-08-04 20:46:12,911 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-04 20:46:12,914 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-04 20:46:12,923 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) starting 
+2026-08-04 20:46:12,933 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) done in 0.009s 
+2026-08-04 20:46:12,937 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) processed 0 records, 0 records remaining 
+2026-08-04 20:46:12,939 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Contract: update state' (18) completed 
+2026-08-04 20:46:12,948 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) starting 
+2026-08-04 20:46:12,952 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) done in 0.003s 
+2026-08-04 20:46:12,956 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) processed 0 records, 0 records remaining 
+2026-08-04 20:46:12,959 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) completed 
+2026-08-04 20:46:12,967 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) starting 
+2026-08-04 20:46:12,970 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) done in 0.002s 
+2026-08-04 20:46:12,974 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) processed 0 records, 0 records remaining 
+2026-08-04 20:46:12,977 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) completed 
+2026-08-04 20:46:12,985 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-04 20:46:12,989 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-08-04 20:46:12,993 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-04 20:46:12,996 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-04 20:46:13,004 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-04 20:46:13,007 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-04 20:46:13,010 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-04 20:46:13,013 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-04 20:46:26,637 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 20:46:26] "POST /web/dataset/call_kw/hr.attendance.location.session/team_map_data HTTP/1.1" 200 - 2 0.002 0.003
+2026-08-04 20:46:56,658 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 20:46:56] "POST /web/dataset/call_kw/hr.attendance.location.session/team_map_data HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-04 20:47:26,335 1 INFO odoo18 werkzeug: 172.19.0.1 - - [04/Aug/2026 20:47:26] "POST /web/dataset/call_kw/hr.attendance.location.session/team_map_data HTTP/1.1" 200 - 2 0.001 0.003
+2026-08-04 21:39:08,531 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-08-04 21:39:08,662 1 INFO odoo18 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-08-04 21:39:08,758 1 INFO odoo18 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-08-04 21:39:08,767 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-08-04 21:39:08,775 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 1 entries 
+2026-08-04 21:39:08,780 1 INFO odoo18 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-08-04 21:39:08,795 1 INFO odoo18 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-08-04 21:39:08,909 1 INFO odoo18 odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-08-04 21:39:09,055 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.523s 
+2026-08-04 21:39:09,059 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2026-08-04 21:39:09,062 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2026-08-04 21:39:09,071 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) starting 
+2026-08-04 21:39:09,079 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) done in 0.007s 
+2026-08-04 21:39:09,083 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) processed 0 records, 0 records remaining 
+2026-08-04 21:39:09,085 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) completed 
+2026-08-04 21:41:11,214 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) starting 
+2026-08-04 21:41:11,219 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) done in 0.004s 
+2026-08-04 21:41:11,223 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,226 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) completed 
+2026-08-04 21:41:11,236 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) starting 
+2026-08-04 21:41:11,239 1 INFO odoo18 odoo.addons.mail.models.mail_scheduled_message: Posting 0 scheduled messages 
+2026-08-04 21:41:11,240 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) done in 0.004s 
+2026-08-04 21:41:11,244 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,248 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) completed 
+2026-08-04 21:41:11,257 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-04 21:41:11,260 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.002s 
+2026-08-04 21:41:11,264 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,267 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-04 21:41:11,277 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) starting 
+2026-08-04 21:41:11,282 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) done in 0.005s 
+2026-08-04 21:41:11,286 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,289 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) completed 
+2026-08-04 21:41:11,298 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) starting 
+2026-08-04 21:41:11,302 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) done in 0.002s 
+2026-08-04 21:41:11,305 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,308 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) completed 
+2026-08-04 21:41:11,318 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) starting 
+2026-08-04 21:41:11,321 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) done in 0.002s 
+2026-08-04 21:41:11,325 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,329 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) completed 
+2026-08-04 21:41:11,338 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-04 21:41:11,345 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-08-04 21:41:11,349 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,352 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-04 21:41:11,360 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-04 21:41:11,364 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-08-04 21:41:11,368 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,371 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-04 21:41:11,380 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) starting 
+2026-08-04 21:41:11,384 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) done in 0.003s 
+2026-08-04 21:41:11,388 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,391 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (17) completed 
+2026-08-04 21:41:11,400 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-04 21:41:11,404 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2026-08-04 21:41:11,408 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,411 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-04 21:41:11,420 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) starting 
+2026-08-04 21:41:11,428 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) done in 0.007s 
+2026-08-04 21:41:11,431 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,434 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) completed 
+2026-08-04 21:41:11,443 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-04 21:41:11,446 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-04 21:41:11,449 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-04 21:41:11,452 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2026-08-04 21:58:19,332 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) starting 
+2026-08-04 21:58:19,341 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) done in 0.008s 
+2026-08-04 21:58:19,346 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) processed 0 records, 0 records remaining 
+2026-08-04 21:58:19,351 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (24) completed 
+2026-08-04 21:58:19,363 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) starting 
+2026-08-04 21:58:19,368 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) done in 0.004s 
+2026-08-04 21:58:19,377 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) processed 0 records, 0 records remaining 
+2026-08-04 21:58:19,381 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (25) completed 
+2026-08-04 22:40:21,765 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2026-08-04 22:40:21,770 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2026-08-04 22:40:21,774 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2026-08-04 22:40:21,778 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2026-08-04 22:40:21,788 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2026-08-04 22:40:21,793 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.004s 
+2026-08-04 22:40:21,796 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2026-08-04 22:40:21,800 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2026-08-04 22:41:14,355 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2026-08-04 22:41:14,362 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.006s 
+2026-08-04 22:41:14,366 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2026-08-04 22:41:14,369 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2026-08-04 22:41:14,379 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2026-08-04 22:41:14,382 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2026-08-04 22:41:14,386 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2026-08-04 22:41:14,389 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2026-08-04 22:41:14,398 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2026-08-04 22:41:14,401 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.002s 
+2026-08-04 22:41:14,405 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2026-08-04 22:41:14,408 1 INFO odoo18 odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 

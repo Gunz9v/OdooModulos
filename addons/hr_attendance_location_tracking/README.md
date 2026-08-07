@@ -4,6 +4,8 @@ Addon Odoo 18 separado de `salesperson_route_tracking`.
 
 Proporciona dispositivos vinculados por codigo temporal, tokens revocables, asistencia movil, sesiones GPS laborales y API HTTPS para la aplicacion Android.
 
+Incluye un mapa historico por jornada y un mapa del equipo activo que actualiza posiciones cada 30 segundos.
+
 ## API
 
 - `POST /mobile_tracking/v1/enroll`

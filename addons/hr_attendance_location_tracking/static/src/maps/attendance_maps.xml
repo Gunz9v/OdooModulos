@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="hr_attendance_location_tracking.JourneyMap">
+        <div class="o_attendance_location_map_view d-flex flex-column h-100">
+            <div class="px-3 py-2 border-bottom bg-white d-flex align-items-center gap-3">
+                <div><h4 class="mb-0" t-esc="state.session.name || 'Jornada'"/><small class="text-muted" t-esc="state.session.employee || ''"/></div>
+                <div class="ms-auto d-flex gap-3" t-if="state.loaded">
+                    <span><strong t-esc="state.pointCount"/> puntos</span>
+                    <span><strong t-esc="state.session.distance_km || 0"/> km</span>
+                </div>
+            </div>
+            <div class="position-relative flex-grow-1">
+                <div t-ref="map" class="o_attendance_location_map h-100"/>
+                <div t-if="state.loading" class="o_attendance_map_message"><i class="fa fa-spinner fa-spin me-2"/>Cargando mapa...</div>
+                <div t-if="state.loaded and !state.pointCount" class="o_attendance_map_message alert alert-info">Esta jornada todavia no tiene puntos GPS.</div>
+                <div t-if="state.error" class="o_attendance_map_message alert alert-danger">No se pudo cargar el mapa.</div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="hr_attendance_location_tracking.TeamMap">
+        <div class="o_attendance_location_map_view d-flex flex-column h-100">
+            <div class="px-3 py-2 border-bottom bg-white d-flex align-items-center gap-3">
+                <div><h4 class="mb-0">Ubicacion del equipo</h4><small class="text-muted">Actualizacion automatica cada 30 segundos</small></div>
+                <div class="ms-auto d-flex gap-3" t-if="!state.loading">
+                    <span><strong t-esc="state.employeeCount"/> empleados activos</span>
+                    <span t-if="state.refreshedAt">Actualizado <t t-esc="state.refreshedAt"/></span>
+                </div>
+            </div>
+            <div class="position-relative flex-grow-1">
+                <div t-ref="map" class="o_attendance_location_map h-100"/>
+                <div t-if="state.loading" class="o_attendance_map_message"><i class="fa fa-spinner fa-spin me-2"/>Cargando equipo...</div>
+                <div t-if="state.error" class="o_attendance_map_message alert alert-danger">No se pudo cargar el mapa.</div>
+            </div>
+        </div>
+    </t>
+</templates>
