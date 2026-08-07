@@ -6,6 +6,8 @@ Proporciona dispositivos vinculados por codigo temporal, tokens revocables, asis
 
 Incluye un mapa historico por jornada y un mapa del equipo activo que actualiza posiciones cada 30 segundos.
 
+El cierre de una asistencia, incluida la salida automatica estandar de Odoo, finaliza su sesion GPS. La aplicacion consulta el estado cada 2 minutos para detener el servicio de ubicacion cuando el servidor haya cerrado la jornada.
+
 ## API
 
 - `POST /mobile_tracking/v1/enroll`

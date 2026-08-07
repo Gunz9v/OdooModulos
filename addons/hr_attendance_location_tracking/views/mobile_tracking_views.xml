@@ -60,6 +60,7 @@
                                     <field name="name"/>
                                     <field name="started_at"/>
                                     <field name="ended_at"/>
+                                    <field name="finish_reason" optional="show"/>
                                     <field name="state" widget="badge"/>
                                     <field name="point_count"/>
                                     <field name="distance_km"/>
@@ -102,6 +103,7 @@
                 <field name="device_id"/>
                 <field name="started_at"/>
                 <field name="ended_at"/>
+                <field name="finish_reason" optional="show"/>
                 <field name="state" widget="badge"/>
                 <field name="point_count"/>
                 <field name="distance_km"/>
@@ -130,6 +132,7 @@
                         <group>
                             <field name="started_at"/>
                             <field name="ended_at"/>
+                            <field name="finish_reason"/>
                             <field name="point_count"/>
                             <field name="distance_km"/>
                         </group>

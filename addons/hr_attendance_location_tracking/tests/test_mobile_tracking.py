@@ -50,7 +50,28 @@ class TestAttendanceMobileTracking(TransactionCase):
             {"uuid": "point-1", "latitude": -12.05, "longitude": -77.04, "accuracy": 8},
         ]), 0)
         attendance.check_out = fields.Datetime.now()
+        self.assertEqual(session.state, "done")
+        self.assertEqual(session.finish_reason, "other")
+        self.assertEqual(session.ended_at, attendance.check_out)
         with self.assertRaises(ValidationError):
             session.ingest_points([
                 {"uuid": "point-3", "latitude": -12.06, "longitude": -77.05, "accuracy": 8},
             ])
+
+    def test_automatic_check_out_finishes_tracking_session(self):
+        attendance = self.env["hr.attendance"].create({
+            "employee_id": self.employee.id,
+            "check_in": fields.Datetime.now(),
+            "in_mode": "mobile",
+        })
+        session = self.env["hr.attendance.location.session"].create({
+            "name": "Jornada con salida automatica",
+            "employee_id": self.employee.id,
+            "attendance_id": attendance.id,
+            "device_id": self.device.id,
+        })
+        checkout = fields.Datetime.now()
+        attendance.write({"check_out": checkout, "out_mode": "auto_check_out"})
+        self.assertEqual(session.state, "done")
+        self.assertEqual(session.finish_reason, "automatic")
+        self.assertEqual(session.ended_at, checkout)

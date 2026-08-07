@@ -149,6 +149,11 @@ class HrAttendanceLocationSession(models.Model):
     state = fields.Selection([("running", "En curso"), ("done", "Finalizado")], default="running", required=True, index=True)
     started_at = fields.Datetime(required=True, default=fields.Datetime.now, index=True)
     ended_at = fields.Datetime(readonly=True)
+    finish_reason = fields.Selection(
+        [("mobile", "Salida desde la aplicacion"), ("automatic", "Salida automatica"), ("other", "Otro cierre")],
+        string="Motivo de cierre",
+        readonly=True,
+    )
     point_ids = fields.One2many("hr.attendance.location.point", "session_id", readonly=True)
     point_count = fields.Integer(compute="_compute_point_count")
     distance_m = fields.Float(readonly=True, digits=(16, 2))
@@ -171,9 +176,11 @@ class HrAttendanceLocationSession(models.Model):
         for session in self:
             session.distance_km = session.distance_m / 1000.0
 
-    def action_finish(self):
+    def action_finish(self, ended_at=None, reason="other"):
         self.filtered(lambda session: session.state == "running").write({
-            "state": "done", "ended_at": fields.Datetime.now(),
+            "state": "done",
+            "ended_at": ended_at or fields.Datetime.now(),
+            "finish_reason": reason,
         })
 
     def action_open_map(self):
@@ -324,3 +331,16 @@ class HrAttendance(models.Model):
     in_mode = fields.Selection(selection_add=[("mobile", "Aplicacion movil")], ondelete={"mobile": "set default"})
     out_mode = fields.Selection(selection_add=[("mobile", "Aplicacion movil")], ondelete={"mobile": "set default"})
     location_session_ids = fields.One2many("hr.attendance.location.session", "attendance_id", readonly=True)
+
+    def write(self, values):
+        # Odoo's automatic check-out and every other attendance exit eventually
+        # write check_out on hr.attendance. Hooking that transition keeps the GPS
+        # lifecycle synchronized regardless of where the exit originated.
+        open_attendances = self.filtered(lambda attendance: not attendance.check_out) if values.get("check_out") else self.browse()
+        result = super().write(values)
+        for attendance in open_attendances.filtered("check_out"):
+            reason = "automatic" if attendance.out_mode == "auto_check_out" else (
+                "mobile" if attendance.out_mode == "mobile" else "other"
+            )
+            attendance.location_session_ids.action_finish(attendance.check_out, reason)
+        return result

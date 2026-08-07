@@ -159,7 +159,9 @@ class AttendanceMobileApi(http.Controller):
                 point = dict(location, uuid=location.get("uuid") or payload.get("request_uuid"))
                 own_session.ingest_points([point])
             attendance = device.employee_id.sudo()._attendance_action_change(self._geo(payload))
-            sessions.action_finish()
+            # hr.attendance.write() closes the linked GPS sessions as well.
+            # Keep this call idempotent for databases upgraded from older versions.
+            sessions.action_finish(attendance.check_out, "mobile")
             return self._response({
                 "ok": True, "attendance_id": attendance.id,
                 "check_in": fields.Datetime.to_string(attendance.check_in),
