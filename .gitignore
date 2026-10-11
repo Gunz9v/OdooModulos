@@ -1,5 +1,8 @@
+.env
+.env.*
+!.env.example
+config/odoo.conf
+logs/
 __pycache__/
 *.py[cod]
-.env.local
-.env.*.local
-logs/*.log
+.DS_Store

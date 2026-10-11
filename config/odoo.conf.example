@@ -1,9 +1,9 @@
 [options]
-admin_passwd = $pbkdf2-sha512$600000$bU3pHcNYi/He.1.L8V5LaQ$MuLJPPkUfPvGK0h06EKtGlihxnI8/elYQBaLi2qK16MYW519uxAy1zX5LytjN37vL.Dt348CFIPNIeQDA9rYgQ
+admin_passwd = CHANGE_ME
 db_host = postgres18
 db_port = 5432
 db_user = odoo
-db_password = odoo
+db_password = CHANGE_ME
 addons_path = /usr/lib/python3/dist-packages/odoo/addons,/mnt/enterprise,/mnt/extra-addons
 logfile = /var/log/odoo/odoo.log
 proxy_mode = True
