@@ -1,3 +1,5 @@
-# Documentation
+# Documentacion del portafolio
 
-Functional documentation, technical architecture, installation notes, and screenshots can be organized here.
+- [Plantilla para documentar nuevos modulos](./MODULE_README_TEMPLATE.md)
+
+Para cada addon incluye descripcion funcional, dependencias, pasos de instalacion, detalles tecnicos, pruebas y capturas anonimizadas.
